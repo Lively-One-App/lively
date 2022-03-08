@@ -18,17 +18,9 @@ void main() => runZonedGuarded<void>(
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         BlocOverrides.runZoned(
           () {
-            // runApp(
-            //   MultiBlocProvider(
-            //     providers: [
-            //       //   BlocProvider<AuthBloc>(
-            //       //     create: (context) => authBloc = AuthBloc(FireAuth(), store),
-            //       //   ),
-            //     ],
-            //     child: const MyApp(),
-            //   ),
-            // );
-            runApp(const MyApp());
+            runApp(
+              const MyApp(),
+            );
           },
           blocObserver: AppBlocObserver.instance(),
         );
