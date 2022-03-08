@@ -15,19 +15,20 @@ void main() => runZonedGuarded<void>(
         // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         //   statusBarColor: Colors.transparent,
         // ));
-        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         BlocOverrides.runZoned(
           () {
-            runApp(
-              MultiBlocProvider(
-                providers: [
-                  //   BlocProvider<AuthBloc>(
-                  //     create: (context) => authBloc = AuthBloc(FireAuth(), store),
-                  //   ),
-                ],
-                child: const MyApp(),
-              ),
-            );
+            // runApp(
+            //   MultiBlocProvider(
+            //     providers: [
+            //       //   BlocProvider<AuthBloc>(
+            //       //     create: (context) => authBloc = AuthBloc(FireAuth(), store),
+            //       //   ),
+            //     ],
+            //     child: const MyApp(),
+            //   ),
+            // );
+            runApp(const MyApp());
           },
           blocObserver: AppBlocObserver.instance(),
         );
