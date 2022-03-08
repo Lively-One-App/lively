@@ -19,10 +19,14 @@ dependencies:
   firebase_auth: 
   cloud_firestore:
   l:
+<<<<<<< HEAD
   cupertino_icons:
   lottie: 
   dio: ^4.0.4
 
+=======
+  cupertino_icons: ^1.0.2
+>>>>>>> f5e6049 (Home screen top buttons and text UI)
 
 dev_dependencies:
   flutter_test:
@@ -34,13 +38,19 @@ dev_dependencies:
   flutter_lints: 
 
 flutter:
+<<<<<<< HEAD
   assets:
   - assets/
+=======
+>>>>>>> f5e6049 (Home screen top buttons and text UI)
   uses-material-design: true
   fonts:
     - family: AppIcons
       fonts:
+<<<<<<< HEAD
         - asset: assets/fonts/LivelyIcons.ttf
+=======
+>>>>>>> f5e6049 (Home screen top buttons and text UI)
         - asset: assets/fonts/AppIcons.ttf
 
 flutter_intl:
