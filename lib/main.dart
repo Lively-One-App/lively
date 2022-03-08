@@ -19,14 +19,7 @@ void main() => runZonedGuarded<void>(
         BlocOverrides.runZoned(
           () {
             runApp(
-              MultiBlocProvider(
-                providers: [
-                  //   BlocProvider<AuthBloc>(
-                  //     create: (context) => authBloc = AuthBloc(FireAuth(), store),
-                  //   ),
-                ],
-                child: const MyApp(),
-              ),
+              const MyApp(),
             );
           },
           blocObserver: AppBlocObserver.instance(),
