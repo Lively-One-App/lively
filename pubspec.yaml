@@ -20,11 +20,14 @@ dependencies:
   cloud_firestore:
   l:
 <<<<<<< HEAD
+<<<<<<< HEAD
   cupertino_icons:
   lottie: 
   dio: ^4.0.4
 
 =======
+=======
+>>>>>>> 6f1bc7e (Animated background (#4))
   cupertino_icons: ^1.0.2
 >>>>>>> f5e6049 (Home screen top buttons and text UI)
 
@@ -39,18 +42,24 @@ dev_dependencies:
 
 flutter:
 <<<<<<< HEAD
+<<<<<<< HEAD
   assets:
   - assets/
 =======
 >>>>>>> f5e6049 (Home screen top buttons and text UI)
+=======
+>>>>>>> 6f1bc7e (Animated background (#4))
   uses-material-design: true
   fonts:
     - family: AppIcons
       fonts:
 <<<<<<< HEAD
+<<<<<<< HEAD
         - asset: assets/fonts/LivelyIcons.ttf
 =======
 >>>>>>> f5e6049 (Home screen top buttons and text UI)
+=======
+>>>>>>> 6f1bc7e (Animated background (#4))
         - asset: assets/fonts/AppIcons.ttf
 
 flutter_intl:
