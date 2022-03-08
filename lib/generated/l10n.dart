@@ -49,6 +49,26 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `lively`
+  String get lively {
+    return Intl.message(
+      'lively',
+      name: 'lively',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IN THE STREAM OF`
+  String get inTheStreamOf {
+    return Intl.message(
+      'IN THE STREAM OF',
+      name: 'inTheStreamOf',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -15,7 +15,7 @@ void main() => runZonedGuarded<void>(
         // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         //   statusBarColor: Colors.transparent,
         // ));
-        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         BlocOverrides.runZoned(
           () {
             runApp(
