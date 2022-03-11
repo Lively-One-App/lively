@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>963261682807-nqng4m5v5413d8lgj0fljp06dpa7s610.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.963261682807-nqng4m5v5413d8lgj0fljp06dpa7s610</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>963261682807-ga95ib5stn5kcefsa9pa7dcl6r961kq1.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC0QkhUt6veyVe6rEyIzDGGt3gWXGlkeOA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>963261682807</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.lively</string>
+	<key>PROJECT_ID</key>
+	<string>lively-4aed2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lively-4aed2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:963261682807:ios:a1fc79f36c47bf77016272</string>
+</dict>
+</plist>

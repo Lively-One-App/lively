@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../generated/l10n.dart';
 import '../theme.dart';
+import 'feature/music/screens/home.dart';
 import 'routes.dart';
 
 class MyApp extends StatelessWidget {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       initialRoute: Routes.initialRoute,
       routes: Routes.routing(),
       theme: MyThemes.lightTheme,
+      home: Home(),
       // home: BlocBuilder<AuthBloc, AuthState>(
       //   builder: (BuildContext context, state) {
       //     return state.maybeWhen(
