@@ -24,15 +24,6 @@ class MyApp extends StatelessWidget {
       routes: Routes.routing(),
       theme: MyThemes.lightTheme,
       home: Home(),
-      // home: BlocBuilder<AuthBloc, AuthState>(
-      //   builder: (BuildContext context, state) {
-      //     return state.maybeWhen(
-      //       authenticated: (user) => ,
-      //       orElse: () =>  ,
-      //     );
-
-      //   },
-      // ),
     );
   }
 }

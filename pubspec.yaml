@@ -22,6 +22,7 @@ dependencies:
   cupertino_icons:
   lottie: 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -38,6 +39,7 @@ flutter:
   fonts:
     - family: AppIcons
       fonts:
+        - asset: assets/fonts/LivelyIcons.ttf
         - asset: assets/fonts/AppIcons.ttf
 
 flutter_intl:
