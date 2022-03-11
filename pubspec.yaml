@@ -35,7 +35,7 @@ flutter:
   fonts:
     - family: AppIcons
       fonts:
-        - asset: assets/fonts/AppIcons.ttf
+        - asset: assets/fonts/LivelyIcons.ttf
 
 flutter_intl:
   enabled: true

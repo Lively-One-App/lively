@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lively/generated/l10n.dart';
-import 'package:lively/src/app_icons.dart';
+import 'package:lively/lively_icons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -37,14 +37,14 @@ class _AppBar extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             iconSize: 28,
             color: const Color(0xFF696969),
-            icon: const Icon(AppIcons.menu),
+            icon: const Icon(LivelyIcons.menu),
           ),
           IconButton(
             onPressed: () {},
             padding: const EdgeInsets.all(16),
             iconSize: 28,
             color: const Color(0xFF696969),
-            icon: const Icon(AppIcons.question),
+            icon: const Icon(LivelyIcons.question),
           ),
         ],
       ),
