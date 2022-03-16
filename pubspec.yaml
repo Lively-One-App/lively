@@ -19,7 +19,10 @@ dependencies:
   firebase_auth: 
   cloud_firestore:
   l:
-  cupertino_icons: ^1.0.2
+  cupertino_icons:
+  lottie: 
+  dio: ^4.0.4
+
 
 dev_dependencies:
   flutter_test:
@@ -31,10 +34,13 @@ dev_dependencies:
   flutter_lints: 
 
 flutter:
+  assets:
+  - assets/
   uses-material-design: true
   fonts:
     - family: AppIcons
       fonts:
+        - asset: assets/fonts/LivelyIcons.ttf
         - asset: assets/fonts/AppIcons.ttf
 
 flutter_intl:
