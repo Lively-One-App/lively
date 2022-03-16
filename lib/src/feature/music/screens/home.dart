@@ -96,7 +96,7 @@ class Home extends StatelessWidget {
 // }
 
 class _TopPart extends StatelessWidget {
-  const _TopPart(
+  _TopPart(
     this.localizations, {
     required this.height,
     Key? key,
@@ -130,7 +130,7 @@ class _TopPart extends StatelessWidget {
         Text(
           '${localizations.inTheStreamOf} ',
           style: Theme.of(context).textTheme.subtitle1,
-        ),
+        )
       ],
     );
   }
