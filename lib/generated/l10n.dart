@@ -69,6 +69,16 @@ class S {
       args: [],
     );
   }
+
+  /// `CHANGE THE GAME`
+  String get changeTheGame {
+    return Intl.message(
+      'CHANGE THE GAME',
+      name: 'changeTheGame',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

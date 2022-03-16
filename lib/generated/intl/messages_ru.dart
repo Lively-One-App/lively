@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "changeTheGame":
+            MessageLookupByLibrary.simpleMessage("ПОРА МЕНЯТЬ ИГРУ"),
         "inTheStreamOf": MessageLookupByLibrary.simpleMessage("В ПОТОКЕ"),
         "lively": MessageLookupByLibrary.simpleMessage("оживленных")
       };

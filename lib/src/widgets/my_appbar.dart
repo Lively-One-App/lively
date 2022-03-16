@@ -10,10 +10,16 @@ class MyAppBar extends StatelessWidget {
   final double height;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween, children: actions),
+    return SafeArea(
+      bottom: false,
+      left: false,
+      right: false,
+      child: SizedBox(
+        height: height,
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: actions),
+      ),
     );
   }
 }

@@ -17,6 +17,10 @@ class MyThemes {
             fontWeight: FontWeight.w800,
             color: Color(0xFFF64B4B)),
         subtitle1: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+        bodyText1: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
+            color: Color(0xFF000000)),
       ),
       iconTheme: const IconThemeData(color: Color(0xFFF64B4B)),
     );

@@ -38,7 +38,7 @@ flutter:
   - assets/
   uses-material-design: true
   fonts:
-    - family: AppIcons
+    - family: LivelyIcons
       fonts:
         - asset: assets/fonts/LivelyIcons.ttf
         - asset: assets/fonts/AppIcons.ttf
