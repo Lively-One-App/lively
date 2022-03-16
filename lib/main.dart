@@ -25,5 +25,8 @@ void main() => runZonedGuarded<void>(
           blocObserver: AppBlocObserver.instance(),
         );
       },
-      (error, stackTrace) {},
+      (error, stackTrace) {
+        print('Error is: \n $error');
+        print('StackTrace is: \n $stackTrace');
+      },
     );
