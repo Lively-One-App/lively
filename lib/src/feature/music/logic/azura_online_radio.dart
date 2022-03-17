@@ -1,23 +1,25 @@
-import 'package:lively/src/feature/music/logic/current_song.dart';
-import 'package:lively/src/feature/music/logic/now_playing.dart';
-import 'package:lively/src/feature/music/logic/online_radio.dart';
 import 'package:dio/dio.dart';
-import 'package:lively/src/feature/music/logic/radio_listeners.dart';
-import 'package:lively/src/feature/music/logic/song.dart';
-import 'package:lively/src/feature/music/logic/station.dart';
-import 'package:lively/src/feature/music/model/azuracast/azura_api_now_playing.dart';
-import 'package:lively/src/feature/music/model/azuracast/azura_api_now_playing_current_song.dart';
-import 'package:lively/src/feature/music/model/azuracast/azura_api_now_playing_listeners.dart';
-import 'package:lively/src/feature/music/model/azuracast/azura_api_now_playing_station.dart';
-import 'package:lively/src/feature/music/model/azuracast/azura_api_song.dart';
 
-const String nowPlayingCommand = 'nowplaying';
+import '../model/azuracast/azura_api_now_playing.dart';
+import '../model/azuracast/azura_api_now_playing_current_song.dart';
+import '../model/azuracast/azura_api_now_playing_listeners.dart';
+import '../model/azuracast/azura_api_now_playing_station.dart';
+import '../model/azuracast/azura_api_song.dart';
+import '../model/azuracast/current_song.dart';
+import '../model/azuracast/now_playing.dart';
+import '../model/azuracast/radio_listeners.dart';
+import '../model/azuracast/song.dart';
+import '../model/azuracast/station.dart';
+import 'online_radio.dart';
+
+//const String nowPlayingCommand = 'nowplaying';
 
 class AzuraOnlineRadio implements OnlineRadio {
-  AzuraOnlineRadio({required this.apiUrl});
+  AzuraOnlineRadio({required this.apiUrl}) : nowPlayingCommand = 'nowplaying';
   @override
   final String apiUrl;
   final Dio _dio = Dio();
+  final String nowPlayingCommand;
 
   @override
   Future<NowPlaying> nowPlaying() async {

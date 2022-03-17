@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../../lively_icons.dart';
-import '../../../widgets/custom_button.dart';
-import '/src/app_icons.dart';
+import '/lively_icons.dart';
+import '/src/widgets/custom_button.dart';
 import '/src/widgets/animated_background.dart';
 
 import '/src/widgets/my_appbar.dart';
@@ -122,7 +121,10 @@ class _TopPart extends StatelessWidget {
                       IconButton(
                           color: colorIcon,
                           onPressed: () => Scaffold.of(context).openDrawer(),
-                          icon: const Icon(LivelyIcons.menu)),
+                          icon: const Icon(
+                            LivelyIcons.menu,
+                            size: 15,
+                          )),
                       IconButton(
                         color: colorIcon,
                         onPressed: (() {}),
@@ -154,6 +156,10 @@ class _BottomPart extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            Icon(
+              LivelyIcons.heart,
+              size: 50,
+            ),
             Text(
               S.of(context).changeTheGame,
               style: Theme.of(context).textTheme.bodyText1,

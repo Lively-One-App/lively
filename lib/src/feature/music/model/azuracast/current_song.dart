@@ -1,4 +1,4 @@
-import 'package:lively/src/feature/music/logic/song.dart';
+import 'song.dart';
 
 class CurrentSong {
   CurrentSong(
