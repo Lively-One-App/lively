@@ -128,7 +128,9 @@ class _TopPart extends StatelessWidget {
                       IconButton(
                         color: colorIcon,
                         onPressed: (() {}),
-                        icon: const Icon(LivelyIcons.question),
+                        icon: const Icon(
+                          LivelyIcons.question,
+                        ),
                       ),
                     ]),
                     Text('889 ${localizations.lively}',
@@ -156,9 +158,9 @@ class _BottomPart extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(
+            const Icon(
               LivelyIcons.heart,
-              size: 50,
+              size: 70,
             ),
             Text(
               S.of(context).changeTheGame,

@@ -5,7 +5,7 @@ class MyThemes {
     return ThemeData(
       primarySwatch: Colors.red,
       appBarTheme: const AppBarTheme(
-        iconTheme: IconThemeData(color: Color(0xFF696969), size: 28),
+        iconTheme: IconThemeData(color: Color(0xFF696969), size: 15),
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
