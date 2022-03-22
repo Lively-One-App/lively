@@ -1,21 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'song.dart';
+part 'current_song.freezed.dart';
 
-class CurrentSong {
-  CurrentSong(
-      {required this.elapsed,
-      required this.remaining,
-      required this.shId,
-      required this.playedAt,
-      required this.duration,
-      required this.isRequest,
-      required this.song});
-  int elapsed;
-  int remaining;
-  int shId;
-  int playedAt;
-  int duration;
-  String? playlist;
-  String? streamer;
-  bool isRequest;
-  Song song;
+@freezed
+class CurrentSong with _$CurrentSong {
+  const factory CurrentSong(
+      {required int elapsed,
+      required int remaining,
+      required int shId,
+      required int playedAt,
+      required int duration,
+      String? playList,
+      String? streamer,
+      required bool isRequest,
+      required Song song}) = _CurrentSong;
 }

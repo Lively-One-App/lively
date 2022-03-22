@@ -1,11 +1,12 @@
-class Station {
-  Station(
-      {required this.id,
-      required this.name,
-      required this.description,
-      required this.listenUrl});
-  int id;
-  String name;
-  String description;
-  String listenUrl;
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'station.freezed.dart';
+
+@freezed
+class Station with _$Station {
+  const factory Station(
+      {required int id,
+      required String name,
+      required String description,
+      required String listenUrl}) = _Station;
 }

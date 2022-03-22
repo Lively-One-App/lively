@@ -600,6 +600,8 @@ abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
   $Res call({NowPlaying nowPlaying});
+
+  $NowPlayingCopyWith<$Res> get nowPlaying;
 }
 
 /// @nodoc
@@ -621,6 +623,13 @@ class __$LoadedCopyWithImpl<$Res> extends _$MusicStateCopyWithImpl<$Res>
           : nowPlaying // ignore: cast_nullable_to_non_nullable
               as NowPlaying,
     ));
+  }
+
+  @override
+  $NowPlayingCopyWith<$Res> get nowPlaying {
+    return $NowPlayingCopyWith<$Res>(_value.nowPlaying, (value) {
+      return _then(_value.copyWith(nowPlaying: value));
+    });
   }
 }
 
