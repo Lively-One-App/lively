@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:lottie/lottie.dart';
-
 import '/lively_icons.dart';
 import '/src/widgets/custom_button.dart';
 import '/src/widgets/animated_background.dart';

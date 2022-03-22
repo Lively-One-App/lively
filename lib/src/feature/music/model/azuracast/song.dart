@@ -1,20 +1,17 @@
-class Song {
-  Song({
-    required this.id,
-    required this.text,
-    required this.artist,
-    required this.title,
-    required this.album,
-    required this.genre,
-    required this.lyrics,
-    required this.art,
-  });
-  String id;
-  String text;
-  String artist;
-  String title;
-  String album;
-  String genre;
-  String lyrics;
-  String art;
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'song.freezed.dart';
+
+@freezed
+class Song with _$Song {
+  const factory Song({
+    required String id,
+    required String text,
+    required String artist,
+    required String title,
+    required String album,
+    required String genre,
+    required String lyrics,
+    required String art,
+  }) = _Song;
 }

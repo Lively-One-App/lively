@@ -1,16 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'current_song.dart';
 import 'radio_listeners.dart';
 import 'song.dart';
 import 'station.dart';
 
-class NowPlaying {
-  NowPlaying(
-      {required this.song,
-      required this.currentSong,
-      required this.station,
-      required this.listeners});
-  CurrentSong currentSong;
-  Song song;
-  Station station;
-  RadioListeners listeners;
+part 'now_playing.freezed.dart';
+
+@freezed
+class NowPlaying with _$NowPlaying {
+  const factory NowPlaying(
+      {required Song song,
+      required CurrentSong currentSong,
+      required Station station,
+      required RadioListeners listeners}) = _NowPlaying;
 }
