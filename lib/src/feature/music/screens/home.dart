@@ -3,7 +3,7 @@ import 'package:lively/generated/l10n.dart';
 import 'package:lottie/lottie.dart';
 
 import '/lively_icons.dart';
-import '/src/widgets/custom_button.dart';
+import '../../../widgets/my_icon_button.dart';
 import '/src/widgets/animated_background.dart';
 
 import '/src/widgets/my_appbar.dart';
@@ -27,7 +27,12 @@ class Home extends StatelessWidget {
         ),
         Padding(
             padding: EdgeInsets.only(top: height * 0.1),
-            child: CustomButton(
+            child: MyIconButton(
+                color: Colors.amber,
+                child: const Icon(
+                  LivelyIcons.lively,
+                  size: 70,
+                ),
                 radius: width / 2,
                 onTap: () {
                   print("ghjhj");
@@ -109,6 +114,8 @@ class _TopPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorIcon = Theme.of(context).appBarTheme.iconTheme?.color;
+    final sizeIcon = Theme.of(context).appBarTheme.iconTheme?.size;
+
     return SizedBox(
         height: height * 0.55,
         child: AnimatedBackground(
@@ -119,13 +126,14 @@ class _TopPart extends StatelessWidget {
                   children: [
                     MyAppBar(height: height * 0.07, actions: [
                       IconButton(
+                          iconSize: sizeIcon,
                           color: colorIcon,
                           onPressed: () => Scaffold.of(context).openDrawer(),
                           icon: const Icon(
                             LivelyIcons.menu,
-                            size: 15,
                           )),
                       IconButton(
+                        iconSize: sizeIcon,
                         color: colorIcon,
                         onPressed: (() {}),
                         icon: const Icon(
@@ -152,19 +160,41 @@ class _BottomPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final theme = Theme.of(context);
+    var localization = S.of(context);
     return Expanded(
       child: SafeArea(
         top: false,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const Icon(
-              LivelyIcons.heart,
-              size: 70,
+            Stack(
+              alignment: AlignmentDirectional.center,
+              children: const [
+                Icon(
+                  LivelyIcons.heart,
+                  size: 70,
+                ),
+                Text('1'),
+              ],
             ),
+            SizedBox(height: height * 0.03),
+            MyIconButton(
+              child: Column(
+                children: const [
+                  Icon(
+                    LivelyIcons.reset,
+                    color: Colors.grey,
+                  ),
+                  Text('5 сек')
+                ],
+              ),
+            ),
+            SizedBox(height: height * 0.08),
             Text(
-              S.of(context).changeTheGame,
-              style: Theme.of(context).textTheme.bodyText1,
+              localization.changeTheGame,
+              style: theme.textTheme.bodyText1,
             ),
           ],
         ),

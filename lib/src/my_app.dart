@@ -4,6 +4,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../generated/l10n.dart';
 import '../theme.dart';
+import 'feature/music/bloc/music_bloc.dart';
+import 'feature/music/logic/audio_player_impl.dart';
+import 'feature/music/logic/azura_online_radio.dart';
+import 'feature/music/logic/my_audio_player.dart';
+import 'feature/music/logic/online_radio_impl.dart';
 import 'feature/music/screens/home.dart';
 import 'routes.dart';
 
@@ -23,7 +28,15 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       routes: Routes.routing(),
       theme: MyThemes.lightTheme,
-      home: Home(),
+      home: BlocProvider<MusicBloc>(
+        create: (context) {
+          final OnlineRadioImpl onlineRadio = AzuraOnlineRadio(apiUrl: '');
+          final AudioPlayerImpl myAudioPlayer = MyAudioPlayer();
+
+          return MusicBloc(onlineRadio, myAudioPlayer);
+        },
+        child: Home(),
+      ),
     );
   }
 }

@@ -21,6 +21,10 @@ class _$MusicEventTearOff {
   _JoinFlow joinFlow() {
     return const _JoinFlow();
   }
+
+  _PauseFlow pauseFlow() {
+    return const _PauseFlow();
+  }
 }
 
 /// @nodoc
@@ -31,32 +35,38 @@ mixin _$MusicEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() joinFlow,
+    required TResult Function() pauseFlow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? joinFlow,
+    TResult Function()? pauseFlow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? joinFlow,
+    TResult Function()? pauseFlow,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_JoinFlow value) joinFlow,
+    required TResult Function(_PauseFlow value) pauseFlow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_JoinFlow value)? joinFlow,
+    TResult Function(_PauseFlow value)? pauseFlow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_JoinFlow value)? joinFlow,
+    TResult Function(_PauseFlow value)? pauseFlow,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +127,7 @@ class _$_JoinFlow implements _JoinFlow {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() joinFlow,
+    required TResult Function() pauseFlow,
   }) {
     return joinFlow();
   }
@@ -125,6 +136,7 @@ class _$_JoinFlow implements _JoinFlow {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? joinFlow,
+    TResult Function()? pauseFlow,
   }) {
     return joinFlow?.call();
   }
@@ -133,6 +145,7 @@ class _$_JoinFlow implements _JoinFlow {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? joinFlow,
+    TResult Function()? pauseFlow,
     required TResult orElse(),
   }) {
     if (joinFlow != null) {
@@ -145,6 +158,7 @@ class _$_JoinFlow implements _JoinFlow {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_JoinFlow value) joinFlow,
+    required TResult Function(_PauseFlow value) pauseFlow,
   }) {
     return joinFlow(this);
   }
@@ -153,6 +167,7 @@ class _$_JoinFlow implements _JoinFlow {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_JoinFlow value)? joinFlow,
+    TResult Function(_PauseFlow value)? pauseFlow,
   }) {
     return joinFlow?.call(this);
   }
@@ -161,6 +176,7 @@ class _$_JoinFlow implements _JoinFlow {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_JoinFlow value)? joinFlow,
+    TResult Function(_PauseFlow value)? pauseFlow,
     required TResult orElse(),
   }) {
     if (joinFlow != null) {
@@ -172,6 +188,109 @@ class _$_JoinFlow implements _JoinFlow {
 
 abstract class _JoinFlow implements MusicEvent {
   const factory _JoinFlow() = _$_JoinFlow;
+}
+
+/// @nodoc
+abstract class _$PauseFlowCopyWith<$Res> {
+  factory _$PauseFlowCopyWith(
+          _PauseFlow value, $Res Function(_PauseFlow) then) =
+      __$PauseFlowCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$PauseFlowCopyWithImpl<$Res> extends _$MusicEventCopyWithImpl<$Res>
+    implements _$PauseFlowCopyWith<$Res> {
+  __$PauseFlowCopyWithImpl(_PauseFlow _value, $Res Function(_PauseFlow) _then)
+      : super(_value, (v) => _then(v as _PauseFlow));
+
+  @override
+  _PauseFlow get _value => super._value as _PauseFlow;
+}
+
+/// @nodoc
+
+class _$_PauseFlow implements _PauseFlow {
+  const _$_PauseFlow();
+
+  @override
+  String toString() {
+    return 'MusicEvent.pauseFlow()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _PauseFlow);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() joinFlow,
+    required TResult Function() pauseFlow,
+  }) {
+    return pauseFlow();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? joinFlow,
+    TResult Function()? pauseFlow,
+  }) {
+    return pauseFlow?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? joinFlow,
+    TResult Function()? pauseFlow,
+    required TResult orElse(),
+  }) {
+    if (pauseFlow != null) {
+      return pauseFlow();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_JoinFlow value) joinFlow,
+    required TResult Function(_PauseFlow value) pauseFlow,
+  }) {
+    return pauseFlow(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_JoinFlow value)? joinFlow,
+    TResult Function(_PauseFlow value)? pauseFlow,
+  }) {
+    return pauseFlow?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_JoinFlow value)? joinFlow,
+    TResult Function(_PauseFlow value)? pauseFlow,
+    required TResult orElse(),
+  }) {
+    if (pauseFlow != null) {
+      return pauseFlow(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PauseFlow implements MusicEvent {
+  const factory _PauseFlow() = _$_PauseFlow;
 }
 
 /// @nodoc

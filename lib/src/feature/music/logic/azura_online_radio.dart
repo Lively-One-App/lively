@@ -10,11 +10,11 @@ import '../model/azuracast/now_playing.dart';
 import '../model/azuracast/radio_listeners.dart';
 import '../model/azuracast/song.dart';
 import '../model/azuracast/station.dart';
-import 'online_radio.dart';
+import 'online_radio_impl.dart';
 
 //const String nowPlayingCommand = 'nowplaying';
 
-class AzuraOnlineRadio implements OnlineRadio {
+class AzuraOnlineRadio implements OnlineRadioImpl {
   AzuraOnlineRadio({required this.apiUrl}) : nowPlayingCommand = 'nowplaying';
   @override
   final String apiUrl;
