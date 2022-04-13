@@ -21,20 +21,20 @@ class LivelyIcons {
   static const _kFontFam = 'LivelyIcons';
   static const String? _kFontPkg = null;
 
-  static const IconData privacy =
+  static const IconData contact =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData question =
+  static const IconData heart =
       IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData reset =
+  static const IconData instagram =
       IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData lively =
       IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData menu =
       IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData contact =
+  static const IconData privacy =
       IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData heart =
+  static const IconData question =
       IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData instagram =
+  static const IconData reset =
       IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

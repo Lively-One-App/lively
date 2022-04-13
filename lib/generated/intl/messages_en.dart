@@ -22,10 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "appVersion":
+            MessageLookupByLibrary.simpleMessage("App Version 1.0 beta"),
         "changeTheGame":
             MessageLookupByLibrary.simpleMessage("CHANGE THE GAME"),
+        "contact":
+            MessageLookupByLibrary.simpleMessage("Contact via the website"),
+        "design":
+            MessageLookupByLibrary.simpleMessage("Designed by Emil Lively"),
+        "headlineBurgerMenu":
+            MessageLookupByLibrary.simpleMessage("WE STRIVE TO DEVELOP!"),
         "inTheStreamOf":
             MessageLookupByLibrary.simpleMessage("IN THE STREAM OF"),
-        "lively": MessageLookupByLibrary.simpleMessage("lively")
+        "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
+        "lively": MessageLookupByLibrary.simpleMessage("lively"),
+        "privacy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(
+            "Please write how we can become better, right on Instagram!")
       };
 }

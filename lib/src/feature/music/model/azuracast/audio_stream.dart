@@ -1,13 +1,14 @@
-class AudioStream {
-  AudioStream(
-      {required this.name,
-      required this.url,
-      this.isDefault = false,
-      this.bitRate,
-      this.format = ''});
-  final String name;
-  final String url;
-  final bool isDefault;
-  int? bitRate;
-  String format;
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'audio_stream.freezed.dart';
+
+@freezed
+class AudioStream with _$AudioStream {
+  const factory AudioStream({
+    required String name,
+    required String url,
+    required bool isDefault,
+    required String bitRate,
+    required String format,
+  }) = _AudioStream;
 }

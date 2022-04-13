@@ -1,5 +1,12 @@
 {
   "lively": "оживленных",
   "inTheStreamOf": "В ПОТОКЕ",
-  "changeTheGame":"ПОРА МЕНЯТЬ ИГРУ"
+  "changeTheGame":"ПОРА МЕНЯТЬ ИГРУ",
+  "headlineBurgerMenu":"МЫ ЖАЖДЕМ РАЗВИВАТЬСЯ!",
+  "subtitleBurgerMenu":"Умоляем, пишите, как нам стать лучше, прямо в Instagram!",
+  "instagram":"Instagram",
+  "contact":"Связаться через сайт",
+  "privacy":"Конфиденциальность",
+  "design": "Designed by Emil Lively",
+  "appVersion": "Версия приложения 1.0 beta"
 }

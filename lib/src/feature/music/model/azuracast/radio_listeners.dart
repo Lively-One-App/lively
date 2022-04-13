@@ -1,7 +1,11 @@
-class RadioListeners {
-  RadioListeners(
-      {required this.current, required this.total, required this.unique});
-  int total;
-  int unique;
-  int current;
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'radio_listeners.freezed.dart';
+
+@freezed
+class RadioListeners with _$RadioListeners {
+  const factory RadioListeners(
+      {required int current,
+      required int total,
+      required int unique}) = _RadioListeners;
 }

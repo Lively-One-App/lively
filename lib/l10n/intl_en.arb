@@ -1,5 +1,12 @@
 {
   "lively": "lively",
   "inTheStreamOf": "IN THE STREAM OF",
-  "changeTheGame":"CHANGE THE GAME"
+  "changeTheGame":"CHANGE THE GAME",
+  "headlineBurgerMenu":"WE STRIVE TO DEVELOP!",
+  "subtitleBurgerMenu":"Please write how we can become better, right on Instagram!",
+  "instagram":"Instagram",
+  "contact":"Contact via the website",
+  "privacy":"Privacy Policy",
+  "design": "Designed by Emil Lively",
+  "appVersion": "App Version 1.0 beta"
 }

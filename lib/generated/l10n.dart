@@ -79,6 +79,76 @@ class S {
       args: [],
     );
   }
+
+  /// `WE STRIVE TO DEVELOP!`
+  String get headlineBurgerMenu {
+    return Intl.message(
+      'WE STRIVE TO DEVELOP!',
+      name: 'headlineBurgerMenu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please write how we can become better, right on Instagram!`
+  String get subtitleBurgerMenu {
+    return Intl.message(
+      'Please write how we can become better, right on Instagram!',
+      name: 'subtitleBurgerMenu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instagram`
+  String get instagram {
+    return Intl.message(
+      'Instagram',
+      name: 'instagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact via the website`
+  String get contact {
+    return Intl.message(
+      'Contact via the website',
+      name: 'contact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get privacy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Designed by Emil Lively`
+  String get design {
+    return Intl.message(
+      'Designed by Emil Lively',
+      name: 'design',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App Version 1.0 beta`
+  String get appVersion {
+    return Intl.message(
+      'App Version 1.0 beta',
+      name: 'appVersion',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

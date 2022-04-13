@@ -22,9 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "appVersion":
+            MessageLookupByLibrary.simpleMessage("Версия приложения 1.0 beta"),
         "changeTheGame":
             MessageLookupByLibrary.simpleMessage("ПОРА МЕНЯТЬ ИГРУ"),
+        "contact": MessageLookupByLibrary.simpleMessage("Связаться через сайт"),
+        "design":
+            MessageLookupByLibrary.simpleMessage("Designed by Emil Lively"),
+        "headlineBurgerMenu":
+            MessageLookupByLibrary.simpleMessage("МЫ ЖАЖДЕМ РАЗВИВАТЬСЯ!"),
         "inTheStreamOf": MessageLookupByLibrary.simpleMessage("В ПОТОКЕ"),
-        "lively": MessageLookupByLibrary.simpleMessage("оживленных")
+        "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
+        "lively": MessageLookupByLibrary.simpleMessage("оживленных"),
+        "privacy": MessageLookupByLibrary.simpleMessage("Конфиденциальность"),
+        "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(
+            "Умоляем, пишите, как нам стать лучше, прямо в Instagram!")
       };
 }
