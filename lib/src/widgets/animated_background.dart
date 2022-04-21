@@ -2,16 +2,14 @@ import 'package:flutter/widgets.dart';
 
 import '../../theme.dart';
 
-class AnimatedGradientBackgroundContainer extends StatefulWidget {
-  const AnimatedGradientBackgroundContainer({Key? key}) : super(key: key);
+class AnimatedBackground extends StatefulWidget {
+  const AnimatedBackground({Key? key}) : super(key: key);
 
   @override
-  State<AnimatedGradientBackgroundContainer> createState() =>
-      _AnimatedGradientBackgroundContainerState();
+  State<AnimatedBackground> createState() => _AnimatedBackgroundState();
 }
 
-class _AnimatedGradientBackgroundContainerState
-    extends State<AnimatedGradientBackgroundContainer>
+class _AnimatedBackgroundState extends State<AnimatedBackground>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 

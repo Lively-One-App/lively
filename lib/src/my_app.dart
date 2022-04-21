@@ -5,10 +5,11 @@ import 'package:just_audio/just_audio.dart';
 
 import '../generated/l10n.dart';
 import '../theme.dart';
-import 'feature/music/bloc/music_bloc.dart';
+import 'feature/music/bloc/likes/likes_bloc.dart';
+import 'feature/music/bloc/radio/music_bloc.dart';
 import 'feature/music/logic/azura_online_radio.dart';
+import 'feature/music/logic/fire_function.dart';
 import 'feature/music/logic/firestore.dart';
-import 'feature/music/logic/online_radio_impl.dart';
 import 'feature/music/screens/home.dart';
 import 'routes.dart';
 
@@ -28,14 +29,32 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       routes: Routes.routing(),
       theme: MyThemes.lightTheme,
-      home: BlocProvider<MusicBloc>(
-        create: (context) {
-          final OnlineRadioImpl azuraRadio = AzuraOnlineRadio();
-          final audioPlayer = AudioPlayer();
-          final store = Firestore();
-          return MusicBloc(
-              onlineRadio: azuraRadio, audioPlayer: audioPlayer, store: store);
-        },
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<MusicBloc>(
+            create: (context) {
+              // final azuraRadio = AzuraOnlineRadio('https://s.livelyoneapp.ru/api');
+              final azuraRadio =
+                  AzuraOnlineRadio('https://demo.azuracast.com/api');
+              final audioPlayer = AudioPlayer();
+              return MusicBloc(
+                onlineRadio: azuraRadio,
+                audioPlayer: audioPlayer,
+              );
+            },
+          ),
+          BlocProvider<LikesBloc>(
+            create: (context) {
+              final store = Firestore();
+              final fireFunction = FireFunction();
+              final musicBloc = BlocProvider.of<MusicBloc>(context);
+              return LikesBloc(
+                  fireFunction: fireFunction,
+                  store: store,
+                  musicBloc: musicBloc);
+            },
+          ),
+        ],
         child: const Home(),
       ),
     );

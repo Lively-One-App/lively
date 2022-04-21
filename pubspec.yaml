@@ -21,9 +21,10 @@ dependencies:
   l:
   cupertino_icons:
   lottie: 
-  dio: ^4.0.4
-  just_audio: 
-  cloud_functions: ^3.2.10
+  dio: 
+  just_audio:
+  just_audio_background: 
+  cloud_functions: 
 
 
 dev_dependencies:

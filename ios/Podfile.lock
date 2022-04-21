@@ -1,58 +1,63 @@
 PODS:
+  - audio_service (0.0.1):
+    - Flutter
   - audio_session (0.0.1):
     - Flutter
-  - cloud_firestore (3.1.10):
-    - Firebase/Firestore (= 8.11.0)
+  - cloud_firestore (3.1.12):
+    - Firebase/Firestore (= 8.14.0)
     - firebase_core
     - Flutter
-  - cloud_functions (3.2.10):
-    - Firebase/Functions (= 8.11.0)
+  - cloud_functions (3.2.12):
+    - Firebase/Functions (= 8.14.0)
     - firebase_core
     - Flutter
-  - Firebase/Auth (8.11.0):
+  - Firebase/Auth (8.14.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 8.11.0)
-  - Firebase/CoreOnly (8.11.0):
-    - FirebaseCore (= 8.11.0)
-  - Firebase/Firestore (8.11.0):
+    - FirebaseAuth (~> 8.14.0)
+  - Firebase/CoreOnly (8.14.0):
+    - FirebaseCore (= 8.14.0)
+  - Firebase/Firestore (8.14.0):
     - Firebase/CoreOnly
-    - FirebaseFirestore (~> 8.11.0)
-  - Firebase/Functions (8.11.0):
+    - FirebaseFirestore (~> 8.14.0)
+  - Firebase/Functions (8.14.0):
     - Firebase/CoreOnly
-    - FirebaseFunctions (~> 8.11.0)
-  - firebase_auth (3.3.11):
-    - Firebase/Auth (= 8.11.0)
+    - FirebaseFunctions (~> 8.14.0)
+  - firebase_auth (3.3.14):
+    - Firebase/Auth (= 8.14.0)
     - firebase_core
     - Flutter
-  - firebase_core (1.13.1):
-    - Firebase/CoreOnly (= 8.11.0)
+  - firebase_core (1.14.1):
+    - Firebase/CoreOnly (= 8.14.0)
     - Flutter
-  - FirebaseAuth (8.11.0):
+  - FirebaseAuth (8.14.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/Environment (~> 7.7)
     - GTMSessionFetcher/Core (~> 1.5)
-  - FirebaseCore (8.11.0):
+  - FirebaseCore (8.14.0):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
-  - FirebaseCoreDiagnostics (8.13.0):
+  - FirebaseCoreDiagnostics (8.15.0):
     - GoogleDataTransport (~> 9.1)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
     - nanopb (~> 2.30908.0)
-  - FirebaseFirestore (8.11.0):
-    - FirebaseFirestore/AutodetectLeveldb (= 8.11.0)
-  - FirebaseFirestore/AutodetectLeveldb (8.11.0):
+  - FirebaseFirestore (8.14.0):
+    - FirebaseFirestore/AutodetectLeveldb (= 8.14.0)
+  - FirebaseFirestore/AutodetectLeveldb (8.14.0):
     - FirebaseFirestore/Base
     - FirebaseFirestore/WithLeveldb
-  - FirebaseFirestore/Base (8.11.0)
-  - FirebaseFirestore/WithLeveldb (8.11.0):
+  - FirebaseFirestore/Base (8.14.0)
+  - FirebaseFirestore/WithLeveldb (8.14.0):
     - FirebaseFirestore/Base
-  - FirebaseFunctions (8.11.0):
+  - FirebaseFunctions (8.14.0):
     - FirebaseCore (~> 8.0)
     - GTMSessionFetcher/Core (~> 1.5)
   - Flutter (1.0.0)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - GoogleDataTransport (9.1.2):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
@@ -72,7 +77,7 @@ PODS:
   - "GoogleUtilities/NSData+zlib (7.7.0)"
   - GoogleUtilities/Reachability (7.7.0):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.7.0)
+  - GTMSessionFetcher/Core (1.7.1)
   - just_audio (0.0.1):
     - Flutter
   - nanopb (2.30908.0):
@@ -82,18 +87,23 @@ PODS:
   - nanopb/encode (2.30908.0)
   - path_provider_ios (0.0.1):
     - Flutter
-  - PromisesObjC (2.0.0)
+  - PromisesObjC (2.1.0)
+  - sqflite (0.0.2):
+    - Flutter
+    - FMDB (>= 2.7.5)
 
 DEPENDENCIES:
+  - audio_service (from `.symlinks/plugins/audio_service/ios`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - cloud_functions (from `.symlinks/plugins/cloud_functions/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
-  - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `8.11.0`)
+  - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `8.14.0`)
   - Flutter (from `Flutter`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
+  - sqflite (from `.symlinks/plugins/sqflite/ios`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -102,6 +112,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseFunctions
+    - FMDB
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
@@ -109,6 +120,8 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  audio_service:
+    :path: ".symlinks/plugins/audio_service/ios"
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
   cloud_firestore:
@@ -121,40 +134,45 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   FirebaseFirestore:
     :git: https://github.com/invertase/firestore-ios-sdk-frameworks.git
-    :tag: 8.11.0
+    :tag: 8.14.0
   Flutter:
     :path: Flutter
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
+  sqflite:
+    :path: ".symlinks/plugins/sqflite/ios"
 
 CHECKOUT OPTIONS:
   FirebaseFirestore:
     :git: https://github.com/invertase/firestore-ios-sdk-frameworks.git
-    :tag: 8.11.0
+    :tag: 8.14.0
 
 SPEC CHECKSUMS:
+  audio_service: f509d65da41b9521a61f1c404dd58651f265a567
   audio_session: 4f3e461722055d21515cf3261b64c973c062f345
-  cloud_firestore: c6c42fe62809b7417aa3c45a6ef0c2812f7fb0d6
-  cloud_functions: 8415560122ac43e9edc2efd070ae14e664aa2fd3
-  Firebase: 44dd9724c84df18b486639e874f31436eaa9a20c
-  firebase_auth: bdfbd5b10da1db6d5eb6ae7dbda5d81365b9cc9d
-  firebase_core: 08f6a85f62060111de5e98d6a214810d11365de9
-  FirebaseAuth: d96d73aba85d192d7a7aa0b86dd6d7f8ec170b4b
-  FirebaseCore: 2f4f85b453cc8fea4bb2b37e370007d2bcafe3f0
-  FirebaseCoreDiagnostics: c2836d254a8f0bbb4121ff18f2c2ea39d118fd08
-  FirebaseFirestore: 8a0c6a06219bbaad86c72bcb66688c28995dde84
-  FirebaseFunctions: 2bad3e4365dee72a85a6baa6ccd684f024d14696
+  cloud_firestore: 6894050fe57f80e72d84d5d6c57392f3d1615c19
+  cloud_functions: d91235916581754322cf43a52a6775ab82e8576d
+  Firebase: 7e8fe528c161b9271d365217a74c16aaf834578e
+  firebase_auth: db3557d178b86a0d2ccdb7a878a1d1c2fe70de4e
+  firebase_core: cdef02fcf55872191eb0568d4c31a7a700e38582
+  FirebaseAuth: c5fde343630090253d3af7e2d35697b414b40202
+  FirebaseCore: b84a44ee7ba999e0f9f76d198a9c7f60a797b848
+  FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
+  FirebaseFirestore: dc1455307e2478af30dcd4c3020ba52654c6b62d
+  FirebaseFunctions: 72a8e24d3bcba2782f18602b14533b1525ff297c
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
-  GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  GTMSessionFetcher: 4577a4cc914a5a07c40a8a0ad0acc22080418c2d
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
-  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
 
-PODFILE CHECKSUM: ab42278768b9ee8439ae488068ec7516d5af59d3
+PODFILE CHECKSUM: d239974710d8b0ac2619e6864ff06a9d1baf8240
 
 COCOAPODS: 1.11.2

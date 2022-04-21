@@ -1,6 +1,5 @@
-import '../model/firestore/user_data.dart';
+import '../model/firestore/city_data.dart';
 
 abstract class OnlineStoreImpl {
-  void postDataUsers(UserData data);
-  Future<UserData?> getDataUsers();
+  Stream<CityData> getData();
 }

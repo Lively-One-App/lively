@@ -18,14 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MusicEventTearOff {
   const _$MusicEventTearOff();
 
-  _JoinFlow joinFlow() {
-    return const _JoinFlow();
-  }
-
-  _Likes likes(UserData userData) {
-    return _Likes(
-      userData,
-    );
+  _PlayRadio playRadio() {
+    return const _PlayRadio();
   }
 }
 
@@ -36,39 +30,33 @@ const $MusicEvent = _$MusicEventTearOff();
 mixin _$MusicEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() joinFlow,
-    required TResult Function(UserData userData) likes,
+    required TResult Function() playRadio,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? joinFlow,
-    TResult Function(UserData userData)? likes,
+    TResult Function()? playRadio,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? joinFlow,
-    TResult Function(UserData userData)? likes,
+    TResult Function()? playRadio,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_JoinFlow value) joinFlow,
-    required TResult Function(_Likes value) likes,
+    required TResult Function(_PlayRadio value) playRadio,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_JoinFlow value)? joinFlow,
-    TResult Function(_Likes value)? likes,
+    TResult Function(_PlayRadio value)? playRadio,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_JoinFlow value)? joinFlow,
-    TResult Function(_Likes value)? likes,
+    TResult Function(_PlayRadio value)? playRadio,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,35 +79,36 @@ class _$MusicEventCopyWithImpl<$Res> implements $MusicEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$JoinFlowCopyWith<$Res> {
-  factory _$JoinFlowCopyWith(_JoinFlow value, $Res Function(_JoinFlow) then) =
-      __$JoinFlowCopyWithImpl<$Res>;
+abstract class _$PlayRadioCopyWith<$Res> {
+  factory _$PlayRadioCopyWith(
+          _PlayRadio value, $Res Function(_PlayRadio) then) =
+      __$PlayRadioCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$JoinFlowCopyWithImpl<$Res> extends _$MusicEventCopyWithImpl<$Res>
-    implements _$JoinFlowCopyWith<$Res> {
-  __$JoinFlowCopyWithImpl(_JoinFlow _value, $Res Function(_JoinFlow) _then)
-      : super(_value, (v) => _then(v as _JoinFlow));
+class __$PlayRadioCopyWithImpl<$Res> extends _$MusicEventCopyWithImpl<$Res>
+    implements _$PlayRadioCopyWith<$Res> {
+  __$PlayRadioCopyWithImpl(_PlayRadio _value, $Res Function(_PlayRadio) _then)
+      : super(_value, (v) => _then(v as _PlayRadio));
 
   @override
-  _JoinFlow get _value => super._value as _JoinFlow;
+  _PlayRadio get _value => super._value as _PlayRadio;
 }
 
 /// @nodoc
 
-class _$_JoinFlow implements _JoinFlow {
-  const _$_JoinFlow();
+class _$_PlayRadio implements _PlayRadio {
+  const _$_PlayRadio();
 
   @override
   String toString() {
-    return 'MusicEvent.joinFlow()';
+    return 'MusicEvent.playRadio()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _JoinFlow);
+        (other.runtimeType == runtimeType && other is _PlayRadio);
   }
 
   @override
@@ -128,30 +117,27 @@ class _$_JoinFlow implements _JoinFlow {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() joinFlow,
-    required TResult Function(UserData userData) likes,
+    required TResult Function() playRadio,
   }) {
-    return joinFlow();
+    return playRadio();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? joinFlow,
-    TResult Function(UserData userData)? likes,
+    TResult Function()? playRadio,
   }) {
-    return joinFlow?.call();
+    return playRadio?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? joinFlow,
-    TResult Function(UserData userData)? likes,
+    TResult Function()? playRadio,
     required TResult orElse(),
   }) {
-    if (joinFlow != null) {
-      return joinFlow();
+    if (playRadio != null) {
+      return playRadio();
     }
     return orElse();
   }
@@ -159,176 +145,34 @@ class _$_JoinFlow implements _JoinFlow {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_JoinFlow value) joinFlow,
-    required TResult Function(_Likes value) likes,
+    required TResult Function(_PlayRadio value) playRadio,
   }) {
-    return joinFlow(this);
+    return playRadio(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_JoinFlow value)? joinFlow,
-    TResult Function(_Likes value)? likes,
+    TResult Function(_PlayRadio value)? playRadio,
   }) {
-    return joinFlow?.call(this);
+    return playRadio?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_JoinFlow value)? joinFlow,
-    TResult Function(_Likes value)? likes,
+    TResult Function(_PlayRadio value)? playRadio,
     required TResult orElse(),
   }) {
-    if (joinFlow != null) {
-      return joinFlow(this);
+    if (playRadio != null) {
+      return playRadio(this);
     }
     return orElse();
   }
 }
 
-abstract class _JoinFlow implements MusicEvent {
-  const factory _JoinFlow() = _$_JoinFlow;
-}
-
-/// @nodoc
-abstract class _$LikesCopyWith<$Res> {
-  factory _$LikesCopyWith(_Likes value, $Res Function(_Likes) then) =
-      __$LikesCopyWithImpl<$Res>;
-  $Res call({UserData userData});
-
-  $UserDataCopyWith<$Res> get userData;
-}
-
-/// @nodoc
-class __$LikesCopyWithImpl<$Res> extends _$MusicEventCopyWithImpl<$Res>
-    implements _$LikesCopyWith<$Res> {
-  __$LikesCopyWithImpl(_Likes _value, $Res Function(_Likes) _then)
-      : super(_value, (v) => _then(v as _Likes));
-
-  @override
-  _Likes get _value => super._value as _Likes;
-
-  @override
-  $Res call({
-    Object? userData = freezed,
-  }) {
-    return _then(_Likes(
-      userData == freezed
-          ? _value.userData
-          : userData // ignore: cast_nullable_to_non_nullable
-              as UserData,
-    ));
-  }
-
-  @override
-  $UserDataCopyWith<$Res> get userData {
-    return $UserDataCopyWith<$Res>(_value.userData, (value) {
-      return _then(_value.copyWith(userData: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_Likes implements _Likes {
-  const _$_Likes(this.userData);
-
-  @override
-  final UserData userData;
-
-  @override
-  String toString() {
-    return 'MusicEvent.likes(userData: $userData)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Likes &&
-            const DeepCollectionEquality().equals(other.userData, userData));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(userData));
-
-  @JsonKey(ignore: true)
-  @override
-  _$LikesCopyWith<_Likes> get copyWith =>
-      __$LikesCopyWithImpl<_Likes>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() joinFlow,
-    required TResult Function(UserData userData) likes,
-  }) {
-    return likes(userData);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? joinFlow,
-    TResult Function(UserData userData)? likes,
-  }) {
-    return likes?.call(userData);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? joinFlow,
-    TResult Function(UserData userData)? likes,
-    required TResult orElse(),
-  }) {
-    if (likes != null) {
-      return likes(userData);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_JoinFlow value) joinFlow,
-    required TResult Function(_Likes value) likes,
-  }) {
-    return likes(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_JoinFlow value)? joinFlow,
-    TResult Function(_Likes value)? likes,
-  }) {
-    return likes?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_JoinFlow value)? joinFlow,
-    TResult Function(_Likes value)? likes,
-    required TResult orElse(),
-  }) {
-    if (likes != null) {
-      return likes(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Likes implements MusicEvent {
-  const factory _Likes(UserData userData) = _$_Likes;
-
-  UserData get userData;
-  @JsonKey(ignore: true)
-  _$LikesCopyWith<_Likes> get copyWith => throw _privateConstructorUsedError;
+abstract class _PlayRadio implements MusicEvent {
+  const factory _PlayRadio() = _$_PlayRadio;
 }
 
 /// @nodoc
@@ -343,9 +187,8 @@ class _$MusicStateTearOff {
     return const _Loading();
   }
 
-  _Loaded loaded({UserData? userData, AudioPlayer? audioPlayer}) {
+  _Loaded loaded({required AudioPlayer audioPlayer}) {
     return _Loaded(
-      userData: userData,
       audioPlayer: audioPlayer,
     );
   }
@@ -360,22 +203,21 @@ mixin _$MusicState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserData? userData, AudioPlayer? audioPlayer)
-        loaded,
+    required TResult Function(AudioPlayer audioPlayer) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserData? userData, AudioPlayer? audioPlayer)? loaded,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserData? userData, AudioPlayer? audioPlayer)? loaded,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -459,8 +301,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserData? userData, AudioPlayer? audioPlayer)
-        loaded,
+    required TResult Function(AudioPlayer audioPlayer) loaded,
   }) {
     return initial();
   }
@@ -470,7 +311,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserData? userData, AudioPlayer? audioPlayer)? loaded,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
   }) {
     return initial?.call();
   }
@@ -480,7 +321,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserData? userData, AudioPlayer? audioPlayer)? loaded,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -568,8 +409,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserData? userData, AudioPlayer? audioPlayer)
-        loaded,
+    required TResult Function(AudioPlayer audioPlayer) loaded,
   }) {
     return loading();
   }
@@ -579,7 +419,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserData? userData, AudioPlayer? audioPlayer)? loaded,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
   }) {
     return loading?.call();
   }
@@ -589,7 +429,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserData? userData, AudioPlayer? audioPlayer)? loaded,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -641,9 +481,7 @@ abstract class _Loading implements MusicState {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({UserData? userData, AudioPlayer? audioPlayer});
-
-  $UserDataCopyWith<$Res>? get userData;
+  $Res call({AudioPlayer audioPlayer});
 }
 
 /// @nodoc
@@ -657,46 +495,28 @@ class __$LoadedCopyWithImpl<$Res> extends _$MusicStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? userData = freezed,
     Object? audioPlayer = freezed,
   }) {
     return _then(_Loaded(
-      userData: userData == freezed
-          ? _value.userData
-          : userData // ignore: cast_nullable_to_non_nullable
-              as UserData?,
       audioPlayer: audioPlayer == freezed
           ? _value.audioPlayer
           : audioPlayer // ignore: cast_nullable_to_non_nullable
-              as AudioPlayer?,
+              as AudioPlayer,
     ));
-  }
-
-  @override
-  $UserDataCopyWith<$Res>? get userData {
-    if (_value.userData == null) {
-      return null;
-    }
-
-    return $UserDataCopyWith<$Res>(_value.userData!, (value) {
-      return _then(_value.copyWith(userData: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded({this.userData, this.audioPlayer});
+  const _$_Loaded({required this.audioPlayer});
 
   @override
-  final UserData? userData;
-  @override
-  final AudioPlayer? audioPlayer;
+  final AudioPlayer audioPlayer;
 
   @override
   String toString() {
-    return 'MusicState.loaded(userData: $userData, audioPlayer: $audioPlayer)';
+    return 'MusicState.loaded(audioPlayer: $audioPlayer)';
   }
 
   @override
@@ -704,16 +524,13 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Loaded &&
-            const DeepCollectionEquality().equals(other.userData, userData) &&
             const DeepCollectionEquality()
                 .equals(other.audioPlayer, audioPlayer));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(userData),
-      const DeepCollectionEquality().hash(audioPlayer));
+      runtimeType, const DeepCollectionEquality().hash(audioPlayer));
 
   @JsonKey(ignore: true)
   @override
@@ -725,10 +542,9 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserData? userData, AudioPlayer? audioPlayer)
-        loaded,
+    required TResult Function(AudioPlayer audioPlayer) loaded,
   }) {
-    return loaded(userData, audioPlayer);
+    return loaded(audioPlayer);
   }
 
   @override
@@ -736,9 +552,9 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserData? userData, AudioPlayer? audioPlayer)? loaded,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
   }) {
-    return loaded?.call(userData, audioPlayer);
+    return loaded?.call(audioPlayer);
   }
 
   @override
@@ -746,11 +562,11 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserData? userData, AudioPlayer? audioPlayer)? loaded,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(userData, audioPlayer);
+      return loaded(audioPlayer);
     }
     return orElse();
   }
@@ -791,11 +607,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements MusicState {
-  const factory _Loaded({UserData? userData, AudioPlayer? audioPlayer}) =
-      _$_Loaded;
+  const factory _Loaded({required AudioPlayer audioPlayer}) = _$_Loaded;
 
-  UserData? get userData;
-  AudioPlayer? get audioPlayer;
+  AudioPlayer get audioPlayer;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

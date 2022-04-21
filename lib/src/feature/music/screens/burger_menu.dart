@@ -12,21 +12,22 @@ class BurgerMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height;
-    final S localizations = S.of(context);
-    final textTheme = Theme.of(context).textTheme;
+    final double _height = MediaQuery.of(context).size.height;
+    final S _localizations = S.of(context);
+    final _textTheme =
+        Theme.of(context).textTheme.merge(MyThemes.burgerTextTheme);
     return Scaffold(
-      backgroundColor: MyThemes.backgroundBurgerMenu,
+      backgroundColor: MyThemes.bugerBackgroundColor,
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        header(height, localizations, textTheme),
+        header(_height, _localizations, _textTheme),
         SizedBox(
-          height: height * 0.02,
+          height: _height * 0.02,
         ),
         ListTile(
           leading: Icon(LivelyIcons.instagram),
           title: Text(
-            '${localizations.instagram}',
-            style: textTheme.bodyText2,
+            '${_localizations.instagram}',
+            style: _textTheme.bodyText1,
           ),
           trailing: Icon(Icons.keyboard_arrow_right_outlined),
           onTap: () {},
@@ -39,44 +40,44 @@ class BurgerMenu extends StatelessWidget {
           contentPadding: EdgeInsets.only(left: 28, right: 16),
           leading: Icon(LivelyIcons.contact),
           title: Text(
-            localizations.contact,
-            style: textTheme.bodyText2,
+            _localizations.contact,
+            style: _textTheme.bodyText1,
           ),
           trailing: Icon(Icons.keyboard_arrow_right_rounded),
           onTap: () {},
         ),
         SizedBox(
-          height: height * 0.01,
+          height: _height * 0.01,
         ),
         SizedBox(
-          height: height * 0.03,
+          height: _height * 0.03,
         ),
         ListTile(
           leading: Icon(LivelyIcons.privacy),
           title: Text(
-            localizations.privacy,
-            style: textTheme.bodyText2,
+            _localizations.privacy,
+            style: _textTheme.bodyText1,
           ),
           trailing: Icon(Icons.keyboard_arrow_right_rounded),
           onTap: () {},
         ),
         SizedBox(
-          height: height * 0.01,
+          height: _height * 0.01,
         ),
         Padding(
             padding: EdgeInsets.only(left: 28),
             child: Text(
-              '${localizations.appVersion}',
-              style: Theme.of(context).textTheme.headline5,
+              '${_localizations.appVersion}',
+              style: _textTheme.subtitle2,
             )),
         SizedBox(
-          height: height * 0.01,
+          height: _height * 0.01,
         ),
         Padding(
             padding: EdgeInsets.only(left: 28),
             child: Text(
-              '${localizations.design}',
-              style: Theme.of(context).textTheme.headline5,
+              '${_localizations.design}',
+              style: _textTheme.subtitle2?.copyWith(color: Color(0xFF969696)),
             )),
       ]),
     );
@@ -97,12 +98,12 @@ class BurgerMenu extends StatelessWidget {
             ],
           ),
           Text('${localizations.headlineBurgerMenu}',
-              style: textTheme.headline2),
+              style: textTheme.headline1),
           const SizedBox(
             height: 10,
           ),
           Text('${localizations.subtitleBurgerMenu}',
-              style: textTheme.subtitle2),
+              style: textTheme.subtitle1),
         ],
       ),
     );

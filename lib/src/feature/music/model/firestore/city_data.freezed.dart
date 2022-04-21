@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'user_data.dart';
+part of 'city_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,52 +14,52 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-UserData _$UserDataFromJson(Map<String, dynamic> json) {
-  return _UserData.fromJson(json);
+CityData _$CityDataFromJson(Map<String, dynamic> json) {
+  return _CityData.fromJson(json);
 }
 
 /// @nodoc
-class _$UserDataTearOff {
-  const _$UserDataTearOff();
+class _$CityDataTearOff {
+  const _$CityDataTearOff();
 
-  _UserData call({required String likes}) {
-    return _UserData(
+  _CityData call({required int likes}) {
+    return _CityData(
       likes: likes,
     );
   }
 
-  UserData fromJson(Map<String, Object?> json) {
-    return UserData.fromJson(json);
+  CityData fromJson(Map<String, Object?> json) {
+    return CityData.fromJson(json);
   }
 }
 
 /// @nodoc
-const $UserData = _$UserDataTearOff();
+const $CityData = _$CityDataTearOff();
 
 /// @nodoc
-mixin _$UserData {
-  String get likes => throw _privateConstructorUsedError;
+mixin _$CityData {
+  int get likes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserDataCopyWith<UserData> get copyWith =>
+  $CityDataCopyWith<CityData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserDataCopyWith<$Res> {
-  factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
-      _$UserDataCopyWithImpl<$Res>;
-  $Res call({String likes});
+abstract class $CityDataCopyWith<$Res> {
+  factory $CityDataCopyWith(CityData value, $Res Function(CityData) then) =
+      _$CityDataCopyWithImpl<$Res>;
+  $Res call({int likes});
 }
 
 /// @nodoc
-class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
-  _$UserDataCopyWithImpl(this._value, this._then);
+class _$CityDataCopyWithImpl<$Res> implements $CityDataCopyWith<$Res> {
+  _$CityDataCopyWithImpl(this._value, this._then);
 
-  final UserData _value;
+  final CityData _value;
   // ignore: unused_field
-  final $Res Function(UserData) _then;
+  final $Res Function(CityData) _then;
 
   @override
   $Res call({
@@ -69,62 +69,62 @@ class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
       likes: likes == freezed
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
-  factory _$UserDataCopyWith(_UserData value, $Res Function(_UserData) then) =
-      __$UserDataCopyWithImpl<$Res>;
+abstract class _$CityDataCopyWith<$Res> implements $CityDataCopyWith<$Res> {
+  factory _$CityDataCopyWith(_CityData value, $Res Function(_CityData) then) =
+      __$CityDataCopyWithImpl<$Res>;
   @override
-  $Res call({String likes});
+  $Res call({int likes});
 }
 
 /// @nodoc
-class __$UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
-    implements _$UserDataCopyWith<$Res> {
-  __$UserDataCopyWithImpl(_UserData _value, $Res Function(_UserData) _then)
-      : super(_value, (v) => _then(v as _UserData));
+class __$CityDataCopyWithImpl<$Res> extends _$CityDataCopyWithImpl<$Res>
+    implements _$CityDataCopyWith<$Res> {
+  __$CityDataCopyWithImpl(_CityData _value, $Res Function(_CityData) _then)
+      : super(_value, (v) => _then(v as _CityData));
 
   @override
-  _UserData get _value => super._value as _UserData;
+  _CityData get _value => super._value as _CityData;
 
   @override
   $Res call({
     Object? likes = freezed,
   }) {
-    return _then(_UserData(
+    return _then(_CityData(
       likes: likes == freezed
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserData implements _UserData {
-  const _$_UserData({required this.likes});
+class _$_CityData implements _CityData {
+  const _$_CityData({required this.likes});
 
-  factory _$_UserData.fromJson(Map<String, dynamic> json) =>
-      _$$_UserDataFromJson(json);
+  factory _$_CityData.fromJson(Map<String, dynamic> json) =>
+      _$$_CityDataFromJson(json);
 
   @override
-  final String likes;
+  final int likes;
 
   @override
   String toString() {
-    return 'UserData(likes: $likes)';
+    return 'CityData(likes: $likes)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserData &&
+            other is _CityData &&
             const DeepCollectionEquality().equals(other.likes, likes));
   }
 
@@ -134,24 +134,24 @@ class _$_UserData implements _UserData {
 
   @JsonKey(ignore: true)
   @override
-  _$UserDataCopyWith<_UserData> get copyWith =>
-      __$UserDataCopyWithImpl<_UserData>(this, _$identity);
+  _$CityDataCopyWith<_CityData> get copyWith =>
+      __$CityDataCopyWithImpl<_CityData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserDataToJson(this);
+    return _$$_CityDataToJson(this);
   }
 }
 
-abstract class _UserData implements UserData {
-  const factory _UserData({required String likes}) = _$_UserData;
+abstract class _CityData implements CityData {
+  const factory _CityData({required int likes}) = _$_CityData;
 
-  factory _UserData.fromJson(Map<String, dynamic> json) = _$_UserData.fromJson;
+  factory _CityData.fromJson(Map<String, dynamic> json) = _$_CityData.fromJson;
 
   @override
-  String get likes;
+  int get likes;
   @override
   @JsonKey(ignore: true)
-  _$UserDataCopyWith<_UserData> get copyWith =>
+  _$CityDataCopyWith<_CityData> get copyWith =>
       throw _privateConstructorUsedError;
 }
