@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+import '../../theme.dart';
+
 class AnimatedGradientBackgroundContainer extends StatefulWidget {
   const AnimatedGradientBackgroundContainer({Key? key}) : super(key: key);
 
@@ -11,12 +13,6 @@ class AnimatedGradientBackgroundContainer extends StatefulWidget {
 class _AnimatedGradientBackgroundContainerState
     extends State<AnimatedGradientBackgroundContainer>
     with SingleTickerProviderStateMixin {
-  static const double _opacity = 0.16;
-
-  static final Color _yellow = Color(0xFFCCF45A).withOpacity(_opacity);
-  static final Color _blue = Color(0xFF4DEBCE).withOpacity(_opacity);
-  static final Color _pink = Color(0xFFFFA0B7).withOpacity(_opacity);
-
   late final AnimationController _controller;
 
   @override
@@ -40,6 +36,7 @@ class _AnimatedGradientBackgroundContainerState
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
+        final double opacity = 0.16;
         final centerTween = Tween<double>(
           begin: 0,
           end: 1,
@@ -55,15 +52,15 @@ class _AnimatedGradientBackgroundContainerState
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
               colors: [
-                _yellow,
+                MyThemes.yellowBackground.withOpacity(opacity),
                 Color.lerp(
-                  _blue,
-                  _pink,
+                  MyThemes.blueBackground.withOpacity(opacity),
+                  MyThemes.pinkBackground.withOpacity(opacity),
                   centerTween.animate(_controller).value,
                 )!,
                 Color.lerp(
-                  _blue,
-                  _pink,
+                  MyThemes.blueBackground.withOpacity(opacity),
+                  MyThemes.pinkBackground.withOpacity(opacity),
                   endTween.animate(_controller).value,
                 )!,
               ],
