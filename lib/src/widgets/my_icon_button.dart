@@ -12,12 +12,14 @@ class MyIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = radius != null ? radius! * 2 : null;
+
     return Center(
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          width: radius,
-          height: radius,
+          width: size,
+          height: size,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: color,
