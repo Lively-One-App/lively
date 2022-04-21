@@ -7,7 +7,7 @@ import '../logic/firestore.dart';
 import '../model/firestore/user_data.dart';
 import '/lively_icons.dart';
 import '../../../widgets/my_icon_button.dart';
-import '/src/widgets/animated_background.dart';
+import '/src/widgets/animated_gradient_background_container.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
             Positioned(
               width: width,
               height: height * 0.5,
-              child: AnimatedBackground(child: SizedBox()),
+              child: AnimatedGradientBackgroundContainer(),
             ),
             Positioned(
               child: Padding(
