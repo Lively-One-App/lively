@@ -12,118 +12,97 @@ class BurgerMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = S.of(context);
-    final theme = Theme.of(context);
-    final mediaQuery = MediaQuery.of(context);
-
-    final height = mediaQuery.size.height - mediaQuery.viewPadding.vertical;
-
+    final double height = MediaQuery.of(context).size.height;
+    final S localizations = S.of(context);
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       backgroundColor: MyThemes.backgroundBurgerMenu,
-      body: Padding(
-        padding: mediaQuery.viewPadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            header(context, localizations, theme.textTheme),
-            SizedBox(
-              height: height * 0.02,
-            ),
-            ListTile(
-              leading: Icon(LivelyIcons.instagram),
-              title: Text(
-                '${localizations.instagram}',
-                style: theme.textTheme.bodyText2,
-              ),
-              trailing: Icon(Icons.keyboard_arrow_right_outlined),
-              onTap: () {},
-            ),
-            Divider(
-              height: 1,
-              indent: 70,
-            ),
-            ListTile(
-              contentPadding: EdgeInsets.only(left: 28, right: 16),
-              leading: Icon(LivelyIcons.contact),
-              title: Text(
-                localizations.contact,
-                style: theme.textTheme.bodyText2,
-              ),
-              trailing: Icon(Icons.keyboard_arrow_right_rounded),
-              onTap: () {},
-            ),
-            SizedBox(
-              height: height * 0.01,
-            ),
-            SizedBox(
-              height: height * 0.03,
-            ),
-            ListTile(
-              leading: Icon(LivelyIcons.privacy),
-              title: Text(
-                localizations.privacy,
-                style: theme.textTheme.bodyText2,
-              ),
-              trailing: Icon(Icons.keyboard_arrow_right_rounded),
-              onTap: () {},
-            ),
-            SizedBox(
-              height: height * 0.01,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 28),
-              child: Text(
-                '${localizations.appVersion}',
-                style: Theme.of(context).textTheme.headline5,
-              ),
-            ),
-            SizedBox(
-              height: height * 0.01,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 28),
-              child: Text(
-                '${localizations.design}',
-                style: Theme.of(context).textTheme.headline5,
-              ),
-            ),
-          ],
+      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        header(height, localizations, textTheme),
+        SizedBox(
+          height: height * 0.02,
         ),
-      ),
+        ListTile(
+          leading: Icon(LivelyIcons.instagram),
+          title: Text(
+            '${localizations.instagram}',
+            style: textTheme.bodyText2,
+          ),
+          trailing: Icon(Icons.keyboard_arrow_right_outlined),
+          onTap: () {},
+        ),
+        Divider(
+          height: 1,
+          indent: 70,
+        ),
+        ListTile(
+          contentPadding: EdgeInsets.only(left: 28, right: 16),
+          leading: Icon(LivelyIcons.contact),
+          title: Text(
+            localizations.contact,
+            style: textTheme.bodyText2,
+          ),
+          trailing: Icon(Icons.keyboard_arrow_right_rounded),
+          onTap: () {},
+        ),
+        SizedBox(
+          height: height * 0.01,
+        ),
+        SizedBox(
+          height: height * 0.03,
+        ),
+        ListTile(
+          leading: Icon(LivelyIcons.privacy),
+          title: Text(
+            localizations.privacy,
+            style: textTheme.bodyText2,
+          ),
+          trailing: Icon(Icons.keyboard_arrow_right_rounded),
+          onTap: () {},
+        ),
+        SizedBox(
+          height: height * 0.01,
+        ),
+        Padding(
+            padding: EdgeInsets.only(left: 28),
+            child: Text(
+              '${localizations.appVersion}',
+              style: Theme.of(context).textTheme.headline5,
+            )),
+        SizedBox(
+          height: height * 0.01,
+        ),
+        Padding(
+            padding: EdgeInsets.only(left: 28),
+            child: Text(
+              '${localizations.design}',
+              style: Theme.of(context).textTheme.headline5,
+            )),
+      ]),
     );
   }
 
-  Widget header(BuildContext context, S localizations, TextTheme textTheme) {
+  Widget header(double height, S localizations, TextTheme textTheme) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
           AppBar(
-            automaticallyImplyLeading: false,
-            titleSpacing: 0,
-            title: Row(
-              children: [
-                MyIconButton(
-                  child: Icon(LivelyIcons.menu),
-                  onTap: Navigator.of(context).pop,
-                ),
-                const Spacer(),
-                MyIconButton(
-                  child: Icon(LivelyIcons.question),
-                  onTap: () async {},
-                ),
-              ],
-            ),
+            leading: MyIconButton(child: Icon(LivelyIcons.menu)),
+            actions: [
+              MyIconButton(
+                child: Icon(LivelyIcons.question),
+                onTap: () async {},
+              )
+            ],
           ),
-          Text(
-            '${localizations.headlineBurgerMenu}',
-            style: textTheme.headline2,
+          Text('${localizations.headlineBurgerMenu}',
+              style: textTheme.headline2),
+          const SizedBox(
+            height: 10,
           ),
-          const SizedBox(height: 10),
-          Text(
-            '${localizations.subtitleBurgerMenu}',
-            style: textTheme.subtitle2,
-          ),
+          Text('${localizations.subtitleBurgerMenu}',
+              style: textTheme.subtitle2),
         ],
       ),
     );
