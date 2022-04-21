@@ -69,7 +69,6 @@ class _AnimatedGradientBackgroundContainerState
               ],
             ),
           ),
-          child: Text('Text'),
         );
       },
     );
