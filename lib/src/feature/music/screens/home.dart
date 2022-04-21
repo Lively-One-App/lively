@@ -2,12 +2,12 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
+import '../../../widgets/animated_gradient_background_container.dart';
 import '../bloc/music_bloc.dart';
 import '../logic/firestore.dart';
 import '../model/firestore/user_data.dart';
 import '/lively_icons.dart';
 import '../../../widgets/my_icon_button.dart';
-import '/src/widgets/animated_background.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
             Positioned(
               width: width,
               height: height * 0.5,
-              child: AnimatedBackground(child: SizedBox()),
+              child: AnimatedGradientBackgroundContainer(),
             ),
             Positioned(
               child: Padding(

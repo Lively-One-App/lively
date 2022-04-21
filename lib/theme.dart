@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 abstract class MyThemes {
-  static Color backgroundBurgerMenu = Color(0xFFF2F2F7);
+  static const Color backgroundBurgerMenu = Color(0xFFF2F2F7);
+  static const Color yellowBackground = Color(0xFFCCF45A);
+  static const Color blueBackground = Color(0xFF4DEBCE);
+  static const Color pinkBackground = Color(0xFFFFA0B7);
+
   static ThemeData get lightTheme {
     return ThemeData(
       colorSchemeSeed: const Color(0xFFF6464B),
