@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../widgets/animated_background.dart';
+import '../bloc/azure/azure_cubit.dart';
 import '../bloc/likes/likes_bloc.dart';
 import '../bloc/radio/music_bloc.dart';
 import '/lively_icons.dart';
@@ -27,6 +29,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    late final azuraOnlineRadio = context.watch<AzureCubit>().state;
     final localizations = S.of(context);
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
@@ -45,18 +48,23 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppBar(
+                  leadingWidth: 28,
                   leading: MyIconButton(
-                    child: Icon(LivelyIcons.menu),
                     onTap: () => Navigator.of(context).pushNamed('/burgerMenu'),
+                    child: Icon(LivelyIcons.menu),
                   ),
                   actions: [
                     MyIconButton(
                       child: Icon(LivelyIcons.question),
-                      onTap: () {},
+                      onTap: () {
+                        print(azuraOnlineRadio?.listeners.unique);
+                      },
                     )
                   ],
                 ),
-                Text('889 ${localizations.lively}', style: textTheme.headline1),
+                Text(
+                    '${azuraOnlineRadio?.listeners.total} ${localizations.lively}',
+                    style: textTheme.headline1),
                 SizedBox(
                   height: height * 0.01,
                 ),
@@ -69,24 +77,24 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           ),
         ),
         Positioned(
-            left: width / 4,
-            top: height * 0.5 - width / 4,
+            right: -height * 0.21 / 2,
+            top: height * 0.4,
+            height: height * 0.21,
+            //   width: width / 0.6,
             child: MyIconButton(
-                color: Colors.amber,
-                child: const Icon(
-                  LivelyIcons.lively,
-                  size: 70,
+                child: Lottie.asset(
+                  'assets/animations_lottie/lively-play-btn.json',
                 ),
-                radius: width / 2,
                 onTap: () {
                   BlocProvider.of<MusicBloc>(context)
-                      .add(MusicEvent.playRadio());
+                      .add(MusicEvent.playRadio(azuraOnlineRadio!));
                 })),
         Positioned(
           child: Center(
             child:
                 BlocBuilder<LikesBloc, LikesState>(builder: (context, state) {
               return SafeArea(
+                minimum: EdgeInsets.only(bottom: 20),
                 top: false,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,

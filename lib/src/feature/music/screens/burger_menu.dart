@@ -19,7 +19,34 @@ class BurgerMenu extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyThemes.bugerBackgroundColor,
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        header(_height, _localizations, _textTheme),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AppBar(
+                leadingWidth: 30,
+                leading: MyIconButton(
+                  child: Icon(LivelyIcons.burger_menu),
+                  onTap: () => Navigator.of(context).pop(),
+                ),
+                actions: [
+                  MyIconButton(
+                    child: Icon(LivelyIcons.question),
+                    onTap: () {},
+                  )
+                ],
+              ),
+              Text('${_localizations.headlineBurgerMenu}',
+                  style: _textTheme.headline1),
+              const SizedBox(
+                height: 10,
+              ),
+              Text('${_localizations.subtitleBurgerMenu}',
+                  style: _textTheme.subtitle1),
+            ],
+          ),
+        ),
         SizedBox(
           height: _height * 0.02,
         ),
@@ -80,32 +107,6 @@ class BurgerMenu extends StatelessWidget {
               style: _textTheme.subtitle2?.copyWith(color: Color(0xFF969696)),
             )),
       ]),
-    );
-  }
-
-  Widget header(double height, S localizations, TextTheme textTheme) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          AppBar(
-            leading: MyIconButton(child: Icon(LivelyIcons.menu)),
-            actions: [
-              MyIconButton(
-                child: Icon(LivelyIcons.question),
-                onTap: () async {},
-              )
-            ],
-          ),
-          Text('${localizations.headlineBurgerMenu}',
-              style: textTheme.headline1),
-          const SizedBox(
-            height: 10,
-          ),
-          Text('${localizations.subtitleBurgerMenu}',
-              style: textTheme.subtitle1),
-        ],
-      ),
     );
   }
 }

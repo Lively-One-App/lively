@@ -12,18 +12,16 @@ class MyIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          width: radius,
-          height: radius,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: color,
-          ),
-          child: child,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: radius,
+        height: radius,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: color,
         ),
+        child: child,
       ),
     );
   }

@@ -5,6 +5,9 @@ import 'package:just_audio/just_audio.dart';
 
 import '../generated/l10n.dart';
 import '../theme.dart';
+import 'feature/authenticate/cubit/authentication_cubit.dart';
+import 'feature/authenticate/logic/fire_auth.dart';
+import 'feature/music/bloc/azure/azure_cubit.dart';
 import 'feature/music/bloc/likes/likes_bloc.dart';
 import 'feature/music/bloc/radio/music_bloc.dart';
 import 'feature/music/logic/azura_online_radio.dart';
@@ -31,16 +34,29 @@ class MyApp extends StatelessWidget {
       theme: MyThemes.lightTheme,
       home: MultiBlocProvider(
         providers: [
-          BlocProvider<MusicBloc>(
+          BlocProvider<AuthenticationCubit>(
+            create: (context) {
+              final auth = FireAuth();
+              return AuthenticationCubit(auth);
+            },
+          ),
+          BlocProvider<AzureCubit>(
             create: (context) {
               // final azuraRadio = AzuraOnlineRadio('https://s.livelyoneapp.ru/api');
               final azuraRadio =
                   AzuraOnlineRadio('https://demo.azuracast.com/api');
+              return AzureCubit(azuraRadio);
+            },
+          ),
+          BlocProvider<MusicBloc>(
+            create: (context) {
+              final azureCubit = context.read<AzureCubit>();
               final audioPlayer = AudioPlayer();
+              final authCubit = BlocProvider.of<AuthenticationCubit>(context);
               return MusicBloc(
-                onlineRadio: azuraRadio,
-                audioPlayer: audioPlayer,
-              );
+                  azureCubit: azureCubit,
+                  audioPlayer: audioPlayer,
+                  authCubit: authCubit);
             },
           ),
           BlocProvider<LikesBloc>(

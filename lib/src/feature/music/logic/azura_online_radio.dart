@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 
 import '../model/azuracast/azura_api_now_playing.dart';
@@ -12,6 +14,14 @@ class AzuraOnlineRadio implements OnlineRadioImpl {
   }
 
   @override
+  Stream<AzuraApiNowPlaying> nowPlayingStream() async* {
+    while (true) {
+      final azura = nowPlaying().asStream();
+      yield* azura;
+      await Future.delayed(Duration(milliseconds: 5000));
+    }
+  }
+
   Future<AzuraApiNowPlaying> nowPlaying() async {
     final Response<dynamic> response = await _dio.get('/nowplaying');
     final azuraNowPlaying = AzuraApiNowPlaying.fromJson(response.data[0]);

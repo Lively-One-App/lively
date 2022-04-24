@@ -25,7 +25,7 @@ dependencies:
   just_audio:
   just_audio_background: 
   cloud_functions: 
-
+  bloc_concurrency:
 
 dev_dependencies:
   flutter_test:
@@ -37,8 +37,8 @@ dev_dependencies:
 
 
 flutter:
-  assets:
-  - assets/animations_lottie/
+  assets: 
+    - assets/animations_lottie/
   uses-material-design: true
   fonts:
     - family: LivelyIcons

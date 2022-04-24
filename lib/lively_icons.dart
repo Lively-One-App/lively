@@ -15,9 +15,7 @@
 ///
 import 'package:flutter/widgets.dart';
 
-class LivelyIcons {
-  LivelyIcons._();
-
+abstract class LivelyIcons {
   static const _kFontFam = 'LivelyIcons';
   static const String? _kFontPkg = null;
 
@@ -37,4 +35,6 @@ class LivelyIcons {
       IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData reset =
       IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData burger_menu =
+      IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
