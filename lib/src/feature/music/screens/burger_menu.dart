@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lively/generated/l10n.dart';
 import '../../../../theme.dart';
-import '../../../widgets/my_icon_button.dart';
+import '../../../widgets/circle_icon_button.dart';
 
 import '/lively_icons.dart';
 
@@ -26,12 +26,12 @@ class BurgerMenu extends StatelessWidget {
             children: [
               AppBar(
                 leadingWidth: 30,
-                leading: MyIconButton(
+                leading: CircleIconButton(
                   child: Icon(LivelyIcons.burger_menu),
                   onTap: () => Navigator.of(context).pop(),
                 ),
                 actions: [
-                  MyIconButton(
+                  CircleIconButton(
                     child: Icon(LivelyIcons.question),
                     onTap: () {},
                   )

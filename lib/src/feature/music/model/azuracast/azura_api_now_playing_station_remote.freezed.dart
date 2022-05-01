@@ -12,42 +12,12 @@ part of 'azura_api_now_playing_station_remote.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AzuraApiNowPlayingStationRemote _$AzuraApiNowPlayingStationRemoteFromJson(
     Map<String, dynamic> json) {
   return _AzuraApiNowPlayingStationRemote.fromJson(json);
 }
-
-/// @nodoc
-class _$AzuraApiNowPlayingStationRemoteTearOff {
-  const _$AzuraApiNowPlayingStationRemoteTearOff();
-
-  _AzuraApiNowPlayingStationRemote call(
-      {required int id,
-      required String name,
-      required String url,
-      int? bitrate,
-      int? format,
-      required AzuraApiNowPlayingListeners listeners}) {
-    return _AzuraApiNowPlayingStationRemote(
-      id: id,
-      name: name,
-      url: url,
-      bitrate: bitrate,
-      format: format,
-      listeners: listeners,
-    );
-  }
-
-  AzuraApiNowPlayingStationRemote fromJson(Map<String, Object?> json) {
-    return AzuraApiNowPlayingStationRemote.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AzuraApiNowPlayingStationRemote =
-    _$AzuraApiNowPlayingStationRemoteTearOff();
 
 /// @nodoc
 mixin _$AzuraApiNowPlayingStationRemote {
@@ -256,6 +226,7 @@ class _$_AzuraApiNowPlayingStationRemote
             const DeepCollectionEquality().equals(other.listeners, listeners));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -281,29 +252,30 @@ class _$_AzuraApiNowPlayingStationRemote
 abstract class _AzuraApiNowPlayingStationRemote
     implements AzuraApiNowPlayingStationRemote {
   factory _AzuraApiNowPlayingStationRemote(
-          {required int id,
-          required String name,
-          required String url,
-          int? bitrate,
-          int? format,
-          required AzuraApiNowPlayingListeners listeners}) =
+          {required final int id,
+          required final String name,
+          required final String url,
+          final int? bitrate,
+          final int? format,
+          required final AzuraApiNowPlayingListeners listeners}) =
       _$_AzuraApiNowPlayingStationRemote;
 
   factory _AzuraApiNowPlayingStationRemote.fromJson(Map<String, dynamic> json) =
       _$_AzuraApiNowPlayingStationRemote.fromJson;
 
   @override
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get url;
+  String get url => throw _privateConstructorUsedError;
   @override
-  int? get bitrate;
+  int? get bitrate => throw _privateConstructorUsedError;
   @override
-  int? get format;
+  int? get format => throw _privateConstructorUsedError;
   @override
-  AzuraApiNowPlayingListeners get listeners;
+  AzuraApiNowPlayingListeners get listeners =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AzuraApiNowPlayingStationRemoteCopyWith<_AzuraApiNowPlayingStationRemote>

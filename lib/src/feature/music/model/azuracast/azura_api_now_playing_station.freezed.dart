@@ -12,57 +12,12 @@ part of 'azura_api_now_playing_station.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AzuraApiNowPlayingStation _$AzuraApiNowPlayingStationFromJson(
     Map<String, dynamic> json) {
   return _AzuraApiNowPlayingStation.fromJson(json);
 }
-
-/// @nodoc
-class _$AzuraApiNowPlayingStationTearOff {
-  const _$AzuraApiNowPlayingStationTearOff();
-
-  _AzuraApiNowPlayingStation call(
-      {required int id,
-      required String name,
-      required String shortcode,
-      required String description,
-      required String frontend,
-      required String backend,
-      @JsonKey(name: 'listen_url') required String listenUrl,
-      String? url,
-      @JsonKey(name: 'public_player_url') required String publicPlayerUrl,
-      @JsonKey(name: 'playlist_pls_url') required String playlistPlsUrl,
-      @JsonKey(name: 'playlist_m3u_url') required String playlistM3uUrl,
-      @JsonKey(name: 'is_public') required bool isPublic,
-      required List<AzuraApiNowPlayingStationMount> mounts,
-      required List<AzuraApiNowPlayingStationRemote> remotes}) {
-    return _AzuraApiNowPlayingStation(
-      id: id,
-      name: name,
-      shortcode: shortcode,
-      description: description,
-      frontend: frontend,
-      backend: backend,
-      listenUrl: listenUrl,
-      url: url,
-      publicPlayerUrl: publicPlayerUrl,
-      playlistPlsUrl: playlistPlsUrl,
-      playlistM3uUrl: playlistM3uUrl,
-      isPublic: isPublic,
-      mounts: mounts,
-      remotes: remotes,
-    );
-  }
-
-  AzuraApiNowPlayingStation fromJson(Map<String, Object?> json) {
-    return AzuraApiNowPlayingStation.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AzuraApiNowPlayingStation = _$AzuraApiNowPlayingStationTearOff();
 
 /// @nodoc
 mixin _$AzuraApiNowPlayingStation {
@@ -334,8 +289,10 @@ class _$_AzuraApiNowPlayingStation implements _AzuraApiNowPlayingStation {
       @JsonKey(name: 'playlist_pls_url') required this.playlistPlsUrl,
       @JsonKey(name: 'playlist_m3u_url') required this.playlistM3uUrl,
       @JsonKey(name: 'is_public') required this.isPublic,
-      required this.mounts,
-      required this.remotes});
+      required final List<AzuraApiNowPlayingStationMount> mounts,
+      required final List<AzuraApiNowPlayingStationRemote> remotes})
+      : _mounts = mounts,
+        _remotes = remotes;
 
   factory _$_AzuraApiNowPlayingStation.fromJson(Map<String, dynamic> json) =>
       _$$_AzuraApiNowPlayingStationFromJson(json);
@@ -369,10 +326,19 @@ class _$_AzuraApiNowPlayingStation implements _AzuraApiNowPlayingStation {
   @override
   @JsonKey(name: 'is_public')
   final bool isPublic;
+  final List<AzuraApiNowPlayingStationMount> _mounts;
   @override
-  final List<AzuraApiNowPlayingStationMount> mounts;
+  List<AzuraApiNowPlayingStationMount> get mounts {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_mounts);
+  }
+
+  final List<AzuraApiNowPlayingStationRemote> _remotes;
   @override
-  final List<AzuraApiNowPlayingStationRemote> remotes;
+  List<AzuraApiNowPlayingStationRemote> get remotes {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_remotes);
+  }
 
   @override
   String toString() {
@@ -404,6 +370,7 @@ class _$_AzuraApiNowPlayingStation implements _AzuraApiNowPlayingStation {
             const DeepCollectionEquality().equals(other.remotes, remotes));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -437,58 +404,60 @@ class _$_AzuraApiNowPlayingStation implements _AzuraApiNowPlayingStation {
 
 abstract class _AzuraApiNowPlayingStation implements AzuraApiNowPlayingStation {
   factory _AzuraApiNowPlayingStation(
-          {required int id,
-          required String name,
-          required String shortcode,
-          required String description,
-          required String frontend,
-          required String backend,
-          @JsonKey(name: 'listen_url') required String listenUrl,
-          String? url,
-          @JsonKey(name: 'public_player_url') required String publicPlayerUrl,
-          @JsonKey(name: 'playlist_pls_url') required String playlistPlsUrl,
-          @JsonKey(name: 'playlist_m3u_url') required String playlistM3uUrl,
-          @JsonKey(name: 'is_public') required bool isPublic,
-          required List<AzuraApiNowPlayingStationMount> mounts,
-          required List<AzuraApiNowPlayingStationRemote> remotes}) =
-      _$_AzuraApiNowPlayingStation;
+      {required final int id,
+      required final String name,
+      required final String shortcode,
+      required final String description,
+      required final String frontend,
+      required final String backend,
+      @JsonKey(name: 'listen_url') required final String listenUrl,
+      final String? url,
+      @JsonKey(name: 'public_player_url') required final String publicPlayerUrl,
+      @JsonKey(name: 'playlist_pls_url') required final String playlistPlsUrl,
+      @JsonKey(name: 'playlist_m3u_url') required final String playlistM3uUrl,
+      @JsonKey(name: 'is_public') required final bool isPublic,
+      required final List<AzuraApiNowPlayingStationMount> mounts,
+      required final List<AzuraApiNowPlayingStationRemote>
+          remotes}) = _$_AzuraApiNowPlayingStation;
 
   factory _AzuraApiNowPlayingStation.fromJson(Map<String, dynamic> json) =
       _$_AzuraApiNowPlayingStation.fromJson;
 
   @override
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get shortcode;
+  String get shortcode => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String get frontend;
+  String get frontend => throw _privateConstructorUsedError;
   @override
-  String get backend;
+  String get backend => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'listen_url')
-  String get listenUrl;
+  String get listenUrl => throw _privateConstructorUsedError;
   @override
-  String? get url;
+  String? get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'public_player_url')
-  String get publicPlayerUrl;
+  String get publicPlayerUrl => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'playlist_pls_url')
-  String get playlistPlsUrl;
+  String get playlistPlsUrl => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'playlist_m3u_url')
-  String get playlistM3uUrl;
+  String get playlistM3uUrl => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'is_public')
-  bool get isPublic;
+  bool get isPublic => throw _privateConstructorUsedError;
   @override
-  List<AzuraApiNowPlayingStationMount> get mounts;
+  List<AzuraApiNowPlayingStationMount> get mounts =>
+      throw _privateConstructorUsedError;
   @override
-  List<AzuraApiNowPlayingStationRemote> get remotes;
+  List<AzuraApiNowPlayingStationRemote> get remotes =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AzuraApiNowPlayingStationCopyWith<_AzuraApiNowPlayingStation>

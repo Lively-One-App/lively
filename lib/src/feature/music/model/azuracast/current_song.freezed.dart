@@ -12,38 +12,7 @@ part of 'current_song.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$CurrentSongTearOff {
-  const _$CurrentSongTearOff();
-
-  _CurrentSong call(
-      {required int elapsed,
-      required int remaining,
-      required int shId,
-      required int playedAt,
-      required int duration,
-      String? playList,
-      String? streamer,
-      required bool isRequest,
-      required Song song}) {
-    return _CurrentSong(
-      elapsed: elapsed,
-      remaining: remaining,
-      shId: shId,
-      playedAt: playedAt,
-      duration: duration,
-      playList: playList,
-      streamer: streamer,
-      isRequest: isRequest,
-      song: song,
-    );
-  }
-}
-
-/// @nodoc
-const $CurrentSong = _$CurrentSongTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$CurrentSong {
@@ -309,34 +278,34 @@ class _$_CurrentSong implements _CurrentSong {
 
 abstract class _CurrentSong implements CurrentSong {
   const factory _CurrentSong(
-      {required int elapsed,
-      required int remaining,
-      required int shId,
-      required int playedAt,
-      required int duration,
-      String? playList,
-      String? streamer,
-      required bool isRequest,
-      required Song song}) = _$_CurrentSong;
+      {required final int elapsed,
+      required final int remaining,
+      required final int shId,
+      required final int playedAt,
+      required final int duration,
+      final String? playList,
+      final String? streamer,
+      required final bool isRequest,
+      required final Song song}) = _$_CurrentSong;
 
   @override
-  int get elapsed;
+  int get elapsed => throw _privateConstructorUsedError;
   @override
-  int get remaining;
+  int get remaining => throw _privateConstructorUsedError;
   @override
-  int get shId;
+  int get shId => throw _privateConstructorUsedError;
   @override
-  int get playedAt;
+  int get playedAt => throw _privateConstructorUsedError;
   @override
-  int get duration;
+  int get duration => throw _privateConstructorUsedError;
   @override
-  String? get playList;
+  String? get playList => throw _privateConstructorUsedError;
   @override
-  String? get streamer;
+  String? get streamer => throw _privateConstructorUsedError;
   @override
-  bool get isRequest;
+  bool get isRequest => throw _privateConstructorUsedError;
   @override
-  Song get song;
+  Song get song => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CurrentSongCopyWith<_CurrentSong> get copyWith =>

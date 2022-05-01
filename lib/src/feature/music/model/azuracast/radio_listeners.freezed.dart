@@ -12,24 +12,7 @@ part of 'radio_listeners.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$RadioListenersTearOff {
-  const _$RadioListenersTearOff();
-
-  _RadioListeners call(
-      {required int current, required int total, required int unique}) {
-    return _RadioListeners(
-      current: current,
-      total: total,
-      unique: unique,
-    );
-  }
-}
-
-/// @nodoc
-const $RadioListeners = _$RadioListenersTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$RadioListeners {
@@ -169,16 +152,16 @@ class _$_RadioListeners implements _RadioListeners {
 
 abstract class _RadioListeners implements RadioListeners {
   const factory _RadioListeners(
-      {required int current,
-      required int total,
-      required int unique}) = _$_RadioListeners;
+      {required final int current,
+      required final int total,
+      required final int unique}) = _$_RadioListeners;
 
   @override
-  int get current;
+  int get current => throw _privateConstructorUsedError;
   @override
-  int get total;
+  int get total => throw _privateConstructorUsedError;
   @override
-  int get unique;
+  int get unique => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$RadioListenersCopyWith<_RadioListeners> get copyWith =>

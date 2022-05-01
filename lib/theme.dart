@@ -6,6 +6,8 @@ abstract class MyThemes {
   static const Color blueBackground = Color(0xFF4DEBCE);
   static const Color pinkBackground = Color(0xFFFFA0B7);
   static const bugerBackgroundColor = Color(0xFFF2F2F7);
+  static const backgroundColor = Color(0xFFFFFFFF);
+
   static const _regular = FontWeight.w400;
   static const _extraBold = FontWeight.w800;
 
@@ -42,7 +44,7 @@ abstract class MyThemes {
         backgroundColor: Colors.transparent,
       ),
       fontFamily: 'Muller',
-      scaffoldBackgroundColor: const Color(0xFFFFFFFF),
+      scaffoldBackgroundColor: backgroundColor,
       listTileTheme: ListTileThemeData(
         iconColor: const Color(0xFFD6D6D6),
         tileColor: const Color(0xFFFFFFFF),

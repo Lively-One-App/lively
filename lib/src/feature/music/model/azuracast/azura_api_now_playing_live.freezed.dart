@@ -12,35 +12,12 @@ part of 'azura_api_now_playing_live.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AzuraApiNowPlayingLive _$AzuraApiNowPlayingLiveFromJson(
     Map<String, dynamic> json) {
   return _AzuraApiNowPlayingLive.fromJson(json);
 }
-
-/// @nodoc
-class _$AzuraApiNowPlayingLiveTearOff {
-  const _$AzuraApiNowPlayingLiveTearOff();
-
-  _AzuraApiNowPlayingLive call(
-      {@JsonKey(name: 'is_live') required bool isLive,
-      @JsonKey(name: 'streamer_name') required String streamerName,
-      @JsonKey(name: 'broadcast_start') int? broadcastStart}) {
-    return _AzuraApiNowPlayingLive(
-      isLive: isLive,
-      streamerName: streamerName,
-      broadcastStart: broadcastStart,
-    );
-  }
-
-  AzuraApiNowPlayingLive fromJson(Map<String, Object?> json) {
-    return AzuraApiNowPlayingLive.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AzuraApiNowPlayingLive = _$AzuraApiNowPlayingLiveTearOff();
 
 /// @nodoc
 mixin _$AzuraApiNowPlayingLive {
@@ -185,6 +162,7 @@ class _$_AzuraApiNowPlayingLive implements _AzuraApiNowPlayingLive {
                 .equals(other.broadcastStart, broadcastStart));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -206,9 +184,9 @@ class _$_AzuraApiNowPlayingLive implements _AzuraApiNowPlayingLive {
 
 abstract class _AzuraApiNowPlayingLive implements AzuraApiNowPlayingLive {
   factory _AzuraApiNowPlayingLive(
-          {@JsonKey(name: 'is_live') required bool isLive,
-          @JsonKey(name: 'streamer_name') required String streamerName,
-          @JsonKey(name: 'broadcast_start') int? broadcastStart}) =
+          {@JsonKey(name: 'is_live') required final bool isLive,
+          @JsonKey(name: 'streamer_name') required final String streamerName,
+          @JsonKey(name: 'broadcast_start') final int? broadcastStart}) =
       _$_AzuraApiNowPlayingLive;
 
   factory _AzuraApiNowPlayingLive.fromJson(Map<String, dynamic> json) =
@@ -216,13 +194,13 @@ abstract class _AzuraApiNowPlayingLive implements AzuraApiNowPlayingLive {
 
   @override
   @JsonKey(name: 'is_live')
-  bool get isLive;
+  bool get isLive => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'streamer_name')
-  String get streamerName;
+  String get streamerName => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'broadcast_start')
-  int? get broadcastStart;
+  int? get broadcastStart => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AzuraApiNowPlayingLiveCopyWith<_AzuraApiNowPlayingLive> get copyWith =>

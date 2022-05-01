@@ -12,29 +12,11 @@ part of 'city_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CityData _$CityDataFromJson(Map<String, dynamic> json) {
   return _CityData.fromJson(json);
 }
-
-/// @nodoc
-class _$CityDataTearOff {
-  const _$CityDataTearOff();
-
-  _CityData call({required int likes}) {
-    return _CityData(
-      likes: likes,
-    );
-  }
-
-  CityData fromJson(Map<String, Object?> json) {
-    return CityData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CityData = _$CityDataTearOff();
 
 /// @nodoc
 mixin _$CityData {
@@ -128,6 +110,7 @@ class _$_CityData implements _CityData {
             const DeepCollectionEquality().equals(other.likes, likes));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(likes));
@@ -144,12 +127,12 @@ class _$_CityData implements _CityData {
 }
 
 abstract class _CityData implements CityData {
-  const factory _CityData({required int likes}) = _$_CityData;
+  const factory _CityData({required final int likes}) = _$_CityData;
 
   factory _CityData.fromJson(Map<String, dynamic> json) = _$_CityData.fromJson;
 
   @override
-  int get likes;
+  int get likes => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CityDataCopyWith<_CityData> get copyWith =>

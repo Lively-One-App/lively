@@ -12,46 +12,12 @@ part of 'azura_api_now_playing_station_mount.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AzuraApiNowPlayingStationMount _$AzuraApiNowPlayingStationMountFromJson(
     Map<String, dynamic> json) {
   return _AzuraApiNowPlayingStationMount.fromJson(json);
 }
-
-/// @nodoc
-class _$AzuraApiNowPlayingStationMountTearOff {
-  const _$AzuraApiNowPlayingStationMountTearOff();
-
-  _AzuraApiNowPlayingStationMount call(
-      {required String path,
-      @JsonKey(name: 'is_default') required bool isDefault,
-      required int id,
-      required String name,
-      required String url,
-      int? bitrate,
-      String? format,
-      required AzuraApiNowPlayingListeners listeners}) {
-    return _AzuraApiNowPlayingStationMount(
-      path: path,
-      isDefault: isDefault,
-      id: id,
-      name: name,
-      url: url,
-      bitrate: bitrate,
-      format: format,
-      listeners: listeners,
-    );
-  }
-
-  AzuraApiNowPlayingStationMount fromJson(Map<String, Object?> json) {
-    return AzuraApiNowPlayingStationMount.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AzuraApiNowPlayingStationMount =
-    _$AzuraApiNowPlayingStationMountTearOff();
 
 /// @nodoc
 mixin _$AzuraApiNowPlayingStationMount {
@@ -296,6 +262,7 @@ class _$_AzuraApiNowPlayingStationMount
             const DeepCollectionEquality().equals(other.listeners, listeners));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -323,36 +290,37 @@ class _$_AzuraApiNowPlayingStationMount
 abstract class _AzuraApiNowPlayingStationMount
     implements AzuraApiNowPlayingStationMount {
   factory _AzuraApiNowPlayingStationMount(
-          {required String path,
-          @JsonKey(name: 'is_default') required bool isDefault,
-          required int id,
-          required String name,
-          required String url,
-          int? bitrate,
-          String? format,
-          required AzuraApiNowPlayingListeners listeners}) =
+          {required final String path,
+          @JsonKey(name: 'is_default') required final bool isDefault,
+          required final int id,
+          required final String name,
+          required final String url,
+          final int? bitrate,
+          final String? format,
+          required final AzuraApiNowPlayingListeners listeners}) =
       _$_AzuraApiNowPlayingStationMount;
 
   factory _AzuraApiNowPlayingStationMount.fromJson(Map<String, dynamic> json) =
       _$_AzuraApiNowPlayingStationMount.fromJson;
 
   @override
-  String get path;
+  String get path => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'is_default')
-  bool get isDefault;
+  bool get isDefault => throw _privateConstructorUsedError;
   @override
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get url;
+  String get url => throw _privateConstructorUsedError;
   @override
-  int? get bitrate;
+  int? get bitrate => throw _privateConstructorUsedError;
   @override
-  String? get format;
+  String? get format => throw _privateConstructorUsedError;
   @override
-  AzuraApiNowPlayingListeners get listeners;
+  AzuraApiNowPlayingListeners get listeners =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AzuraApiNowPlayingStationMountCopyWith<_AzuraApiNowPlayingStationMount>

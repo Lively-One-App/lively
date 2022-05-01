@@ -25,8 +25,6 @@ abstract class LivelyIcons {
       IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData instagram =
       IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData lively =
-      IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData menu =
       IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData privacy =

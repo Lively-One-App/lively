@@ -12,28 +12,7 @@ part of 'station.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$StationTearOff {
-  const _$StationTearOff();
-
-  _Station call(
-      {required int id,
-      required String name,
-      required String description,
-      required String listenUrl}) {
-    return _Station(
-      id: id,
-      name: name,
-      description: description,
-      listenUrl: listenUrl,
-    );
-  }
-}
-
-/// @nodoc
-const $Station = _$StationTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Station {
@@ -185,19 +164,19 @@ class _$_Station implements _Station {
 
 abstract class _Station implements Station {
   const factory _Station(
-      {required int id,
-      required String name,
-      required String description,
-      required String listenUrl}) = _$_Station;
+      {required final int id,
+      required final String name,
+      required final String description,
+      required final String listenUrl}) = _$_Station;
 
   @override
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String get listenUrl;
+  String get listenUrl => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$StationCopyWith<_Station> get copyWith =>

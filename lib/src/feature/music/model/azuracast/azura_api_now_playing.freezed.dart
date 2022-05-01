@@ -12,48 +12,11 @@ part of 'azura_api_now_playing.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AzuraApiNowPlaying _$AzuraApiNowPlayingFromJson(Map<String, dynamic> json) {
   return _AzuraApiNowPlaying.fromJson(json);
 }
-
-/// @nodoc
-class _$AzuraApiNowPlayingTearOff {
-  const _$AzuraApiNowPlayingTearOff();
-
-  _AzuraApiNowPlaying call(
-      {required AzuraApiNowPlayingStation station,
-      required AzuraApiNowPlayingListeners listeners,
-      required AzuraApiNowPlayingLive live,
-      @JsonKey(name: 'now_playing')
-          required AzuraApiNowPlayingCurrentSong nowPlaying,
-      @JsonKey(name: 'playing_next')
-          required AzuraApiNowPlayingStationQueue playingNext,
-      @JsonKey(name: 'song_history')
-          required List<AzuraApiNowPlayingSongHistory> songHistory,
-      @JsonKey(name: 'is_online')
-          required bool isOnline,
-      cacheFrom? cache}) {
-    return _AzuraApiNowPlaying(
-      station: station,
-      listeners: listeners,
-      live: live,
-      nowPlaying: nowPlaying,
-      playingNext: playingNext,
-      songHistory: songHistory,
-      isOnline: isOnline,
-      cache: cache,
-    );
-  }
-
-  AzuraApiNowPlaying fromJson(Map<String, Object?> json) {
-    return AzuraApiNowPlaying.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AzuraApiNowPlaying = _$AzuraApiNowPlayingTearOff();
 
 /// @nodoc
 mixin _$AzuraApiNowPlaying {
@@ -301,11 +264,16 @@ class _$_AzuraApiNowPlaying implements _AzuraApiNowPlaying {
       {required this.station,
       required this.listeners,
       required this.live,
-      @JsonKey(name: 'now_playing') required this.nowPlaying,
-      @JsonKey(name: 'playing_next') required this.playingNext,
-      @JsonKey(name: 'song_history') required this.songHistory,
-      @JsonKey(name: 'is_online') required this.isOnline,
-      this.cache});
+      @JsonKey(name: 'now_playing')
+          required this.nowPlaying,
+      @JsonKey(name: 'playing_next')
+          required this.playingNext,
+      @JsonKey(name: 'song_history')
+          required final List<AzuraApiNowPlayingSongHistory> songHistory,
+      @JsonKey(name: 'is_online')
+          required this.isOnline,
+      this.cache})
+      : _songHistory = songHistory;
 
   factory _$_AzuraApiNowPlaying.fromJson(Map<String, dynamic> json) =>
       _$$_AzuraApiNowPlayingFromJson(json);
@@ -322,9 +290,15 @@ class _$_AzuraApiNowPlaying implements _AzuraApiNowPlaying {
   @override
   @JsonKey(name: 'playing_next')
   final AzuraApiNowPlayingStationQueue playingNext;
+  @JsonKey(name: 'song_history')
+  final List<AzuraApiNowPlayingSongHistory> _songHistory;
   @override
   @JsonKey(name: 'song_history')
-  final List<AzuraApiNowPlayingSongHistory> songHistory;
+  List<AzuraApiNowPlayingSongHistory> get songHistory {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_songHistory);
+  }
+
   @override
   @JsonKey(name: 'is_online')
   final bool isOnline;
@@ -354,6 +328,7 @@ class _$_AzuraApiNowPlaying implements _AzuraApiNowPlaying {
             const DeepCollectionEquality().equals(other.cache, cache));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -379,42 +354,46 @@ class _$_AzuraApiNowPlaying implements _AzuraApiNowPlaying {
 
 abstract class _AzuraApiNowPlaying implements AzuraApiNowPlaying {
   const factory _AzuraApiNowPlaying(
-      {required AzuraApiNowPlayingStation station,
-      required AzuraApiNowPlayingListeners listeners,
-      required AzuraApiNowPlayingLive live,
+      {required final AzuraApiNowPlayingStation station,
+      required final AzuraApiNowPlayingListeners listeners,
+      required final AzuraApiNowPlayingLive live,
       @JsonKey(name: 'now_playing')
-          required AzuraApiNowPlayingCurrentSong nowPlaying,
+          required final AzuraApiNowPlayingCurrentSong nowPlaying,
       @JsonKey(name: 'playing_next')
-          required AzuraApiNowPlayingStationQueue playingNext,
+          required final AzuraApiNowPlayingStationQueue playingNext,
       @JsonKey(name: 'song_history')
-          required List<AzuraApiNowPlayingSongHistory> songHistory,
+          required final List<AzuraApiNowPlayingSongHistory> songHistory,
       @JsonKey(name: 'is_online')
-          required bool isOnline,
-      cacheFrom? cache}) = _$_AzuraApiNowPlaying;
+          required final bool isOnline,
+      final cacheFrom? cache}) = _$_AzuraApiNowPlaying;
 
   factory _AzuraApiNowPlaying.fromJson(Map<String, dynamic> json) =
       _$_AzuraApiNowPlaying.fromJson;
 
   @override
-  AzuraApiNowPlayingStation get station;
+  AzuraApiNowPlayingStation get station => throw _privateConstructorUsedError;
   @override
-  AzuraApiNowPlayingListeners get listeners;
+  AzuraApiNowPlayingListeners get listeners =>
+      throw _privateConstructorUsedError;
   @override
-  AzuraApiNowPlayingLive get live;
+  AzuraApiNowPlayingLive get live => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'now_playing')
-  AzuraApiNowPlayingCurrentSong get nowPlaying;
+  AzuraApiNowPlayingCurrentSong get nowPlaying =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'playing_next')
-  AzuraApiNowPlayingStationQueue get playingNext;
+  AzuraApiNowPlayingStationQueue get playingNext =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'song_history')
-  List<AzuraApiNowPlayingSongHistory> get songHistory;
+  List<AzuraApiNowPlayingSongHistory> get songHistory =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'is_online')
-  bool get isOnline;
+  bool get isOnline => throw _privateConstructorUsedError;
   @override
-  cacheFrom? get cache;
+  cacheFrom? get cache => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AzuraApiNowPlayingCopyWith<_AzuraApiNowPlaying> get copyWith =>

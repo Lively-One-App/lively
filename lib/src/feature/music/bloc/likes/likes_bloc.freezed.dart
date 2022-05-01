@@ -12,29 +12,7 @@ part of 'likes_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$LikesEventTearOff {
-  const _$LikesEventTearOff();
-
-  _GetLikes getLikes(CityData cityData) {
-    return _GetLikes(
-      cityData,
-    );
-  }
-
-  _PutLikes putLikes() {
-    return const _PutLikes();
-  }
-
-  _Started started() {
-    return const _Started();
-  }
-}
-
-/// @nodoc
-const $LikesEvent = _$LikesEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$LikesEvent {
@@ -238,9 +216,9 @@ class _$_GetLikes implements _GetLikes {
 }
 
 abstract class _GetLikes implements LikesEvent {
-  const factory _GetLikes(CityData cityData) = _$_GetLikes;
+  const factory _GetLikes(final CityData cityData) = _$_GetLikes;
 
-  CityData get cityData;
+  CityData get cityData => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GetLikesCopyWith<_GetLikes> get copyWith =>
       throw _privateConstructorUsedError;
@@ -463,47 +441,22 @@ abstract class _Started implements LikesEvent {
 }
 
 /// @nodoc
-class _$LikesStateTearOff {
-  const _$LikesStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _Loading loading() {
-    return const _Loading();
-  }
-
-  _Loaded loaded({required CityData data}) {
-    return _Loaded(
-      data: data,
-    );
-  }
-}
-
-/// @nodoc
-const $LikesState = _$LikesStateTearOff();
-
-/// @nodoc
 mixin _$LikesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(CityData data) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(CityData data)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(CityData data)? loaded,
     required TResult orElse(),
   }) =>
@@ -511,21 +464,18 @@ mixin _$LikesState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) =>
@@ -587,7 +537,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(CityData data) loaded,
   }) {
     return initial();
@@ -597,7 +546,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(CityData data)? loaded,
   }) {
     return initial?.call();
@@ -607,7 +555,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(CityData data)? loaded,
     required TResult orElse(),
   }) {
@@ -621,7 +568,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) {
     return initial(this);
@@ -631,7 +577,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
   }) {
     return initial?.call(this);
@@ -641,7 +586,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
@@ -654,114 +598,6 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements LikesState {
   const factory _Initial() = _$_Initial;
-}
-
-/// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$LikesStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
-
-  @override
-  _Loading get _value => super._value as _Loading;
-}
-
-/// @nodoc
-
-class _$_Loading implements _Loading {
-  const _$_Loading();
-
-  @override
-  String toString() {
-    return 'LikesState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(CityData data) loaded,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(CityData data)? loaded,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(CityData data)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements LikesState {
-  const factory _Loading() = _$_Loading;
 }
 
 /// @nodoc
@@ -836,7 +672,6 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(CityData data) loaded,
   }) {
     return loaded(data);
@@ -846,7 +681,6 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(CityData data)? loaded,
   }) {
     return loaded?.call(data);
@@ -856,7 +690,6 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(CityData data)? loaded,
     required TResult orElse(),
   }) {
@@ -870,7 +703,6 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) {
     return loaded(this);
@@ -880,7 +712,6 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
   }) {
     return loaded?.call(this);
@@ -890,7 +721,6 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
@@ -902,9 +732,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements LikesState {
-  const factory _Loaded({required CityData data}) = _$_Loaded;
+  const factory _Loaded({required final CityData data}) = _$_Loaded;
 
-  CityData get data;
+  CityData get data => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

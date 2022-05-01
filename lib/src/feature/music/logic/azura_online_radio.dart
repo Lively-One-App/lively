@@ -18,7 +18,7 @@ class AzuraOnlineRadio implements OnlineRadioImpl {
     while (true) {
       final azura = nowPlaying().asStream();
       yield* azura;
-      await Future.delayed(Duration(milliseconds: 5000));
+      await Future.delayed(Duration(milliseconds: 50000));
     }
   }
 

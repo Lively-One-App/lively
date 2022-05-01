@@ -12,28 +12,7 @@ part of 'now_playing.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$NowPlayingTearOff {
-  const _$NowPlayingTearOff();
-
-  _NowPlaying call(
-      {required Song song,
-      required CurrentSong currentSong,
-      required Station station,
-      required RadioListeners listeners}) {
-    return _NowPlaying(
-      song: song,
-      currentSong: currentSong,
-      station: station,
-      listeners: listeners,
-    );
-  }
-}
-
-/// @nodoc
-const $NowPlaying = _$NowPlayingTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$NowPlaying {
@@ -239,19 +218,19 @@ class _$_NowPlaying implements _NowPlaying {
 
 abstract class _NowPlaying implements NowPlaying {
   const factory _NowPlaying(
-      {required Song song,
-      required CurrentSong currentSong,
-      required Station station,
-      required RadioListeners listeners}) = _$_NowPlaying;
+      {required final Song song,
+      required final CurrentSong currentSong,
+      required final Station station,
+      required final RadioListeners listeners}) = _$_NowPlaying;
 
   @override
-  Song get song;
+  Song get song => throw _privateConstructorUsedError;
   @override
-  CurrentSong get currentSong;
+  CurrentSong get currentSong => throw _privateConstructorUsedError;
   @override
-  Station get station;
+  Station get station => throw _privateConstructorUsedError;
   @override
-  RadioListeners get listeners;
+  RadioListeners get listeners => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NowPlayingCopyWith<_NowPlaying> get copyWith =>

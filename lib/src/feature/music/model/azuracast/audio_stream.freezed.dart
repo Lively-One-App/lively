@@ -12,30 +12,7 @@ part of 'audio_stream.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AudioStreamTearOff {
-  const _$AudioStreamTearOff();
-
-  _AudioStream call(
-      {required String name,
-      required String url,
-      required bool isDefault,
-      required String bitRate,
-      required String format}) {
-    return _AudioStream(
-      name: name,
-      url: url,
-      isDefault: isDefault,
-      bitRate: bitRate,
-      format: format,
-    );
-  }
-}
-
-/// @nodoc
-const $AudioStream = _$AudioStreamTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AudioStream {
@@ -209,22 +186,22 @@ class _$_AudioStream implements _AudioStream {
 
 abstract class _AudioStream implements AudioStream {
   const factory _AudioStream(
-      {required String name,
-      required String url,
-      required bool isDefault,
-      required String bitRate,
-      required String format}) = _$_AudioStream;
+      {required final String name,
+      required final String url,
+      required final bool isDefault,
+      required final String bitRate,
+      required final String format}) = _$_AudioStream;
 
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get url;
+  String get url => throw _privateConstructorUsedError;
   @override
-  bool get isDefault;
+  bool get isDefault => throw _privateConstructorUsedError;
   @override
-  String get bitRate;
+  String get bitRate => throw _privateConstructorUsedError;
   @override
-  String get format;
+  String get format => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AudioStreamCopyWith<_AudioStream> get copyWith =>

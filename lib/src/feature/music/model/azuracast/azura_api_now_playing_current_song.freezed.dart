@@ -12,47 +12,12 @@ part of 'azura_api_now_playing_current_song.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AzuraApiNowPlayingCurrentSong _$AzuraApiNowPlayingCurrentSongFromJson(
     Map<String, dynamic> json) {
   return _AzuraApiNowPlayingCurrentSong.fromJson(json);
 }
-
-/// @nodoc
-class _$AzuraApiNowPlayingCurrentSongTearOff {
-  const _$AzuraApiNowPlayingCurrentSongTearOff();
-
-  _AzuraApiNowPlayingCurrentSong call(
-      {required int elapsed,
-      required int remaining,
-      @JsonKey(name: 'sh_id') required int shId,
-      @JsonKey(name: 'played_at') required int playedAt,
-      required int duration,
-      String? playlist,
-      String? streamer,
-      @JsonKey(name: 'is_request') required bool isRequest,
-      required AzuraApiSong song}) {
-    return _AzuraApiNowPlayingCurrentSong(
-      elapsed: elapsed,
-      remaining: remaining,
-      shId: shId,
-      playedAt: playedAt,
-      duration: duration,
-      playlist: playlist,
-      streamer: streamer,
-      isRequest: isRequest,
-      song: song,
-    );
-  }
-
-  AzuraApiNowPlayingCurrentSong fromJson(Map<String, Object?> json) {
-    return AzuraApiNowPlayingCurrentSong.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AzuraApiNowPlayingCurrentSong = _$AzuraApiNowPlayingCurrentSongTearOff();
 
 /// @nodoc
 mixin _$AzuraApiNowPlayingCurrentSong {
@@ -316,6 +281,7 @@ class _$_AzuraApiNowPlayingCurrentSong
             const DeepCollectionEquality().equals(other.song, song));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -344,40 +310,40 @@ class _$_AzuraApiNowPlayingCurrentSong
 abstract class _AzuraApiNowPlayingCurrentSong
     implements AzuraApiNowPlayingCurrentSong {
   factory _AzuraApiNowPlayingCurrentSong(
-      {required int elapsed,
-      required int remaining,
-      @JsonKey(name: 'sh_id') required int shId,
-      @JsonKey(name: 'played_at') required int playedAt,
-      required int duration,
-      String? playlist,
-      String? streamer,
-      @JsonKey(name: 'is_request') required bool isRequest,
-      required AzuraApiSong song}) = _$_AzuraApiNowPlayingCurrentSong;
+      {required final int elapsed,
+      required final int remaining,
+      @JsonKey(name: 'sh_id') required final int shId,
+      @JsonKey(name: 'played_at') required final int playedAt,
+      required final int duration,
+      final String? playlist,
+      final String? streamer,
+      @JsonKey(name: 'is_request') required final bool isRequest,
+      required final AzuraApiSong song}) = _$_AzuraApiNowPlayingCurrentSong;
 
   factory _AzuraApiNowPlayingCurrentSong.fromJson(Map<String, dynamic> json) =
       _$_AzuraApiNowPlayingCurrentSong.fromJson;
 
   @override
-  int get elapsed;
+  int get elapsed => throw _privateConstructorUsedError;
   @override
-  int get remaining;
+  int get remaining => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'sh_id')
-  int get shId;
+  int get shId => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'played_at')
-  int get playedAt;
+  int get playedAt => throw _privateConstructorUsedError;
   @override
-  int get duration;
+  int get duration => throw _privateConstructorUsedError;
   @override
-  String? get playlist;
+  String? get playlist => throw _privateConstructorUsedError;
   @override
-  String? get streamer;
+  String? get streamer => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'is_request')
-  bool get isRequest;
+  bool get isRequest => throw _privateConstructorUsedError;
   @override
-  AzuraApiSong get song;
+  AzuraApiSong get song => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AzuraApiNowPlayingCurrentSongCopyWith<_AzuraApiNowPlayingCurrentSong>

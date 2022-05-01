@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'music_bloc.dart';
+part of 'music_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,263 +12,7 @@ part of 'music_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$MusicEventTearOff {
-  const _$MusicEventTearOff();
-
-  _PlayRadio playRadio(AzuraApiNowPlaying azuraApiNowPlaying) {
-    return _PlayRadio(
-      azuraApiNowPlaying,
-    );
-  }
-}
-
-/// @nodoc
-const $MusicEvent = _$MusicEventTearOff();
-
-/// @nodoc
-mixin _$MusicEvent {
-  AzuraApiNowPlaying get azuraApiNowPlaying =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(AzuraApiNowPlaying azuraApiNowPlaying) playRadio,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AzuraApiNowPlaying azuraApiNowPlaying)? playRadio,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AzuraApiNowPlaying azuraApiNowPlaying)? playRadio,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PlayRadio value) playRadio,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PlayRadio value)? playRadio,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayRadio value)? playRadio,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $MusicEventCopyWith<MusicEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MusicEventCopyWith<$Res> {
-  factory $MusicEventCopyWith(
-          MusicEvent value, $Res Function(MusicEvent) then) =
-      _$MusicEventCopyWithImpl<$Res>;
-  $Res call({AzuraApiNowPlaying azuraApiNowPlaying});
-
-  $AzuraApiNowPlayingCopyWith<$Res> get azuraApiNowPlaying;
-}
-
-/// @nodoc
-class _$MusicEventCopyWithImpl<$Res> implements $MusicEventCopyWith<$Res> {
-  _$MusicEventCopyWithImpl(this._value, this._then);
-
-  final MusicEvent _value;
-  // ignore: unused_field
-  final $Res Function(MusicEvent) _then;
-
-  @override
-  $Res call({
-    Object? azuraApiNowPlaying = freezed,
-  }) {
-    return _then(_value.copyWith(
-      azuraApiNowPlaying: azuraApiNowPlaying == freezed
-          ? _value.azuraApiNowPlaying
-          : azuraApiNowPlaying // ignore: cast_nullable_to_non_nullable
-              as AzuraApiNowPlaying,
-    ));
-  }
-
-  @override
-  $AzuraApiNowPlayingCopyWith<$Res> get azuraApiNowPlaying {
-    return $AzuraApiNowPlayingCopyWith<$Res>(_value.azuraApiNowPlaying,
-        (value) {
-      return _then(_value.copyWith(azuraApiNowPlaying: value));
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$PlayRadioCopyWith<$Res> implements $MusicEventCopyWith<$Res> {
-  factory _$PlayRadioCopyWith(
-          _PlayRadio value, $Res Function(_PlayRadio) then) =
-      __$PlayRadioCopyWithImpl<$Res>;
-  @override
-  $Res call({AzuraApiNowPlaying azuraApiNowPlaying});
-
-  @override
-  $AzuraApiNowPlayingCopyWith<$Res> get azuraApiNowPlaying;
-}
-
-/// @nodoc
-class __$PlayRadioCopyWithImpl<$Res> extends _$MusicEventCopyWithImpl<$Res>
-    implements _$PlayRadioCopyWith<$Res> {
-  __$PlayRadioCopyWithImpl(_PlayRadio _value, $Res Function(_PlayRadio) _then)
-      : super(_value, (v) => _then(v as _PlayRadio));
-
-  @override
-  _PlayRadio get _value => super._value as _PlayRadio;
-
-  @override
-  $Res call({
-    Object? azuraApiNowPlaying = freezed,
-  }) {
-    return _then(_PlayRadio(
-      azuraApiNowPlaying == freezed
-          ? _value.azuraApiNowPlaying
-          : azuraApiNowPlaying // ignore: cast_nullable_to_non_nullable
-              as AzuraApiNowPlaying,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PlayRadio implements _PlayRadio {
-  const _$_PlayRadio(this.azuraApiNowPlaying);
-
-  @override
-  final AzuraApiNowPlaying azuraApiNowPlaying;
-
-  @override
-  String toString() {
-    return 'MusicEvent.playRadio(azuraApiNowPlaying: $azuraApiNowPlaying)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _PlayRadio &&
-            const DeepCollectionEquality()
-                .equals(other.azuraApiNowPlaying, azuraApiNowPlaying));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(azuraApiNowPlaying));
-
-  @JsonKey(ignore: true)
-  @override
-  _$PlayRadioCopyWith<_PlayRadio> get copyWith =>
-      __$PlayRadioCopyWithImpl<_PlayRadio>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(AzuraApiNowPlaying azuraApiNowPlaying) playRadio,
-  }) {
-    return playRadio(azuraApiNowPlaying);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AzuraApiNowPlaying azuraApiNowPlaying)? playRadio,
-  }) {
-    return playRadio?.call(azuraApiNowPlaying);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AzuraApiNowPlaying azuraApiNowPlaying)? playRadio,
-    required TResult orElse(),
-  }) {
-    if (playRadio != null) {
-      return playRadio(azuraApiNowPlaying);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PlayRadio value) playRadio,
-  }) {
-    return playRadio(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PlayRadio value)? playRadio,
-  }) {
-    return playRadio?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayRadio value)? playRadio,
-    required TResult orElse(),
-  }) {
-    if (playRadio != null) {
-      return playRadio(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PlayRadio implements MusicEvent {
-  const factory _PlayRadio(AzuraApiNowPlaying azuraApiNowPlaying) =
-      _$_PlayRadio;
-
-  @override
-  AzuraApiNowPlaying get azuraApiNowPlaying;
-  @override
-  @JsonKey(ignore: true)
-  _$PlayRadioCopyWith<_PlayRadio> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-class _$MusicStateTearOff {
-  const _$MusicStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _Error error() {
-    return const _Error();
-  }
-
-  _Loading loading() {
-    return const _Loading();
-  }
-
-  _Loaded loaded({required AudioPlayer audioPlayer}) {
-    return _Loaded(
-      audioPlayer: audioPlayer,
-    );
-  }
-}
-
-/// @nodoc
-const $MusicState = _$MusicStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MusicState {
@@ -276,7 +20,8 @@ mixin _$MusicState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function() loading,
+    required TResult Function() beforePlaying,
+    required TResult Function() beforeStopping,
     required TResult Function(AudioPlayer audioPlayer) loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -284,7 +29,8 @@ mixin _$MusicState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -292,7 +38,8 @@ mixin _$MusicState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
     required TResult orElse(),
   }) =>
@@ -301,7 +48,8 @@ mixin _$MusicState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_BeforePlaying value) beforePlaying,
+    required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -309,7 +57,8 @@ mixin _$MusicState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -317,7 +66,8 @@ mixin _$MusicState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) =>
@@ -380,7 +130,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function() loading,
+    required TResult Function() beforePlaying,
+    required TResult Function() beforeStopping,
     required TResult Function(AudioPlayer audioPlayer) loaded,
   }) {
     return initial();
@@ -391,7 +142,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
   }) {
     return initial?.call();
@@ -402,7 +154,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
     required TResult orElse(),
   }) {
@@ -417,7 +170,8 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_BeforePlaying value) beforePlaying,
+    required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
   }) {
     return initial(this);
@@ -428,7 +182,8 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
   }) {
     return initial?.call(this);
@@ -439,7 +194,8 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
@@ -494,7 +250,8 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function() loading,
+    required TResult Function() beforePlaying,
+    required TResult Function() beforeStopping,
     required TResult Function(AudioPlayer audioPlayer) loaded,
   }) {
     return error();
@@ -505,7 +262,8 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
   }) {
     return error?.call();
@@ -516,7 +274,8 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
     required TResult orElse(),
   }) {
@@ -531,7 +290,8 @@ class _$_Error implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_BeforePlaying value) beforePlaying,
+    required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
   }) {
     return error(this);
@@ -542,7 +302,8 @@ class _$_Error implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
   }) {
     return error?.call(this);
@@ -553,7 +314,8 @@ class _$_Error implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
@@ -569,35 +331,37 @@ abstract class _Error implements MusicState {
 }
 
 /// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+abstract class _$BeforePlayingCopyWith<$Res> {
+  factory _$BeforePlayingCopyWith(
+          _BeforePlaying value, $Res Function(_BeforePlaying) then) =
+      __$BeforePlayingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$MusicStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+class __$BeforePlayingCopyWithImpl<$Res> extends _$MusicStateCopyWithImpl<$Res>
+    implements _$BeforePlayingCopyWith<$Res> {
+  __$BeforePlayingCopyWithImpl(
+      _BeforePlaying _value, $Res Function(_BeforePlaying) _then)
+      : super(_value, (v) => _then(v as _BeforePlaying));
 
   @override
-  _Loading get _value => super._value as _Loading;
+  _BeforePlaying get _value => super._value as _BeforePlaying;
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$_BeforePlaying implements _BeforePlaying {
+  const _$_BeforePlaying();
 
   @override
   String toString() {
-    return 'MusicState.loading()';
+    return 'MusicState.beforePlaying()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
+        (other.runtimeType == runtimeType && other is _BeforePlaying);
   }
 
   @override
@@ -608,10 +372,11 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function() loading,
+    required TResult Function() beforePlaying,
+    required TResult Function() beforeStopping,
     required TResult Function(AudioPlayer audioPlayer) loaded,
   }) {
-    return loading();
+    return beforePlaying();
   }
 
   @override
@@ -619,10 +384,11 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
   }) {
-    return loading?.call();
+    return beforePlaying?.call();
   }
 
   @override
@@ -630,12 +396,13 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (beforePlaying != null) {
+      return beforePlaying();
     }
     return orElse();
   }
@@ -645,10 +412,11 @@ class _$_Loading implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_BeforePlaying value) beforePlaying,
+    required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
   }) {
-    return loading(this);
+    return beforePlaying(this);
   }
 
   @override
@@ -656,10 +424,11 @@ class _$_Loading implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
   }) {
-    return loading?.call(this);
+    return beforePlaying?.call(this);
   }
 
   @override
@@ -667,19 +436,142 @@ class _$_Loading implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (beforePlaying != null) {
+      return beforePlaying(this);
     }
     return orElse();
   }
 }
 
-abstract class _Loading implements MusicState {
-  const factory _Loading() = _$_Loading;
+abstract class _BeforePlaying implements MusicState {
+  const factory _BeforePlaying() = _$_BeforePlaying;
+}
+
+/// @nodoc
+abstract class _$BeforeStoppingCopyWith<$Res> {
+  factory _$BeforeStoppingCopyWith(
+          _BeforeStopping value, $Res Function(_BeforeStopping) then) =
+      __$BeforeStoppingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$BeforeStoppingCopyWithImpl<$Res> extends _$MusicStateCopyWithImpl<$Res>
+    implements _$BeforeStoppingCopyWith<$Res> {
+  __$BeforeStoppingCopyWithImpl(
+      _BeforeStopping _value, $Res Function(_BeforeStopping) _then)
+      : super(_value, (v) => _then(v as _BeforeStopping));
+
+  @override
+  _BeforeStopping get _value => super._value as _BeforeStopping;
+}
+
+/// @nodoc
+
+class _$_BeforeStopping implements _BeforeStopping {
+  const _$_BeforeStopping();
+
+  @override
+  String toString() {
+    return 'MusicState.beforeStopping()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _BeforeStopping);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() error,
+    required TResult Function() beforePlaying,
+    required TResult Function() beforeStopping,
+    required TResult Function(AudioPlayer audioPlayer) loaded,
+  }) {
+    return beforeStopping();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? error,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
+  }) {
+    return beforeStopping?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? error,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
+    TResult Function(AudioPlayer audioPlayer)? loaded,
+    required TResult orElse(),
+  }) {
+    if (beforeStopping != null) {
+      return beforeStopping();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Error value) error,
+    required TResult Function(_BeforePlaying value) beforePlaying,
+    required TResult Function(_BeforeStopping value) beforeStopping,
+    required TResult Function(_Loaded value) loaded,
+  }) {
+    return beforeStopping(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Error value)? error,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
+    TResult Function(_Loaded value)? loaded,
+  }) {
+    return beforeStopping?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Error value)? error,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
+    TResult Function(_Loaded value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (beforeStopping != null) {
+      return beforeStopping(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BeforeStopping implements MusicState {
+  const factory _BeforeStopping() = _$_BeforeStopping;
 }
 
 /// @nodoc
@@ -747,7 +639,8 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function() loading,
+    required TResult Function() beforePlaying,
+    required TResult Function() beforeStopping,
     required TResult Function(AudioPlayer audioPlayer) loaded,
   }) {
     return loaded(audioPlayer);
@@ -758,7 +651,8 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
   }) {
     return loaded?.call(audioPlayer);
@@ -769,7 +663,8 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function()? loading,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
     TResult Function(AudioPlayer audioPlayer)? loaded,
     required TResult orElse(),
   }) {
@@ -784,7 +679,8 @@ class _$_Loaded implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_BeforePlaying value) beforePlaying,
+    required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
   }) {
     return loaded(this);
@@ -795,7 +691,8 @@ class _$_Loaded implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
   }) {
     return loaded?.call(this);
@@ -806,7 +703,8 @@ class _$_Loaded implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
@@ -818,9 +716,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements MusicState {
-  const factory _Loaded({required AudioPlayer audioPlayer}) = _$_Loaded;
+  const factory _Loaded({required final AudioPlayer audioPlayer}) = _$_Loaded;
 
-  AudioPlayer get audioPlayer;
+  AudioPlayer get audioPlayer => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

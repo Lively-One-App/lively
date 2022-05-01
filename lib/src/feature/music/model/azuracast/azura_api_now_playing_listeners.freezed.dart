@@ -12,33 +12,12 @@ part of 'azura_api_now_playing_listeners.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AzuraApiNowPlayingListeners _$AzuraApiNowPlayingListenersFromJson(
     Map<String, dynamic> json) {
   return _AzuraApiNowPlayingListeners.fromJson(json);
 }
-
-/// @nodoc
-class _$AzuraApiNowPlayingListenersTearOff {
-  const _$AzuraApiNowPlayingListenersTearOff();
-
-  _AzuraApiNowPlayingListeners call(
-      {required int total, required int unique, required int current}) {
-    return _AzuraApiNowPlayingListeners(
-      total: total,
-      unique: unique,
-      current: current,
-    );
-  }
-
-  AzuraApiNowPlayingListeners fromJson(Map<String, Object?> json) {
-    return AzuraApiNowPlayingListeners.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AzuraApiNowPlayingListeners = _$AzuraApiNowPlayingListenersTearOff();
 
 /// @nodoc
 mixin _$AzuraApiNowPlayingListeners {
@@ -171,6 +150,7 @@ class _$_AzuraApiNowPlayingListeners implements _AzuraApiNowPlayingListeners {
             const DeepCollectionEquality().equals(other.current, current));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -193,19 +173,19 @@ class _$_AzuraApiNowPlayingListeners implements _AzuraApiNowPlayingListeners {
 abstract class _AzuraApiNowPlayingListeners
     implements AzuraApiNowPlayingListeners {
   factory _AzuraApiNowPlayingListeners(
-      {required int total,
-      required int unique,
-      required int current}) = _$_AzuraApiNowPlayingListeners;
+      {required final int total,
+      required final int unique,
+      required final int current}) = _$_AzuraApiNowPlayingListeners;
 
   factory _AzuraApiNowPlayingListeners.fromJson(Map<String, dynamic> json) =
       _$_AzuraApiNowPlayingListeners.fromJson;
 
   @override
-  int get total;
+  int get total => throw _privateConstructorUsedError;
   @override
-  int get unique;
+  int get unique => throw _privateConstructorUsedError;
   @override
-  int get current;
+  int get current => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AzuraApiNowPlayingListenersCopyWith<_AzuraApiNowPlayingListeners>

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class MyIconButton extends StatelessWidget {
-  const MyIconButton(
-      {Key? key, this.radius, this.onTap, this.color, required this.child})
+class CircleIconButton extends StatelessWidget {
+  const CircleIconButton(
+      {Key? key, this.radius, this.onTap, this.color, this.child})
       : super(key: key);
 
   final double? radius;
   final void Function()? onTap;
   final Color? color;
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyIconButton extends StatelessWidget {
           shape: BoxShape.circle,
           color: color,
         ),
-        child: child,
+        child: Center(child: child),
       ),
     );
   }

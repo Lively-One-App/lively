@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../logic/fire_function.dart';
 import '../../logic/online_store_impl.dart';
 import '../../model/firestore/city_data.dart';
-import '../radio/music_bloc.dart';
+import '../radio/music_cubit.dart';
 
 part 'likes_event.dart';
 part 'likes_state.dart';
@@ -14,7 +14,7 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   LikesBloc({
     required final OnlineStoreImpl store,
     required final FireFunction fireFunction,
-    required final MusicBloc musicBloc,
+    required final MusicCubit musicBloc,
   })  : _store = store,
         _musicBloc = musicBloc,
         _fireFunction = fireFunction,
@@ -29,7 +29,7 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
     });
   }
   final OnlineStoreImpl _store;
-  final MusicBloc _musicBloc;
+  final MusicCubit _musicBloc;
   final FireFunction _fireFunction;
 
   void _like(LikesEvent event, Emitter<LikesState> emit) {

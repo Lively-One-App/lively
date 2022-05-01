@@ -9,7 +9,7 @@ import 'feature/authenticate/cubit/authentication_cubit.dart';
 import 'feature/authenticate/logic/fire_auth.dart';
 import 'feature/music/bloc/azure/azure_cubit.dart';
 import 'feature/music/bloc/likes/likes_bloc.dart';
-import 'feature/music/bloc/radio/music_bloc.dart';
+import 'feature/music/bloc/radio/music_cubit.dart';
 import 'feature/music/logic/azura_online_radio.dart';
 import 'feature/music/logic/fire_function.dart';
 import 'feature/music/logic/firestore.dart';
@@ -48,12 +48,12 @@ class MyApp extends StatelessWidget {
               return AzureCubit(azuraRadio);
             },
           ),
-          BlocProvider<MusicBloc>(
+          BlocProvider<MusicCubit>(
             create: (context) {
               final azureCubit = context.read<AzureCubit>();
               final audioPlayer = AudioPlayer();
               final authCubit = BlocProvider.of<AuthenticationCubit>(context);
-              return MusicBloc(
+              return MusicCubit(
                   azureCubit: azureCubit,
                   audioPlayer: audioPlayer,
                   authCubit: authCubit);
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
             create: (context) {
               final store = Firestore();
               final fireFunction = FireFunction();
-              final musicBloc = BlocProvider.of<MusicBloc>(context);
+              final musicBloc = BlocProvider.of<MusicCubit>(context);
               return LikesBloc(
                   fireFunction: fireFunction,
                   store: store,

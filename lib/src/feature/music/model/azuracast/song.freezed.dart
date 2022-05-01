@@ -12,36 +12,7 @@ part of 'song.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SongTearOff {
-  const _$SongTearOff();
-
-  _Song call(
-      {required String id,
-      required String text,
-      required String artist,
-      required String title,
-      required String album,
-      required String genre,
-      required String lyrics,
-      required String art}) {
-    return _Song(
-      id: id,
-      text: text,
-      artist: artist,
-      title: title,
-      album: album,
-      genre: genre,
-      lyrics: lyrics,
-      art: art,
-    );
-  }
-}
-
-/// @nodoc
-const $Song = _$SongTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Song {
@@ -272,31 +243,31 @@ class _$_Song implements _Song {
 
 abstract class _Song implements Song {
   const factory _Song(
-      {required String id,
-      required String text,
-      required String artist,
-      required String title,
-      required String album,
-      required String genre,
-      required String lyrics,
-      required String art}) = _$_Song;
+      {required final String id,
+      required final String text,
+      required final String artist,
+      required final String title,
+      required final String album,
+      required final String genre,
+      required final String lyrics,
+      required final String art}) = _$_Song;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get text;
+  String get text => throw _privateConstructorUsedError;
   @override
-  String get artist;
+  String get artist => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get album;
+  String get album => throw _privateConstructorUsedError;
   @override
-  String get genre;
+  String get genre => throw _privateConstructorUsedError;
   @override
-  String get lyrics;
+  String get lyrics => throw _privateConstructorUsedError;
   @override
-  String get art;
+  String get art => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SongCopyWith<_Song> get copyWith => throw _privateConstructorUsedError;
