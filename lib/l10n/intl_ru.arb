@@ -8,5 +8,8 @@
   "contact":"Связаться через сайт",
   "privacy":"Конфиденциальность",
   "design": "Designed by Emil Lively",
-  "appVersion": "Версия приложения 1.0 beta"
+  "appVersion": "Версия приложения 1.0 beta",
+  "hello": "Привет!",
+  "callToListenNotificationBody": "Хочешь послушать немного музыки?",
+  "other": "Другое"
 }

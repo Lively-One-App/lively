@@ -6,6 +6,7 @@ import '../../../widgets/animated_background.dart';
 import '../../../widgets/heart_button.dart';
 import '../../../widgets/lively_button.dart';
 import '../../../widgets/reset_animated_icon.dart';
+import '../../notifications/notifications_api.dart';
 import '../bloc/azure/azure_cubit.dart';
 import '../bloc/likes/likes_bloc.dart';
 import '../bloc/radio/music_cubit.dart';
@@ -22,6 +23,26 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   late final AnimationController controller =
       AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      NotificationsAPI.initialize().whenComplete(() {
+        final s = S.of(context);
+        NotificationsAPI.cancel(0);
+        NotificationsAPI.showDelayed(
+          0,
+          s.hello,
+          s.callToListenNotificationBody,
+          s.other,
+          const Duration(seconds: 10),
+        );
+      });
+    });
+  }
+
   @override
   void dispose() {
     controller.dispose();

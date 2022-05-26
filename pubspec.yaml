@@ -26,6 +26,8 @@ dependencies:
   just_audio_background: 
   cloud_functions: 
   bloc_concurrency:
+  flutter_local_notifications:
+  timezone:
 
 dev_dependencies:
   flutter_test:
