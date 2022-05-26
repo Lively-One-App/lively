@@ -24,22 +24,19 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   late final AnimationController controller =
       AnimationController(vsync: this, duration: Duration(milliseconds: 500));
 
-
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      NotificationsAPI.initialize().whenComplete(() {
-        final s = S.of(context);
-        NotificationsAPI.cancel(0);
-        NotificationsAPI.showDelayed(
-          0,
-          s.hello,
-          s.callToListenNotificationBody,
-          s.other,
-          const Duration(seconds: 10),
-        );
-      });
+      final s = S.of(context);
+      NotificationsAPI.cancel(0);
+      NotificationsAPI.showDelayed(
+        0,
+        s.hello,
+        s.callToListenNotificationBody,
+        s.other,
+        const Duration(hours: 6),
+      );
     });
   }
 

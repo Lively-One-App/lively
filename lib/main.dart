@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
+import 'src/feature/notifications/notifications_api.dart';
 import 'src/my_app.dart';
 
 void main() => runZonedGuarded<void>(
@@ -19,6 +20,7 @@ void main() => runZonedGuarded<void>(
           androidNotificationChannelName: 'Audio playback',
           androidNotificationOngoing: true,
         );
+        await NotificationsAPI.initialize();
         BlocOverrides.runZoned(
           () {
             runApp(
