@@ -8,5 +8,6 @@
   "contact":"Contact via the website",
   "privacy":"Privacy Policy",
   "design": "Designed by Emil Lively",
-  "appVersion": "App Version 1.0 beta"
+  "appVersion": "App Version 1.0 beta",
+ "likeNotification":"1 like, from you"
 }

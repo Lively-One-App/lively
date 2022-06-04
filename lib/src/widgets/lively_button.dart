@@ -2,74 +2,108 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../theme.dart';
 import '../feature/music/bloc/radio/music_cubit.dart';
+import 'gradient_tween.dart';
 import 'lively_icon.dart';
 import 'circle_icon_button.dart';
 
-class LivelyButton extends StatefulWidget {
-  const LivelyButton({Key? key, required this.radius, this.onTap})
-      : super(key: key);
+class LivelyButton extends StatelessWidget {
+  LivelyButton({
+    Key? key,
+    required this.radius,
+    this.onTap,
+    required this.controller,
+    required this.beginGradient,
+    required this.endGradient,
+  }) : super(key: key);
   final double radius;
   final void Function()? onTap;
+  final AnimationController controller;
+  final LinearGradient beginGradient;
+  final LinearGradient endGradient;
 
-  @override
-  State<LivelyButton> createState() => _LivelyButtonState();
-}
+  late final animation =
+      LinearGradientTween(begin: beginGradient, end: endGradient)
+          .animate(controller);
+  late final rotateLivelyIcon =
+      Tween(begin: 0.0, end: -0.21).animate(controller);
 
-class _LivelyButtonState extends State<LivelyButton>
-    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final iconTheme = Theme.of(context).iconTheme;
+    final backgroundTheme = Theme.of(context).scaffoldBackgroundColor;
+    final width = MediaQuery.of(context).size.width;
+
     return BlocBuilder<MusicCubit, MusicState>(
       builder: (context, state) {
-        return CustomPaint(
-            painter: state.whenOrNull(
-              initial: () => _LivelyButtonPainter(
-                  backgroundColor: MyThemes.backgroundColor),
-              beforePlaying: () => _LivelyButtonPainter(
-                  backgroundGradient: LinearGradient(
-                colors: [
-                  MyThemes.pinkBackground,
-                  MyThemes.blueBackground,
-                  MyThemes.yellowBackground,
-                ],
-                stops: [0, 0.42, 1],
-              )),
-              beforeStopping: () => _LivelyButtonPainter(
-                  backgroundGradient: LinearGradient(
-                colors: [
-                  MyThemes.pinkBackground,
-                  MyThemes.blueBackground,
-                  MyThemes.yellowBackground,
-                ],
-                stops: [0, 0.42, 1],
-              )),
-              loaded: (_) => _LivelyButtonPainter(
-                  backgroundColor: MyThemes.backgroundColor),
-            ),
-            child: CircleIconButton(
-                onTap: widget.onTap,
-                radius: widget.radius,
-                child: state.whenOrNull(
-                    initial: () => Text(
-                          'Lively',
-                          style: textTheme.caption
-                              ?.copyWith(color: iconTheme.color),
-                        ),
-                    beforePlaying: () => Text(
-                          'Lively',
-                          style: textTheme.caption,
-                        ),
-                    loaded: (_) =>  LivelyIcon(
-                            size: Size(widget.radius, widget.radius * 0.4),
-                          ),
-                    beforeStopping: () =>  LivelyIcon(
-                            size: Size(widget.radius, widget.radius * 0.4),
-                          ),
-                        )));
+        return Center(
+          child: AnimatedBuilder(
+            animation: controller,
+            builder: (context, _) => CustomPaint(
+                painter: state.whenOrNull(
+                  initial: () {
+                    return _LivelyButtonPainter(
+                        strokeGradient: beginGradient,
+                        width: width,
+                        backgroundColor: backgroundTheme);
+                  },
+                  beforePlaying: () {
+                    return _LivelyButtonPainter(
+                        strokeGradient: beginGradient,
+                        width: width,
+                        backgroundGradient: animation.value);
+                  },
+                  beforeStopping: () {
+                    return _LivelyButtonPainter(
+                        strokeGradient: beginGradient,
+                        width: width,
+                        backgroundGradient: animation.value);
+                  },
+                  loaded: (_) {
+                    return _LivelyButtonPainter(
+                        strokeGradient: beginGradient,
+                        width: width,
+                        backgroundColor: backgroundTheme);
+                  },
+                ),
+                child: CircleIconButton(
+                    onTap: onTap,
+                    radius: radius,
+                    child: state.whenOrNull(
+                        initial: () => Padding(
+                              padding: EdgeInsets.only(top: radius * 0.03),
+                              child: Text(
+                                'Lively',
+                                style:
+                                    textTheme.headline1?.copyWith(fontSize: 30),
+                              ),
+                            ),
+                        beforePlaying: () => Padding(
+                              padding: EdgeInsets.only(top: radius * 0.03),
+                              child: Text(
+                                'Lively',
+                                style: textTheme.headline1?.copyWith(
+                                    fontSize: 30, color: backgroundTheme),
+                              ),
+                            ),
+                        loaded: (_) => Padding(
+                              padding: EdgeInsets.only(top: radius * 0.03),
+                              child: LivelyIcon(
+                                rotate: rotateLivelyIcon,
+                                controller: controller,
+                                size: Size(radius, radius * 0.4),
+                              ),
+                            ),
+                        beforeStopping: () => Padding(
+                              padding: EdgeInsets.only(top: radius * 0.03),
+                              child: LivelyIcon(
+                                controller: controller,
+                                rotate: rotateLivelyIcon,
+                                size: Size(radius, radius * 0.4),
+                              ),
+                            )))),
+          ),
+        );
       },
     );
   }
@@ -77,45 +111,49 @@ class _LivelyButtonState extends State<LivelyButton>
 
 class _LivelyButtonPainter extends CustomPainter {
   const _LivelyButtonPainter({
+    required this.width,
     this.backgroundColor,
     this.backgroundGradient,
+    required this.strokeGradient,
   });
   final Color? backgroundColor;
   final Gradient? backgroundGradient;
+  final Gradient? strokeGradient;
+  final double width;
+
   @override
   void paint(Canvas canvas, Size size) {
     final paintFrame = Paint()
       ..strokeWidth = 3
+      ..shader = strokeGradient!.createShader(Rect.fromLTWH(
+          (-size.width * 1.66 + size.width) / 2,
+          0,
+          size.width * 1.66,
+          size.width))
       ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.butt
-      ..shader = LinearGradient(
-        colors: [
-          MyThemes.pinkBackground,
-          MyThemes.blueBackground,
-          MyThemes.yellowBackground,
-        ],
-        stops: [0, 0.42, 1],
-      ).createShader(
-          Rect.fromLTWH((-623 + size.width) / 2, 0, 623, size.width));
+      ..strokeCap = StrokeCap.round;
 
     final paintBackground = Paint()
       ..style = PaintingStyle.fill
       ..strokeWidth = 0;
     if (backgroundGradient != null) {
       paintBackground
-        ..shader = backgroundGradient!.createShader(
-            Rect.fromLTWH((-623 + size.width) / 2, 0, 623, size.width));
+        ..shader = backgroundGradient!.createShader(Rect.fromLTWH(
+            (-size.width * 1.66 + size.width) / 2,
+            0,
+            size.width * 1.66,
+            size.width));
     } else if (backgroundColor != null) {
       paintBackground..color = backgroundColor!;
     }
 
     final paintShadow = Paint()
-      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 9)
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 3)
       // ..maskFilter = MaskFilter.blur(BlurStyle.solid, 0)
       ..color = Color(0xFF474747).withOpacity(0.59)
-      ..strokeWidth = 3
+      ..strokeWidth = 1
       ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.butt;
+      ..strokeCap = StrokeCap.round;
 
     final pathFrame = Path()
       ..addArc(
@@ -124,8 +162,8 @@ class _LivelyButtonPainter extends CustomPainter {
           height: size.height,
           width: size.width,
         ),
-        math.pi + 0.13,
-        math.pi - 0.26,
+        math.pi + math.pi / 23,
+        math.pi - math.pi / 11,
       )
       ..addArc(
         Rect.fromCenter(
@@ -133,14 +171,14 @@ class _LivelyButtonPainter extends CustomPainter {
           height: size.height,
           width: size.width,
         ),
-        math.pi - 0.13,
-        -math.pi + 0.26,
+        math.pi - math.pi / 23,
+        -math.pi + math.pi / 11,
       )
       ..addArc(
         Rect.fromCenter(
           center: Offset(0, size.width / 2),
-          height: 32,
-          width: 623 - size.width,
+          height: size.height / 8,
+          width: width / 2 * 1.66,
         ),
         math.pi / 2,
         math.pi,
@@ -148,8 +186,45 @@ class _LivelyButtonPainter extends CustomPainter {
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.width, size.width / 2),
-          height: 32,
-          width: 623 - size.width,
+          height: size.height / 8,
+          width: width / 2 * 1.66,
+        ),
+        -math.pi / 2,
+        math.pi,
+      );
+    final pathShadow = Path()
+      ..addArc(
+        Rect.fromCenter(
+          center: Offset(size.height / 2, size.width / 2),
+          height: size.height - 7,
+          width: size.width - 7,
+        ),
+        math.pi + math.pi / 23,
+        math.pi - math.pi / 11,
+      )
+      ..addArc(
+        Rect.fromCenter(
+          center: Offset(size.height / 2, size.width / 2),
+          height: size.height - 7,
+          width: size.width - 7,
+        ),
+        math.pi - math.pi / 23,
+        -math.pi + math.pi / 11,
+      )
+      ..addArc(
+        Rect.fromCenter(
+          center: Offset(0, size.width / 2),
+          height: size.height / 8 - 7,
+          width: width / 2 * 1.66 - 7,
+        ),
+        math.pi / 2,
+        math.pi,
+      )
+      ..addArc(
+        Rect.fromCenter(
+          center: Offset(size.width, size.width / 2),
+          height: size.height / 8 - 7,
+          width: width / 2 * 1.66 - 7,
         ),
         -math.pi / 2,
         math.pi,
@@ -164,8 +239,8 @@ class _LivelyButtonPainter extends CustomPainter {
       ..addArc(
         Rect.fromCenter(
           center: Offset(3, size.width / 2),
-          height: 29,
-          width: 623 - size.width,
+          height: size.height / 8,
+          width: width / 2 * 1.66,
         ),
         math.pi / 2,
         math.pi,
@@ -173,16 +248,15 @@ class _LivelyButtonPainter extends CustomPainter {
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.width - 3, size.width / 2),
-          height: 29,
-          width: 623 - size.width,
+          height: size.height / 8,
+          width: width / 2 * 1.66,
         ),
         -math.pi / 2,
         math.pi,
       );
 
     canvas..drawPath(pathBackground, paintBackground);
-
-    canvas..drawPath(pathFrame, paintShadow);
+    canvas..drawPath(pathShadow, paintShadow);
     canvas..drawPath(pathFrame, paintFrame);
   }
 

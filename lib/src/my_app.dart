@@ -32,6 +32,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       routes: Routes.routing(),
       theme: MyThemes.lightTheme,
+      darkTheme: MyThemes.darkTheme,
+      themeMode: ThemeMode.system,
       home: MultiBlocProvider(
         providers: [
           BlocProvider<AuthenticationCubit>(
@@ -50,24 +52,20 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<MusicCubit>(
             create: (context) {
-              final azureCubit = context.read<AzureCubit>();
               final audioPlayer = AudioPlayer();
               final authCubit = BlocProvider.of<AuthenticationCubit>(context);
-              return MusicCubit(
-                  azureCubit: azureCubit,
-                  audioPlayer: audioPlayer,
-                  authCubit: authCubit);
+              return MusicCubit(audioPlayer: audioPlayer, authCubit: authCubit);
             },
           ),
-          BlocProvider<LikesBloc>(
+          BlocProvider<LikesCubit>(
             create: (context) {
               final store = Firestore();
               final fireFunction = FireFunction();
               final musicBloc = BlocProvider.of<MusicCubit>(context);
-              return LikesBloc(
+              return LikesCubit(
                   fireFunction: fireFunction,
                   store: store,
-                  musicBloc: musicBloc);
+                  musicCubit: musicBloc);
             },
           ),
         ],

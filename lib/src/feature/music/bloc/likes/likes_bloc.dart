@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -6,36 +8,47 @@ import '../../logic/online_store_impl.dart';
 import '../../model/firestore/city_data.dart';
 import '../radio/music_cubit.dart';
 
-part 'likes_event.dart';
 part 'likes_state.dart';
 part 'likes_bloc.freezed.dart';
 
-class LikesBloc extends Bloc<LikesEvent, LikesState> {
-  LikesBloc({
+class LikesCubit extends Cubit<LikesState> {
+  LikesCubit({
     required final OnlineStoreImpl store,
     required final FireFunction fireFunction,
-    required final MusicCubit musicBloc,
+    required final MusicCubit musicCubit,
   })  : _store = store,
-        _musicBloc = musicBloc,
+        _musicCubit = musicCubit,
         _fireFunction = fireFunction,
         super(_Initial()) {
-    on<LikesEvent>(_like);
-    _musicBloc.stream.listen((state) {
+    _musicCubit.stream.listen((state) {
       state.whenOrNull(
-          loaded: (_) => _store.getData().listen(
-                (cityData) => add(LikesEvent.getLikes(cityData)),
-              ),
-          initial: () => add(LikesEvent.started()));
+        loaded: (_) {
+          _listenerCityData = _store.getData().listen(
+            (cityData) {
+              print(cityData.likes);
+              emit(LikesState.getLikes(data: cityData));
+            },
+          );
+        },
+        initial: () {
+          _listenerCityData.cancel().whenComplete(
+                () => emit(LikesState.initial()),
+              );
+        },
+      );
     });
   }
   final OnlineStoreImpl _store;
-  final MusicCubit _musicBloc;
+  final MusicCubit _musicCubit;
   final FireFunction _fireFunction;
+  late final StreamSubscription<CityData> _listenerCityData;
+  void writeLike() {
+    _fireFunction.writeLike('4fXw4xLwYsS2JaBnoSgL');
+  }
 
-  void _like(LikesEvent event, Emitter<LikesState> emit) {
-    event.whenOrNull(
-        getLikes: (cityData) => emit(LikesState.loaded(data: cityData)),
-        putLikes: () => _fireFunction.writeLike('4fXw4xLwYsS2JaBnoSgL'),
-        started: () => emit(LikesState.initial()));
+  @override
+  Future<void> close() {
+    _musicCubit.close();
+    return super.close();
   }
 }

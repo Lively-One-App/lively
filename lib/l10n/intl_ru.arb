@@ -8,5 +8,6 @@
   "contact":"Связаться через сайт",
   "privacy":"Конфиденциальность",
   "design": "Designed by Emil Lively",
-  "appVersion": "Версия приложения 1.0 beta"
+  "appVersion": "Версия приложения 1.0 beta",
+  "likeNotification":"1 лайк, от тебя"
 }

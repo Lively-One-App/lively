@@ -1,49 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../theme.dart';
 import '../feature/music/bloc/radio/music_cubit.dart';
 
-class LivelyIcon extends StatefulWidget {
-  LivelyIcon({Key? key, required this.size}) : super(key: key);
+class LivelyIcon extends StatelessWidget {
+  LivelyIcon(
+      {Key? key,
+      required this.size,
+      required this.controller,
+      required this.rotate})
+      : super(key: key);
   final Size size;
-
-  @override
-  State<LivelyIcon> createState() => _LivelyIconState();
-}
-
-class _LivelyIconState extends State<LivelyIcon> with TickerProviderStateMixin {
-  late final colorChange =
-      ColorTween(begin: MyThemes.backgroundColor, end: Colors.red)
-          .animate(controller);
-  late final rotate = Tween(begin: 0.0, end: -0.21).animate(controller);
-  late final AnimationController controller =
-      AnimationController(vsync: this, duration: Duration(milliseconds: 500));
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  final AnimationController controller;
+  final Animation<double> rotate;
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocBuilder<MusicCubit, MusicState>(
       builder: (context, state) {
-        state.whenOrNull(
-          beforeStopping: () => controller.reverse(),
-          loaded: (_) => controller.forward(),
-        );
         return AnimatedBuilder(
           animation: controller,
-          builder: (context, _) {
-            return CustomPaint(
+          builder: (context, _) => Transform(
+            transform: Matrix4.rotationZ(rotate.value),
+            child: CustomPaint(
               painter: FramePainter(
-                  size: widget.size / 2,
-                  color: colorChange.value!,
+                  size: size / 2,
+                  color: state.whenOrNull(
+                    beforeStopping: (() {
+                      controller.reverse();
+                      return theme.scaffoldBackgroundColor;
+                    }),
+                    loaded: (_) {
+                      return theme.iconTheme.color!;
+                    },
+                  )!,
                   rotate: rotate.value),
-            );
-          },
+            ),
+          ),
         );
       },
     );
@@ -125,7 +119,6 @@ class FramePainter extends CustomPainter {
     paint_1_fill.color = color.withOpacity(1.0);
     canvas
       ..translate(-size.width / 2, -size.height * 0.4)
-      ..rotate(rotate)
       ..drawPath(path_1, paint_1_fill);
 
     final Path path_2 = Path();
@@ -1834,6 +1827,6 @@ class FramePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
+    return false;
   }
 }

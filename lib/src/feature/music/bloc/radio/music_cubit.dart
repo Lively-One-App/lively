@@ -4,7 +4,6 @@ import 'package:just_audio/just_audio.dart';
 
 import '../../../authenticate/cubit/authentication_cubit.dart';
 import '../../model/azuracast/azura_api_now_playing.dart';
-import '../azure/azure_cubit.dart';
 
 part 'music_state.dart';
 part 'music_cubit.freezed.dart';
@@ -13,7 +12,6 @@ class MusicCubit extends Cubit<MusicState> {
   MusicCubit({
     required final AudioPlayer audioPlayer,
     required final AuthenticationCubit authCubit,
-    required final AzureCubit azureCubit,
   })  : _audioPlayer = audioPlayer,
         _authCubit = authCubit,
         super(authCubit.state != null ? _Initial() : _Error());
@@ -25,16 +23,16 @@ class MusicCubit extends Cubit<MusicState> {
       emit(MusicState.beforeStopping());
       await _audioPlayer
         ..stop();
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(Duration(milliseconds: 500));
       emit(MusicState.initial());
     } else {
       emit(MusicState.beforePlaying());
-      print(azuraApiNowPlaying.station.listenUrl);
       await _audioPlayer
         ..setUrl(azuraApiNowPlaying.station.listenUrl);
-      _audioPlayer.play().whenComplete(() => emit(MusicState.loaded(
-            audioPlayer: _audioPlayer,
-          )));
+      await _audioPlayer.play();
+      emit(MusicState.loaded(
+        audioPlayer: _audioPlayer,
+      ));
     }
   }
 

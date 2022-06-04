@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 
 class CircleIconButton extends StatelessWidget {
   const CircleIconButton(
-      {Key? key, this.radius, this.onTap, this.color, this.child})
+      {Key? key,
+      this.radius,
+      this.onTap,
+      this.color,
+      this.child,
+      this.onTapCancel})
       : super(key: key);
 
   final double? radius;
   final void Function()? onTap;
   final Color? color;
   final Widget? child;
+  final void Function()? onTapCancel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      onTapCancel: onTapCancel,
       child: Container(
         width: radius,
         height: radius,

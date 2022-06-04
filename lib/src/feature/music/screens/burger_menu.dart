@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lively/generated/l10n.dart';
-import '../../../../theme.dart';
+
+import '../../../../theme/burger_text.dart';
 import '../../../widgets/circle_icon_button.dart';
 
 import '/lively_icons.dart';
@@ -14,10 +15,9 @@ class BurgerMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final double _height = MediaQuery.of(context).size.height;
     final S _localizations = S.of(context);
-    final _textTheme =
-        Theme.of(context).textTheme.merge(MyThemes.burgerTextTheme);
+    final _textTheme = Theme.of(context).extension<BurgerText>()?.textTheme;
     return Scaffold(
-      backgroundColor: MyThemes.bugerBackgroundColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -38,12 +38,12 @@ class BurgerMenu extends StatelessWidget {
                 ],
               ),
               Text('${_localizations.headlineBurgerMenu}',
-                  style: _textTheme.headline1),
+                  style: _textTheme?.headline1),
               const SizedBox(
                 height: 10,
               ),
               Text('${_localizations.subtitleBurgerMenu}',
-                  style: _textTheme.subtitle1),
+                  style: _textTheme?.subtitle1),
             ],
           ),
         ),
@@ -54,7 +54,7 @@ class BurgerMenu extends StatelessWidget {
           leading: Icon(LivelyIcons.instagram),
           title: Text(
             '${_localizations.instagram}',
-            style: _textTheme.bodyText1,
+            style: _textTheme?.bodyText1,
           ),
           trailing: Icon(Icons.keyboard_arrow_right_outlined),
           onTap: () {},
@@ -68,7 +68,7 @@ class BurgerMenu extends StatelessWidget {
           leading: Icon(LivelyIcons.contact),
           title: Text(
             _localizations.contact,
-            style: _textTheme.bodyText1,
+            style: _textTheme?.bodyText1,
           ),
           trailing: Icon(Icons.keyboard_arrow_right_rounded),
           onTap: () {},
@@ -83,7 +83,7 @@ class BurgerMenu extends StatelessWidget {
           leading: Icon(LivelyIcons.privacy),
           title: Text(
             _localizations.privacy,
-            style: _textTheme.bodyText1,
+            style: _textTheme?.bodyText1,
           ),
           trailing: Icon(Icons.keyboard_arrow_right_rounded),
           onTap: () {},
@@ -95,7 +95,7 @@ class BurgerMenu extends StatelessWidget {
             padding: EdgeInsets.only(left: 28),
             child: Text(
               '${_localizations.appVersion}',
-              style: _textTheme.subtitle2,
+              style: _textTheme?.subtitle2,
             )),
         SizedBox(
           height: _height * 0.01,
@@ -104,7 +104,7 @@ class BurgerMenu extends StatelessWidget {
             padding: EdgeInsets.only(left: 28),
             child: Text(
               '${_localizations.design}',
-              style: _textTheme.subtitle2?.copyWith(color: Color(0xFF969696)),
+              style: _textTheme?.subtitle2?.copyWith(color: Color(0xFF969696)),
             )),
       ]),
     );

@@ -149,6 +149,16 @@ class S {
       args: [],
     );
   }
+
+  /// `1 like, from you`
+  String get likeNotification {
+    return Intl.message(
+      '1 like, from you',
+      name: 'likeNotification',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

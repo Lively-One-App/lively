@@ -8,6 +8,9 @@ class AuthenticationCubit extends Cubit<User?> {
       : _fireAuth = fireAuth,
         super(fireAuth.user != null ? fireAuth.user : null) {
     _fireAuth.changeUser().listen((event) async {
+      if (event == null) {
+        print('notUser');
+      }
       event == null ? await _fireAuth.anonymousAuth() : emit(event);
     });
   }

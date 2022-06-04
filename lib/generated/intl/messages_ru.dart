@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("МЫ ЖАЖДЕМ РАЗВИВАТЬСЯ!"),
         "inTheStreamOf": MessageLookupByLibrary.simpleMessage("В ПОТОКЕ"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
+        "likeNotification":
+            MessageLookupByLibrary.simpleMessage("1 лайк, от тебя"),
         "lively": MessageLookupByLibrary.simpleMessage("оживленных"),
         "privacy": MessageLookupByLibrary.simpleMessage("Конфиденциальность"),
         "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(

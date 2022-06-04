@@ -4,9 +4,6 @@ class FireFunction {
   final firebaseFunctions = FirebaseFunctions.instance;
 
   void writeLike(final String doc) async {
-    await firebaseFunctions
-        .httpsCallable('writeToFirestore')
-        .call(doc)
-        .then((value) => print(value.data));
+    await firebaseFunctions.httpsCallable('writeToFirestore').call(doc);
   }
 }
