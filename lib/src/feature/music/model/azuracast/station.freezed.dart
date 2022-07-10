@@ -69,21 +69,22 @@ class _$StationCopyWithImpl<$Res> implements $StationCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$StationCopyWith<$Res> implements $StationCopyWith<$Res> {
-  factory _$StationCopyWith(_Station value, $Res Function(_Station) then) =
-      __$StationCopyWithImpl<$Res>;
+abstract class _$$_StationCopyWith<$Res> implements $StationCopyWith<$Res> {
+  factory _$$_StationCopyWith(
+          _$_Station value, $Res Function(_$_Station) then) =
+      __$$_StationCopyWithImpl<$Res>;
   @override
   $Res call({int id, String name, String description, String listenUrl});
 }
 
 /// @nodoc
-class __$StationCopyWithImpl<$Res> extends _$StationCopyWithImpl<$Res>
-    implements _$StationCopyWith<$Res> {
-  __$StationCopyWithImpl(_Station _value, $Res Function(_Station) _then)
-      : super(_value, (v) => _then(v as _Station));
+class __$$_StationCopyWithImpl<$Res> extends _$StationCopyWithImpl<$Res>
+    implements _$$_StationCopyWith<$Res> {
+  __$$_StationCopyWithImpl(_$_Station _value, $Res Function(_$_Station) _then)
+      : super(_value, (v) => _then(v as _$_Station));
 
   @override
-  _Station get _value => super._value as _Station;
+  _$_Station get _value => super._value as _$_Station;
 
   @override
   $Res call({
@@ -92,7 +93,7 @@ class __$StationCopyWithImpl<$Res> extends _$StationCopyWithImpl<$Res>
     Object? description = freezed,
     Object? listenUrl = freezed,
   }) {
-    return _then(_Station(
+    return _then(_$_Station(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -140,7 +141,7 @@ class _$_Station implements _Station {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Station &&
+            other is _$_Station &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
@@ -158,8 +159,8 @@ class _$_Station implements _Station {
 
   @JsonKey(ignore: true)
   @override
-  _$StationCopyWith<_Station> get copyWith =>
-      __$StationCopyWithImpl<_Station>(this, _$identity);
+  _$$_StationCopyWith<_$_Station> get copyWith =>
+      __$$_StationCopyWithImpl<_$_Station>(this, _$identity);
 }
 
 abstract class _Station implements Station {
@@ -179,6 +180,6 @@ abstract class _Station implements Station {
   String get listenUrl => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$StationCopyWith<_Station> get copyWith =>
+  _$$_StationCopyWith<_$_Station> get copyWith =>
       throw _privateConstructorUsedError;
 }

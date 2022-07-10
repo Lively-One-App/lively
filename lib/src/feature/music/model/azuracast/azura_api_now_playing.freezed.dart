@@ -165,11 +165,11 @@ class _$AzuraApiNowPlayingCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AzuraApiNowPlayingCopyWith<$Res>
+abstract class _$$_AzuraApiNowPlayingCopyWith<$Res>
     implements $AzuraApiNowPlayingCopyWith<$Res> {
-  factory _$AzuraApiNowPlayingCopyWith(
-          _AzuraApiNowPlaying value, $Res Function(_AzuraApiNowPlaying) then) =
-      __$AzuraApiNowPlayingCopyWithImpl<$Res>;
+  factory _$$_AzuraApiNowPlayingCopyWith(_$_AzuraApiNowPlaying value,
+          $Res Function(_$_AzuraApiNowPlaying) then) =
+      __$$_AzuraApiNowPlayingCopyWithImpl<$Res>;
   @override
   $Res call(
       {AzuraApiNowPlayingStation station,
@@ -198,15 +198,15 @@ abstract class _$AzuraApiNowPlayingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AzuraApiNowPlayingCopyWithImpl<$Res>
+class __$$_AzuraApiNowPlayingCopyWithImpl<$Res>
     extends _$AzuraApiNowPlayingCopyWithImpl<$Res>
-    implements _$AzuraApiNowPlayingCopyWith<$Res> {
-  __$AzuraApiNowPlayingCopyWithImpl(
-      _AzuraApiNowPlaying _value, $Res Function(_AzuraApiNowPlaying) _then)
-      : super(_value, (v) => _then(v as _AzuraApiNowPlaying));
+    implements _$$_AzuraApiNowPlayingCopyWith<$Res> {
+  __$$_AzuraApiNowPlayingCopyWithImpl(
+      _$_AzuraApiNowPlaying _value, $Res Function(_$_AzuraApiNowPlaying) _then)
+      : super(_value, (v) => _then(v as _$_AzuraApiNowPlaying));
 
   @override
-  _AzuraApiNowPlaying get _value => super._value as _AzuraApiNowPlaying;
+  _$_AzuraApiNowPlaying get _value => super._value as _$_AzuraApiNowPlaying;
 
   @override
   $Res call({
@@ -219,7 +219,7 @@ class __$AzuraApiNowPlayingCopyWithImpl<$Res>
     Object? isOnline = freezed,
     Object? cache = freezed,
   }) {
-    return _then(_AzuraApiNowPlaying(
+    return _then(_$_AzuraApiNowPlaying(
       station: station == freezed
           ? _value.station
           : station // ignore: cast_nullable_to_non_nullable
@@ -241,7 +241,7 @@ class __$AzuraApiNowPlayingCopyWithImpl<$Res>
           : playingNext // ignore: cast_nullable_to_non_nullable
               as AzuraApiNowPlayingStationQueue,
       songHistory: songHistory == freezed
-          ? _value.songHistory
+          ? _value._songHistory
           : songHistory // ignore: cast_nullable_to_non_nullable
               as List<AzuraApiNowPlayingSongHistory>,
       isOnline: isOnline == freezed
@@ -290,7 +290,6 @@ class _$_AzuraApiNowPlaying implements _AzuraApiNowPlaying {
   @override
   @JsonKey(name: 'playing_next')
   final AzuraApiNowPlayingStationQueue playingNext;
-  @JsonKey(name: 'song_history')
   final List<AzuraApiNowPlayingSongHistory> _songHistory;
   @override
   @JsonKey(name: 'song_history')
@@ -314,7 +313,7 @@ class _$_AzuraApiNowPlaying implements _AzuraApiNowPlaying {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AzuraApiNowPlaying &&
+            other is _$_AzuraApiNowPlaying &&
             const DeepCollectionEquality().equals(other.station, station) &&
             const DeepCollectionEquality().equals(other.listeners, listeners) &&
             const DeepCollectionEquality().equals(other.live, live) &&
@@ -323,7 +322,7 @@ class _$_AzuraApiNowPlaying implements _AzuraApiNowPlaying {
             const DeepCollectionEquality()
                 .equals(other.playingNext, playingNext) &&
             const DeepCollectionEquality()
-                .equals(other.songHistory, songHistory) &&
+                .equals(other._songHistory, _songHistory) &&
             const DeepCollectionEquality().equals(other.isOnline, isOnline) &&
             const DeepCollectionEquality().equals(other.cache, cache));
   }
@@ -337,14 +336,15 @@ class _$_AzuraApiNowPlaying implements _AzuraApiNowPlaying {
       const DeepCollectionEquality().hash(live),
       const DeepCollectionEquality().hash(nowPlaying),
       const DeepCollectionEquality().hash(playingNext),
-      const DeepCollectionEquality().hash(songHistory),
+      const DeepCollectionEquality().hash(_songHistory),
       const DeepCollectionEquality().hash(isOnline),
       const DeepCollectionEquality().hash(cache));
 
   @JsonKey(ignore: true)
   @override
-  _$AzuraApiNowPlayingCopyWith<_AzuraApiNowPlaying> get copyWith =>
-      __$AzuraApiNowPlayingCopyWithImpl<_AzuraApiNowPlaying>(this, _$identity);
+  _$$_AzuraApiNowPlayingCopyWith<_$_AzuraApiNowPlaying> get copyWith =>
+      __$$_AzuraApiNowPlayingCopyWithImpl<_$_AzuraApiNowPlaying>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -396,6 +396,6 @@ abstract class _AzuraApiNowPlaying implements AzuraApiNowPlaying {
   cacheFrom? get cache => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AzuraApiNowPlayingCopyWith<_AzuraApiNowPlaying> get copyWith =>
+  _$$_AzuraApiNowPlayingCopyWith<_$_AzuraApiNowPlaying> get copyWith =>
       throw _privateConstructorUsedError;
 }

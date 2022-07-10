@@ -119,11 +119,11 @@ class _$CurrentSongCopyWithImpl<$Res> implements $CurrentSongCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CurrentSongCopyWith<$Res>
+abstract class _$$_CurrentSongCopyWith<$Res>
     implements $CurrentSongCopyWith<$Res> {
-  factory _$CurrentSongCopyWith(
-          _CurrentSong value, $Res Function(_CurrentSong) then) =
-      __$CurrentSongCopyWithImpl<$Res>;
+  factory _$$_CurrentSongCopyWith(
+          _$_CurrentSong value, $Res Function(_$_CurrentSong) then) =
+      __$$_CurrentSongCopyWithImpl<$Res>;
   @override
   $Res call(
       {int elapsed,
@@ -141,14 +141,14 @@ abstract class _$CurrentSongCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CurrentSongCopyWithImpl<$Res> extends _$CurrentSongCopyWithImpl<$Res>
-    implements _$CurrentSongCopyWith<$Res> {
-  __$CurrentSongCopyWithImpl(
-      _CurrentSong _value, $Res Function(_CurrentSong) _then)
-      : super(_value, (v) => _then(v as _CurrentSong));
+class __$$_CurrentSongCopyWithImpl<$Res> extends _$CurrentSongCopyWithImpl<$Res>
+    implements _$$_CurrentSongCopyWith<$Res> {
+  __$$_CurrentSongCopyWithImpl(
+      _$_CurrentSong _value, $Res Function(_$_CurrentSong) _then)
+      : super(_value, (v) => _then(v as _$_CurrentSong));
 
   @override
-  _CurrentSong get _value => super._value as _CurrentSong;
+  _$_CurrentSong get _value => super._value as _$_CurrentSong;
 
   @override
   $Res call({
@@ -162,7 +162,7 @@ class __$CurrentSongCopyWithImpl<$Res> extends _$CurrentSongCopyWithImpl<$Res>
     Object? isRequest = freezed,
     Object? song = freezed,
   }) {
-    return _then(_CurrentSong(
+    return _then(_$_CurrentSong(
       elapsed: elapsed == freezed
           ? _value.elapsed
           : elapsed // ignore: cast_nullable_to_non_nullable
@@ -245,7 +245,7 @@ class _$_CurrentSong implements _CurrentSong {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CurrentSong &&
+            other is _$_CurrentSong &&
             const DeepCollectionEquality().equals(other.elapsed, elapsed) &&
             const DeepCollectionEquality().equals(other.remaining, remaining) &&
             const DeepCollectionEquality().equals(other.shId, shId) &&
@@ -272,8 +272,8 @@ class _$_CurrentSong implements _CurrentSong {
 
   @JsonKey(ignore: true)
   @override
-  _$CurrentSongCopyWith<_CurrentSong> get copyWith =>
-      __$CurrentSongCopyWithImpl<_CurrentSong>(this, _$identity);
+  _$$_CurrentSongCopyWith<_$_CurrentSong> get copyWith =>
+      __$$_CurrentSongCopyWithImpl<_$_CurrentSong>(this, _$identity);
 }
 
 abstract class _CurrentSong implements CurrentSong {
@@ -308,6 +308,6 @@ abstract class _CurrentSong implements CurrentSong {
   Song get song => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CurrentSongCopyWith<_CurrentSong> get copyWith =>
+  _$$_CurrentSongCopyWith<_$_CurrentSong> get copyWith =>
       throw _privateConstructorUsedError;
 }

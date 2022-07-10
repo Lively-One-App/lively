@@ -1,4 +1,4 @@
-part of 'likes_bloc.dart';
+part of 'likes_cubit.dart';
 
 @freezed
 class LikesState with _$LikesState {

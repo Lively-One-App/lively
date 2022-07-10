@@ -109,12 +109,12 @@ class _$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AzuraApiNowPlayingStationQueueCopyWith<$Res>
+abstract class _$$_AzuraApiNowPlayingStationQueueCopyWith<$Res>
     implements $AzuraApiNowPlayingStationQueueCopyWith<$Res> {
-  factory _$AzuraApiNowPlayingStationQueueCopyWith(
-          _AzuraApiNowPlayingStationQueue value,
-          $Res Function(_AzuraApiNowPlayingStationQueue) then) =
-      __$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>;
+  factory _$$_AzuraApiNowPlayingStationQueueCopyWith(
+          _$_AzuraApiNowPlayingStationQueue value,
+          $Res Function(_$_AzuraApiNowPlayingStationQueue) then) =
+      __$$_AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'cued_at') int cuedAt,
@@ -129,17 +129,17 @@ abstract class _$AzuraApiNowPlayingStationQueueCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>
+class __$$_AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>
     extends _$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>
-    implements _$AzuraApiNowPlayingStationQueueCopyWith<$Res> {
-  __$AzuraApiNowPlayingStationQueueCopyWithImpl(
-      _AzuraApiNowPlayingStationQueue _value,
-      $Res Function(_AzuraApiNowPlayingStationQueue) _then)
-      : super(_value, (v) => _then(v as _AzuraApiNowPlayingStationQueue));
+    implements _$$_AzuraApiNowPlayingStationQueueCopyWith<$Res> {
+  __$$_AzuraApiNowPlayingStationQueueCopyWithImpl(
+      _$_AzuraApiNowPlayingStationQueue _value,
+      $Res Function(_$_AzuraApiNowPlayingStationQueue) _then)
+      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingStationQueue));
 
   @override
-  _AzuraApiNowPlayingStationQueue get _value =>
-      super._value as _AzuraApiNowPlayingStationQueue;
+  _$_AzuraApiNowPlayingStationQueue get _value =>
+      super._value as _$_AzuraApiNowPlayingStationQueue;
 
   @override
   $Res call({
@@ -150,7 +150,7 @@ class __$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>
     Object? isRequest = freezed,
     Object? song = freezed,
   }) {
-    return _then(_AzuraApiNowPlayingStationQueue(
+    return _then(_$_AzuraApiNowPlayingStationQueue(
       cuedAt: cuedAt == freezed
           ? _value.cuedAt
           : cuedAt // ignore: cast_nullable_to_non_nullable
@@ -221,7 +221,7 @@ class _$_AzuraApiNowPlayingStationQueue
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AzuraApiNowPlayingStationQueue &&
+            other is _$_AzuraApiNowPlayingStationQueue &&
             const DeepCollectionEquality().equals(other.cuedAt, cuedAt) &&
             const DeepCollectionEquality().equals(other.playedAt, playedAt) &&
             const DeepCollectionEquality().equals(other.duration, duration) &&
@@ -243,9 +243,9 @@ class _$_AzuraApiNowPlayingStationQueue
 
   @JsonKey(ignore: true)
   @override
-  _$AzuraApiNowPlayingStationQueueCopyWith<_AzuraApiNowPlayingStationQueue>
-      get copyWith => __$AzuraApiNowPlayingStationQueueCopyWithImpl<
-          _AzuraApiNowPlayingStationQueue>(this, _$identity);
+  _$$_AzuraApiNowPlayingStationQueueCopyWith<_$_AzuraApiNowPlayingStationQueue>
+      get copyWith => __$$_AzuraApiNowPlayingStationQueueCopyWithImpl<
+          _$_AzuraApiNowPlayingStationQueue>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -283,6 +283,6 @@ abstract class _AzuraApiNowPlayingStationQueue
   AzuraApiSong get song => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AzuraApiNowPlayingStationQueueCopyWith<_AzuraApiNowPlayingStationQueue>
+  _$$_AzuraApiNowPlayingStationQueueCopyWith<_$_AzuraApiNowPlayingStationQueue>
       get copyWith => throw _privateConstructorUsedError;
 }

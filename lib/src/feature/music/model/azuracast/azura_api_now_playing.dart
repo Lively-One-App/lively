@@ -9,7 +9,7 @@ import 'package:lively/src/feature/music/model/azuracast/azura_api_now_playing_s
 part 'azura_api_now_playing.freezed.dart';
 part 'azura_api_now_playing.g.dart';
 
-enum cacheFrom { hit, database, station }
+enum cacheFrom { hit, database, station, event }
 
 @freezed
 class AzuraApiNowPlaying with _$AzuraApiNowPlaying {
@@ -27,6 +27,7 @@ class AzuraApiNowPlaying with _$AzuraApiNowPlaying {
       @JsonKey(name: 'is_online')
           required bool isOnline,
       cacheFrom? cache}) = _AzuraApiNowPlaying;
+
   factory AzuraApiNowPlaying.fromJson(Map<String, dynamic> json) =>
       _$AzuraApiNowPlayingFromJson(json);
 }

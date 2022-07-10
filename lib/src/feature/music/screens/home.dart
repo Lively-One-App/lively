@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
 
-import '../../../../theme.dart';
+import '../../../../theme/gradient_colors.dart';
 import '../../../widgets/animated_background.dart';
 import '../../../widgets/heart_button.dart';
 import '../../../widgets/lively_button.dart';
 import '../../../widgets/reset_animated_icon.dart';
-import '../bloc/azure/azure_cubit.dart';
-import '../bloc/likes/likes_bloc.dart';
-import '../bloc/radio/music_cubit.dart';
-import '../model/azuracast/azura_api_now_playing.dart';
+import '../bloc/azuracast/azuracast_cubit.dart';
+import '../bloc/likes/likes_cubit.dart';
+import '../bloc/radio/radio_cubit.dart';
 import '/lively_icons.dart';
 import '../../../widgets/circle_icon_button.dart';
+import 'no_internet.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -23,15 +23,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   late final AnimationController controllerLivelyButton =
-      AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+      AnimationController(vsync: this, duration: Duration(milliseconds: 1000));
   late final AnimationController controllerHeart =
       AnimationController(vsync: this, duration: Duration(milliseconds: 100));
   late final increaseHeart = Tween(begin: 80.0, end: 95.0).animate(
       CurvedAnimation(parent: controllerHeart, curve: Curves.easeOutBack));
   late final AnimationController controllerResetIcon =
-      AnimationController(vsync: this, duration: Duration(milliseconds: 200));
-  late final Animation<double> movementResetIcon =
-      Tween(begin: 5.0, end: -90.0).animate(controllerResetIcon);
+      AnimationController(vsync: this, duration: Duration(milliseconds: 300));
   final ValueNotifier<bool> isLike = ValueNotifier(false);
 
   void dispose() {
@@ -41,16 +39,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  void onTap() {
+  void onTap() async {
     isLike.value = !isLike.value;
     context.read<LikesCubit>().writeLike();
     controllerLivelyButton.stop();
-    controllerHeart.forward().whenComplete(() {
-      controllerHeart.reverse().whenComplete(() {
-        isLike.value = !isLike.value;
-        controllerLivelyButton.repeat(reverse: true);
-      });
-    });
+    await controllerHeart.forward();
+    Future.delayed(Duration(milliseconds: 300), (() async {
+      await controllerHeart.reverse();
+      isLike.value = !isLike.value;
+      controllerLivelyButton.repeat(reverse: true);
+    }));
   }
 
   @override
@@ -59,9 +57,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     final textTheme = Theme.of(context).textTheme;
+    final gradientTheme = Theme.of(context).extension<GradientColors>()!;
     final radiusButton = width < 400 ? width / 2 : 200.0;
-    late final AzuraApiNowPlaying totalListeners =
-        context.read<AzureCubit>().state!;
+    late final Animation<double> movementResetIcon =
+        Tween(begin: 5.0, end: -height * 0.13).animate(controllerResetIcon);
     return Scaffold(
         body: Stack(children: [
       Positioned(
@@ -70,27 +69,48 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         child: AnimatedBackground(),
       ),
       Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.symmetric(
+          horizontal: 16.0,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppBar(
-              leadingWidth: 28,
-              leading: CircleIconButton(
-                onTap: () => Navigator.of(context).pushNamed('/burgerMenu'),
-                child: Icon(LivelyIcons.menu),
+            SafeArea(
+              bottom: false,
+              minimum: EdgeInsets.only(top: height * 0.06),
+              child: AppBar(
+                leadingWidth: 28,
+                leading: CircleIconButton(
+                  onTap: () => Navigator.of(context).pushNamed('/burgerMenu'),
+                  child: Icon(LivelyIcons.menu),
+                ),
+                actions: [
+                  CircleIconButton(
+                    child: Icon(LivelyIcons.question),
+                    onTap: () {},
+                  )
+                ],
               ),
-              actions: [
-                CircleIconButton(
-                  child: Icon(LivelyIcons.question),
-                  onTap: () {},
-                )
-              ],
             ),
-            BlocBuilder<AzureCubit, AzuraApiNowPlaying?>(
+            BlocConsumer<AzuraCastCubit, AzuraCastState>(
+              listenWhen: (previous, current) => previous != current,
+              buildWhen: (previous, current) => previous != current,
+              listener: (context, state) => state.whenOrNull(
+                  error: () => showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      useSafeArea: false,
+                      builder: (context) => NoInternet()),
+                  getAzuraCast: (_) => Navigator.canPop(context)
+                      ? Navigator.pop(context)
+                      : null),
               builder: (context, state) {
-                return Text(
-                    '${state?.listeners.total ?? 0} ${localizations.lively}',
+                final listeners = state.whenOrNull(
+                  getAzuraCast: (azuraApiNowPlaying) {
+                    return azuraApiNowPlaying.listeners.total;
+                  },
+                );
+                return Text('${listeners ?? 0} ${localizations.lively}',
                     style: textTheme.headline1);
               },
             ),
@@ -117,17 +137,26 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 return state.when(
                     initial: () => const SizedBox(),
                     getLikes: (cityData) {
-                      controllerResetIcon
-                          .forward()
-                          .whenComplete(() => controllerResetIcon.reset());
-
+                      if (cityData.likes == 0)
+                        controllerResetIcon
+                            .forward()
+                            .then((_) => controllerResetIcon.reset());
                       return ValueListenableBuilder<bool>(
                         valueListenable: isLike,
                         builder: (context, value, _) => Stack(
                             alignment: AlignmentDirectional.bottomCenter,
                             children: [
+                              Positioned(
+                                  width: width,
+                                  bottom: height * 0.05,
+                                  child: !value
+                                      ? ResetAnimatedIcon(
+                                          controller: controllerResetIcon,
+                                          animation: movementResetIcon,
+                                        )
+                                      : const SizedBox()),
                               GestureDetector(
-                                onTap: onTap,
+                                onTap: value ? null : onTap,
                                 child: Container(
                                   padding: EdgeInsets.only(top: 20),
                                   color: Colors.transparent,
@@ -142,15 +171,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                   ),
                                 ),
                               ),
-                              Positioned(
-                                  width: width,
-                                  bottom: height * 0.05,
-                                  child: !value
-                                      ? ResetAnimatedIcon(
-                                          controller: controllerResetIcon,
-                                          animation: movementResetIcon,
-                                        )
-                                      : const SizedBox()),
                             ]),
                       );
                     });
@@ -163,7 +183,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   !value
                       ? localizations.changeTheGame
                       : localizations.likeNotification,
-                  // textAlign: TextAlign.center,
                   style: textTheme.bodyText1,
                 ),
               ),
@@ -179,10 +198,12 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             controller: controllerLivelyButton,
             onTap: () {
               controllerLivelyButton.repeat(reverse: true);
-              context.read<MusicCubit>().play(totalListeners);
+              context.read<RadioCubit>().playAndStop();
             },
-            beginGradient: MyThemes.backGroundButtonGradientBegin,
-            endGradient: MyThemes.backGroundButtonGradientBegin,
+            beginGradient:
+                gradientTheme.backgroundLivelyButtonStart as LinearGradient,
+            endGradient:
+                gradientTheme.backgroundLivelyButtonEnd as LinearGradient,
           )),
     ]));
   }

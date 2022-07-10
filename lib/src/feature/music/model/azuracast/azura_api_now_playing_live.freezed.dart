@@ -78,11 +78,11 @@ class _$AzuraApiNowPlayingLiveCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AzuraApiNowPlayingLiveCopyWith<$Res>
+abstract class _$$_AzuraApiNowPlayingLiveCopyWith<$Res>
     implements $AzuraApiNowPlayingLiveCopyWith<$Res> {
-  factory _$AzuraApiNowPlayingLiveCopyWith(_AzuraApiNowPlayingLive value,
-          $Res Function(_AzuraApiNowPlayingLive) then) =
-      __$AzuraApiNowPlayingLiveCopyWithImpl<$Res>;
+  factory _$$_AzuraApiNowPlayingLiveCopyWith(_$_AzuraApiNowPlayingLive value,
+          $Res Function(_$_AzuraApiNowPlayingLive) then) =
+      __$$_AzuraApiNowPlayingLiveCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'is_live') bool isLive,
@@ -91,15 +91,16 @@ abstract class _$AzuraApiNowPlayingLiveCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AzuraApiNowPlayingLiveCopyWithImpl<$Res>
+class __$$_AzuraApiNowPlayingLiveCopyWithImpl<$Res>
     extends _$AzuraApiNowPlayingLiveCopyWithImpl<$Res>
-    implements _$AzuraApiNowPlayingLiveCopyWith<$Res> {
-  __$AzuraApiNowPlayingLiveCopyWithImpl(_AzuraApiNowPlayingLive _value,
-      $Res Function(_AzuraApiNowPlayingLive) _then)
-      : super(_value, (v) => _then(v as _AzuraApiNowPlayingLive));
+    implements _$$_AzuraApiNowPlayingLiveCopyWith<$Res> {
+  __$$_AzuraApiNowPlayingLiveCopyWithImpl(_$_AzuraApiNowPlayingLive _value,
+      $Res Function(_$_AzuraApiNowPlayingLive) _then)
+      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingLive));
 
   @override
-  _AzuraApiNowPlayingLive get _value => super._value as _AzuraApiNowPlayingLive;
+  _$_AzuraApiNowPlayingLive get _value =>
+      super._value as _$_AzuraApiNowPlayingLive;
 
   @override
   $Res call({
@@ -107,7 +108,7 @@ class __$AzuraApiNowPlayingLiveCopyWithImpl<$Res>
     Object? streamerName = freezed,
     Object? broadcastStart = freezed,
   }) {
-    return _then(_AzuraApiNowPlayingLive(
+    return _then(_$_AzuraApiNowPlayingLive(
       isLive: isLive == freezed
           ? _value.isLive
           : isLive // ignore: cast_nullable_to_non_nullable
@@ -154,7 +155,7 @@ class _$_AzuraApiNowPlayingLive implements _AzuraApiNowPlayingLive {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AzuraApiNowPlayingLive &&
+            other is _$_AzuraApiNowPlayingLive &&
             const DeepCollectionEquality().equals(other.isLive, isLive) &&
             const DeepCollectionEquality()
                 .equals(other.streamerName, streamerName) &&
@@ -172,8 +173,8 @@ class _$_AzuraApiNowPlayingLive implements _AzuraApiNowPlayingLive {
 
   @JsonKey(ignore: true)
   @override
-  _$AzuraApiNowPlayingLiveCopyWith<_AzuraApiNowPlayingLive> get copyWith =>
-      __$AzuraApiNowPlayingLiveCopyWithImpl<_AzuraApiNowPlayingLive>(
+  _$$_AzuraApiNowPlayingLiveCopyWith<_$_AzuraApiNowPlayingLive> get copyWith =>
+      __$$_AzuraApiNowPlayingLiveCopyWithImpl<_$_AzuraApiNowPlayingLive>(
           this, _$identity);
 
   @override
@@ -203,6 +204,6 @@ abstract class _AzuraApiNowPlayingLive implements AzuraApiNowPlayingLive {
   int? get broadcastStart => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AzuraApiNowPlayingLiveCopyWith<_AzuraApiNowPlayingLive> get copyWith =>
+  _$$_AzuraApiNowPlayingLiveCopyWith<_$_AzuraApiNowPlayingLive> get copyWith =>
       throw _privateConstructorUsedError;
 }

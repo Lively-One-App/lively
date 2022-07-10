@@ -130,12 +130,12 @@ class _$AzuraApiNowPlayingCurrentSongCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AzuraApiNowPlayingCurrentSongCopyWith<$Res>
+abstract class _$$_AzuraApiNowPlayingCurrentSongCopyWith<$Res>
     implements $AzuraApiNowPlayingCurrentSongCopyWith<$Res> {
-  factory _$AzuraApiNowPlayingCurrentSongCopyWith(
-          _AzuraApiNowPlayingCurrentSong value,
-          $Res Function(_AzuraApiNowPlayingCurrentSong) then) =
-      __$AzuraApiNowPlayingCurrentSongCopyWithImpl<$Res>;
+  factory _$$_AzuraApiNowPlayingCurrentSongCopyWith(
+          _$_AzuraApiNowPlayingCurrentSong value,
+          $Res Function(_$_AzuraApiNowPlayingCurrentSong) then) =
+      __$$_AzuraApiNowPlayingCurrentSongCopyWithImpl<$Res>;
   @override
   $Res call(
       {int elapsed,
@@ -153,17 +153,17 @@ abstract class _$AzuraApiNowPlayingCurrentSongCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AzuraApiNowPlayingCurrentSongCopyWithImpl<$Res>
+class __$$_AzuraApiNowPlayingCurrentSongCopyWithImpl<$Res>
     extends _$AzuraApiNowPlayingCurrentSongCopyWithImpl<$Res>
-    implements _$AzuraApiNowPlayingCurrentSongCopyWith<$Res> {
-  __$AzuraApiNowPlayingCurrentSongCopyWithImpl(
-      _AzuraApiNowPlayingCurrentSong _value,
-      $Res Function(_AzuraApiNowPlayingCurrentSong) _then)
-      : super(_value, (v) => _then(v as _AzuraApiNowPlayingCurrentSong));
+    implements _$$_AzuraApiNowPlayingCurrentSongCopyWith<$Res> {
+  __$$_AzuraApiNowPlayingCurrentSongCopyWithImpl(
+      _$_AzuraApiNowPlayingCurrentSong _value,
+      $Res Function(_$_AzuraApiNowPlayingCurrentSong) _then)
+      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingCurrentSong));
 
   @override
-  _AzuraApiNowPlayingCurrentSong get _value =>
-      super._value as _AzuraApiNowPlayingCurrentSong;
+  _$_AzuraApiNowPlayingCurrentSong get _value =>
+      super._value as _$_AzuraApiNowPlayingCurrentSong;
 
   @override
   $Res call({
@@ -177,7 +177,7 @@ class __$AzuraApiNowPlayingCurrentSongCopyWithImpl<$Res>
     Object? isRequest = freezed,
     Object? song = freezed,
   }) {
-    return _then(_AzuraApiNowPlayingCurrentSong(
+    return _then(_$_AzuraApiNowPlayingCurrentSong(
       elapsed: elapsed == freezed
           ? _value.elapsed
           : elapsed // ignore: cast_nullable_to_non_nullable
@@ -269,7 +269,7 @@ class _$_AzuraApiNowPlayingCurrentSong
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AzuraApiNowPlayingCurrentSong &&
+            other is _$_AzuraApiNowPlayingCurrentSong &&
             const DeepCollectionEquality().equals(other.elapsed, elapsed) &&
             const DeepCollectionEquality().equals(other.remaining, remaining) &&
             const DeepCollectionEquality().equals(other.shId, shId) &&
@@ -297,9 +297,9 @@ class _$_AzuraApiNowPlayingCurrentSong
 
   @JsonKey(ignore: true)
   @override
-  _$AzuraApiNowPlayingCurrentSongCopyWith<_AzuraApiNowPlayingCurrentSong>
-      get copyWith => __$AzuraApiNowPlayingCurrentSongCopyWithImpl<
-          _AzuraApiNowPlayingCurrentSong>(this, _$identity);
+  _$$_AzuraApiNowPlayingCurrentSongCopyWith<_$_AzuraApiNowPlayingCurrentSong>
+      get copyWith => __$$_AzuraApiNowPlayingCurrentSongCopyWithImpl<
+          _$_AzuraApiNowPlayingCurrentSong>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -346,6 +346,6 @@ abstract class _AzuraApiNowPlayingCurrentSong
   AzuraApiSong get song => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AzuraApiNowPlayingCurrentSongCopyWith<_AzuraApiNowPlayingCurrentSong>
+  _$$_AzuraApiNowPlayingCurrentSongCopyWith<_$_AzuraApiNowPlayingCurrentSong>
       get copyWith => throw _privateConstructorUsedError;
 }

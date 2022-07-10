@@ -36,9 +36,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("IN THE STREAM OF"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "likeNotification":
-            MessageLookupByLibrary.simpleMessage("1 like, from you"),
+            MessageLookupByLibrary.simpleMessage("+ 1 like, from you"),
         "lively": MessageLookupByLibrary.simpleMessage("lively"),
+        "noInternet": MessageLookupByLibrary.simpleMessage(
+            "Lively doesn`t know how to work without the Internet"),
+        "noInternetCheck": MessageLookupByLibrary.simpleMessage("Checking.."),
+        "noInternetReconnect": MessageLookupByLibrary.simpleMessage(
+            "Connect and we will continue"),
         "privacy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "searchTalent": MessageLookupByLibrary.simpleMessage(
+            "We are looking for talent and are open to any cooperation, please contact us!"),
         "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(
             "Please write how we can become better, right on Instagram!")
       };

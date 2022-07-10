@@ -116,11 +116,11 @@ class _$AzuraApiSongCopyWithImpl<$Res> implements $AzuraApiSongCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AzuraApiSongCopyWith<$Res>
+abstract class _$$_AzuraApiSongCopyWith<$Res>
     implements $AzuraApiSongCopyWith<$Res> {
-  factory _$AzuraApiSongCopyWith(
-          _AzuraApiSong value, $Res Function(_AzuraApiSong) then) =
-      __$AzuraApiSongCopyWithImpl<$Res>;
+  factory _$$_AzuraApiSongCopyWith(
+          _$_AzuraApiSong value, $Res Function(_$_AzuraApiSong) then) =
+      __$$_AzuraApiSongCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -135,14 +135,15 @@ abstract class _$AzuraApiSongCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AzuraApiSongCopyWithImpl<$Res> extends _$AzuraApiSongCopyWithImpl<$Res>
-    implements _$AzuraApiSongCopyWith<$Res> {
-  __$AzuraApiSongCopyWithImpl(
-      _AzuraApiSong _value, $Res Function(_AzuraApiSong) _then)
-      : super(_value, (v) => _then(v as _AzuraApiSong));
+class __$$_AzuraApiSongCopyWithImpl<$Res>
+    extends _$AzuraApiSongCopyWithImpl<$Res>
+    implements _$$_AzuraApiSongCopyWith<$Res> {
+  __$$_AzuraApiSongCopyWithImpl(
+      _$_AzuraApiSong _value, $Res Function(_$_AzuraApiSong) _then)
+      : super(_value, (v) => _then(v as _$_AzuraApiSong));
 
   @override
-  _AzuraApiSong get _value => super._value as _AzuraApiSong;
+  _$_AzuraApiSong get _value => super._value as _$_AzuraApiSong;
 
   @override
   $Res call({
@@ -156,7 +157,7 @@ class __$AzuraApiSongCopyWithImpl<$Res> extends _$AzuraApiSongCopyWithImpl<$Res>
     Object? art = freezed,
     Object? customFields = freezed,
   }) {
-    return _then(_AzuraApiSong(
+    return _then(_$_AzuraApiSong(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -190,7 +191,7 @@ class __$AzuraApiSongCopyWithImpl<$Res> extends _$AzuraApiSongCopyWithImpl<$Res>
           : art // ignore: cast_nullable_to_non_nullable
               as String,
       customFields: customFields == freezed
-          ? _value.customFields
+          ? _value._customFields
           : customFields // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
@@ -231,7 +232,6 @@ class _$_AzuraApiSong implements _AzuraApiSong {
   final String lyrics;
   @override
   final String art;
-  @JsonKey(name: 'custom_fields')
   final List<String> _customFields;
   @override
   @JsonKey(name: 'custom_fields')
@@ -249,7 +249,7 @@ class _$_AzuraApiSong implements _AzuraApiSong {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AzuraApiSong &&
+            other is _$_AzuraApiSong &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.text, text) &&
             const DeepCollectionEquality().equals(other.artist, artist) &&
@@ -259,7 +259,7 @@ class _$_AzuraApiSong implements _AzuraApiSong {
             const DeepCollectionEquality().equals(other.lyrics, lyrics) &&
             const DeepCollectionEquality().equals(other.art, art) &&
             const DeepCollectionEquality()
-                .equals(other.customFields, customFields));
+                .equals(other._customFields, _customFields));
   }
 
   @JsonKey(ignore: true)
@@ -274,12 +274,12 @@ class _$_AzuraApiSong implements _AzuraApiSong {
       const DeepCollectionEquality().hash(genre),
       const DeepCollectionEquality().hash(lyrics),
       const DeepCollectionEquality().hash(art),
-      const DeepCollectionEquality().hash(customFields));
+      const DeepCollectionEquality().hash(_customFields));
 
   @JsonKey(ignore: true)
   @override
-  _$AzuraApiSongCopyWith<_AzuraApiSong> get copyWith =>
-      __$AzuraApiSongCopyWithImpl<_AzuraApiSong>(this, _$identity);
+  _$$_AzuraApiSongCopyWith<_$_AzuraApiSong> get copyWith =>
+      __$$_AzuraApiSongCopyWithImpl<_$_AzuraApiSong>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -324,6 +324,6 @@ abstract class _AzuraApiSong implements AzuraApiSong {
   List<String> get customFields => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AzuraApiSongCopyWith<_AzuraApiSong> get copyWith =>
+  _$$_AzuraApiSongCopyWith<_$_AzuraApiSong> get copyWith =>
       throw _privateConstructorUsedError;
 }

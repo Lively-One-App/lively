@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'likes_bloc.dart';
+part of 'likes_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -73,19 +73,20 @@ class _$LikesStateCopyWithImpl<$Res> implements $LikesStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$LikesStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$$_InitialCopyWithImpl<$Res> extends _$LikesStateCopyWithImpl<$Res>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -101,7 +102,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -175,28 +176,30 @@ abstract class _Initial implements LikesState {
 }
 
 /// @nodoc
-abstract class _$GetLikesCopyWith<$Res> {
-  factory _$GetLikesCopyWith(_GetLikes value, $Res Function(_GetLikes) then) =
-      __$GetLikesCopyWithImpl<$Res>;
+abstract class _$$_GetLikesCopyWith<$Res> {
+  factory _$$_GetLikesCopyWith(
+          _$_GetLikes value, $Res Function(_$_GetLikes) then) =
+      __$$_GetLikesCopyWithImpl<$Res>;
   $Res call({CityData data});
 
   $CityDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$GetLikesCopyWithImpl<$Res> extends _$LikesStateCopyWithImpl<$Res>
-    implements _$GetLikesCopyWith<$Res> {
-  __$GetLikesCopyWithImpl(_GetLikes _value, $Res Function(_GetLikes) _then)
-      : super(_value, (v) => _then(v as _GetLikes));
+class __$$_GetLikesCopyWithImpl<$Res> extends _$LikesStateCopyWithImpl<$Res>
+    implements _$$_GetLikesCopyWith<$Res> {
+  __$$_GetLikesCopyWithImpl(
+      _$_GetLikes _value, $Res Function(_$_GetLikes) _then)
+      : super(_value, (v) => _then(v as _$_GetLikes));
 
   @override
-  _GetLikes get _value => super._value as _GetLikes;
+  _$_GetLikes get _value => super._value as _$_GetLikes;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_GetLikes(
+    return _then(_$_GetLikes(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -229,7 +232,7 @@ class _$_GetLikes implements _GetLikes {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GetLikes &&
+            other is _$_GetLikes &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -239,8 +242,8 @@ class _$_GetLikes implements _GetLikes {
 
   @JsonKey(ignore: true)
   @override
-  _$GetLikesCopyWith<_GetLikes> get copyWith =>
-      __$GetLikesCopyWithImpl<_GetLikes>(this, _$identity);
+  _$$_GetLikesCopyWith<_$_GetLikes> get copyWith =>
+      __$$_GetLikesCopyWithImpl<_$_GetLikes>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -310,6 +313,6 @@ abstract class _GetLikes implements LikesState {
 
   CityData get data => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$GetLikesCopyWith<_GetLikes> get copyWith =>
+  _$$_GetLikesCopyWith<_$_GetLikes> get copyWith =>
       throw _privateConstructorUsedError;
 }

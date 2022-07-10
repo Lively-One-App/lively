@@ -57,27 +57,29 @@ class _$CityDataCopyWithImpl<$Res> implements $CityDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CityDataCopyWith<$Res> implements $CityDataCopyWith<$Res> {
-  factory _$CityDataCopyWith(_CityData value, $Res Function(_CityData) then) =
-      __$CityDataCopyWithImpl<$Res>;
+abstract class _$$_CityDataCopyWith<$Res> implements $CityDataCopyWith<$Res> {
+  factory _$$_CityDataCopyWith(
+          _$_CityData value, $Res Function(_$_CityData) then) =
+      __$$_CityDataCopyWithImpl<$Res>;
   @override
   $Res call({int likes});
 }
 
 /// @nodoc
-class __$CityDataCopyWithImpl<$Res> extends _$CityDataCopyWithImpl<$Res>
-    implements _$CityDataCopyWith<$Res> {
-  __$CityDataCopyWithImpl(_CityData _value, $Res Function(_CityData) _then)
-      : super(_value, (v) => _then(v as _CityData));
+class __$$_CityDataCopyWithImpl<$Res> extends _$CityDataCopyWithImpl<$Res>
+    implements _$$_CityDataCopyWith<$Res> {
+  __$$_CityDataCopyWithImpl(
+      _$_CityData _value, $Res Function(_$_CityData) _then)
+      : super(_value, (v) => _then(v as _$_CityData));
 
   @override
-  _CityData get _value => super._value as _CityData;
+  _$_CityData get _value => super._value as _$_CityData;
 
   @override
   $Res call({
     Object? likes = freezed,
   }) {
-    return _then(_CityData(
+    return _then(_$_CityData(
       likes: likes == freezed
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
@@ -106,7 +108,7 @@ class _$_CityData implements _CityData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CityData &&
+            other is _$_CityData &&
             const DeepCollectionEquality().equals(other.likes, likes));
   }
 
@@ -117,8 +119,8 @@ class _$_CityData implements _CityData {
 
   @JsonKey(ignore: true)
   @override
-  _$CityDataCopyWith<_CityData> get copyWith =>
-      __$CityDataCopyWithImpl<_CityData>(this, _$identity);
+  _$$_CityDataCopyWith<_$_CityData> get copyWith =>
+      __$$_CityDataCopyWithImpl<_$_CityData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -135,6 +137,6 @@ abstract class _CityData implements CityData {
   int get likes => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CityDataCopyWith<_CityData> get copyWith =>
+  _$$_CityDataCopyWith<_$_CityData> get copyWith =>
       throw _privateConstructorUsedError;
 }

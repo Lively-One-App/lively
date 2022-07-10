@@ -7,6 +7,7 @@ import '/src/common/util/error_util.dart';
 class AppBlocObserver extends BlocObserver {
   factory AppBlocObserver.instance() => _singleton ??= AppBlocObserver._();
   static AppBlocObserver? _singleton;
+
   AppBlocObserver._();
 
   @override

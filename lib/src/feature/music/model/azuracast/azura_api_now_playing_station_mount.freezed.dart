@@ -123,12 +123,12 @@ class _$AzuraApiNowPlayingStationMountCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AzuraApiNowPlayingStationMountCopyWith<$Res>
+abstract class _$$_AzuraApiNowPlayingStationMountCopyWith<$Res>
     implements $AzuraApiNowPlayingStationMountCopyWith<$Res> {
-  factory _$AzuraApiNowPlayingStationMountCopyWith(
-          _AzuraApiNowPlayingStationMount value,
-          $Res Function(_AzuraApiNowPlayingStationMount) then) =
-      __$AzuraApiNowPlayingStationMountCopyWithImpl<$Res>;
+  factory _$$_AzuraApiNowPlayingStationMountCopyWith(
+          _$_AzuraApiNowPlayingStationMount value,
+          $Res Function(_$_AzuraApiNowPlayingStationMount) then) =
+      __$$_AzuraApiNowPlayingStationMountCopyWithImpl<$Res>;
   @override
   $Res call(
       {String path,
@@ -145,17 +145,17 @@ abstract class _$AzuraApiNowPlayingStationMountCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AzuraApiNowPlayingStationMountCopyWithImpl<$Res>
+class __$$_AzuraApiNowPlayingStationMountCopyWithImpl<$Res>
     extends _$AzuraApiNowPlayingStationMountCopyWithImpl<$Res>
-    implements _$AzuraApiNowPlayingStationMountCopyWith<$Res> {
-  __$AzuraApiNowPlayingStationMountCopyWithImpl(
-      _AzuraApiNowPlayingStationMount _value,
-      $Res Function(_AzuraApiNowPlayingStationMount) _then)
-      : super(_value, (v) => _then(v as _AzuraApiNowPlayingStationMount));
+    implements _$$_AzuraApiNowPlayingStationMountCopyWith<$Res> {
+  __$$_AzuraApiNowPlayingStationMountCopyWithImpl(
+      _$_AzuraApiNowPlayingStationMount _value,
+      $Res Function(_$_AzuraApiNowPlayingStationMount) _then)
+      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingStationMount));
 
   @override
-  _AzuraApiNowPlayingStationMount get _value =>
-      super._value as _AzuraApiNowPlayingStationMount;
+  _$_AzuraApiNowPlayingStationMount get _value =>
+      super._value as _$_AzuraApiNowPlayingStationMount;
 
   @override
   $Res call({
@@ -168,7 +168,7 @@ class __$AzuraApiNowPlayingStationMountCopyWithImpl<$Res>
     Object? format = freezed,
     Object? listeners = freezed,
   }) {
-    return _then(_AzuraApiNowPlayingStationMount(
+    return _then(_$_AzuraApiNowPlayingStationMount(
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -251,7 +251,7 @@ class _$_AzuraApiNowPlayingStationMount
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AzuraApiNowPlayingStationMount &&
+            other is _$_AzuraApiNowPlayingStationMount &&
             const DeepCollectionEquality().equals(other.path, path) &&
             const DeepCollectionEquality().equals(other.isDefault, isDefault) &&
             const DeepCollectionEquality().equals(other.id, id) &&
@@ -277,9 +277,9 @@ class _$_AzuraApiNowPlayingStationMount
 
   @JsonKey(ignore: true)
   @override
-  _$AzuraApiNowPlayingStationMountCopyWith<_AzuraApiNowPlayingStationMount>
-      get copyWith => __$AzuraApiNowPlayingStationMountCopyWithImpl<
-          _AzuraApiNowPlayingStationMount>(this, _$identity);
+  _$$_AzuraApiNowPlayingStationMountCopyWith<_$_AzuraApiNowPlayingStationMount>
+      get copyWith => __$$_AzuraApiNowPlayingStationMountCopyWithImpl<
+          _$_AzuraApiNowPlayingStationMount>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -323,6 +323,6 @@ abstract class _AzuraApiNowPlayingStationMount
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AzuraApiNowPlayingStationMountCopyWith<_AzuraApiNowPlayingStationMount>
+  _$$_AzuraApiNowPlayingStationMountCopyWith<_$_AzuraApiNowPlayingStationMount>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -78,25 +78,25 @@ class _$AudioStreamCopyWithImpl<$Res> implements $AudioStreamCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AudioStreamCopyWith<$Res>
+abstract class _$$_AudioStreamCopyWith<$Res>
     implements $AudioStreamCopyWith<$Res> {
-  factory _$AudioStreamCopyWith(
-          _AudioStream value, $Res Function(_AudioStream) then) =
-      __$AudioStreamCopyWithImpl<$Res>;
+  factory _$$_AudioStreamCopyWith(
+          _$_AudioStream value, $Res Function(_$_AudioStream) then) =
+      __$$_AudioStreamCopyWithImpl<$Res>;
   @override
   $Res call(
       {String name, String url, bool isDefault, String bitRate, String format});
 }
 
 /// @nodoc
-class __$AudioStreamCopyWithImpl<$Res> extends _$AudioStreamCopyWithImpl<$Res>
-    implements _$AudioStreamCopyWith<$Res> {
-  __$AudioStreamCopyWithImpl(
-      _AudioStream _value, $Res Function(_AudioStream) _then)
-      : super(_value, (v) => _then(v as _AudioStream));
+class __$$_AudioStreamCopyWithImpl<$Res> extends _$AudioStreamCopyWithImpl<$Res>
+    implements _$$_AudioStreamCopyWith<$Res> {
+  __$$_AudioStreamCopyWithImpl(
+      _$_AudioStream _value, $Res Function(_$_AudioStream) _then)
+      : super(_value, (v) => _then(v as _$_AudioStream));
 
   @override
-  _AudioStream get _value => super._value as _AudioStream;
+  _$_AudioStream get _value => super._value as _$_AudioStream;
 
   @override
   $Res call({
@@ -106,7 +106,7 @@ class __$AudioStreamCopyWithImpl<$Res> extends _$AudioStreamCopyWithImpl<$Res>
     Object? bitRate = freezed,
     Object? format = freezed,
   }) {
-    return _then(_AudioStream(
+    return _then(_$_AudioStream(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -161,7 +161,7 @@ class _$_AudioStream implements _AudioStream {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AudioStream &&
+            other is _$_AudioStream &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.isDefault, isDefault) &&
@@ -180,8 +180,8 @@ class _$_AudioStream implements _AudioStream {
 
   @JsonKey(ignore: true)
   @override
-  _$AudioStreamCopyWith<_AudioStream> get copyWith =>
-      __$AudioStreamCopyWithImpl<_AudioStream>(this, _$identity);
+  _$$_AudioStreamCopyWith<_$_AudioStream> get copyWith =>
+      __$$_AudioStreamCopyWithImpl<_$_AudioStream>(this, _$identity);
 }
 
 abstract class _AudioStream implements AudioStream {
@@ -204,6 +204,6 @@ abstract class _AudioStream implements AudioStream {
   String get format => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AudioStreamCopyWith<_AudioStream> get copyWith =>
+  _$$_AudioStreamCopyWith<_$_AudioStream> get copyWith =>
       throw _privateConstructorUsedError;
 }

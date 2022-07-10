@@ -159,11 +159,12 @@ class _$AzuraApiNowPlayingStationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AzuraApiNowPlayingStationCopyWith<$Res>
+abstract class _$$_AzuraApiNowPlayingStationCopyWith<$Res>
     implements $AzuraApiNowPlayingStationCopyWith<$Res> {
-  factory _$AzuraApiNowPlayingStationCopyWith(_AzuraApiNowPlayingStation value,
-          $Res Function(_AzuraApiNowPlayingStation) then) =
-      __$AzuraApiNowPlayingStationCopyWithImpl<$Res>;
+  factory _$$_AzuraApiNowPlayingStationCopyWith(
+          _$_AzuraApiNowPlayingStation value,
+          $Res Function(_$_AzuraApiNowPlayingStation) then) =
+      __$$_AzuraApiNowPlayingStationCopyWithImpl<$Res>;
   @override
   $Res call(
       {int id,
@@ -183,16 +184,17 @@ abstract class _$AzuraApiNowPlayingStationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AzuraApiNowPlayingStationCopyWithImpl<$Res>
+class __$$_AzuraApiNowPlayingStationCopyWithImpl<$Res>
     extends _$AzuraApiNowPlayingStationCopyWithImpl<$Res>
-    implements _$AzuraApiNowPlayingStationCopyWith<$Res> {
-  __$AzuraApiNowPlayingStationCopyWithImpl(_AzuraApiNowPlayingStation _value,
-      $Res Function(_AzuraApiNowPlayingStation) _then)
-      : super(_value, (v) => _then(v as _AzuraApiNowPlayingStation));
+    implements _$$_AzuraApiNowPlayingStationCopyWith<$Res> {
+  __$$_AzuraApiNowPlayingStationCopyWithImpl(
+      _$_AzuraApiNowPlayingStation _value,
+      $Res Function(_$_AzuraApiNowPlayingStation) _then)
+      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingStation));
 
   @override
-  _AzuraApiNowPlayingStation get _value =>
-      super._value as _AzuraApiNowPlayingStation;
+  _$_AzuraApiNowPlayingStation get _value =>
+      super._value as _$_AzuraApiNowPlayingStation;
 
   @override
   $Res call({
@@ -211,7 +213,7 @@ class __$AzuraApiNowPlayingStationCopyWithImpl<$Res>
     Object? mounts = freezed,
     Object? remotes = freezed,
   }) {
-    return _then(_AzuraApiNowPlayingStation(
+    return _then(_$_AzuraApiNowPlayingStation(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -261,11 +263,11 @@ class __$AzuraApiNowPlayingStationCopyWithImpl<$Res>
           : isPublic // ignore: cast_nullable_to_non_nullable
               as bool,
       mounts: mounts == freezed
-          ? _value.mounts
+          ? _value._mounts
           : mounts // ignore: cast_nullable_to_non_nullable
               as List<AzuraApiNowPlayingStationMount>,
       remotes: remotes == freezed
-          ? _value.remotes
+          ? _value._remotes
           : remotes // ignore: cast_nullable_to_non_nullable
               as List<AzuraApiNowPlayingStationRemote>,
     ));
@@ -349,7 +351,7 @@ class _$_AzuraApiNowPlayingStation implements _AzuraApiNowPlayingStation {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AzuraApiNowPlayingStation &&
+            other is _$_AzuraApiNowPlayingStation &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.shortcode, shortcode) &&
@@ -366,8 +368,8 @@ class _$_AzuraApiNowPlayingStation implements _AzuraApiNowPlayingStation {
             const DeepCollectionEquality()
                 .equals(other.playlistM3uUrl, playlistM3uUrl) &&
             const DeepCollectionEquality().equals(other.isPublic, isPublic) &&
-            const DeepCollectionEquality().equals(other.mounts, mounts) &&
-            const DeepCollectionEquality().equals(other.remotes, remotes));
+            const DeepCollectionEquality().equals(other._mounts, _mounts) &&
+            const DeepCollectionEquality().equals(other._remotes, _remotes));
   }
 
   @JsonKey(ignore: true)
@@ -386,15 +388,14 @@ class _$_AzuraApiNowPlayingStation implements _AzuraApiNowPlayingStation {
       const DeepCollectionEquality().hash(playlistPlsUrl),
       const DeepCollectionEquality().hash(playlistM3uUrl),
       const DeepCollectionEquality().hash(isPublic),
-      const DeepCollectionEquality().hash(mounts),
-      const DeepCollectionEquality().hash(remotes));
+      const DeepCollectionEquality().hash(_mounts),
+      const DeepCollectionEquality().hash(_remotes));
 
   @JsonKey(ignore: true)
   @override
-  _$AzuraApiNowPlayingStationCopyWith<_AzuraApiNowPlayingStation>
-      get copyWith =>
-          __$AzuraApiNowPlayingStationCopyWithImpl<_AzuraApiNowPlayingStation>(
-              this, _$identity);
+  _$$_AzuraApiNowPlayingStationCopyWith<_$_AzuraApiNowPlayingStation>
+      get copyWith => __$$_AzuraApiNowPlayingStationCopyWithImpl<
+          _$_AzuraApiNowPlayingStation>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -460,6 +461,6 @@ abstract class _AzuraApiNowPlayingStation implements AzuraApiNowPlayingStation {
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AzuraApiNowPlayingStationCopyWith<_AzuraApiNowPlayingStation>
+  _$$_AzuraApiNowPlayingStationCopyWith<_$_AzuraApiNowPlayingStation>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -2,7 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../feature/music/bloc/radio/music_cubit.dart';
+import '../feature/music/bloc/radio/radio_cubit.dart';
 import 'gradient_tween.dart';
 import 'lively_icon.dart';
 import 'circle_icon_button.dart';
@@ -34,7 +34,7 @@ class LivelyButton extends StatelessWidget {
     final backgroundTheme = Theme.of(context).scaffoldBackgroundColor;
     final width = MediaQuery.of(context).size.width;
 
-    return BlocBuilder<MusicCubit, MusicState>(
+    return BlocBuilder<RadioCubit, RadioState>(
       builder: (context, state) {
         return Center(
           child: AnimatedBuilder(
@@ -42,6 +42,7 @@ class LivelyButton extends StatelessWidget {
             builder: (context, _) => CustomPaint(
                 painter: state.whenOrNull(
                   initial: () {
+                    print(width);
                     return _LivelyButtonPainter(
                         strokeGradient: beginGradient,
                         width: width,
@@ -59,7 +60,7 @@ class LivelyButton extends StatelessWidget {
                         width: width,
                         backgroundGradient: animation.value);
                   },
-                  loaded: (_) {
+                  loaded: () {
                     return _LivelyButtonPainter(
                         strokeGradient: beginGradient,
                         width: width,
@@ -71,7 +72,8 @@ class LivelyButton extends StatelessWidget {
                     radius: radius,
                     child: state.whenOrNull(
                         initial: () => Padding(
-                              padding: EdgeInsets.only(top: radius * 0.03),
+                              padding: EdgeInsets.only(
+                                  right: radius * 0.01, top: radius * 0.1),
                               child: Text(
                                 'Lively',
                                 style:
@@ -79,15 +81,17 @@ class LivelyButton extends StatelessWidget {
                               ),
                             ),
                         beforePlaying: () => Padding(
-                              padding: EdgeInsets.only(top: radius * 0.03),
+                              padding: EdgeInsets.only(
+                                  right: radius * 0.01, top: radius * 0.1),
                               child: Text(
                                 'Lively',
                                 style: textTheme.headline1?.copyWith(
                                     fontSize: 30, color: backgroundTheme),
                               ),
                             ),
-                        loaded: (_) => Padding(
-                              padding: EdgeInsets.only(top: radius * 0.03),
+                        loaded: () => Padding(
+                              padding: EdgeInsets.only(
+                                  right: radius * 0.01, top: radius * 0.1),
                               child: LivelyIcon(
                                 rotate: rotateLivelyIcon,
                                 controller: controller,
@@ -95,7 +99,8 @@ class LivelyButton extends StatelessWidget {
                               ),
                             ),
                         beforeStopping: () => Padding(
-                              padding: EdgeInsets.only(top: radius * 0.03),
+                              padding: EdgeInsets.only(
+                                  right: radius * 0.01, top: radius * 0.1),
                               child: LivelyIcon(
                                 controller: controller,
                                 rotate: rotateLivelyIcon,
@@ -163,7 +168,7 @@ class _LivelyButtonPainter extends CustomPainter {
           width: size.width,
         ),
         math.pi + math.pi / 23,
-        math.pi - math.pi / 11,
+        math.pi - math.pi / 12,
       )
       ..addArc(
         Rect.fromCenter(
@@ -172,7 +177,7 @@ class _LivelyButtonPainter extends CustomPainter {
           width: size.width,
         ),
         math.pi - math.pi / 23,
-        -math.pi + math.pi / 11,
+        -math.pi + math.pi / 12,
       )
       ..addArc(
         Rect.fromCenter(
@@ -200,7 +205,7 @@ class _LivelyButtonPainter extends CustomPainter {
           width: size.width - 7,
         ),
         math.pi + math.pi / 23,
-        math.pi - math.pi / 11,
+        math.pi - math.pi / 12,
       )
       ..addArc(
         Rect.fromCenter(
@@ -209,7 +214,7 @@ class _LivelyButtonPainter extends CustomPainter {
           width: size.width - 7,
         ),
         math.pi - math.pi / 23,
-        -math.pi + math.pi / 11,
+        -math.pi + math.pi / 12,
       )
       ..addArc(
         Rect.fromCenter(
@@ -255,13 +260,16 @@ class _LivelyButtonPainter extends CustomPainter {
         math.pi,
       );
 
-    canvas..drawPath(pathBackground, paintBackground);
+    canvas
+      ..scale(0.9)
+      ..translate(size.width * 0.05, size.height * 0.1)
+      ..drawPath(pathBackground, paintBackground);
     canvas..drawPath(pathShadow, paintShadow);
     canvas..drawPath(pathFrame, paintFrame);
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
+    return true;
   }
 }

@@ -108,10 +108,11 @@ class _$NowPlayingCopyWithImpl<$Res> implements $NowPlayingCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$NowPlayingCopyWith<$Res> implements $NowPlayingCopyWith<$Res> {
-  factory _$NowPlayingCopyWith(
-          _NowPlaying value, $Res Function(_NowPlaying) then) =
-      __$NowPlayingCopyWithImpl<$Res>;
+abstract class _$$_NowPlayingCopyWith<$Res>
+    implements $NowPlayingCopyWith<$Res> {
+  factory _$$_NowPlayingCopyWith(
+          _$_NowPlaying value, $Res Function(_$_NowPlaying) then) =
+      __$$_NowPlayingCopyWithImpl<$Res>;
   @override
   $Res call(
       {Song song,
@@ -130,14 +131,14 @@ abstract class _$NowPlayingCopyWith<$Res> implements $NowPlayingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$NowPlayingCopyWithImpl<$Res> extends _$NowPlayingCopyWithImpl<$Res>
-    implements _$NowPlayingCopyWith<$Res> {
-  __$NowPlayingCopyWithImpl(
-      _NowPlaying _value, $Res Function(_NowPlaying) _then)
-      : super(_value, (v) => _then(v as _NowPlaying));
+class __$$_NowPlayingCopyWithImpl<$Res> extends _$NowPlayingCopyWithImpl<$Res>
+    implements _$$_NowPlayingCopyWith<$Res> {
+  __$$_NowPlayingCopyWithImpl(
+      _$_NowPlaying _value, $Res Function(_$_NowPlaying) _then)
+      : super(_value, (v) => _then(v as _$_NowPlaying));
 
   @override
-  _NowPlaying get _value => super._value as _NowPlaying;
+  _$_NowPlaying get _value => super._value as _$_NowPlaying;
 
   @override
   $Res call({
@@ -146,7 +147,7 @@ class __$NowPlayingCopyWithImpl<$Res> extends _$NowPlayingCopyWithImpl<$Res>
     Object? station = freezed,
     Object? listeners = freezed,
   }) {
-    return _then(_NowPlaying(
+    return _then(_$_NowPlaying(
       song: song == freezed
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
@@ -194,7 +195,7 @@ class _$_NowPlaying implements _NowPlaying {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NowPlaying &&
+            other is _$_NowPlaying &&
             const DeepCollectionEquality().equals(other.song, song) &&
             const DeepCollectionEquality()
                 .equals(other.currentSong, currentSong) &&
@@ -212,8 +213,8 @@ class _$_NowPlaying implements _NowPlaying {
 
   @JsonKey(ignore: true)
   @override
-  _$NowPlayingCopyWith<_NowPlaying> get copyWith =>
-      __$NowPlayingCopyWithImpl<_NowPlaying>(this, _$identity);
+  _$$_NowPlayingCopyWith<_$_NowPlaying> get copyWith =>
+      __$$_NowPlayingCopyWithImpl<_$_NowPlaying>(this, _$identity);
 }
 
 abstract class _NowPlaying implements NowPlaying {
@@ -233,6 +234,6 @@ abstract class _NowPlaying implements NowPlaying {
   RadioListeners get listeners => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NowPlayingCopyWith<_NowPlaying> get copyWith =>
+  _$$_NowPlayingCopyWith<_$_NowPlaying> get copyWith =>
       throw _privateConstructorUsedError;
 }

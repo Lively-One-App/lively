@@ -73,28 +73,28 @@ class _$AzuraApiNowPlayingListenersCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AzuraApiNowPlayingListenersCopyWith<$Res>
+abstract class _$$_AzuraApiNowPlayingListenersCopyWith<$Res>
     implements $AzuraApiNowPlayingListenersCopyWith<$Res> {
-  factory _$AzuraApiNowPlayingListenersCopyWith(
-          _AzuraApiNowPlayingListeners value,
-          $Res Function(_AzuraApiNowPlayingListeners) then) =
-      __$AzuraApiNowPlayingListenersCopyWithImpl<$Res>;
+  factory _$$_AzuraApiNowPlayingListenersCopyWith(
+          _$_AzuraApiNowPlayingListeners value,
+          $Res Function(_$_AzuraApiNowPlayingListeners) then) =
+      __$$_AzuraApiNowPlayingListenersCopyWithImpl<$Res>;
   @override
   $Res call({int total, int unique, int current});
 }
 
 /// @nodoc
-class __$AzuraApiNowPlayingListenersCopyWithImpl<$Res>
+class __$$_AzuraApiNowPlayingListenersCopyWithImpl<$Res>
     extends _$AzuraApiNowPlayingListenersCopyWithImpl<$Res>
-    implements _$AzuraApiNowPlayingListenersCopyWith<$Res> {
-  __$AzuraApiNowPlayingListenersCopyWithImpl(
-      _AzuraApiNowPlayingListeners _value,
-      $Res Function(_AzuraApiNowPlayingListeners) _then)
-      : super(_value, (v) => _then(v as _AzuraApiNowPlayingListeners));
+    implements _$$_AzuraApiNowPlayingListenersCopyWith<$Res> {
+  __$$_AzuraApiNowPlayingListenersCopyWithImpl(
+      _$_AzuraApiNowPlayingListeners _value,
+      $Res Function(_$_AzuraApiNowPlayingListeners) _then)
+      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingListeners));
 
   @override
-  _AzuraApiNowPlayingListeners get _value =>
-      super._value as _AzuraApiNowPlayingListeners;
+  _$_AzuraApiNowPlayingListeners get _value =>
+      super._value as _$_AzuraApiNowPlayingListeners;
 
   @override
   $Res call({
@@ -102,7 +102,7 @@ class __$AzuraApiNowPlayingListenersCopyWithImpl<$Res>
     Object? unique = freezed,
     Object? current = freezed,
   }) {
-    return _then(_AzuraApiNowPlayingListeners(
+    return _then(_$_AzuraApiNowPlayingListeners(
       total: total == freezed
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ class _$_AzuraApiNowPlayingListeners implements _AzuraApiNowPlayingListeners {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AzuraApiNowPlayingListeners &&
+            other is _$_AzuraApiNowPlayingListeners &&
             const DeepCollectionEquality().equals(other.total, total) &&
             const DeepCollectionEquality().equals(other.unique, unique) &&
             const DeepCollectionEquality().equals(other.current, current));
@@ -160,9 +160,9 @@ class _$_AzuraApiNowPlayingListeners implements _AzuraApiNowPlayingListeners {
 
   @JsonKey(ignore: true)
   @override
-  _$AzuraApiNowPlayingListenersCopyWith<_AzuraApiNowPlayingListeners>
-      get copyWith => __$AzuraApiNowPlayingListenersCopyWithImpl<
-          _AzuraApiNowPlayingListeners>(this, _$identity);
+  _$$_AzuraApiNowPlayingListenersCopyWith<_$_AzuraApiNowPlayingListeners>
+      get copyWith => __$$_AzuraApiNowPlayingListenersCopyWithImpl<
+          _$_AzuraApiNowPlayingListeners>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -188,6 +188,6 @@ abstract class _AzuraApiNowPlayingListeners
   int get current => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AzuraApiNowPlayingListenersCopyWith<_AzuraApiNowPlayingListeners>
+  _$$_AzuraApiNowPlayingListenersCopyWith<_$_AzuraApiNowPlayingListeners>
       get copyWith => throw _privateConstructorUsedError;
 }

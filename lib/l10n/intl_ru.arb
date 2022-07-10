@@ -6,8 +6,12 @@
   "subtitleBurgerMenu":"Умоляем, пишите, как нам стать лучше, прямо в Instagram!",
   "instagram":"Instagram",
   "contact":"Связаться через сайт",
+  "searchTalent": "Мы ищем таланты и открыты для любого сотрудничества, связывайтесь!",
   "privacy":"Конфиденциальность",
   "design": "Designed by Emil Lively",
   "appVersion": "Версия приложения 1.0 beta",
-  "likeNotification":"1 лайк, от тебя"
+  "likeNotification":"+ 1 лайк, от тебя",
+  "noInternet":"Lively не умеет работать без интернета",
+  "noInternetReconnect":"Подключитесь и мы продолжим",
+  "noInternetCheck":"Проверяем.."
 }

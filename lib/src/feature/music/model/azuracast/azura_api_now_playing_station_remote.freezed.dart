@@ -108,12 +108,12 @@ class _$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AzuraApiNowPlayingStationRemoteCopyWith<$Res>
+abstract class _$$_AzuraApiNowPlayingStationRemoteCopyWith<$Res>
     implements $AzuraApiNowPlayingStationRemoteCopyWith<$Res> {
-  factory _$AzuraApiNowPlayingStationRemoteCopyWith(
-          _AzuraApiNowPlayingStationRemote value,
-          $Res Function(_AzuraApiNowPlayingStationRemote) then) =
-      __$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>;
+  factory _$$_AzuraApiNowPlayingStationRemoteCopyWith(
+          _$_AzuraApiNowPlayingStationRemote value,
+          $Res Function(_$_AzuraApiNowPlayingStationRemote) then) =
+      __$$_AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>;
   @override
   $Res call(
       {int id,
@@ -128,17 +128,17 @@ abstract class _$AzuraApiNowPlayingStationRemoteCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>
+class __$$_AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>
     extends _$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>
-    implements _$AzuraApiNowPlayingStationRemoteCopyWith<$Res> {
-  __$AzuraApiNowPlayingStationRemoteCopyWithImpl(
-      _AzuraApiNowPlayingStationRemote _value,
-      $Res Function(_AzuraApiNowPlayingStationRemote) _then)
-      : super(_value, (v) => _then(v as _AzuraApiNowPlayingStationRemote));
+    implements _$$_AzuraApiNowPlayingStationRemoteCopyWith<$Res> {
+  __$$_AzuraApiNowPlayingStationRemoteCopyWithImpl(
+      _$_AzuraApiNowPlayingStationRemote _value,
+      $Res Function(_$_AzuraApiNowPlayingStationRemote) _then)
+      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingStationRemote));
 
   @override
-  _AzuraApiNowPlayingStationRemote get _value =>
-      super._value as _AzuraApiNowPlayingStationRemote;
+  _$_AzuraApiNowPlayingStationRemote get _value =>
+      super._value as _$_AzuraApiNowPlayingStationRemote;
 
   @override
   $Res call({
@@ -149,7 +149,7 @@ class __$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>
     Object? format = freezed,
     Object? listeners = freezed,
   }) {
-    return _then(_AzuraApiNowPlayingStationRemote(
+    return _then(_$_AzuraApiNowPlayingStationRemote(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -217,7 +217,7 @@ class _$_AzuraApiNowPlayingStationRemote
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AzuraApiNowPlayingStationRemote &&
+            other is _$_AzuraApiNowPlayingStationRemote &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.url, url) &&
@@ -239,9 +239,10 @@ class _$_AzuraApiNowPlayingStationRemote
 
   @JsonKey(ignore: true)
   @override
-  _$AzuraApiNowPlayingStationRemoteCopyWith<_AzuraApiNowPlayingStationRemote>
-      get copyWith => __$AzuraApiNowPlayingStationRemoteCopyWithImpl<
-          _AzuraApiNowPlayingStationRemote>(this, _$identity);
+  _$$_AzuraApiNowPlayingStationRemoteCopyWith<
+          _$_AzuraApiNowPlayingStationRemote>
+      get copyWith => __$$_AzuraApiNowPlayingStationRemoteCopyWithImpl<
+          _$_AzuraApiNowPlayingStationRemote>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -278,6 +279,7 @@ abstract class _AzuraApiNowPlayingStationRemote
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AzuraApiNowPlayingStationRemoteCopyWith<_AzuraApiNowPlayingStationRemote>
+  _$$_AzuraApiNowPlayingStationRemoteCopyWith<
+          _$_AzuraApiNowPlayingStationRemote>
       get copyWith => throw _privateConstructorUsedError;
 }

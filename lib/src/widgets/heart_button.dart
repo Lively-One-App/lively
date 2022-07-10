@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../lively_icons.dart';
-import '../feature/music/model/firestore/city_data.dart';
 import 'circle_icon_button.dart';
 
 class HeartButton extends StatelessWidget {

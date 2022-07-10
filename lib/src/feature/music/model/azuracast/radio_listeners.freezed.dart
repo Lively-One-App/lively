@@ -66,25 +66,25 @@ class _$RadioListenersCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RadioListenersCopyWith<$Res>
+abstract class _$$_RadioListenersCopyWith<$Res>
     implements $RadioListenersCopyWith<$Res> {
-  factory _$RadioListenersCopyWith(
-          _RadioListeners value, $Res Function(_RadioListeners) then) =
-      __$RadioListenersCopyWithImpl<$Res>;
+  factory _$$_RadioListenersCopyWith(
+          _$_RadioListeners value, $Res Function(_$_RadioListeners) then) =
+      __$$_RadioListenersCopyWithImpl<$Res>;
   @override
   $Res call({int current, int total, int unique});
 }
 
 /// @nodoc
-class __$RadioListenersCopyWithImpl<$Res>
+class __$$_RadioListenersCopyWithImpl<$Res>
     extends _$RadioListenersCopyWithImpl<$Res>
-    implements _$RadioListenersCopyWith<$Res> {
-  __$RadioListenersCopyWithImpl(
-      _RadioListeners _value, $Res Function(_RadioListeners) _then)
-      : super(_value, (v) => _then(v as _RadioListeners));
+    implements _$$_RadioListenersCopyWith<$Res> {
+  __$$_RadioListenersCopyWithImpl(
+      _$_RadioListeners _value, $Res Function(_$_RadioListeners) _then)
+      : super(_value, (v) => _then(v as _$_RadioListeners));
 
   @override
-  _RadioListeners get _value => super._value as _RadioListeners;
+  _$_RadioListeners get _value => super._value as _$_RadioListeners;
 
   @override
   $Res call({
@@ -92,7 +92,7 @@ class __$RadioListenersCopyWithImpl<$Res>
     Object? total = freezed,
     Object? unique = freezed,
   }) {
-    return _then(_RadioListeners(
+    return _then(_$_RadioListeners(
       current: current == freezed
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,7 @@ class _$_RadioListeners implements _RadioListeners {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RadioListeners &&
+            other is _$_RadioListeners &&
             const DeepCollectionEquality().equals(other.current, current) &&
             const DeepCollectionEquality().equals(other.total, total) &&
             const DeepCollectionEquality().equals(other.unique, unique));
@@ -146,8 +146,8 @@ class _$_RadioListeners implements _RadioListeners {
 
   @JsonKey(ignore: true)
   @override
-  _$RadioListenersCopyWith<_RadioListeners> get copyWith =>
-      __$RadioListenersCopyWithImpl<_RadioListeners>(this, _$identity);
+  _$$_RadioListenersCopyWith<_$_RadioListeners> get copyWith =>
+      __$$_RadioListenersCopyWithImpl<_$_RadioListeners>(this, _$identity);
 }
 
 abstract class _RadioListeners implements RadioListeners {
@@ -164,6 +164,6 @@ abstract class _RadioListeners implements RadioListeners {
   int get unique => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RadioListenersCopyWith<_RadioListeners> get copyWith =>
+  _$$_RadioListenersCopyWith<_$_RadioListeners> get copyWith =>
       throw _privateConstructorUsedError;
 }

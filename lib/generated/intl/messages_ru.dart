@@ -34,9 +34,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "inTheStreamOf": MessageLookupByLibrary.simpleMessage("В ПОТОКЕ"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "likeNotification":
-            MessageLookupByLibrary.simpleMessage("1 лайк, от тебя"),
+            MessageLookupByLibrary.simpleMessage("+ 1 лайк, от тебя"),
         "lively": MessageLookupByLibrary.simpleMessage("оживленных"),
+        "noInternet": MessageLookupByLibrary.simpleMessage(
+            "Lively не умеет работать без интернета"),
+        "noInternetCheck": MessageLookupByLibrary.simpleMessage("Проверяем.."),
+        "noInternetReconnect":
+            MessageLookupByLibrary.simpleMessage("Подключитесь и мы продолжим"),
         "privacy": MessageLookupByLibrary.simpleMessage("Конфиденциальность"),
+        "searchTalent": MessageLookupByLibrary.simpleMessage(
+            "Мы ищем таланты и открыты для любого сотрудничества, связывайтесь!"),
         "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(
             "Умоляем, пишите, как нам стать лучше, прямо в Instagram!")
       };

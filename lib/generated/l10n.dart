@@ -120,6 +120,16 @@ class S {
     );
   }
 
+  /// `We are looking for talent and are open to any cooperation, please contact us!`
+  String get searchTalent {
+    return Intl.message(
+      'We are looking for talent and are open to any cooperation, please contact us!',
+      name: 'searchTalent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Privacy Policy`
   String get privacy {
     return Intl.message(
@@ -150,11 +160,41 @@ class S {
     );
   }
 
-  /// `1 like, from you`
+  /// `+ 1 like, from you`
   String get likeNotification {
     return Intl.message(
-      '1 like, from you',
+      '+ 1 like, from you',
       name: 'likeNotification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lively doesn't know how to work without the Internet`
+  String get noInternet {
+    return Intl.message(
+      'Lively doesn`t know how to work without the Internet',
+      name: 'noInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connect and we will continue`
+  String get noInternetReconnect {
+    return Intl.message(
+      'Connect and we will continue',
+      name: 'noInternetReconnect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Checking..`
+  String get noInternetCheck {
+    return Intl.message(
+      'Checking..',
+      name: 'noInternetCheck',
       desc: '',
       args: [],
     );

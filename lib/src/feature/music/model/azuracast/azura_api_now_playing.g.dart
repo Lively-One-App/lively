@@ -44,4 +44,5 @@ const _$cacheFromEnumMap = {
   cacheFrom.hit: 'hit',
   cacheFrom.database: 'database',
   cacheFrom.station: 'station',
+  cacheFrom.event: 'event',
 };

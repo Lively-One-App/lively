@@ -101,9 +101,9 @@ class _$SongCopyWithImpl<$Res> implements $SongCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SongCopyWith<$Res> implements $SongCopyWith<$Res> {
-  factory _$SongCopyWith(_Song value, $Res Function(_Song) then) =
-      __$SongCopyWithImpl<$Res>;
+abstract class _$$_SongCopyWith<$Res> implements $SongCopyWith<$Res> {
+  factory _$$_SongCopyWith(_$_Song value, $Res Function(_$_Song) then) =
+      __$$_SongCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -117,13 +117,13 @@ abstract class _$SongCopyWith<$Res> implements $SongCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SongCopyWithImpl<$Res> extends _$SongCopyWithImpl<$Res>
-    implements _$SongCopyWith<$Res> {
-  __$SongCopyWithImpl(_Song _value, $Res Function(_Song) _then)
-      : super(_value, (v) => _then(v as _Song));
+class __$$_SongCopyWithImpl<$Res> extends _$SongCopyWithImpl<$Res>
+    implements _$$_SongCopyWith<$Res> {
+  __$$_SongCopyWithImpl(_$_Song _value, $Res Function(_$_Song) _then)
+      : super(_value, (v) => _then(v as _$_Song));
 
   @override
-  _Song get _value => super._value as _Song;
+  _$_Song get _value => super._value as _$_Song;
 
   @override
   $Res call({
@@ -136,7 +136,7 @@ class __$SongCopyWithImpl<$Res> extends _$SongCopyWithImpl<$Res>
     Object? lyrics = freezed,
     Object? art = freezed,
   }) {
-    return _then(_Song(
+    return _then(_$_Song(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -212,7 +212,7 @@ class _$_Song implements _Song {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Song &&
+            other is _$_Song &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.text, text) &&
             const DeepCollectionEquality().equals(other.artist, artist) &&
@@ -237,8 +237,8 @@ class _$_Song implements _Song {
 
   @JsonKey(ignore: true)
   @override
-  _$SongCopyWith<_Song> get copyWith =>
-      __$SongCopyWithImpl<_Song>(this, _$identity);
+  _$$_SongCopyWith<_$_Song> get copyWith =>
+      __$$_SongCopyWithImpl<_$_Song>(this, _$identity);
 }
 
 abstract class _Song implements Song {
@@ -270,5 +270,5 @@ abstract class _Song implements Song {
   String get art => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SongCopyWith<_Song> get copyWith => throw _privateConstructorUsedError;
+  _$$_SongCopyWith<_$_Song> get copyWith => throw _privateConstructorUsedError;
 }

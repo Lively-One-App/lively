@@ -1,10 +1,11 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
-import '../../theme.dart';
+import '../../theme/gradient_colors.dart';
 import 'gradient_tween.dart';
 
 class AnimatedBackground extends StatefulWidget {
-  const AnimatedBackground({Key? key}) : super(key: key);
+  AnimatedBackground({Key? key, this.child}) : super(key: key);
+  final Widget? child;
 
   @override
   State<AnimatedBackground> createState() => _AnimatedBackgroundState();
@@ -16,9 +17,6 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
     vsync: this,
     duration: const Duration(milliseconds: 750),
   )..repeat(reverse: true);
-  late final animation = LinearGradientTween(
-      begin: MyThemes.backGroundGradientBegin,
-      end: MyThemes.backGroundGradientEnd);
 
   @override
   void dispose() {
@@ -28,12 +26,17 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
 
   @override
   Widget build(BuildContext context) {
+    final gradientTheme = Theme.of(context).extension<GradientColors>()!;
+    late final animation = LinearGradientTween(
+        begin: gradientTheme.backgroundStart as LinearGradient,
+        end: gradientTheme.backgroundEnd as LinearGradient);
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        return DecoratedBox(
-          decoration:
-              BoxDecoration(gradient: animation.animate(_controller).value),
+        return Container(
+          decoration: BoxDecoration(
+            gradient: animation.animate(_controller).value,
+          ),
         );
       },
     );
