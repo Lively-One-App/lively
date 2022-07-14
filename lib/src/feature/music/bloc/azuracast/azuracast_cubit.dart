@@ -13,19 +13,18 @@ part 'azuracast_cubit.freezed.dart';
 class AzuraCastCubit extends Cubit<AzuraCastState> {
   AzuraCastCubit(final String url)
       : _socket = WebSocketAutoReconnect(Uri.parse(url), delay: 0),
-        super(AzuraCastState.initial()) {
+        super(const AzuraCastState.initial()) {
     _socket.stream
         .timeout(
-      Duration(seconds: 15),
+      const Duration(seconds: 15),
     )
         .map((event) {
       return AzuraApiNowPlaying.fromJson(jsonDecode(event));
     }).listen(
       (event) {
-        print(777777);
         emit(AzuraCastState.getAzuraCast(event));
       },
-      onError: (error) => emit(AzuraCastState.error()),
+      onError: (error) => emit(const AzuraCastState.error()),
     );
   }
 

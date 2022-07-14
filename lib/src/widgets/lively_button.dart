@@ -19,12 +19,11 @@ class LivelyButton extends StatelessWidget {
   final double radius;
   final void Function()? onTap;
   final AnimationController controller;
-  final LinearGradient beginGradient;
-  final LinearGradient endGradient;
+  final Gradient beginGradient;
+  final Gradient endGradient;
 
   late final animation =
-      LinearGradientTween(begin: beginGradient, end: endGradient)
-          .animate(controller);
+      GradientTween(begin: beginGradient, end: endGradient).animate(controller);
   late final rotateLivelyIcon =
       Tween(begin: 0.0, end: -0.21).animate(controller);
 
@@ -42,7 +41,6 @@ class LivelyButton extends StatelessWidget {
             builder: (context, _) => CustomPaint(
                 painter: state.whenOrNull(
                   initial: () {
-                    print(width);
                     return _LivelyButtonPainter(
                         strokeGradient: beginGradient,
                         width: width,
@@ -72,8 +70,7 @@ class LivelyButton extends StatelessWidget {
                     radius: radius,
                     child: state.whenOrNull(
                         initial: () => Padding(
-                              padding: EdgeInsets.only(
-                                  right: radius * 0.01, top: radius * 0.1),
+                              padding: EdgeInsets.only(top: radius * 0.04),
                               child: Text(
                                 'Lively',
                                 style:
@@ -81,8 +78,7 @@ class LivelyButton extends StatelessWidget {
                               ),
                             ),
                         beforePlaying: () => Padding(
-                              padding: EdgeInsets.only(
-                                  right: radius * 0.01, top: radius * 0.1),
+                              padding: EdgeInsets.only(top: radius * 0.04),
                               child: Text(
                                 'Lively',
                                 style: textTheme.headline1?.copyWith(
@@ -90,8 +86,7 @@ class LivelyButton extends StatelessWidget {
                               ),
                             ),
                         loaded: () => Padding(
-                              padding: EdgeInsets.only(
-                                  right: radius * 0.01, top: radius * 0.1),
+                              padding: EdgeInsets.only(top: radius * 0.04),
                               child: LivelyIcon(
                                 rotate: rotateLivelyIcon,
                                 controller: controller,
@@ -99,8 +94,7 @@ class LivelyButton extends StatelessWidget {
                               ),
                             ),
                         beforeStopping: () => Padding(
-                              padding: EdgeInsets.only(
-                                  right: radius * 0.01, top: radius * 0.1),
+                              padding: EdgeInsets.only(top: radius * 0.04),
                               child: LivelyIcon(
                                 controller: controller,
                                 rotate: rotateLivelyIcon,
@@ -131,10 +125,11 @@ class _LivelyButtonPainter extends CustomPainter {
     final paintFrame = Paint()
       ..strokeWidth = 3
       ..shader = strokeGradient!.createShader(Rect.fromLTWH(
-          (-size.width * 1.66 + size.width) / 2,
-          0,
-          size.width * 1.66,
-          size.width))
+        (-width * 1.2 + size.width) / 2,
+        0,
+        width * 1.2,
+        size.height,
+      ))
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
@@ -144,18 +139,19 @@ class _LivelyButtonPainter extends CustomPainter {
     if (backgroundGradient != null) {
       paintBackground
         ..shader = backgroundGradient!.createShader(Rect.fromLTWH(
-            (-size.width * 1.66 + size.width) / 2,
-            0,
-            size.width * 1.66,
-            size.width));
+          (-width * 1.2 + size.width) / 2,
+          0,
+          width * 1.2,
+          size.height,
+        ));
     } else if (backgroundColor != null) {
       paintBackground..color = backgroundColor!;
     }
 
     final paintShadow = Paint()
-      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 3)
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3)
       // ..maskFilter = MaskFilter.blur(BlurStyle.solid, 0)
-      ..color = Color(0xFF474747).withOpacity(0.59)
+      ..color = const Color(0xFF474747).withOpacity(0.59)
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
@@ -164,35 +160,35 @@ class _LivelyButtonPainter extends CustomPainter {
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.height / 2, size.width / 2),
-          height: size.height,
-          width: size.width,
+          height: size.height - size.height * 0.1,
+          width: size.width - size.width * 0.1,
         ),
         math.pi + math.pi / 23,
-        math.pi - math.pi / 12,
+        math.pi - math.pi / 11,
       )
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.height / 2, size.width / 2),
-          height: size.height,
-          width: size.width,
+          height: size.height - size.height * 0.1,
+          width: size.width - size.width * 0.1,
         ),
-        math.pi - math.pi / 23,
-        -math.pi + math.pi / 12,
+        math.pi - math.pi / 22,
+        -math.pi + math.pi / 11,
       )
       ..addArc(
         Rect.fromCenter(
-          center: Offset(0, size.width / 2),
+          center: Offset(size.width * 0.1 / 2, size.width / 2),
           height: size.height / 8,
-          width: width / 2 * 1.66,
+          width: width * 1.3,
         ),
         math.pi / 2,
         math.pi,
       )
       ..addArc(
         Rect.fromCenter(
-          center: Offset(size.width, size.width / 2),
+          center: Offset(size.width - size.width * 0.1 / 2, size.width / 2),
           height: size.height / 8,
-          width: width / 2 * 1.66,
+          width: width * 1.3,
         ),
         -math.pi / 2,
         math.pi,
@@ -201,35 +197,35 @@ class _LivelyButtonPainter extends CustomPainter {
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.height / 2, size.width / 2),
-          height: size.height - 7,
-          width: size.width - 7,
+          height: size.height - size.height * 0.1 - 7,
+          width: size.width - size.width * 0.1 - 7,
         ),
         math.pi + math.pi / 23,
-        math.pi - math.pi / 12,
+        math.pi - math.pi / 11,
       )
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.height / 2, size.width / 2),
-          height: size.height - 7,
-          width: size.width - 7,
+          height: size.height - size.height * 0.1 - 7,
+          width: size.width - size.width * 0.1 - 7,
         ),
         math.pi - math.pi / 23,
-        -math.pi + math.pi / 12,
+        -math.pi + math.pi / 11,
       )
       ..addArc(
         Rect.fromCenter(
-          center: Offset(0, size.width / 2),
+          center: Offset(size.width * 0.1 / 2, size.width / 2),
           height: size.height / 8 - 7,
-          width: width / 2 * 1.66 - 7,
+          width: width * 1.3 - 7,
         ),
         math.pi / 2,
         math.pi,
       )
       ..addArc(
         Rect.fromCenter(
-          center: Offset(size.width, size.width / 2),
+          center: Offset(size.width - size.width * 0.1 / 2, size.width / 2),
           height: size.height / 8 - 7,
-          width: width / 2 * 1.66 - 7,
+          width: width * 1.3 - 7,
         ),
         -math.pi / 2,
         math.pi,
@@ -238,32 +234,29 @@ class _LivelyButtonPainter extends CustomPainter {
     final pathBackground = Path()
       ..addOval(Rect.fromCenter(
         center: Offset(size.height / 2, size.width / 2),
-        height: size.height - 3,
-        width: size.width - 3,
+        height: size.height - size.height * 0.1 - 3,
+        width: size.width - size.width * 0.1 - 3,
       ))
       ..addArc(
         Rect.fromCenter(
-          center: Offset(3, size.width / 2),
+          center: Offset(size.width * 0.1 / 2 + 3, size.width / 2),
           height: size.height / 8,
-          width: width / 2 * 1.66,
+          width: width * 1.3,
         ),
         math.pi / 2,
         math.pi,
       )
       ..addArc(
         Rect.fromCenter(
-          center: Offset(size.width - 3, size.width / 2),
+          center: Offset(size.width - size.width * 0.1 / 2 - 3, size.width / 2),
           height: size.height / 8,
-          width: width / 2 * 1.66,
+          width: width * 1.3,
         ),
         -math.pi / 2,
         math.pi,
       );
 
-    canvas
-      ..scale(0.9)
-      ..translate(size.width * 0.05, size.height * 0.1)
-      ..drawPath(pathBackground, paintBackground);
+    canvas..drawPath(pathBackground, paintBackground);
     canvas..drawPath(pathShadow, paintShadow);
     canvas..drawPath(pathFrame, paintFrame);
   }

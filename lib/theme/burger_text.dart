@@ -20,6 +20,7 @@ class BurgerText extends ThemeExtension<BurgerText> {
     if (other is! BurgerText) {
       return this;
     }
+    
     return BurgerText(
       textTheme: textTheme,
     );

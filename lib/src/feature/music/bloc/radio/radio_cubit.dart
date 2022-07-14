@@ -4,6 +4,7 @@ import 'package:audio_service/audio_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:l/l.dart';
 
 import '../../logic/my_audioplayer_handler.dart';
 import '../azuracast/azuracast_cubit.dart';
@@ -17,7 +18,7 @@ class RadioCubit extends Cubit<RadioState> {
     required MyAudioPlayerHandler myAudioHandler,
   })  : _myAudioHandler = myAudioHandler,
         _azuraCastCubit = azureCubit,
-        super(RadioState.initial()) {
+        super(const RadioState.initial()) {
     _listenerUrlAzuraCastCubit = _azuraCastCubit.stream
         .distinct(
       (previous, next) =>
@@ -74,11 +75,19 @@ class RadioCubit extends Cubit<RadioState> {
         .skip(1)
         .listen((event) {
       if (event[1] && event[0] == AudioProcessingState.ready) {
-        emit(RadioState.loaded());
+        emit(const RadioState.loaded());
       } else if (!event[1]) {
-        emit(RadioState.initial());
+        emit(const RadioState.initial());
       } else {
-        emit(RadioState.beforePlaying());
+        emit(const RadioState.beforePlaying());
+      }
+    }, onError: (e, stackTrace) {
+      if (e is PlayerException) {
+        l.e('Error code: ${e.code}');
+        l.e('Error message: ${e.message}');
+        emit(const RadioState.initial());
+      } else {
+        l.e('An error occurred: $e');
       }
     });
   }
@@ -89,15 +98,24 @@ class RadioCubit extends Cubit<RadioState> {
   late final StreamSubscription<AzuraCastState> _listenerMediaItem;
 
   void playAndStop() async {
-    print(4444);
     _azuraCastCubit.state.mapOrNull(
       getAzuraCast: (value) {
-        if (_myAudioHandler.playbackState.value.playing) {
-          emit(RadioState.beforeStopping());
-          Future.delayed(Duration(milliseconds: 500))
-              .then((value) => _myAudioHandler.stop());
-        } else {
-          _myAudioHandler.play();
+        try {
+          if (_myAudioHandler.playbackState.value.playing) {
+            emit(const RadioState.beforeStopping());
+            Future.delayed(const Duration(milliseconds: 500))
+                .then((value) => _myAudioHandler.stop());
+          } else {
+            _myAudioHandler.play();
+          }
+        } on PlayerException catch (e) {
+          l.e(e);
+          rethrow;
+        } on PlayerInterruptedException catch (e) {
+          l.e(e);
+        } catch (e) {
+          l.e('all');
+          l.e(e);
         }
       },
     );
@@ -107,6 +125,7 @@ class RadioCubit extends Cubit<RadioState> {
   Future<void> close() {
     _listenerUrlAzuraCastCubit.cancel();
     _listenerMediaItem.cancel();
+
     return super.close();
   }
 }

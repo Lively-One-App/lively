@@ -1,50 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'gradient_colors.dart';
+import 'colors_for_gradient.dart';
 import 'burger_text.dart';
 
 abstract class MyThemes {
   static const _accent = const Color(0xFFF64B4B);
   static final Iterable<ThemeExtension<dynamic>>? _extension = [
-    GradientColors(
-      backgroundLivelyButtonStart: LinearGradient(
-        colors: const [
-          Color(0xFFFFA0B7),
-          Color(0xFF4DEBCE),
-          Color(0xFFCCF45A),
-        ],
-        stops: [0, 0.42, 1],
-      ),
-      backgroundLivelyButtonEnd: LinearGradient(
-        colors: const [
-          Color(0xFFCCF45A),
-          Color(0xFF4DEBCE),
-          Color(0xFFFFA0B7),
-        ],
-        stops: [0, 0.42, 1],
-      ),
-      backgroundStart: LinearGradient(
-          begin: Alignment.bottomLeft,
-          end: Alignment.topRight,
-          colors: const [
-            Color(0x14FB9EB5),
-            Color(0x144EEBCE),
-            Color(0x14BDE253),
-          ]),
-      backgroundEnd: LinearGradient(
-          begin: Alignment.bottomLeft,
-          end: Alignment.topRight,
-          colors: const [
-            Color(0x14BDE253),
-            Color(0x144EEBCE),
-            Color(0x14FB9EB5),
-          ]),
+    const ColorsForGradient(
+      btnColor1: Color(0xFFFFA0B7),
+      btnColor2: Color(0xFF4DEBCE),
+      btnColor3: Color(0xFFCCF45A),
+      bgColor1: Color(0x29FB9EB5),
+      bgColor2: Color(0x294EEBCE),
+      bgColor3: Color(0x29BDE253),
     ),
     BurgerText(
         textTheme: _textTheme.copyWith(
       headline1: const TextStyle(
-        letterSpacing: 0.04,
+        letterSpacing: 1.2,
         fontSize: 30,
         fontWeight: _extraBold,
         color: _accent,
@@ -56,13 +30,14 @@ abstract class MyThemes {
       subtitle2: const TextStyle(
           fontSize: 15,
           fontWeight: _regular,
-          letterSpacing: 0.02,
+          letterSpacing: 0.36,
           color: Color(0xFF646464)),
       bodyText1:
           const TextStyle(fontSize: 19, fontWeight: _regular, letterSpacing: 1),
     ))
   ];
   static const _appBarTheme = const AppBarTheme(
+    toolbarHeight: 70,
     systemOverlayStyle:
         const SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
     iconTheme: _iconTheme,
@@ -70,7 +45,7 @@ abstract class MyThemes {
     backgroundColor: Colors.transparent,
   );
   static const _iconTheme =
-      IconThemeData(color: const Color(0xFF696969), size: 28);
+      IconThemeData(color: const Color(0xFF696969), size: 32);
   static const _listTileThemeData = const ListTileThemeData(
     iconColor: const Color(0xFFD6D6D6),
     tileColor: const Color(0xFFFFFFFF),
@@ -95,6 +70,7 @@ abstract class MyThemes {
 
   static ThemeData get darkTheme {
     const backgroundColor = const Color(0xFF363636);
+
     return lightTheme.copyWith(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: backgroundColor,
@@ -103,7 +79,7 @@ abstract class MyThemes {
         appBarTheme: _appBarTheme.copyWith(
           systemOverlayStyle:
               const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
-          iconTheme: _iconTheme.copyWith(color: Color(0xFFA9A9A9)),
+          iconTheme: _iconTheme.copyWith(color: const Color(0xFFA9A9A9)),
         ),
         listTileTheme: _listTileThemeData.copyWith(tileColor: backgroundColor));
   }
@@ -112,13 +88,19 @@ abstract class MyThemes {
   static const _extraBold = FontWeight.w800;
   static const TextTheme _textTheme = TextTheme(
     headline1: const TextStyle(
+      letterSpacing: 0.76,
       fontSize: 38,
       fontWeight: _extraBold,
       color: _accent,
     ),
-    subtitle1: const TextStyle(fontSize: 14, fontWeight: _extraBold),
-    bodyText1: const TextStyle(fontSize: 18, fontWeight: _extraBold),
+    subtitle1:
+        const TextStyle(fontSize: 15, letterSpacing: 1, fontWeight: _extraBold),
+    bodyText1: const TextStyle(
+        fontSize: 18, letterSpacing: 3.24, fontWeight: _extraBold),
     caption: const TextStyle(
-        fontSize: 24, fontWeight: _extraBold, color: const Color(0xFFFFFFFF)),
+        fontSize: 24,
+        fontWeight: _extraBold,
+        letterSpacing: -0.005,
+        color: const Color(0xFFFFFFFF)),
   );
 }

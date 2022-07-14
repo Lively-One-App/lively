@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-class LinearGradientTween extends Tween<LinearGradient> {
-  /// Provide a begin and end Gradient. To fade between.
-  LinearGradientTween({
-    required LinearGradient begin,
-    required LinearGradient end,
+class GradientTween extends Tween<Gradient> {
+  GradientTween({
+    required Gradient begin,
+    required Gradient end,
   }) : super(begin: begin, end: end);
 
   @override
-  LinearGradient lerp(double t) => LinearGradient.lerp(begin, end, t)!;
+  Gradient lerp(double t) => Gradient.lerp(begin, end, t)!;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../generated/l10n.dart';
 import '../../lively_icons.dart';
 import 'circle_icon_button.dart';
 
@@ -28,7 +29,8 @@ class ResetAnimatedIcon extends StatelessWidget {
                   size: 19,
                   color: Theme.of(context).appBarTheme.iconTheme?.color,
                 ),
-                Text('5 сек')
+                const SizedBox(height: 5),
+                Text(S.of(context).resetTime)
               ],
             ),
           ),

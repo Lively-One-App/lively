@@ -16,7 +16,7 @@ class LikesCubit extends Cubit<LikesState> {
     required final OnlineStoreImpl store,
   })  : _store = store,
         _musicCubit = musicCubit,
-        super(_Initial()) {
+        super(const _Initial()) {
     _musicCubitStream = _musicCubit.stream.listen((state) {
       state.whenOrNull(
         loaded: () {
@@ -29,7 +29,7 @@ class LikesCubit extends Cubit<LikesState> {
         initial: () {
           _listenerCityData
               .cancel()
-              .whenComplete(() => emit(LikesState.initial()));
+              .whenComplete(() => emit(const LikesState.initial()));
         },
       );
     });
@@ -48,6 +48,7 @@ class LikesCubit extends Cubit<LikesState> {
     _musicCubit.close();
     _musicCubitStream.cancel();
     _listenerCityData.cancel();
+
     return super.close();
   }
 }

@@ -1,17 +1,23 @@
 {
   "lively": "lively",
   "inTheStreamOf": "IN THE STREAM OF",
+  "resetTime":"5 SEC",
   "changeTheGame":"CHANGE THE GAME",
   "headlineBurgerMenu":"WE STRIVE TO DEVELOP!",
   "subtitleBurgerMenu":"Please write how we can become better, right on Instagram!",
   "instagram":"Instagram",
+  "telegram": "Telegram",
   "contact":"Contact via the website",
   "searchTalent": "We are looking for talent and are open to any cooperation, please contact us!",
   "privacy":"Privacy Policy",
   "design": "Designed by Emil Lively",
   "appVersion": "App Version 1.0 beta",
- "likeNotification":"+ 1 like, from you",
+ "likeNotification":"+ 1 LIKE, FROM YOU",
  "noInternet":"Lively doesn`t know how to work without the Internet",
  "noInternetReconnect":"Connect and we will continue",
- "noInternetCheck":"Checking.."
+ "noInternetCheck":"Checking..",
+ "onBoardingScreen1_1":"Добро пожаловать в Lively",
+ "onBoardingScreen1_2":" в единый музыкальный поток Москвы!",
+ "onBoardingScreen2_1":"Слушайте музыку, оживляйтесь",
+  "onBoardingScreen2_2":" и оживляйте других с помощью простого жеста «два-пальца»."
 }

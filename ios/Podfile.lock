@@ -663,6 +663,8 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (~> 2.1)
   - Flutter (1.0.0)
+  - flutter_native_splash (0.0.1):
+    - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -745,9 +747,15 @@ PODS:
   - path_provider_ios (0.0.1):
     - Flutter
   - PromisesObjC (2.1.1)
+  - shared_preferences_ios (0.0.1):
+    - Flutter
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
+  - url_launcher_ios (0.0.1):
+    - Flutter
+  - video_player_avfoundation (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - audio_service (from `.symlinks/plugins/audio_service/ios`)
@@ -757,9 +765,13 @@ DEPENDENCIES:
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - FirebaseFirestore
   - Flutter (from `Flutter`)
+  - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
+  - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -795,12 +807,20 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_crashlytics/ios"
   Flutter:
     :path: Flutter
+  flutter_native_splash:
+    :path: ".symlinks/plugins/flutter_native_splash/ios"
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
+  shared_preferences_ios:
+    :path: ".symlinks/plugins/shared_preferences_ios/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
+  video_player_avfoundation:
+    :path: ".symlinks/plugins/video_player_avfoundation/ios"
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -818,6 +838,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: de27d96de10596ebc114adf25c6aa7d36dd91f2f
   FirebaseInstallations: 21186f0ca7849f90f4a3219fa31a5eca2e30f113
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GoogleDataTransport: 5fffe35792f8b96ec8d6775f5eccd83c998d5a3b
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
@@ -829,7 +850,10 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
+  video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff
 
 PODFILE CHECKSUM: 88dc8e53c1398d89937510af0720be8a75bca768
 

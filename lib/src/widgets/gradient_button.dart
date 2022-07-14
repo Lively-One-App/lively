@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
 
+import 'animated_background.dart';
+
 class GradientButton extends StatelessWidget {
   const GradientButton({
     Key? key,
+    this.onPressed,
+    required this.beginGradient,
+    required this.endGradient,
     required this.borderRadius,
     required this.child,
     required this.stroukeWidth,
     required this.background,
-    this.onPressed,
-    this.gradient,
   }) : super(key: key);
   final double borderRadius;
   final Color background;
   final void Function()? onPressed;
   final Widget child;
-  final Gradient? gradient;
+  final Gradient beginGradient;
+  final Gradient endGradient;
   final double stroukeWidth;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Container(
+      child: AnimatedBackground(
+        beginGradient: beginGradient,
+        endGradient: endGradient,
         padding: EdgeInsets.all(stroukeWidth),
-        decoration: BoxDecoration(
-            gradient: gradient,
-            borderRadius: BorderRadius.all(Radius.circular(borderRadius))),
+        borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
         child: DecoratedBox(
           decoration: BoxDecoration(
               color: background,

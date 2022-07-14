@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `5 SEC`
+  String get resetTime {
+    return Intl.message(
+      '5 SEC',
+      name: 'resetTime',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `CHANGE THE GAME`
   String get changeTheGame {
     return Intl.message(
@@ -105,6 +115,16 @@ class S {
     return Intl.message(
       'Instagram',
       name: 'instagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Telegram`
+  String get telegram {
+    return Intl.message(
+      'Telegram',
+      name: 'telegram',
       desc: '',
       args: [],
     );
@@ -160,10 +180,10 @@ class S {
     );
   }
 
-  /// `+ 1 like, from you`
+  /// `+ 1 LIKE, FROM YOU`
   String get likeNotification {
     return Intl.message(
-      '+ 1 like, from you',
+      '+ 1 LIKE, FROM YOU',
       name: 'likeNotification',
       desc: '',
       args: [],
@@ -195,6 +215,46 @@ class S {
     return Intl.message(
       'Checking..',
       name: 'noInternetCheck',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Добро пожаловать в Lively`
+  String get onBoardingScreen1_1 {
+    return Intl.message(
+      'Добро пожаловать в Lively',
+      name: 'onBoardingScreen1_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` в единый музыкальный поток Москвы!`
+  String get onBoardingScreen1_2 {
+    return Intl.message(
+      ' в единый музыкальный поток Москвы!',
+      name: 'onBoardingScreen1_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Слушайте музыку, оживляйтесь`
+  String get onBoardingScreen2_1 {
+    return Intl.message(
+      'Слушайте музыку, оживляйтесь',
+      name: 'onBoardingScreen2_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` и оживляйте других с помощью простого жеста «два-пальца».`
+  String get onBoardingScreen2_2 {
+    return Intl.message(
+      ' и оживляйте других с помощью простого жеста «два-пальца».',
+      name: 'onBoardingScreen2_2',
       desc: '',
       args: [],
     );

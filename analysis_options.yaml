@@ -5,26 +5,34 @@
 # IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
 # invoked from the command line by running `flutter analyze`.
 
+linter: 
+  rules:
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+
 dart_code_metrics:
-  anti-patterns:
-    - long-method
-    - long-parameter-list
+
   metrics:
     cyclomatic-complexity: 20
     maximum-nesting-level: 5
     number-of-parameters: 4
-    source-lines-of-code: 50
+    source-lines-of-code: 60
   metrics-exclude:
     - test/**
-  rules:
+
+  rules:   
     - newline-before-return
     - no-boolean-literal-compare
     - no-empty-block
-    - prefer-trailing-comma
     - prefer-conditional-expressions
     - no-equal-then-else
     - always-remove-listener
     - avoid-returning-widgets
-analyzer:    
-    errors:
-      invalid_annotation_target: ignore
+
+analyzer:
+  plugins:
+    - dart_code_metrics    
+  errors:
+    invalid_annotation_target: ignore

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../feature/music/bloc/radio/radio_cubit.dart';
 
 class LivelyIcon extends StatelessWidget {
-  LivelyIcon(
+  const LivelyIcon(
       {Key? key,
       required this.size,
       required this.controller,
@@ -17,6 +17,7 @@ class LivelyIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return BlocBuilder<RadioCubit, RadioState>(
       builder: (context, state) {
         return AnimatedBuilder(
@@ -29,6 +30,7 @@ class LivelyIcon extends StatelessWidget {
                   color: state.whenOrNull(
                     beforeStopping: (() {
                       controller.reverse();
+
                       return theme.scaffoldBackgroundColor;
                     }),
                     loaded: () {

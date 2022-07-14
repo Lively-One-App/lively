@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme/burger_text.dart';
 import '../../../widgets/circle_icon_button.dart';
 
+import '../bloc/azuracast/azuracast_cubit.dart';
 import '/lively_icons.dart';
 
 class BurgerMenu extends StatelessWidget {
@@ -16,10 +19,11 @@ class BurgerMenu extends StatelessWidget {
     final double _height = MediaQuery.of(context).size.height;
     final S _localizations = S.of(context);
     final _textTheme = Theme.of(context).extension<BurgerText>()?.textTheme;
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
-        minimum: EdgeInsets.only(top: _height * 0.06),
+        minimum: EdgeInsets.only(top: _height * 0.07),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -29,13 +33,13 @@ class BurgerMenu extends StatelessWidget {
                 AppBar(
                   leadingWidth: 30,
                   leading: CircleIconButton(
-                    child: Icon(LivelyIcons.burger_menu),
+                    child: const Icon(LivelyIcons.burger_menu),
                     onTap: () => Navigator.of(context).pop(),
                   ),
-                  actions: [
+                  actions: const [
                     CircleIconButton(
                       child: Icon(LivelyIcons.question),
-                      onTap: () {},
+                      onTap: null,
                     )
                   ],
                 ),
@@ -53,26 +57,65 @@ class BurgerMenu extends StatelessWidget {
             height: _height * 0.02,
           ),
           ListTile(
-            leading: Icon(LivelyIcons.instagram),
+            leading: const Icon(LivelyIcons.instagram),
             title: Text(
               '${_localizations.instagram}',
               style: _textTheme?.bodyText1,
             ),
-            trailing: Icon(Icons.keyboard_arrow_right_outlined),
-            onTap: () {},
+            trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+            onTap: () async {
+              final url = Uri.parse('https://www.instagram.com/livelyoneapp/');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
           ),
-          Divider(
+          const Divider(
             height: 1,
             indent: 70,
           ),
           ListTile(
-            leading: Icon(LivelyIcons.contact),
+            leading: const Icon(
+              Icons.telegram,
+            ),
+            title: Text(
+              '${_localizations.telegram}',
+              style: _textTheme?.bodyText1,
+            ),
+            trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+            onTap: () async {
+              final url =
+                  Uri(scheme: 'https', host: 't.me', path: 'livelyoneapp/');
+              print(url);
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url, mode: LaunchMode.externalApplication);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
+          ),
+          const Divider(
+            height: 1,
+            indent: 70,
+          ),
+          ListTile(
+            leading: const Icon(LivelyIcons.contact),
             title: Text(
               _localizations.contact,
               style: _textTheme?.bodyText1,
             ),
-            trailing: Icon(Icons.keyboard_arrow_right_rounded),
-            onTap: () {},
+            trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+            onTap: () async {
+              final url = Uri.parse(
+                  'https://livelyoneapp.ru/become-part-of-the-project/');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url, mode: LaunchMode.externalApplication);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
           ),
           SizedBox(
             height: _height * 0.01,
@@ -88,33 +131,44 @@ class BurgerMenu extends StatelessWidget {
             height: _height * 0.03,
           ),
           ListTile(
-            leading: Icon(LivelyIcons.privacy),
+            leading: const Icon(LivelyIcons.privacy),
             title: Text(
               _localizations.privacy,
               style: _textTheme?.bodyText1,
             ),
-            trailing: Icon(Icons.keyboard_arrow_right_rounded),
-            onTap: () {},
+            trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+            onTap: () async {
+              final url = Uri.parse('https://livelyoneapp.ru/private-police/');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
           ),
           SizedBox(
             height: _height * 0.01,
           ),
           Padding(
-              padding: EdgeInsets.only(left: 28),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 '${_localizations.appVersion}',
-                style: _textTheme?.subtitle2,
+                style: _textTheme?.subtitle1?.copyWith(fontSize: 15),
               )),
-          SizedBox(
-            height: _height * 0.01,
+          // SizedBox(
+          //   height: _height * 0.01,
+          // ),
+          BlocBuilder<AzuraCastCubit, AzuraCastState>(
+            builder: (context, state) {
+              return Padding(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: Text(
+                    '${_localizations.design}',
+                    style: _textTheme?.subtitle2
+                        ?.copyWith(color: const Color(0xFF969696)),
+                  ));
+            },
           ),
-          Padding(
-              padding: EdgeInsets.only(left: 28),
-              child: Text(
-                '${_localizations.design}',
-                style:
-                    _textTheme?.subtitle2?.copyWith(color: Color(0xFF969696)),
-              )),
         ]),
       ),
     );

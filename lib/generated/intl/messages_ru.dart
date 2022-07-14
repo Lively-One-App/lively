@@ -34,17 +34,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "inTheStreamOf": MessageLookupByLibrary.simpleMessage("В ПОТОКЕ"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "likeNotification":
-            MessageLookupByLibrary.simpleMessage("+ 1 лайк, от тебя"),
+            MessageLookupByLibrary.simpleMessage("+ 1 ЛАЙК, ОТ ТЕБЯ"),
         "lively": MessageLookupByLibrary.simpleMessage("оживленных"),
         "noInternet": MessageLookupByLibrary.simpleMessage(
             "Lively не умеет работать без интернета"),
         "noInternetCheck": MessageLookupByLibrary.simpleMessage("Проверяем.."),
         "noInternetReconnect":
             MessageLookupByLibrary.simpleMessage("Подключитесь и мы продолжим"),
+        "onBoardingScreen1_1":
+            MessageLookupByLibrary.simpleMessage("Добро пожаловать в Lively"),
+        "onBoardingScreen1_2": MessageLookupByLibrary.simpleMessage(
+            " в единый музыкальный поток Москвы!"),
+        "onBoardingScreen2_1": MessageLookupByLibrary.simpleMessage(
+            "Слушайте музыку, оживляйтесь"),
+        "onBoardingScreen2_2": MessageLookupByLibrary.simpleMessage(
+            " и оживляйте других с помощью простого жеста «два-пальца»."),
         "privacy": MessageLookupByLibrary.simpleMessage("Конфиденциальность"),
+        "resetTime": MessageLookupByLibrary.simpleMessage("5 СЕК"),
         "searchTalent": MessageLookupByLibrary.simpleMessage(
             "Мы ищем таланты и открыты для любого сотрудничества, связывайтесь!"),
         "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(
-            "Умоляем, пишите, как нам стать лучше, прямо в Instagram!")
+            "Умоляем, пишите, как нам стать лучше, прямо в Instagram!"),
+        "telegram": MessageLookupByLibrary.simpleMessage("Telegram")
       };
 }
