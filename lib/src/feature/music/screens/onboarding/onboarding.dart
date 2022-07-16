@@ -1,5 +1,5 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:introduction_screen/introduction_screen.dart';
 
@@ -14,56 +14,62 @@ class OnBoarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final theme = Theme.of(context);
     final localizations = S.of(context);
     final textTheme = theme.extension<BurgerText>()?.textTheme;
 
-    return IntroductionScreen(
-      globalBackgroundColor: theme.scaffoldBackgroundColor,
-      rawPages: [
-        TextScreen(
-          firstPart: localizations.onBoardingScreen1_1,
-          secondPart: localizations.onBoardingScreen1_2,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle(
+          systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,
         ),
-        TextScreen(
-          firstPart: localizations.onBoardingScreen2_1,
-          secondPart: localizations.onBoardingScreen2_2,
-        ),
-        const AssetVideoPlayer(),
-        const SizedBox(),
-      ],
-      showNextButton: false,
-      showDoneButton: false,
-      onChange: (pages) {
-        if (pages == 3) {
-          Navigator.of(context).pushNamedAndRemoveUntil('/home', (_) => false);
-        }
-        ;
-      },
-      //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
-      showSkipButton: false,
-      skip: const Text('Skip'),
-      // done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
-      curve: Curves.fastLinearToSlowEaseIn,
-      baseBtnStyle: TextButton.styleFrom(
-          shadowColor: Colors.transparent,
-          textStyle: textTheme?.subtitle2
-              ?.copyWith(fontSize: 20, fontWeight: FontWeight.bold),
-          enableFeedback: false,
-          primary: theme.scaffoldBackgroundColor,
-          padding: const EdgeInsets.only(bottom: 3)),
-      controlsMargin: const EdgeInsets.all(16),
-      controlsPadding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-      dotsDecorator: DotsDecorator(
-        size: const Size(10.0, 10.0),
-        activeColor: theme.scaffoldBackgroundColor,
-        color: theme.appBarTheme.iconTheme!.color!,
-        activeSize: const Size(22.0, 10.0),
-        activeShape: const RoundedRectangleBorder(
-          borderRadius: const BorderRadius.all(const Radius.circular(25.0)),
-        ),
-      ),
-    );
+        child: IntroductionScreen(
+          globalBackgroundColor: theme.scaffoldBackgroundColor,
+          rawPages: [
+            TextScreen(
+              firstPart: localizations.onBoardingScreen1_1,
+              secondPart: localizations.onBoardingScreen1_2,
+            ),
+            TextScreen(
+              firstPart: localizations.onBoardingScreen2_1,
+              secondPart: localizations.onBoardingScreen2_2,
+            ),
+            const AssetVideoPlayer(),
+            const SizedBox(),
+          ],
+          showNextButton: false,
+          showDoneButton: false,
+          onChange: (pages) {
+            if (pages == 3) {
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/home', (_) => false);
+            }
+            ;
+          },
+          //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
+          showSkipButton: false,
+          skip: const Text('Skip'),
+          // done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+          curve: Curves.fastLinearToSlowEaseIn,
+          baseBtnStyle: TextButton.styleFrom(
+              shadowColor: Colors.transparent,
+              textStyle: textTheme?.subtitle2
+                  ?.copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+              enableFeedback: false,
+              primary: theme.scaffoldBackgroundColor,
+              padding: const EdgeInsets.only(bottom: 3)),
+          controlsMargin: const EdgeInsets.all(16),
+          controlsPadding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+          dotsDecorator: DotsDecorator(
+            size: const Size(10.0, 10.0),
+            activeColor: theme.scaffoldBackgroundColor,
+            color: theme.appBarTheme.iconTheme!.color!,
+            activeSize: const Size(22.0, 10.0),
+            activeShape: const RoundedRectangleBorder(
+              borderRadius: const BorderRadius.all(const Radius.circular(25.0)),
+            ),
+          ),
+        ));
   }
 }
 
@@ -105,47 +111,21 @@ class TextScreen extends StatelessWidget {
             gradientColors.btnColor1!,
           ]),
     );
-    final isSecondPart = ValueNotifier<bool>(false);
 
     return Stack(
+      alignment: Alignment.center,
       children: [
         backGround,
-        DefaultTextStyle(
-          style: textTheme!.subtitle2!
-              .copyWith(fontSize: 39, color: theme.scaffoldBackgroundColor),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 38),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AnimatedTextKit(
-                  pause: Duration.zero,
-                  onFinished: () => isSecondPart.value = true,
-                  isRepeatingAnimation: false,
-                  animatedTexts: [
-                    TypewriterAnimatedText(
-                      firstPart,
-                      speed: const Duration(milliseconds: 100),
-                      textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                ValueListenableBuilder<bool>(
-                  valueListenable: isSecondPart,
-                  builder: ((context, value, child) => value
-                      ? AnimatedTextKit(
-                          isRepeatingAnimation: false,
-                          animatedTexts: [
-                            TypewriterAnimatedText(
-                              secondPart,
-                              speed: const Duration(milliseconds: 100),
-                            ),
-                          ],
-                        )
-                      : const SizedBox()),
-                ),
-              ],
-            ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 38),
+          child: Text.rich(
+            TextSpan(text: firstPart, children: [
+              TextSpan(
+                  text: secondPart,
+                  style: const TextStyle(fontWeight: FontWeight.bold))
+            ]),
+            style: textTheme!.subtitle2!
+                .copyWith(fontSize: 39, color: theme.scaffoldBackgroundColor),
           ),
         )
       ],

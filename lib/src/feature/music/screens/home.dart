@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
 
@@ -26,10 +27,21 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       vsync: this, duration: const Duration(milliseconds: 1000));
   late final AnimationController controllerHeart = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 100));
-  late final increaseHeart = Tween(begin: 80.0, end: 95.0).animate(
-      CurvedAnimation(parent: controllerHeart, curve: Curves.easeOutBack));
+  late final increaseHeart = Tween(begin: height * 0.1, end: height * 0.12)
+      .animate(
+          CurvedAnimation(parent: controllerHeart, curve: Curves.easeOutBack));
   late final AnimationController controllerResetIcon = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 300));
+  late final Animation<double> movementResetIcon =
+      Tween(begin: 0.0, end: -height * 0.09).animate(CurvedAnimation(
+          parent: controllerResetIcon, curve: Curves.easeInOutBack));
+
+  late final localizations = S.of(context);
+  late final height = MediaQuery.of(context).size.height;
+  late final width = MediaQuery.of(context).size.width;
+  late final textTheme = Theme.of(context).textTheme;
+  late final gradientColors = Theme.of(context).extension<ColorsForGradient>()!;
+  late final radiusButton = width < 400 ? width / 2 : 200.0;
   final ValueNotifier<bool> isLike = ValueNotifier(false);
 
   void dispose() {
@@ -40,6 +52,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   void onTap() async {
+    HapticFeedback.lightImpact();
     isLike.value = !isLike.value;
     context.read<LikesCubit>().writeLike();
     controllerLivelyButton.stop();
@@ -53,15 +66,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = S.of(context);
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
-    final textTheme = Theme.of(context).textTheme;
-    final gradientColors = Theme.of(context).extension<ColorsForGradient>()!;
-    final radiusButton = width < 400 ? width / 2 : 200.0;
-    late final Animation<double> movementResetIcon =
-        Tween(begin: 5.0, end: -height * 0.13).animate(controllerResetIcon);
-
     return Scaffold(
         body: Stack(children: [
       Positioned(
@@ -98,15 +102,20 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               bottom: false,
               minimum: EdgeInsets.only(top: height * 0.07),
               child: AppBar(
+                systemOverlayStyle: SystemUiOverlayStyle(
+                    systemNavigationBarColor:
+                        Theme.of(context).scaffoldBackgroundColor),
                 leadingWidth: 28,
                 leading: CircleIconButton(
                   onTap: () => Navigator.of(context).pushNamed('/burgerMenu'),
                   child: const Icon(LivelyIcons.menu),
                 ),
-                actions: const [
+                actions: [
                   CircleIconButton(
                     child: const Icon(LivelyIcons.question),
-                    onTap: null,
+                    onTap: () {
+                      Navigator.of(context).pushReplacementNamed('/onboarding');
+                    },
                   )
                 ],
               ),
@@ -222,6 +231,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             radius: radiusButton,
             controller: controllerLivelyButton,
             onTap: () {
+              HapticFeedback.vibrate();
               controllerLivelyButton.repeat(reverse: true);
               context.read<RadioCubit>().playAndStop();
             },

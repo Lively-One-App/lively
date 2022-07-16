@@ -37,9 +37,8 @@ abstract class MyThemes {
     ))
   ];
   static const _appBarTheme = const AppBarTheme(
+    systemOverlayStyle: SystemUiOverlayStyle.light,
     toolbarHeight: 70,
-    systemOverlayStyle:
-        const SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
     iconTheme: _iconTheme,
     elevation: 0,
     backgroundColor: Colors.transparent,
@@ -55,11 +54,12 @@ abstract class MyThemes {
 
   static ThemeData get lightTheme {
     return ThemeData(
+      bottomAppBarColor: Colors.transparent,
       extensions: _extension,
       brightness: Brightness.light,
       colorSchemeSeed: _accent,
       appBarTheme: _appBarTheme,
-      backgroundColor: Color(0xFFF2F2F7),
+      backgroundColor: const Color(0xFFF2F2F7),
       fontFamily: 'Muller',
       scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       listTileTheme: _listTileThemeData,
@@ -77,8 +77,7 @@ abstract class MyThemes {
         textTheme: _textTheme.apply(bodyColor: const Color(0xFFC6C6C6)),
         backgroundColor: backgroundColor,
         appBarTheme: _appBarTheme.copyWith(
-          systemOverlayStyle:
-              const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
           iconTheme: _iconTheme.copyWith(color: const Color(0xFFA9A9A9)),
         ),
         listTileTheme: _listTileThemeData.copyWith(tileColor: backgroundColor));

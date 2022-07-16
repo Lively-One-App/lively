@@ -29,14 +29,17 @@ class MyApp extends StatelessWidget {
       home: FutureBuilder<SharedPreferences>(
           future: SharedPreferences.getInstance(),
           builder: (context, AsyncSnapshot<SharedPreferences> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done &&
-                (snapshot.data?.getBool('Welcome') ?? false)) {
-              snapshot.data?.clear();
-              return const Home();
-            } else {
-              //   snapshot.data?.setBool('Welcome', true);
-              return const OnBoarding();
+            if (snapshot.connectionState == ConnectionState.done) {
+              if ((snapshot.data?.getBool('Welcome') ?? false)) {
+                return const Home();
+              } else {
+                snapshot.data?.setBool('Welcome', true);
+
+                return const OnBoarding();
+              }
             }
+
+            return const SizedBox();
           }),
     );
   }

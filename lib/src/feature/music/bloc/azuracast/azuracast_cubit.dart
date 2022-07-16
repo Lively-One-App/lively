@@ -11,8 +11,8 @@ part 'azuracast_state.dart';
 part 'azuracast_cubit.freezed.dart';
 
 class AzuraCastCubit extends Cubit<AzuraCastState> {
-  AzuraCastCubit(final String url)
-      : _socket = WebSocketAutoReconnect(Uri.parse(url), delay: 0),
+  AzuraCastCubit(WebSocketAutoReconnect socket)
+      : _socket = socket,
         super(const AzuraCastState.initial()) {
     _socket.stream
         .timeout(

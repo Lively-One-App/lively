@@ -16,11 +16,7 @@ class ResetAnimatedIcon extends StatelessWidget {
       animation: controller,
       builder: (context, child) {
         return Transform.translate(
-          offset: Offset(
-              0,
-              controller.isAnimating
-                  ? animation.value
-                  : -MediaQuery.of(context).size.height * 0.01),
+          offset: Offset(0, animation.value),
           child: CircleIconButton(
             child: Column(
               children: [

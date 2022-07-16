@@ -35,4 +35,6 @@ abstract class LivelyIcons {
       IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData burger_menu =
       IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData telegram =
+      IconData(0xf2c6, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

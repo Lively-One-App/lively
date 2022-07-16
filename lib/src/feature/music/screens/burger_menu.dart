@@ -24,152 +24,155 @@ class BurgerMenu extends StatelessWidget {
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         minimum: EdgeInsets.only(top: _height * 0.07),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppBar(
-                  leadingWidth: 30,
-                  leading: CircleIconButton(
-                    child: const Icon(LivelyIcons.burger_menu),
-                    onTap: () => Navigator.of(context).pop(),
+        child: SingleChildScrollView(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppBar(
+                    leadingWidth: 30,
+                    leading: CircleIconButton(
+                      child: const Icon(LivelyIcons.burger_menu),
+                      onTap: () => Navigator.of(context).pop(),
+                    ),
+                    actions: const [
+                      CircleIconButton(
+                        child: Icon(LivelyIcons.question),
+                        onTap: null,
+                      )
+                    ],
                   ),
-                  actions: const [
-                    CircleIconButton(
-                      child: Icon(LivelyIcons.question),
-                      onTap: null,
-                    )
-                  ],
-                ),
-                Text('${_localizations.headlineBurgerMenu}',
-                    style: _textTheme?.headline1),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text('${_localizations.subtitleBurgerMenu}',
-                    style: _textTheme?.subtitle1),
-              ],
+                  Text('${_localizations.headlineBurgerMenu}',
+                      style: _textTheme?.headline1),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text('${_localizations.subtitleBurgerMenu}',
+                      style: _textTheme?.subtitle1),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: _height * 0.02,
-          ),
-          ListTile(
-            leading: const Icon(LivelyIcons.instagram),
-            title: Text(
-              '${_localizations.instagram}',
-              style: _textTheme?.bodyText1,
+            SizedBox(
+              height: _height * 0.02,
             ),
-            trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-            onTap: () async {
-              final url = Uri.parse('https://www.instagram.com/livelyoneapp/');
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-          const Divider(
-            height: 1,
-            indent: 70,
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.telegram,
+            ListTile(
+              leading: const Icon(LivelyIcons.instagram),
+              title: Text(
+                '${_localizations.instagram}',
+                style: _textTheme?.bodyText1,
+              ),
+              trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+              onTap: () async {
+                final url =
+                    Uri.parse('https://www.instagram.com/livelyoneapp/');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
             ),
-            title: Text(
-              '${_localizations.telegram}',
-              style: _textTheme?.bodyText1,
+            const Divider(
+              height: 1,
+              indent: 70,
             ),
-            trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-            onTap: () async {
-              final url =
-                  Uri(scheme: 'https', host: 't.me', path: 'livelyoneapp/');
-              print(url);
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url, mode: LaunchMode.externalApplication);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-          const Divider(
-            height: 1,
-            indent: 70,
-          ),
-          ListTile(
-            leading: const Icon(LivelyIcons.contact),
-            title: Text(
-              _localizations.contact,
-              style: _textTheme?.bodyText1,
+            ListTile(
+              leading: const Icon(
+                LivelyIcons.telegram,
+                size: 24,
+              ),
+              title: Text(
+                '${_localizations.telegram}',
+                style: _textTheme?.bodyText1,
+              ),
+              trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+              onTap: () async {
+                final url =
+                    Uri(scheme: 'https', host: 't.me', path: 'livelyoneapp/');
+                print(url);
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
             ),
-            trailing: const Icon(Icons.keyboard_arrow_right_rounded),
-            onTap: () async {
-              final url = Uri.parse(
-                  'https://livelyoneapp.ru/become-part-of-the-project/');
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url, mode: LaunchMode.externalApplication);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-          SizedBox(
-            height: _height * 0.01,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              _localizations.searchTalent,
-              style: _textTheme?.subtitle1?.copyWith(fontSize: 18),
+            const Divider(
+              height: 1,
+              indent: 70,
             ),
-          ),
-          SizedBox(
-            height: _height * 0.03,
-          ),
-          ListTile(
-            leading: const Icon(LivelyIcons.privacy),
-            title: Text(
-              _localizations.privacy,
-              style: _textTheme?.bodyText1,
+            ListTile(
+              leading: const Icon(LivelyIcons.contact),
+              title: Text(
+                _localizations.contact,
+                style: _textTheme?.bodyText1,
+              ),
+              trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+              onTap: () async {
+                final url = Uri.parse(
+                    'https://livelyoneapp.ru/become-part-of-the-project/');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
             ),
-            trailing: const Icon(Icons.keyboard_arrow_right_rounded),
-            onTap: () async {
-              final url = Uri.parse('https://livelyoneapp.ru/private-police/');
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-          SizedBox(
-            height: _height * 0.01,
-          ),
-          Padding(
+            SizedBox(
+              height: _height * 0.01,
+            ),
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                '${_localizations.appVersion}',
-                style: _textTheme?.subtitle1?.copyWith(fontSize: 15),
-              )),
-          // SizedBox(
-          //   height: _height * 0.01,
-          // ),
-          BlocBuilder<AzuraCastCubit, AzuraCastState>(
-            builder: (context, state) {
-              return Padding(
-                  padding: const EdgeInsets.only(left: 28),
-                  child: Text(
-                    '${_localizations.design}',
-                    style: _textTheme?.subtitle2
-                        ?.copyWith(color: const Color(0xFF969696)),
-                  ));
-            },
-          ),
-        ]),
+                _localizations.searchTalent,
+                style: _textTheme?.subtitle1?.copyWith(fontSize: 18),
+              ),
+            ),
+            SizedBox(
+              height: _height * 0.03,
+            ),
+            ListTile(
+              leading: const Icon(LivelyIcons.privacy),
+              title: Text(
+                _localizations.privacy,
+                style: _textTheme?.bodyText1,
+              ),
+              trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+              onTap: () async {
+                final url =
+                    Uri.parse('https://livelyoneapp.ru/private-police/');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
+            ),
+            SizedBox(
+              height: _height * 0.01,
+            ),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  '${_localizations.appVersion}',
+                  style: _textTheme?.subtitle1?.copyWith(fontSize: 15),
+                )),
+            // SizedBox(
+            //   height: _height * 0.01,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 28),
+            //   child: Text(
+            //     '${_localizations.design}',
+            //     style: _textTheme?.subtitle2
+            //         ?.copyWith(color: const Color(0xFF969696)),
+            //   ),
+            // )
+          ]),
+        ),
       ),
     );
   }
