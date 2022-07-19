@@ -50,20 +50,23 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `lively`
-  String get lively {
-    return Intl.message(
-      'lively',
+  /// `{lively,plural, =1{lively}=0{lively}other{livelies}}`
+  String lively(int lively) {
+    return Intl.plural(
+      lively,
+      one: 'lively',
+      zero: 'lively',
+      other: 'livelies',
       name: 'lively',
       desc: '',
-      args: [],
+      args: [lively],
     );
   }
 
-  /// `IN THE STREAM OF`
+  /// `IN THE STREAM FROM MOSCOW`
   String get inTheStreamOf {
     return Intl.message(
-      'IN THE STREAM OF',
+      'IN THE STREAM FROM MOSCOW',
       name: 'inTheStreamOf',
       desc: '',
       args: [],
@@ -255,6 +258,16 @@ class S {
     return Intl.message(
       ' и оживляйте других с помощью простого жеста «два-пальца».',
       name: 'onBoardingScreen2_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `START`
+  String get start {
+    return Intl.message(
+      'START',
+      name: 'start',
       desc: '',
       args: [],
     );

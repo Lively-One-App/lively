@@ -32,6 +32,8 @@ class AzuraCastCubit extends Cubit<AzuraCastState> {
 
   @override
   Future<void> close() {
+    _socket.dispose();
+
     return super.close();
   }
 }

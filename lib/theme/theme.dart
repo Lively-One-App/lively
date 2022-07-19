@@ -24,20 +24,21 @@ abstract class MyThemes {
         color: _accent,
       ),
       subtitle1: const TextStyle(
-        fontSize: 24,
+        fontSize: 22,
+        letterSpacing: -1,
         fontWeight: _regular,
       ),
       subtitle2: const TextStyle(
-          fontSize: 15,
+          fontSize: 18,
           fontWeight: _regular,
           letterSpacing: 0.36,
           color: Color(0xFF646464)),
       bodyText1:
-          const TextStyle(fontSize: 19, fontWeight: _regular, letterSpacing: 1),
-    ))
+          const TextStyle(fontSize: 19, fontWeight: _regular, letterSpacing: 0),
+    )),
   ];
   static const _appBarTheme = const AppBarTheme(
-    systemOverlayStyle: SystemUiOverlayStyle.light,
+    systemOverlayStyle: SystemUiOverlayStyle.dark,
     toolbarHeight: 70,
     iconTheme: _iconTheme,
     elevation: 0,
@@ -54,7 +55,6 @@ abstract class MyThemes {
 
   static ThemeData get lightTheme {
     return ThemeData(
-      bottomAppBarColor: Colors.transparent,
       extensions: _extension,
       brightness: Brightness.light,
       colorSchemeSeed: _accent,
@@ -77,7 +77,7 @@ abstract class MyThemes {
         textTheme: _textTheme.apply(bodyColor: const Color(0xFFC6C6C6)),
         backgroundColor: backgroundColor,
         appBarTheme: _appBarTheme.copyWith(
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
           iconTheme: _iconTheme.copyWith(color: const Color(0xFFA9A9A9)),
         ),
         listTileTheme: _listTileThemeData.copyWith(tileColor: backgroundColor));

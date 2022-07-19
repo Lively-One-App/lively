@@ -20,6 +20,9 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(lively) =>
+      "${Intl.plural(lively, zero: 'lively', one: 'lively', other: 'livelies')}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appVersion":
@@ -33,11 +36,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "headlineBurgerMenu":
             MessageLookupByLibrary.simpleMessage("WE STRIVE TO DEVELOP!"),
         "inTheStreamOf":
-            MessageLookupByLibrary.simpleMessage("IN THE STREAM OF"),
+            MessageLookupByLibrary.simpleMessage("IN THE STREAM FROM MOSCOW"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "likeNotification":
             MessageLookupByLibrary.simpleMessage("+ 1 LIKE, FROM YOU"),
-        "lively": MessageLookupByLibrary.simpleMessage("lively"),
+        "lively": m0,
         "noInternet": MessageLookupByLibrary.simpleMessage(
             "Lively doesn`t know how to work without the Internet"),
         "noInternetCheck": MessageLookupByLibrary.simpleMessage("Checking.."),
@@ -55,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetTime": MessageLookupByLibrary.simpleMessage("5 SEC"),
         "searchTalent": MessageLookupByLibrary.simpleMessage(
             "We are looking for talent and are open to any cooperation, please contact us!"),
+        "start": MessageLookupByLibrary.simpleMessage("START"),
         "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(
             "Please write how we can become better, right on Instagram!"),
         "telegram": MessageLookupByLibrary.simpleMessage("Telegram")

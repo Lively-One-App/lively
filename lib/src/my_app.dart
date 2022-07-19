@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../generated/l10n.dart';
 import '../theme/theme.dart';
 import 'feature/music/screens/home.dart';
-import 'feature/music/screens/onboarding/onboarding.dart';
 import 'routes.dart';
 
 class MyApp extends StatelessWidget {
@@ -26,21 +24,7 @@ class MyApp extends StatelessWidget {
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
       themeMode: ThemeMode.system,
-      home: FutureBuilder<SharedPreferences>(
-          future: SharedPreferences.getInstance(),
-          builder: (context, AsyncSnapshot<SharedPreferences> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if ((snapshot.data?.getBool('Welcome') ?? false)) {
-                return const Home();
-              } else {
-                snapshot.data?.setBool('Welcome', true);
-
-                return const OnBoarding();
-              }
-            }
-
-            return const SizedBox();
-          }),
+      home: const Home(),
     );
   }
 }

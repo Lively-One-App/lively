@@ -1,6 +1,13 @@
 {
-  "lively": "оживленных",
-  "inTheStreamOf": "В ПОТОКЕ",
+  "lively": "{lively,plural, =1{оживлённый}other{оживлённых}}",
+  "@lively": {
+    "placeholders": {
+      "lively": {
+        "type": "int"
+      }
+    }
+  },
+  "inTheStreamOf": "В ПОТОКЕ МОСКВЫ",
   "resetTime":"5 СЕК",
   "changeTheGame":"ПОРА МЕНЯТЬ ИГРУ",
   "headlineBurgerMenu":"МЫ ЖАЖДЕМ РАЗВИВАТЬСЯ!",
@@ -19,5 +26,6 @@
   "onBoardingScreen1_1":"Добро пожаловать в Lively",
   "onBoardingScreen1_2":" в единый музыкальный поток Москвы!",
   "onBoardingScreen2_1":"Слушайте музыку, оживляйтесь",
-  "onBoardingScreen2_2":" и оживляйте других с помощью простого жеста «два-пальца»."
+  "onBoardingScreen2_2":" и оживляйте других с помощью простого жеста «два-пальца».",
+  "start":"НАЧАТЬ"
 }

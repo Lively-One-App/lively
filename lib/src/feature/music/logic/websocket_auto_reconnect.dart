@@ -34,4 +34,8 @@ class WebSocketAutoReconnect {
       _connect();
     }, cancelOnError: true);
   }
+
+  void dispose() {
+    sink.close();
+  }
 }

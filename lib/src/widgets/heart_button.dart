@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../lively_icons.dart';
 import 'circle_icon_button.dart';
+import 'inner_shadow.dart';
 
 class HeartButton extends StatelessWidget {
   const HeartButton({
@@ -29,9 +30,14 @@ class HeartButton extends StatelessWidget {
               child: Stack(
                 alignment: AlignmentDirectional.center,
                 children: [
-                  Icon(
-                    LivelyIcons.heart,
-                    size: increaseHeart.value,
+                  InnerShadow(
+                    shadows: const [
+                      Shadow(blurRadius: 6, color: Colors.black38)
+                    ],
+                    child: Icon(
+                      LivelyIcons.heart,
+                      size: increaseHeart.value,
+                    ),
                   ),
                   text
                 ],

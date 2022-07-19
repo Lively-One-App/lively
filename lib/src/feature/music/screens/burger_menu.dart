@@ -8,6 +8,7 @@ import '../../../widgets/circle_icon_button.dart';
 
 import '../bloc/azuracast/azuracast_cubit.dart';
 import '/lively_icons.dart';
+import 'onboarding/onboarding.dart';
 
 class BurgerMenu extends StatelessWidget {
   const BurgerMenu({
@@ -38,11 +39,13 @@ class BurgerMenu extends StatelessWidget {
                       child: const Icon(LivelyIcons.burger_menu),
                       onTap: () => Navigator.of(context).pop(),
                     ),
-                    actions: const [
+                    actions: [
                       CircleIconButton(
-                        child: Icon(LivelyIcons.question),
-                        onTap: null,
-                      )
+                          child: const Icon(LivelyIcons.question),
+                          onTap: () => showDialog(
+                          useSafeArea: false,
+                          context: context,
+                          builder: (context) => const OnBoarding()))
                     ],
                   ),
                   Text('${_localizations.headlineBurgerMenu}',
@@ -92,7 +95,6 @@ class BurgerMenu extends StatelessWidget {
               onTap: () async {
                 final url =
                     Uri(scheme: 'https', host: 't.me', path: 'livelyoneapp/');
-                print(url);
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url, mode: LaunchMode.externalApplication);
                 } else {
@@ -128,7 +130,8 @@ class BurgerMenu extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 _localizations.searchTalent,
-                style: _textTheme?.subtitle1?.copyWith(fontSize: 18),
+                style: _textTheme?.subtitle1
+                    ?.copyWith(fontSize: 18, letterSpacing: -0.36),
               ),
             ),
             SizedBox(
@@ -158,7 +161,7 @@ class BurgerMenu extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   '${_localizations.appVersion}',
-                  style: _textTheme?.subtitle1?.copyWith(fontSize: 15),
+                  style: _textTheme?.subtitle2,
                 )),
             // SizedBox(
             //   height: _height * 0.01,

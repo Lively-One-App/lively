@@ -20,6 +20,9 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
+  static String m0(lively) =>
+      "${Intl.plural(lively, one: 'оживлённый', other: 'оживлённых')}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appVersion":
@@ -31,11 +34,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Designed by Emil Lively"),
         "headlineBurgerMenu":
             MessageLookupByLibrary.simpleMessage("МЫ ЖАЖДЕМ РАЗВИВАТЬСЯ!"),
-        "inTheStreamOf": MessageLookupByLibrary.simpleMessage("В ПОТОКЕ"),
+        "inTheStreamOf":
+            MessageLookupByLibrary.simpleMessage("В ПОТОКЕ МОСКВЫ"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "likeNotification":
             MessageLookupByLibrary.simpleMessage("+ 1 ЛАЙК, ОТ ТЕБЯ"),
-        "lively": MessageLookupByLibrary.simpleMessage("оживленных"),
+        "lively": m0,
         "noInternet": MessageLookupByLibrary.simpleMessage(
             "Lively не умеет работать без интернета"),
         "noInternetCheck": MessageLookupByLibrary.simpleMessage("Проверяем.."),
@@ -53,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetTime": MessageLookupByLibrary.simpleMessage("5 СЕК"),
         "searchTalent": MessageLookupByLibrary.simpleMessage(
             "Мы ищем таланты и открыты для любого сотрудничества, связывайтесь!"),
+        "start": MessageLookupByLibrary.simpleMessage("НАЧАТЬ"),
         "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(
             "Умоляем, пишите, как нам стать лучше, прямо в Instagram!"),
         "telegram": MessageLookupByLibrary.simpleMessage("Telegram")

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -24,8 +23,8 @@ void main() => runZonedGuarded<void>(
         WidgetsFlutterBinding.ensureInitialized();
         await Firebase.initializeApp();
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-        SystemChrome.setSystemUIOverlayStyle(
-            const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+            statusBarIconBrightness: Brightness.dark));
 
         BlocOverrides.runZoned(
           () async {

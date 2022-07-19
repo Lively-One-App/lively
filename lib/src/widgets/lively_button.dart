@@ -73,8 +73,8 @@ class LivelyButton extends StatelessWidget {
                               padding: EdgeInsets.only(top: radius * 0.04),
                               child: Text(
                                 'Lively',
-                                style:
-                                    textTheme.headline1?.copyWith(fontSize: 30),
+                                style: textTheme.headline1
+                                    ?.copyWith(fontSize: 30, letterSpacing: -1),
                               ),
                             ),
                         beforePlaying: () => Padding(
@@ -82,7 +82,9 @@ class LivelyButton extends StatelessWidget {
                               child: Text(
                                 'Lively',
                                 style: textTheme.headline1?.copyWith(
-                                    fontSize: 30, color: backgroundTheme),
+                                    fontSize: 30,
+                                    color: Colors.white,
+                                    letterSpacing: -1),
                               ),
                             ),
                         loaded: () => Padding(

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:introduction_screen/introduction_screen.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../../theme/burger_text.dart';
 import '../../../../../theme/colors_for_gradient.dart';
-import '../../../../widgets/animated_background.dart';
-import 'asset_video_player.dart';
+import 'video_screen.dart';
+import 'text_screen.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({Key? key}) : super(key: key);
@@ -17,118 +15,61 @@ class OnBoarding extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final theme = Theme.of(context);
     final localizations = S.of(context);
-    final textTheme = theme.extension<BurgerText>()?.textTheme;
+    final colorsForGradient = theme.extension<ColorsForGradient>()!;
+    final gradientColors = [
+      colorsForGradient.btnColor1!,
+      colorsForGradient.btnColor2!,
+      colorsForGradient.btnColor3!,
+    ];
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle(
-          systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,
+    return IntroductionScreen(
+      globalBackgroundColor: theme.scaffoldBackgroundColor,
+      rawPages: [
+        TextScreen(
+          gradientColors: gradientColors,
+          firstPart: localizations.onBoardingScreen1_1,
+          secondPart: localizations.onBoardingScreen1_2,
         ),
-        child: IntroductionScreen(
-          globalBackgroundColor: theme.scaffoldBackgroundColor,
-          rawPages: [
-            TextScreen(
-              firstPart: localizations.onBoardingScreen1_1,
-              secondPart: localizations.onBoardingScreen1_2,
-            ),
-            TextScreen(
-              firstPart: localizations.onBoardingScreen2_1,
-              secondPart: localizations.onBoardingScreen2_2,
-            ),
-            const AssetVideoPlayer(),
-            const SizedBox(),
-          ],
-          showNextButton: false,
-          showDoneButton: false,
-          onChange: (pages) {
-            if (pages == 3) {
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil('/home', (_) => false);
-            }
-            ;
-          },
-          //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
-          showSkipButton: false,
-          skip: const Text('Skip'),
-          // done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
-          curve: Curves.fastLinearToSlowEaseIn,
-          baseBtnStyle: TextButton.styleFrom(
-              shadowColor: Colors.transparent,
-              textStyle: textTheme?.subtitle2
-                  ?.copyWith(fontSize: 20, fontWeight: FontWeight.bold),
-              enableFeedback: false,
-              primary: theme.scaffoldBackgroundColor,
-              padding: const EdgeInsets.only(bottom: 3)),
-          controlsMargin: const EdgeInsets.all(16),
-          controlsPadding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-          dotsDecorator: DotsDecorator(
-            size: const Size(10.0, 10.0),
-            activeColor: theme.scaffoldBackgroundColor,
-            color: theme.appBarTheme.iconTheme!.color!,
-            activeSize: const Size(22.0, 10.0),
-            activeShape: const RoundedRectangleBorder(
-              borderRadius: const BorderRadius.all(const Radius.circular(25.0)),
-            ),
+        TextScreen(
+          gradientColors: gradientColors,
+          firstPart: localizations.onBoardingScreen2_1,
+          secondPart: localizations.onBoardingScreen2_2,
+        ),
+        VideoScreen(
+          textButton: Text(
+            localizations.start,
+            style: theme.textTheme.headline1
+                ?.copyWith(fontSize: 22, letterSpacing: -1),
           ),
-        ));
-  }
-}
-
-class TextScreen extends StatelessWidget {
-  const TextScreen(
-      {Key? key, required this.firstPart, required this.secondPart})
-      : super(key: key);
-  final String firstPart;
-  final String secondPart;
-
-  @override
-  Widget build(BuildContext context) {
-    late final theme = Theme.of(context);
-    late final gradientColors = theme.extension<ColorsForGradient>()!;
-    late final textTheme = theme.extension<BurgerText>()?.textTheme;
-    late final backGround = AnimatedBackground(
-      animationDuration: const Duration(seconds: 2),
-      beginGradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        stops: const [0, 0.6, 1],
-        colors: [
-          gradientColors.btnColor1!,
-          gradientColors.btnColor2!,
-          gradientColors.btnColor3!,
-        ],
-      ),
-      endGradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          stops: const [
-            0,
-            0.6,
-            1
-          ],
-          colors: [
-            gradientColors.btnColor3!,
-            gradientColors.btnColor2!,
-            gradientColors.btnColor1!,
-          ]),
-    );
-
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        backGround,
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 38),
-          child: Text.rich(
-            TextSpan(text: firstPart, children: [
-              TextSpan(
-                  text: secondPart,
-                  style: const TextStyle(fontWeight: FontWeight.bold))
-            ]),
-            style: textTheme!.subtitle2!
-                .copyWith(fontSize: 39, color: theme.scaffoldBackgroundColor),
-          ),
-        )
+          gradientColorsButton: gradientColors,
+          bgButton: theme.scaffoldBackgroundColor.withOpacity(0.8),
+          scaleFactorVideo: size.height / 768,
+          bottomPaddingButton: size.height * 0.2,
+        ),
       ],
+      showNextButton: false,
+      showDoneButton: false,
+      // onChange: (pages) {
+      //   if (pages == 3) {
+      //     Navigator.of(context).pop();
+      //   }
+      // },
+      //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
+      showSkipButton: false,
+      skip: const Text('Skip'),
+      // done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+      curve: Curves.fastLinearToSlowEaseIn,
+      controlsMargin: const EdgeInsets.all(16),
+      controlsPadding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+      dotsDecorator: DotsDecorator(
+        size: const Size(10.0, 10.0),
+        activeColor: theme.scaffoldBackgroundColor,
+        color: Colors.white,
+        activeSize: const Size(22.0, 10.0),
+        activeShape: const RoundedRectangleBorder(
+          borderRadius: const BorderRadius.all(const Radius.circular(25.0)),
+        ),
+      ),
     );
   }
 }

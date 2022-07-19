@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
@@ -14,6 +15,7 @@ import '../bloc/radio/radio_cubit.dart';
 import '/lively_icons.dart';
 import '../../../widgets/circle_icon_button.dart';
 import 'no_internet.dart';
+import 'onboarding/onboarding.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -24,24 +26,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   late final AnimationController controllerLivelyButton = AnimationController(
-      vsync: this, duration: const Duration(milliseconds: 1000));
+      vsync: this, duration: const Duration(milliseconds: 700));
   late final AnimationController controllerHeart = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 100));
-  late final increaseHeart = Tween(begin: height * 0.1, end: height * 0.12)
-      .animate(
-          CurvedAnimation(parent: controllerHeart, curve: Curves.easeOutBack));
   late final AnimationController controllerResetIcon = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 300));
-  late final Animation<double> movementResetIcon =
-      Tween(begin: 0.0, end: -height * 0.09).animate(CurvedAnimation(
-          parent: controllerResetIcon, curve: Curves.easeInOutBack));
 
-  late final localizations = S.of(context);
-  late final height = MediaQuery.of(context).size.height;
-  late final width = MediaQuery.of(context).size.width;
-  late final textTheme = Theme.of(context).textTheme;
   late final gradientColors = Theme.of(context).extension<ColorsForGradient>()!;
-  late final radiusButton = width < 400 ? width / 2 : 200.0;
   final ValueNotifier<bool> isLike = ValueNotifier(false);
 
   void dispose() {
@@ -51,11 +42,26 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  @override
+  void didChangeDependencies() {
+    // await  SharedPreferences.getInstance();
+    //   if (snapshot.connectionState == ConnectionState.done) {
+    //     if ((snapshot.data?.getBool('Welcome') ?? false)) {
+    //       return const Home();
+    //     } else {
+    //       snapshot.data?.setBool('Welcome', true);
+
+    //       return const OnBoarding();
+    //     }
+    //   }
+    super.didChangeDependencies();
+  }
+
   void onTap() async {
     HapticFeedback.lightImpact();
     isLike.value = !isLike.value;
     context.read<LikesCubit>().writeLike();
-    controllerLivelyButton.stop();
+    controllerLivelyButton.forward();
     await controllerHeart.forward();
     Future.delayed(const Duration(seconds: 2), (() async {
       await controllerHeart.reverse();
@@ -66,6 +72,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final radiusButton = height > 600 ? width / 2 : 180.0;
+    final localizations = S.of(context);
+    late final Animation<double> movementResetIcon =
+        Tween(begin: 0.0, end: -height * 0.09).animate(CurvedAnimation(
+            parent: controllerResetIcon, curve: Curves.easeInOutBack));
+    late final increaseHeart = Tween(begin: height * 0.1, end: height * 0.12)
+        .animate(CurvedAnimation(
+            parent: controllerHeart, curve: Curves.easeOutBack));
+
     return Scaffold(
         body: Stack(children: [
       Positioned(
@@ -112,11 +130,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 ),
                 actions: [
                   CircleIconButton(
-                    child: const Icon(LivelyIcons.question),
-                    onTap: () {
-                      Navigator.of(context).pushReplacementNamed('/onboarding');
-                    },
-                  )
+                      child: const Icon(LivelyIcons.question),
+                      onTap: () => showDialog(
+                          useSafeArea: false,
+                          context: context,
+                          builder: (context) => const OnBoarding()))
                 ],
               ),
             ),
@@ -125,14 +143,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               buildWhen: (previous, current) => previous != current,
               listener: (context, state) {
                 state.whenOrNull(
-                  error: () {
-                    return showDialog(
+                    error: () => showDialog(
                         context: context,
                         useSafeArea: false,
                         barrierDismissible: false,
-                        builder: (context) => const NoInternet());
-                  },
-                );
+                        builder: (context) => const NoInternet()));
               },
               builder: (context, state) {
                 final listeners = state.whenOrNull(
@@ -141,7 +156,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   },
                 );
 
-                return Text('${listeners ?? 0} ${localizations.lively}',
+                return Text(
+                    '${listeners ?? 0} ${localizations.lively(listeners ?? 0)}',
                     style: textTheme.headline1);
               },
             ),
@@ -149,9 +165,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               height: 10,
             ),
             Text(
-              S.delegate.isSupported(const Locale('_ru'))
-                  ? localizations.inTheStreamOf + ' MOSKOW'
-                  : localizations.inTheStreamOf + ' МОСКВЫ',
+              localizations.inTheStreamOf,
               style: textTheme.subtitle1,
             )
           ],
