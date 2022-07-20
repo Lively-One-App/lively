@@ -7,11 +7,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:l/l.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
 import 'src/feature/music/bloc/azuracast/azuracast_cubit.dart';
 import 'src/feature/music/bloc/likes/likes_cubit.dart';
 import 'src/feature/music/bloc/radio/radio_cubit.dart';
+import 'src/feature/music/bloc/shared_preferences/shared_preferences_cubit.dart';
 import 'src/feature/music/logic/firestore.dart';
 import 'src/feature/music/logic/my_audioplayer_handler.dart';
 import 'src/feature/music/logic/websocket_auto_reconnect.dart';
@@ -37,7 +39,7 @@ void main() => runZonedGuarded<void>(
                 androidNotificationOngoing: true,
               ),
             );
-
+            final sharedPreferences = await SharedPreferences.getInstance();
             FlutterError.onError =
                 FirebaseCrashlytics.instance.recordFlutterError;
             runApp(MultiRepositoryProvider(
@@ -82,6 +84,9 @@ void main() => runZonedGuarded<void>(
                       return LikesCubit(store: store, musicCubit: musicBloc);
                     },
                   ),
+                  BlocProvider<SharedPreferencesCubit>(
+                      create: (context) =>
+                          SharedPreferencesCubit(sharedPreferences))
                 ],
                 child: const MyApp(),
               ),

@@ -1,6 +1,7 @@
 part of 'shared_preferences_cubit.dart';
 
-@immutable
-abstract class SharedPreferencesState {}
-
-class SharedPreferencesCubitDartInitial extends SharedPreferencesState {}
+@freezed
+class SharedPreferencesState with _$SharedPreferencesState {
+  const factory SharedPreferencesState.initial() = _Initial;
+  const factory SharedPreferencesState.loadedOnBoarding() = _LoadedOnBoarding;
+}

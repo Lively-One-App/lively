@@ -14,11 +14,7 @@ class AzuraCastCubit extends Cubit<AzuraCastState> {
   AzuraCastCubit(WebSocketAutoReconnect socket)
       : _socket = socket,
         super(const AzuraCastState.initial()) {
-    _socket.stream
-        .timeout(
-      const Duration(seconds: 15),
-    )
-        .map((event) {
+    _socket.stream.map((event) {
       return AzuraApiNowPlaying.fromJson(jsonDecode(event));
     }).listen(
       (event) {

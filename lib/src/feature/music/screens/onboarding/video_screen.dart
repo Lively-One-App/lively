@@ -35,12 +35,6 @@ class _VideoScreenState extends State<VideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    videoPlayerController.addListener(
-      () {
-        print(999);
-      },
-    );
-
     return Scaffold(
         body: Stack(
       alignment: Alignment.center,
