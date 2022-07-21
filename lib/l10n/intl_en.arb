@@ -1,5 +1,5 @@
 {
-  "lively": "{lively,plural, =1{lively}=0{lively}other{livelies}}",
+  "lively": "{lively,plural, =1{lively heart}=0{lively heart}other{lively hearts}}",
   "@lively": {
     "placeholders": {
       "lively": {
@@ -7,7 +7,7 @@
       }
     }
   },
-  "inTheStreamOf": "IN THE STREAM FROM MOSCOW",
+  "inTheStreamOf": "IN THE FLOW OF MOSCOW",
   "resetTime":"5 SEC",
   "changeTheGame":"CHANGE THE GAME",
   "headlineBurgerMenu":"WE STRIVE TO DEVELOP!",
@@ -23,9 +23,9 @@
   "noInternet":"Lively doesn`t know how to work without the Internet",
   "noInternetReconnect":"Connect and we will continue",
   "noInternetCheck":"Checking..",
-  "onBoardingScreen1_1":"Добро пожаловать в Lively",
-  "onBoardingScreen1_2":" в единый музыкальный поток Москвы!",
-  "onBoardingScreen2_1":"Слушайте музыку, оживляйтесь",
-  "onBoardingScreen2_2":" и оживляйте других с помощью простого жеста «два-пальца».",
+  "onBoardingScreen1_1":"Welcome to Lively",
+  "onBoardingScreen1_2":" in Moscow's united music flow!",
+  "onBoardingScreen2_1":"Listen music, become lively",
+  "onBoardingScreen2_2":" and make others lively with a simple two-finger gesture.",
   "start":"START"
 }

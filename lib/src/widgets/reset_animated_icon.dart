@@ -26,7 +26,10 @@ class ResetAnimatedIcon extends StatelessWidget {
                   color: Theme.of(context).appBarTheme.iconTheme?.color,
                 ),
                 const SizedBox(height: 5),
-                Text(S.of(context).resetTime)
+                Text(
+                  S.of(context).resetTime,
+                  style: const TextStyle(fontSize: 12),
+                )
               ],
             ),
           ),

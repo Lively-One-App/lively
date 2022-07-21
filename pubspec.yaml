@@ -36,7 +36,15 @@ dev_dependencies:
   dart_code_metrics: ^4.16.0
   l: ^3.2.0
   flutter_native_splash: ^2.2.4
- 
+  flutter_launcher_icons: ^0.9.3
+
+flutter_icons:
+  android: "ic_launcher"
+  image_path: assets/ic_launcher.png
+  adaptive_icon_background: "#F64B4B"
+  adaptive_icon_foreground: assets/ic_launcher_foreground.png
+  ios: false
+  
   
 
 flutter_native_splash:
@@ -44,7 +52,6 @@ flutter_native_splash:
   color_dark: "#363636"
   image: assets/splash.png
   image_dark: assets/splash-dark.png
-  
   
   android 12:
     color: "#FFFFFF"

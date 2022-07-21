@@ -71,10 +71,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     final height = MediaQuery.of(context).size.height;
     final double radiusButton = width > 500 ? width / 2 : width / 2.1;
     final localizations = S.of(context);
+
     late final Animation<double> movementResetIcon =
-        Tween(begin: 0.0, end: -height * 0.095).animate(CurvedAnimation(
+        Tween(begin: 0.0, end: -height * 0.09).animate(CurvedAnimation(
             parent: controllerResetIcon, curve: Curves.easeInOutBack));
-    late final increaseHeart = Tween(begin: height * 0.1, end: height * 0.12)
+    late final increaseHeart = Tween(begin: width * 0.21, end: width * 0.24)
         .animate(CurvedAnimation(
             parent: controllerHeart, curve: Curves.easeOutBack));
 
@@ -187,11 +188,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         return ValueListenableBuilder<bool>(
                           valueListenable: isLike,
                           builder: (context, value, _) => Stack(
-                              alignment: AlignmentDirectional.bottomCenter,
+                              alignment: AlignmentDirectional.center,
                               children: [
                                 Positioned(
                                     width: width,
-                                    bottom: height * 0.05,
+                                    top: height * 0.27,
                                     child: !value
                                         ? ResetAnimatedIcon(
                                             controller: controllerResetIcon,
@@ -201,9 +202,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 GestureDetector(
                                   onDoubleTap: value ? null : onTap,
                                   child: Container(
-                                    padding: const EdgeInsets.only(top: 20),
                                     color: Colors.transparent,
-                                    height: height * 0.4,
+                                    height: height * 0.36,
                                     child: HeartButton(
                                       text: Text(
                                           !value ? '+${cityData.likes}' : '',

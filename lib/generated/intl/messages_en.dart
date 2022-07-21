@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   static String m0(lively) =>
-      "${Intl.plural(lively, zero: 'lively', one: 'lively', other: 'livelies')}";
+      "${Intl.plural(lively, zero: 'lively heart', one: 'lively heart', other: 'lively hearts')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "headlineBurgerMenu":
             MessageLookupByLibrary.simpleMessage("WE STRIVE TO DEVELOP!"),
         "inTheStreamOf":
-            MessageLookupByLibrary.simpleMessage("IN THE STREAM FROM MOSCOW"),
+            MessageLookupByLibrary.simpleMessage("IN THE FLOW OF MOSCOW"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "likeNotification":
             MessageLookupByLibrary.simpleMessage("+ 1 LIKE, FROM YOU"),
@@ -47,13 +47,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "noInternetReconnect": MessageLookupByLibrary.simpleMessage(
             "Connect and we will continue"),
         "onBoardingScreen1_1":
-            MessageLookupByLibrary.simpleMessage("Добро пожаловать в Lively"),
+            MessageLookupByLibrary.simpleMessage("Welcome to Lively"),
         "onBoardingScreen1_2": MessageLookupByLibrary.simpleMessage(
-            " в единый музыкальный поток Москвы!"),
-        "onBoardingScreen2_1": MessageLookupByLibrary.simpleMessage(
-            "Слушайте музыку, оживляйтесь"),
+            " in Moscow\'s united music flow!"),
+        "onBoardingScreen2_1":
+            MessageLookupByLibrary.simpleMessage("Listen music, become lively"),
         "onBoardingScreen2_2": MessageLookupByLibrary.simpleMessage(
-            " и оживляйте других с помощью простого жеста «два-пальца»."),
+            " and make others lively with a simple two-finger gesture."),
         "privacy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "resetTime": MessageLookupByLibrary.simpleMessage("5 SEC"),
         "searchTalent": MessageLookupByLibrary.simpleMessage(

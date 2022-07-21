@@ -23,9 +23,15 @@ class VideoScreen extends StatefulWidget {
 
 class _VideoScreenState extends State<VideoScreen> {
   final videoPlayerController =
-      VideoPlayerController.asset('assets/onboarding_video.mp4')
-        ..setLooping(true)
-        ..initialize();
+      VideoPlayerController.asset('assets/onboarding_video.mp4');
+
+  @override
+  void initState() {
+    super.initState();
+    videoPlayerController
+      ..setLooping(true)
+      ..initialize();
+  }
 
   @override
   void dispose() {

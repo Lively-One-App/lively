@@ -50,23 +50,23 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `{lively,plural, =1{lively}=0{lively}other{livelies}}`
+  /// `{lively,plural, =1{lively heart}=0{lively heart}other{lively hearts}}`
   String lively(int lively) {
     return Intl.plural(
       lively,
-      one: 'lively',
-      zero: 'lively',
-      other: 'livelies',
+      one: 'lively heart',
+      zero: 'lively heart',
+      other: 'lively hearts',
       name: 'lively',
       desc: '',
       args: [lively],
     );
   }
 
-  /// `IN THE STREAM FROM MOSCOW`
+  /// `IN THE FLOW OF MOSCOW`
   String get inTheStreamOf {
     return Intl.message(
-      'IN THE STREAM FROM MOSCOW',
+      'IN THE FLOW OF MOSCOW',
       name: 'inTheStreamOf',
       desc: '',
       args: [],
@@ -223,40 +223,40 @@ class S {
     );
   }
 
-  /// `Добро пожаловать в Lively`
+  /// `Welcome to Lively`
   String get onBoardingScreen1_1 {
     return Intl.message(
-      'Добро пожаловать в Lively',
+      'Welcome to Lively',
       name: 'onBoardingScreen1_1',
       desc: '',
       args: [],
     );
   }
 
-  /// ` в единый музыкальный поток Москвы!`
+  /// ` in Moscow's united music flow!`
   String get onBoardingScreen1_2 {
     return Intl.message(
-      ' в единый музыкальный поток Москвы!',
+      ' in Moscow\'s united music flow!',
       name: 'onBoardingScreen1_2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Слушайте музыку, оживляйтесь`
+  /// `Listen music, become lively`
   String get onBoardingScreen2_1 {
     return Intl.message(
-      'Слушайте музыку, оживляйтесь',
+      'Listen music, become lively',
       name: 'onBoardingScreen2_1',
       desc: '',
       args: [],
     );
   }
 
-  /// ` и оживляйте других с помощью простого жеста «два-пальца».`
+  /// ` and make others lively with a simple two-finger gesture.`
   String get onBoardingScreen2_2 {
     return Intl.message(
-      ' и оживляйте других с помощью простого жеста «два-пальца».',
+      ' and make others lively with a simple two-finger gesture.',
       name: 'onBoardingScreen2_2',
       desc: '',
       args: [],
