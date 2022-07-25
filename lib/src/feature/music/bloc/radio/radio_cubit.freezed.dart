@@ -22,6 +22,7 @@ mixin _$RadioState {
     required TResult Function() beforePlaying,
     required TResult Function() beforeStopping,
     required TResult Function() loaded,
+    required TResult Function(String? message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$RadioState {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$RadioState {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$RadioState {
     required TResult Function(_BeforePlaying value) beforePlaying,
     required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$RadioState {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$RadioState {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$_Initial implements _Initial {
     required TResult Function() beforePlaying,
     required TResult Function() beforeStopping,
     required TResult Function() loaded,
+    required TResult Function(String? message) error,
   }) {
     return initial();
   }
@@ -138,6 +145,7 @@ class _$_Initial implements _Initial {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
   }) {
     return initial?.call();
   }
@@ -149,6 +157,7 @@ class _$_Initial implements _Initial {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -164,6 +173,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_BeforePlaying value) beforePlaying,
     required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) {
     return initial(this);
   }
@@ -175,6 +185,7 @@ class _$_Initial implements _Initial {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -186,6 +197,7 @@ class _$_Initial implements _Initial {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -244,6 +256,7 @@ class _$_BeforePlaying implements _BeforePlaying {
     required TResult Function() beforePlaying,
     required TResult Function() beforeStopping,
     required TResult Function() loaded,
+    required TResult Function(String? message) error,
   }) {
     return beforePlaying();
   }
@@ -255,6 +268,7 @@ class _$_BeforePlaying implements _BeforePlaying {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
   }) {
     return beforePlaying?.call();
   }
@@ -266,6 +280,7 @@ class _$_BeforePlaying implements _BeforePlaying {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (beforePlaying != null) {
@@ -281,6 +296,7 @@ class _$_BeforePlaying implements _BeforePlaying {
     required TResult Function(_BeforePlaying value) beforePlaying,
     required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) {
     return beforePlaying(this);
   }
@@ -292,6 +308,7 @@ class _$_BeforePlaying implements _BeforePlaying {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
   }) {
     return beforePlaying?.call(this);
   }
@@ -303,6 +320,7 @@ class _$_BeforePlaying implements _BeforePlaying {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (beforePlaying != null) {
@@ -361,6 +379,7 @@ class _$_BeforeStopping implements _BeforeStopping {
     required TResult Function() beforePlaying,
     required TResult Function() beforeStopping,
     required TResult Function() loaded,
+    required TResult Function(String? message) error,
   }) {
     return beforeStopping();
   }
@@ -372,6 +391,7 @@ class _$_BeforeStopping implements _BeforeStopping {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
   }) {
     return beforeStopping?.call();
   }
@@ -383,6 +403,7 @@ class _$_BeforeStopping implements _BeforeStopping {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (beforeStopping != null) {
@@ -398,6 +419,7 @@ class _$_BeforeStopping implements _BeforeStopping {
     required TResult Function(_BeforePlaying value) beforePlaying,
     required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) {
     return beforeStopping(this);
   }
@@ -409,6 +431,7 @@ class _$_BeforeStopping implements _BeforeStopping {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
   }) {
     return beforeStopping?.call(this);
   }
@@ -420,6 +443,7 @@ class _$_BeforeStopping implements _BeforeStopping {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (beforeStopping != null) {
@@ -475,6 +499,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function() beforePlaying,
     required TResult Function() beforeStopping,
     required TResult Function() loaded,
+    required TResult Function(String? message) error,
   }) {
     return loaded();
   }
@@ -486,6 +511,7 @@ class _$_Loaded implements _Loaded {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
   }) {
     return loaded?.call();
   }
@@ -497,6 +523,7 @@ class _$_Loaded implements _Loaded {
     TResult Function()? beforePlaying,
     TResult Function()? beforeStopping,
     TResult Function()? loaded,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -512,6 +539,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function(_BeforePlaying value) beforePlaying,
     required TResult Function(_BeforeStopping value) beforeStopping,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) {
     return loaded(this);
   }
@@ -523,6 +551,7 @@ class _$_Loaded implements _Loaded {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -534,6 +563,7 @@ class _$_Loaded implements _Loaded {
     TResult Function(_BeforePlaying value)? beforePlaying,
     TResult Function(_BeforeStopping value)? beforeStopping,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -545,4 +575,153 @@ class _$_Loaded implements _Loaded {
 
 abstract class _Loaded implements RadioState {
   const factory _Loaded() = _$_Loaded;
+}
+
+/// @nodoc
+abstract class _$$_ErrorCopyWith<$Res> {
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$_ErrorCopyWithImpl<$Res> extends _$RadioStateCopyWithImpl<$Res>
+    implements _$$_ErrorCopyWith<$Res> {
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, (v) => _then(v as _$_Error));
+
+  @override
+  _$_Error get _value => super._value as _$_Error;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_Error(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Error implements _Error {
+  const _$_Error([this.message]);
+
+  @override
+  final String? message;
+
+  @override
+  String toString() {
+    return 'RadioState.error(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Error &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() beforePlaying,
+    required TResult Function() beforeStopping,
+    required TResult Function() loaded,
+    required TResult Function(String? message) error,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
+    TResult Function()? loaded,
+    TResult Function(String? message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? beforePlaying,
+    TResult Function()? beforeStopping,
+    TResult Function()? loaded,
+    TResult Function(String? message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_BeforePlaying value) beforePlaying,
+    required TResult Function(_BeforeStopping value) beforeStopping,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_BeforePlaying value)? beforePlaying,
+    TResult Function(_BeforeStopping value)? beforeStopping,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error implements RadioState {
+  const factory _Error([final String? message]) = _$_Error;
+
+  String? get message => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }

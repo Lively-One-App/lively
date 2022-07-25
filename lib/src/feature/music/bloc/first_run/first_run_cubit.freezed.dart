@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'shared_preferences_cubit.dart';
+part of 'first_run_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,62 +15,62 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$SharedPreferencesState {
+mixin _$FirstRunState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadedOnBoarding,
+    required TResult Function() onFirstRun,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadedOnBoarding,
+    TResult Function()? onFirstRun,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadedOnBoarding,
+    TResult Function()? onFirstRun,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedOnBoarding value) loadedOnBoarding,
+    required TResult Function(_OnFirstRun value) onFirstRun,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedOnBoarding value)? loadedOnBoarding,
+    TResult Function(_OnFirstRun value)? onFirstRun,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedOnBoarding value)? loadedOnBoarding,
+    TResult Function(_OnFirstRun value)? onFirstRun,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SharedPreferencesStateCopyWith<$Res> {
-  factory $SharedPreferencesStateCopyWith(SharedPreferencesState value,
-          $Res Function(SharedPreferencesState) then) =
-      _$SharedPreferencesStateCopyWithImpl<$Res>;
+abstract class $FirstRunStateCopyWith<$Res> {
+  factory $FirstRunStateCopyWith(
+          FirstRunState value, $Res Function(FirstRunState) then) =
+      _$FirstRunStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SharedPreferencesStateCopyWithImpl<$Res>
-    implements $SharedPreferencesStateCopyWith<$Res> {
-  _$SharedPreferencesStateCopyWithImpl(this._value, this._then);
+class _$FirstRunStateCopyWithImpl<$Res>
+    implements $FirstRunStateCopyWith<$Res> {
+  _$FirstRunStateCopyWithImpl(this._value, this._then);
 
-  final SharedPreferencesState _value;
+  final FirstRunState _value;
   // ignore: unused_field
-  final $Res Function(SharedPreferencesState) _then;
+  final $Res Function(FirstRunState) _then;
 }
 
 /// @nodoc
@@ -81,8 +81,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$SharedPreferencesStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res> extends _$FirstRunStateCopyWithImpl<$Res>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, (v) => _then(v as _$_Initial));
@@ -98,7 +97,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'SharedPreferencesState.initial()';
+    return 'FirstRunState.initial()';
   }
 
   @override
@@ -114,7 +113,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadedOnBoarding,
+    required TResult Function() onFirstRun,
   }) {
     return initial();
   }
@@ -123,7 +122,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadedOnBoarding,
+    TResult Function()? onFirstRun,
   }) {
     return initial?.call();
   }
@@ -132,7 +131,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadedOnBoarding,
+    TResult Function()? onFirstRun,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -145,7 +144,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedOnBoarding value) loadedOnBoarding,
+    required TResult Function(_OnFirstRun value) onFirstRun,
   }) {
     return initial(this);
   }
@@ -154,7 +153,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedOnBoarding value)? loadedOnBoarding,
+    TResult Function(_OnFirstRun value)? onFirstRun,
   }) {
     return initial?.call(this);
   }
@@ -163,7 +162,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedOnBoarding value)? loadedOnBoarding,
+    TResult Function(_OnFirstRun value)? onFirstRun,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -173,43 +172,43 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements SharedPreferencesState {
+abstract class _Initial implements FirstRunState {
   const factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
-abstract class _$$_LoadedOnBoardingCopyWith<$Res> {
-  factory _$$_LoadedOnBoardingCopyWith(
-          _$_LoadedOnBoarding value, $Res Function(_$_LoadedOnBoarding) then) =
-      __$$_LoadedOnBoardingCopyWithImpl<$Res>;
+abstract class _$$_OnFirstRunCopyWith<$Res> {
+  factory _$$_OnFirstRunCopyWith(
+          _$_OnFirstRun value, $Res Function(_$_OnFirstRun) then) =
+      __$$_OnFirstRunCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadedOnBoardingCopyWithImpl<$Res>
-    extends _$SharedPreferencesStateCopyWithImpl<$Res>
-    implements _$$_LoadedOnBoardingCopyWith<$Res> {
-  __$$_LoadedOnBoardingCopyWithImpl(
-      _$_LoadedOnBoarding _value, $Res Function(_$_LoadedOnBoarding) _then)
-      : super(_value, (v) => _then(v as _$_LoadedOnBoarding));
+class __$$_OnFirstRunCopyWithImpl<$Res>
+    extends _$FirstRunStateCopyWithImpl<$Res>
+    implements _$$_OnFirstRunCopyWith<$Res> {
+  __$$_OnFirstRunCopyWithImpl(
+      _$_OnFirstRun _value, $Res Function(_$_OnFirstRun) _then)
+      : super(_value, (v) => _then(v as _$_OnFirstRun));
 
   @override
-  _$_LoadedOnBoarding get _value => super._value as _$_LoadedOnBoarding;
+  _$_OnFirstRun get _value => super._value as _$_OnFirstRun;
 }
 
 /// @nodoc
 
-class _$_LoadedOnBoarding implements _LoadedOnBoarding {
-  const _$_LoadedOnBoarding();
+class _$_OnFirstRun implements _OnFirstRun {
+  const _$_OnFirstRun();
 
   @override
   String toString() {
-    return 'SharedPreferencesState.loadedOnBoarding()';
+    return 'FirstRunState.onFirstRun()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadedOnBoarding);
+        (other.runtimeType == runtimeType && other is _$_OnFirstRun);
   }
 
   @override
@@ -219,29 +218,29 @@ class _$_LoadedOnBoarding implements _LoadedOnBoarding {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadedOnBoarding,
+    required TResult Function() onFirstRun,
   }) {
-    return loadedOnBoarding();
+    return onFirstRun();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadedOnBoarding,
+    TResult Function()? onFirstRun,
   }) {
-    return loadedOnBoarding?.call();
+    return onFirstRun?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadedOnBoarding,
+    TResult Function()? onFirstRun,
     required TResult orElse(),
   }) {
-    if (loadedOnBoarding != null) {
-      return loadedOnBoarding();
+    if (onFirstRun != null) {
+      return onFirstRun();
     }
     return orElse();
   }
@@ -250,34 +249,34 @@ class _$_LoadedOnBoarding implements _LoadedOnBoarding {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedOnBoarding value) loadedOnBoarding,
+    required TResult Function(_OnFirstRun value) onFirstRun,
   }) {
-    return loadedOnBoarding(this);
+    return onFirstRun(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedOnBoarding value)? loadedOnBoarding,
+    TResult Function(_OnFirstRun value)? onFirstRun,
   }) {
-    return loadedOnBoarding?.call(this);
+    return onFirstRun?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedOnBoarding value)? loadedOnBoarding,
+    TResult Function(_OnFirstRun value)? onFirstRun,
     required TResult orElse(),
   }) {
-    if (loadedOnBoarding != null) {
-      return loadedOnBoarding(this);
+    if (onFirstRun != null) {
+      return onFirstRun(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadedOnBoarding implements SharedPreferencesState {
-  const factory _LoadedOnBoarding() = _$_LoadedOnBoarding;
+abstract class _OnFirstRun implements FirstRunState {
+  const factory _OnFirstRun() = _$_OnFirstRun;
 }

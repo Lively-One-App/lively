@@ -10,10 +10,10 @@ import 'package:l/l.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
-import 'src/feature/music/bloc/azuracast/azuracast_cubit.dart';
+import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
+import 'src/feature/music/bloc/first_run/first_run_cubit.dart';
 import 'src/feature/music/bloc/likes/likes_cubit.dart';
 import 'src/feature/music/bloc/radio/radio_cubit.dart';
-import 'src/feature/music/bloc/shared_preferences/shared_preferences_cubit.dart';
 import 'src/feature/music/logic/firestore.dart';
 import 'src/feature/music/logic/my_audioplayer_handler.dart';
 import 'src/feature/music/logic/websocket_auto_reconnect.dart';
@@ -39,57 +39,39 @@ void main() => runZonedGuarded<void>(
                 androidNotificationOngoing: true,
               ),
             );
+            final socket = await WebSocketAutoReconnect(
+              Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/lively'),
+            );
             final sharedPreferences = await SharedPreferences.getInstance();
             FlutterError.onError =
                 FirebaseCrashlytics.instance.recordFlutterError;
-            runApp(MultiRepositoryProvider(
+            runApp(MultiBlocProvider(
               providers: [
-                RepositoryProvider<MyAudioPlayerHandler>(
-                  create: (context) => audioHandler,
+                BlocProvider<AzuraApiNowPlayingCubit>(
+                    create: (context) => AzuraApiNowPlayingCubit()),
+                BlocProvider<FirstRunCubit>(
+                    create: (context) => FirstRunCubit(sharedPreferences)),
+                BlocProvider<RadioCubit>(
+                  create: (context) {
+                    final azuraApiNowPlayingCubit =
+                        BlocProvider.of<AzuraApiNowPlayingCubit>(context);
+
+                    return RadioCubit(
+                        myAudioHandler: audioHandler,
+                        azuraApiNowPlayingCubit: azuraApiNowPlayingCubit,
+                        webSocket: socket);
+                  },
                 ),
-                RepositoryProvider(
-                  create: (context) => WebSocketAutoReconnect(
-                    Uri.parse(
-                        'wss://s.livelyoneapp.ru/api/live/nowplaying/lively'),
-                  ),
-                ),
+                BlocProvider<LikesCubit>(
+                  create: (context) {
+                    final store = Firestore();
+                    final musicBloc = BlocProvider.of<RadioCubit>(context);
+
+                    return LikesCubit(store: store, musicCubit: musicBloc);
+                  },
+                )
               ],
-              child: MultiBlocProvider(
-                providers: [
-                  BlocProvider<AzuraCastCubit>(
-                    create: (context) {
-                      final socketAutoConnect =
-                          RepositoryProvider.of<WebSocketAutoReconnect>(
-                              context);
-
-                      return AzuraCastCubit(socketAutoConnect);
-                    },
-                  ),
-                  BlocProvider<RadioCubit>(
-                    create: (context) {
-                      final azureCubit =
-                          BlocProvider.of<AzuraCastCubit>(context);
-                      final audioHandl =
-                          RepositoryProvider.of<MyAudioPlayerHandler>(context);
-
-                      return RadioCubit(
-                          myAudioHandler: audioHandl, azureCubit: azureCubit);
-                    },
-                  ),
-                  BlocProvider<LikesCubit>(
-                    create: (context) {
-                      final store = Firestore();
-                      final musicBloc = BlocProvider.of<RadioCubit>(context);
-
-                      return LikesCubit(store: store, musicCubit: musicBloc);
-                    },
-                  ),
-                  BlocProvider<SharedPreferencesCubit>(
-                      create: (context) =>
-                          SharedPreferencesCubit(sharedPreferences))
-                ],
-                child: const MyApp(),
-              ),
+              child: const MyApp(),
             ));
           },
           blocObserver: AppBlocObserver.instance(),

@@ -11,6 +11,11 @@ part 'likes_state.dart';
 part 'likes_cubit.freezed.dart';
 
 class LikesCubit extends Cubit<LikesState> {
+  final OnlineStoreImpl _store;
+  final RadioCubit _musicCubit;
+  StreamSubscription? _listenerCityData;
+  late final StreamSubscription<RadioState> _musicCubitStream;
+
   LikesCubit({
     required final RadioCubit musicCubit,
     required final OnlineStoreImpl store,
@@ -27,17 +32,14 @@ class LikesCubit extends Cubit<LikesState> {
           );
         },
         initial: () {
-          _listenerCityData
-              .cancel()
-              .whenComplete(() => emit(const LikesState.initial()));
+          if (_listenerCityData != null)
+            _listenerCityData?.cancel().whenComplete(
+                  () => emit(const LikesState.initial()),
+                );
         },
       );
     });
   }
-  final OnlineStoreImpl _store;
-  final RadioCubit _musicCubit;
-  late StreamSubscription _listenerCityData;
-  late final StreamSubscription _musicCubitStream;
 
   void writeLike() {
     _store.setData('Moskow');
@@ -47,7 +49,7 @@ class LikesCubit extends Cubit<LikesState> {
   Future<void> close() {
     _musicCubit.close();
     _musicCubitStream.cancel();
-    _listenerCityData.cancel();
+    _listenerCityData?.cancel();
 
     return super.close();
   }

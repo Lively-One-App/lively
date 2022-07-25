@@ -7,67 +7,67 @@ import 'package:just_audio/just_audio.dart';
 import 'package:l/l.dart';
 
 import '../../logic/my_audioplayer_handler.dart';
-import '../azuracast/azuracast_cubit.dart';
+import '../../logic/websocket_auto_reconnect.dart';
+import '../../model/azuracast/azura_api_now_playing.dart';
+import '../../model/azuracast/azura_api_song.dart';
+import '../azura_api_now_playing/azura_api_now_playing_cubit.dart';
 
 part 'radio_state.dart';
 part 'radio_cubit.freezed.dart';
 
 class RadioCubit extends Cubit<RadioState> {
+  final MyAudioPlayerHandler _myAudioHandler;
+  final AzuraApiNowPlayingCubit _azuraApiNowPlayingCubit;
+  late final StreamSubscription<AzuraApiNowPlaying> _listenUrl;
+  late final StreamSubscription<AzuraApiSong> _listenMediaItem;
+  late final StreamSubscription<AzuraApiNowPlaying> _azuraApiNowPlaying;
+  late final Stream<AzuraApiNowPlaying> _handleErrorAzuracast;
   RadioCubit({
-    required AzuraCastCubit azureCubit,
+    required AzuraApiNowPlayingCubit azuraApiNowPlayingCubit,
     required MyAudioPlayerHandler myAudioHandler,
+    required WebSocketAutoReconnect webSocket,
   })  : _myAudioHandler = myAudioHandler,
-        _azuraCastCubit = azureCubit,
+        _azuraApiNowPlayingCubit = azuraApiNowPlayingCubit,
         super(const RadioState.initial()) {
-    _listenerUrlAzuraCastCubit = _azuraCastCubit.stream
-        .distinct(
-      (previous, next) =>
-          previous.whenOrNull(
-              getAzuraCast: ((azuraApiNowPlaying) =>
-                  azuraApiNowPlaying.station.listenUrl)) ==
-          next.whenOrNull(
-              getAzuraCast: ((azuraApiNowPlaying) =>
-                  azuraApiNowPlaying.station.listenUrl)),
-    )
-        .listen(
-      (event) {
-        event.whenOrNull(
-          getAzuraCast: (azuraApiNowPlaying) {
-            _myAudioHandler.setAudioSource(
-              AudioSource.uri(Uri.parse(azuraApiNowPlaying.station.listenUrl)),
-              preload: false,
-              initialPosition: Duration(
-                  milliseconds: azuraApiNowPlaying.nowPlaying.duration),
-            );
-          },
-        );
-      },
-    );
-    _listenerMediaItem = _azuraCastCubit.stream
-        .distinct(
-      (previous, next) =>
-          previous.whenOrNull(
-              getAzuraCast: ((azuraApiNowPlaying) =>
-                  azuraApiNowPlaying.nowPlaying.song)) ==
-          next.whenOrNull(
-              getAzuraCast: ((azuraApiNowPlaying) =>
-                  azuraApiNowPlaying.nowPlaying.song)),
-    )
-        .listen((state) {
+    _handleErrorAzuracast = webSocket.stream.handleError((_) {
+      emit(const RadioState.error('No Internet'));
+    });
+
+    _azuraApiNowPlaying =
+        _handleErrorAzuracast.distinct().listen((azuraApiNowPlaying) {
       state.whenOrNull(
-        getAzuraCast: (azuraApiNowPlaying) {
-          final song = azuraApiNowPlaying.nowPlaying.song;
-          final mediaItem = MediaItem(
-            id: song.id,
-            title: song.title,
-            album: song.album,
-            artist: song.artist,
-            artUri: Uri.parse(song.art),
-          );
-          _myAudioHandler.mediaItem.add(mediaItem);
-        },
+        error: (_) => _myAudioHandler.playbackState.value.playing
+            ? myAudioHandler.stop()
+            : emit(const RadioState.initial()),
+      );
+      _azuraApiNowPlayingCubit.emit(azuraApiNowPlaying);
+    });
+
+    _listenUrl = _handleErrorAzuracast
+        .distinct(((previous, next) =>
+            previous.station.listenUrl == next.station.listenUrl))
+        .listen((azuraApiNowPlaying) {
+      _myAudioHandler.setAudioSource(
+        AudioSource.uri(Uri.parse(azuraApiNowPlaying.station.listenUrl)),
+        preload: false,
+        initialPosition:
+            Duration(milliseconds: azuraApiNowPlaying.nowPlaying.duration),
       );
     });
+
+    _listenMediaItem = _handleErrorAzuracast
+        .map((event) => event.nowPlaying.song)
+        .distinct()
+        .listen((song) {
+      final mediaItem = MediaItem(
+          id: song.id,
+          title: song.title,
+          album: song.album,
+          artist: song.artist,
+          artUri: Uri.parse(song.art));
+      _myAudioHandler.mediaItem.add(mediaItem);
+    });
+
     myAudioHandler.playbackState.stream
         .map<List<dynamic>>((event) => [event.processingState, event.playing])
         .distinct(((previous, next) =>
@@ -92,39 +92,31 @@ class RadioCubit extends Cubit<RadioState> {
     });
   }
 
-  final MyAudioPlayerHandler _myAudioHandler;
-  final AzuraCastCubit _azuraCastCubit;
-  late final StreamSubscription<AzuraCastState> _listenerUrlAzuraCastCubit;
-  late final StreamSubscription<AzuraCastState> _listenerMediaItem;
-
-  void playAndStop() async {
-    _azuraCastCubit.state.mapOrNull(
-      getAzuraCast: (value) {
-        try {
-          if (_myAudioHandler.playbackState.value.playing) {
-            emit(const RadioState.beforeStopping());
-            Future.delayed(const Duration(milliseconds: 500))
-                .then((value) => _myAudioHandler.stop());
-          } else {
-            _myAudioHandler.play();
-          }
-        } on PlayerException catch (e) {
-          l.e(e);
-          rethrow;
-        } on PlayerInterruptedException catch (e) {
-          l.e(e);
-        } catch (e) {
-          l.e('all');
-          l.e(e);
-        }
-      },
-    );
+  void playAndStop() {
+    try {
+      if (_myAudioHandler.playbackState.value.playing) {
+        emit(const RadioState.beforeStopping());
+        Future.delayed(const Duration(milliseconds: 500))
+            .then((value) => _myAudioHandler.stop());
+      } else {
+        _myAudioHandler.play();
+      }
+    } on PlayerException catch (e) {
+      l.e(e);
+      rethrow;
+    } on PlayerInterruptedException catch (e) {
+      l.e(e);
+    } catch (e) {
+      l.e('all');
+      l.e(e);
+    }
   }
 
   @override
   Future<void> close() {
-    _listenerUrlAzuraCastCubit.cancel();
-    _listenerMediaItem.cancel();
+    _listenUrl.cancel();
+    _listenMediaItem.cancel();
+    _azuraApiNowPlaying.cancel();
 
     return super.close();
   }

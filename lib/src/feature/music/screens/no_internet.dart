@@ -6,7 +6,7 @@ import '../../../../theme/burger_text.dart';
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
 import '../../../widgets/gradient_button.dart';
-import '../bloc/azuracast/azuracast_cubit.dart';
+import '../bloc/radio/radio_cubit.dart';
 
 class NoInternet extends StatelessWidget {
   const NoInternet({Key? key}) : super(key: key);
@@ -18,12 +18,14 @@ class NoInternet extends StatelessWidget {
     final textTheme = Theme.of(context).extension<BurgerText>()!.textTheme;
     final gradientColors = Theme.of(context).extension<ColorsForGradient>()!;
 
-    return BlocListener<AzuraCastCubit, AzuraCastState>(
-      listener: (context, state) => state.whenOrNull(
-        getAzuraCast: (_) => Navigator.of(context).pop(),
-      ),
-      child: Scaffold(
-        body: Stack(
+    return Scaffold(
+      body: BlocListener<RadioCubit, RadioState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            initial: () => Navigator.of(context).pop(),
+          );
+        },
+        child: Stack(
           alignment: Alignment.center,
           children: [
             AnimatedBackground(

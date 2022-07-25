@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme/burger_text.dart';
 import '../../../widgets/circle_icon_button.dart';
 
-import '../bloc/azuracast/azuracast_cubit.dart';
 import '/lively_icons.dart';
 import 'onboarding/onboarding.dart';
 
@@ -43,9 +41,9 @@ class BurgerMenu extends StatelessWidget {
                       CircleIconButton(
                           child: const Icon(LivelyIcons.question),
                           onTap: () => showDialog(
-                          useSafeArea: false,
-                          context: context,
-                          builder: (context) => const OnBoarding()))
+                              useSafeArea: false,
+                              context: context,
+                              builder: (context) => const OnBoarding()))
                     ],
                   ),
                   Text('${_localizations.headlineBurgerMenu}',

@@ -71,7 +71,7 @@ flutter:
     - family: Muller
       fonts:
         - asset: assets/fonts/MullerExtraBold.ttf
-        - asset: assets/fonts/Muller-Trial-Regular.ttf
+        - asset: assets/fonts/MullerRegular.ttf
 
 flutter_intl:
   enabled: true

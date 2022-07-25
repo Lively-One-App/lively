@@ -32,10 +32,10 @@ class _TextFadeTransitionState extends State<TextFadeTransition>
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _animation,
-      child: Center(
+      child: const Center(
         child: Text(
           'Test',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 50,
           ),
         ),

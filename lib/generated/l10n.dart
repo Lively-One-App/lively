@@ -243,10 +243,10 @@ class S {
     );
   }
 
-  /// `Listen music, become lively`
+  /// `Listen to the music, become lively`
   String get onBoardingScreen2_1 {
     return Intl.message(
-      'Listen music, become lively',
+      'Listen to the music, become lively',
       name: 'onBoardingScreen2_1',
       desc: '',
       args: [],

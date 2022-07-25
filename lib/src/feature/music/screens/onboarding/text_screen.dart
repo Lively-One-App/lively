@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../theme/colors_for_gradient.dart';
 import '../../../../widgets/animated_background.dart';
 
 class TextScreen extends StatelessWidget {
