@@ -283,7 +283,9 @@ class _$_AzuraApiNowPlayingStationMount
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingStationMountToJson(this);
+    return _$$_AzuraApiNowPlayingStationMountToJson(
+      this,
+    );
   }
 }
 
@@ -304,23 +306,22 @@ abstract class _AzuraApiNowPlayingStationMount
       _$_AzuraApiNowPlayingStationMount.fromJson;
 
   @override
-  String get path => throw _privateConstructorUsedError;
+  String get path;
   @override
   @JsonKey(name: 'is_default')
-  bool get isDefault => throw _privateConstructorUsedError;
+  bool get isDefault;
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
-  int? get bitrate => throw _privateConstructorUsedError;
+  int? get bitrate;
   @override
-  String? get format => throw _privateConstructorUsedError;
+  String? get format;
   @override
-  AzuraApiNowPlayingListeners get listeners =>
-      throw _privateConstructorUsedError;
+  AzuraApiNowPlayingListeners get listeners;
   @override
   @JsonKey(ignore: true)
   _$$_AzuraApiNowPlayingStationMountCopyWith<_$_AzuraApiNowPlayingStationMount>

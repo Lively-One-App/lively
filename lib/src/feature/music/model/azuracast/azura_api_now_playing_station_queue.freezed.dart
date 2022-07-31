@@ -249,7 +249,9 @@ class _$_AzuraApiNowPlayingStationQueue
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingStationQueueToJson(this);
+    return _$$_AzuraApiNowPlayingStationQueueToJson(
+      this,
+    );
   }
 }
 
@@ -268,19 +270,19 @@ abstract class _AzuraApiNowPlayingStationQueue
 
   @override
   @JsonKey(name: 'cued_at')
-  int get cuedAt => throw _privateConstructorUsedError;
+  int get cuedAt;
   @override
   @JsonKey(name: 'played_at')
-  int get playedAt => throw _privateConstructorUsedError;
+  int get playedAt;
   @override
-  int get duration => throw _privateConstructorUsedError;
+  int get duration;
   @override
-  String? get playlist => throw _privateConstructorUsedError;
+  String? get playlist;
   @override
   @JsonKey(name: 'is_request')
-  bool get isRequest => throw _privateConstructorUsedError;
+  bool get isRequest;
   @override
-  AzuraApiSong get song => throw _privateConstructorUsedError;
+  AzuraApiSong get song;
   @override
   @JsonKey(ignore: true)
   _$$_AzuraApiNowPlayingStationQueueCopyWith<_$_AzuraApiNowPlayingStationQueue>

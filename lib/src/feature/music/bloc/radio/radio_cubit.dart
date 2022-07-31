@@ -29,16 +29,20 @@ class RadioCubit extends Cubit<RadioState> {
   })  : _myAudioHandler = myAudioHandler,
         _azuraApiNowPlayingCubit = azuraApiNowPlayingCubit,
         super(const RadioState.initial()) {
-    _handleErrorAzuracast = webSocket.stream.handleError((_) {
-      emit(const RadioState.error('No Internet'));
+    _handleErrorAzuracast = webSocket.stream.distinct().handleError((error) {
+      l.e(error);
     });
 
     _azuraApiNowPlaying =
         _handleErrorAzuracast.distinct().listen((azuraApiNowPlaying) {
       state.whenOrNull(
-        error: (_) => _myAudioHandler.playbackState.value.playing
-            ? myAudioHandler.stop()
-            : emit(const RadioState.initial()),
+        error: (_) {
+          emit(const RadioState.initial());
+          _myAudioHandler.setAudioSource(
+            AudioSource.uri(Uri.parse(azuraApiNowPlaying.station.listenUrl)),
+            preload: false,
+          );
+        },
       );
       _azuraApiNowPlayingCubit.emit(azuraApiNowPlaying);
     });
@@ -50,8 +54,6 @@ class RadioCubit extends Cubit<RadioState> {
       _myAudioHandler.setAudioSource(
         AudioSource.uri(Uri.parse(azuraApiNowPlaying.station.listenUrl)),
         preload: false,
-        initialPosition:
-            Duration(milliseconds: azuraApiNowPlaying.nowPlaying.duration),
       );
     });
 
@@ -68,36 +70,46 @@ class RadioCubit extends Cubit<RadioState> {
       _myAudioHandler.mediaItem.add(mediaItem);
     });
 
-    myAudioHandler.playbackState.stream
+    _myAudioHandler.playbackState.stream
+        .timeout(
+          const Duration(seconds: 8),
+          onTimeout: (sink) {
+            sink.addError(TimeoutException('No internet'));
+          },
+        )
         .map<List<dynamic>>((event) => [event.processingState, event.playing])
         .distinct(((previous, next) =>
             previous[0] == next[0] && previous[1] == next[1]))
-        .skip(1)
         .listen((event) {
-      if (event[1] && event[0] == AudioProcessingState.ready) {
-        emit(const RadioState.loaded());
-      } else if (!event[1]) {
-        emit(const RadioState.initial());
-      } else {
-        emit(const RadioState.beforePlaying());
-      }
-    }, onError: (e, stackTrace) {
-      if (e is PlayerException) {
-        l.e('Error code: ${e.code}');
-        l.e('Error message: ${e.message}');
-        emit(const RadioState.initial());
-      } else {
-        l.e('An error occurred: $e');
-      }
-    });
+          if (event[1] && event[0] == AudioProcessingState.ready) {
+            emit(const RadioState.loaded());
+          } else if (!event[1]) {
+            emit(const RadioState.initial());
+          } else {
+            emit(const RadioState.beforePlaying());
+          }
+        }, onError: (e, stackTrace) async {
+          if (e is TimeoutException) {
+            if (await _myAudioHandler.playbackState.value.playing) {
+              await _myAudioHandler.stop();
+              emit(const RadioState.error());
+            }
+          } else if (e is PlayerException) {
+            l.e('Error code: ${e.code}');
+            l.e('Error message: ${e.message}');
+            emit(const RadioState.initial());
+          } else {
+            l.e('An error occurred: $e');
+          }
+        });
   }
 
-  void playAndStop() {
+  void playAndStop() async {
     try {
-      if (_myAudioHandler.playbackState.value.playing) {
+      if (await _myAudioHandler.playbackState.value.playing) {
         emit(const RadioState.beforeStopping());
-        Future.delayed(const Duration(milliseconds: 500))
-            .then((value) => _myAudioHandler.stop());
+        await Future.delayed(const Duration(milliseconds: 1000));
+        _myAudioHandler.stop();
       } else {
         _myAudioHandler.play();
       }
@@ -117,6 +129,7 @@ class RadioCubit extends Cubit<RadioState> {
     _listenUrl.cancel();
     _listenMediaItem.cancel();
     _azuraApiNowPlaying.cancel();
+    _myAudioHandler.dispose();
 
     return super.close();
   }

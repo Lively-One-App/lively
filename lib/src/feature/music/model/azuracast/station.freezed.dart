@@ -171,13 +171,13 @@ abstract class _Station implements Station {
       required final String listenUrl}) = _$_Station;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get listenUrl => throw _privateConstructorUsedError;
+  String get listenUrl;
   @override
   @JsonKey(ignore: true)
   _$$_StationCopyWith<_$_Station> get copyWith =>

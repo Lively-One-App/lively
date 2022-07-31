@@ -289,23 +289,23 @@ abstract class _CurrentSong implements CurrentSong {
       required final Song song}) = _$_CurrentSong;
 
   @override
-  int get elapsed => throw _privateConstructorUsedError;
+  int get elapsed;
   @override
-  int get remaining => throw _privateConstructorUsedError;
+  int get remaining;
   @override
-  int get shId => throw _privateConstructorUsedError;
+  int get shId;
   @override
-  int get playedAt => throw _privateConstructorUsedError;
+  int get playedAt;
   @override
-  int get duration => throw _privateConstructorUsedError;
+  int get duration;
   @override
-  String? get playList => throw _privateConstructorUsedError;
+  String? get playList;
   @override
-  String? get streamer => throw _privateConstructorUsedError;
+  String? get streamer;
   @override
-  bool get isRequest => throw _privateConstructorUsedError;
+  bool get isRequest;
   @override
-  Song get song => throw _privateConstructorUsedError;
+  Song get song;
   @override
   @JsonKey(ignore: true)
   _$$_CurrentSongCopyWith<_$_CurrentSong> get copyWith =>

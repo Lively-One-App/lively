@@ -36,10 +36,13 @@ class OnBoarding extends StatelessWidget {
           secondPart: localizations.onBoardingScreen2_2,
         ),
         VideoScreen(
-          textButton: Text(
-            localizations.start,
-            style: theme.textTheme.headline1
-                ?.copyWith(fontSize: 22, letterSpacing: -1),
+          textButton: Padding(
+            padding: const EdgeInsets.only(top: 6, right: 6),
+            child: Text(
+              localizations.start,
+              style: theme.textTheme.headline1
+                  ?.copyWith(fontSize: 22, letterSpacing: -1),
+            ),
           ),
           gradientColorsButton: gradientColors,
           bgButton: theme.scaffoldBackgroundColor.withOpacity(0.8),

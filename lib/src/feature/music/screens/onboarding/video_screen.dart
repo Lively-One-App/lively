@@ -7,7 +7,7 @@ class VideoScreen extends StatefulWidget {
   const VideoScreen({
     Key? key,
     required this.gradientColorsButton,
-    required this.textButton,
+    this.textButton,
     required this.bgButton,
     this.bottomPaddingButton,
     this.scaleFactorVideo,
@@ -15,7 +15,7 @@ class VideoScreen extends StatefulWidget {
   final List<Color> gradientColorsButton;
   final double? bottomPaddingButton;
   final double? scaleFactorVideo;
-  final Text textButton;
+  final Widget? textButton;
   final Color bgButton;
   @override
   State<VideoScreen> createState() => _VideoScreenState();
@@ -61,7 +61,7 @@ class _VideoScreenState extends State<VideoScreen> {
                     endGradient: LinearGradient(
                         colors: widget.gradientColorsButton.reversed.toList()),
                     borderRadius: 34,
-                    stroukeWidth: 3,
+                    strokeWidth: 3,
                     child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 20, horizontal: 41),

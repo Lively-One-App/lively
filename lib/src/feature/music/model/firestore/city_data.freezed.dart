@@ -124,7 +124,9 @@ class _$_CityData implements _CityData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CityDataToJson(this);
+    return _$$_CityDataToJson(
+      this,
+    );
   }
 }
 
@@ -134,7 +136,7 @@ abstract class _CityData implements CityData {
   factory _CityData.fromJson(Map<String, dynamic> json) = _$_CityData.fromJson;
 
   @override
-  int get likes => throw _privateConstructorUsedError;
+  int get likes;
   @override
   @JsonKey(ignore: true)
   _$$_CityDataCopyWith<_$_CityData> get copyWith =>

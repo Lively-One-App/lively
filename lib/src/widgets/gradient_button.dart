@@ -10,7 +10,7 @@ class GradientButton extends StatelessWidget {
     required this.endGradient,
     required this.borderRadius,
     required this.child,
-    required this.stroukeWidth,
+    required this.strokeWidth,
     required this.background,
   }) : super(key: key);
   final double borderRadius;
@@ -19,7 +19,7 @@ class GradientButton extends StatelessWidget {
   final Widget child;
   final Gradient beginGradient;
   final Gradient endGradient;
-  final double stroukeWidth;
+  final double strokeWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class GradientButton extends StatelessWidget {
       child: AnimatedBackground(
         beginGradient: beginGradient,
         endGradient: endGradient,
-        padding: EdgeInsets.all(stroukeWidth),
+        padding: EdgeInsets.all(strokeWidth),
         borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
         child: DecoratedBox(
           decoration: BoxDecoration(

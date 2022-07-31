@@ -28,14 +28,8 @@ class LivelyIcon extends StatelessWidget {
               painter: FramePainter(
                   size: size / 2.15,
                   color: state.whenOrNull(
-                    beforeStopping: (() {
-                      controller.reverse();
-
-                      return Colors.white;
-                    }),
-                    loaded: () {
-                      return theme.iconTheme.color!;
-                    },
+                    beforeStopping: () => Colors.white,
+                    loaded: () => theme.iconTheme.color!,
                   )!,
                   rotate: rotate.value),
             ),

@@ -10,7 +10,7 @@ import '../../../widgets/lively_button.dart';
 import '../../../widgets/reset_animated_icon.dart';
 import '../bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
 import '../bloc/first_run/first_run_cubit.dart';
-import '../bloc/likes/likes_cubit.dart';
+import '../bloc/likes/likes_bloc.dart';
 import '../bloc/radio/radio_cubit.dart';
 import '../model/azuracast/azura_api_now_playing.dart';
 import '/lively_icons.dart';
@@ -27,12 +27,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   late final AnimationController controllerLivelyButton = AnimationController(
-      vsync: this, duration: const Duration(milliseconds: 700));
+      vsync: this, duration: const Duration(milliseconds: 400));
+  late final AnimationController controllerLivelyIcon = AnimationController(
+      vsync: this, duration: const Duration(milliseconds: 200));
   late final AnimationController controllerHeart = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 100));
   late final AnimationController controllerResetIcon = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 300));
-
   late final gradientColors = Theme.of(context).extension<ColorsForGradient>()!;
   final ValueNotifier<bool> isLike = ValueNotifier(false);
 
@@ -41,6 +42,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     controllerLivelyButton.dispose();
     controllerHeart.dispose();
     controllerResetIcon.dispose();
+    controllerLivelyIcon.dispose();
     super.dispose();
   }
 
@@ -55,13 +57,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   void onTap() async {
     HapticFeedback.lightImpact();
     isLike.value = !isLike.value;
-    context.read<LikesCubit>().writeLike();
-    controllerLivelyButton.forward();
+    context.read<LikesBloc>().add(const LikesEvent.writeLike());
+    controllerLivelyIcon.forward();
     await controllerHeart.forward();
     Future.delayed(const Duration(seconds: 2), (() async {
       await controllerHeart.reverse();
       isLike.value = !isLike.value;
-      controllerLivelyButton.repeat(reverse: true);
+      controllerLivelyIcon.repeat(
+          reverse: true, period: const Duration(seconds: 1));
     }));
   }
 
@@ -88,9 +91,28 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         );
       },
       child: BlocListener<RadioCubit, RadioState>(
+        listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
-          state.whenOrNull(
-            error: (message) => myShowDialog(context, const NoInternet()),
+          state.when(
+            initial: () => controllerLivelyButton.reset(),
+            beforePlaying: () {
+              controllerLivelyButton.repeat(reverse: true);
+            },
+            loaded: () {
+              controllerLivelyButton.reset();
+              controllerLivelyIcon.repeat(
+                  reverse: true, period: const Duration(milliseconds: 1500));
+            },
+            beforeStopping: () {
+              controllerLivelyIcon.reverse();
+              controllerLivelyButton.repeat(reverse: true);
+            },
+            error: (message) {
+              controllerLivelyButton.reset();
+              controllerLivelyIcon.reset();
+
+              return myShowDialog(context, const NoInternet());
+            },
           );
         },
         child: Stack(
@@ -151,7 +173,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                   BlocBuilder<AzuraApiNowPlayingCubit, AzuraApiNowPlaying?>(
                       buildWhen: (previous, current) =>
-                          previous?.listeners.total != current?.listeners.total,
+                          previous?.listeners.unique !=
+                          current?.listeners.unique,
                       builder: (context, state) {
                         final total = state?.listeners.total ?? 0;
 
@@ -174,7 +197,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  BlocBuilder<LikesCubit, LikesState>(
+                  BlocBuilder<LikesBloc, LikesState>(
                     buildWhen: ((previous, current) {
                       previous.whenOrNull(
                           getLikes: (data) => controllerResetIcon
@@ -241,11 +264,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 width: width,
                 top: height * 0.54 - radiusButton / 2,
                 child: LivelyButton(
+                  controllerLivelyIcon: controllerLivelyIcon,
                   radius: radiusButton,
-                  controller: controllerLivelyButton,
+                  controllerLivelyButton: controllerLivelyButton,
                   onTap: () {
-                    HapticFeedback.vibrate();
-                    controllerLivelyButton.repeat(reverse: true);
+                    HapticFeedback.selectionClick();
                     context.read<RadioCubit>().playAndStop();
                   },
                   beginGradient: LinearGradient(

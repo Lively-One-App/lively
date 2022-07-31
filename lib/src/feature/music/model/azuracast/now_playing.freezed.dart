@@ -225,13 +225,13 @@ abstract class _NowPlaying implements NowPlaying {
       required final RadioListeners listeners}) = _$_NowPlaying;
 
   @override
-  Song get song => throw _privateConstructorUsedError;
+  Song get song;
   @override
-  CurrentSong get currentSong => throw _privateConstructorUsedError;
+  CurrentSong get currentSong;
   @override
-  Station get station => throw _privateConstructorUsedError;
+  Station get station;
   @override
-  RadioListeners get listeners => throw _privateConstructorUsedError;
+  RadioListeners get listeners;
   @override
   @JsonKey(ignore: true)
   _$$_NowPlayingCopyWith<_$_NowPlaying> get copyWith =>

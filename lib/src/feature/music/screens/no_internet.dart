@@ -79,7 +79,7 @@ class NoInternet extends StatelessWidget {
                       gradientColors.btnColor1!,
                     ]),
                     borderRadius: 34,
-                    stroukeWidth: 3,
+                    strokeWidth: 3,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 41),

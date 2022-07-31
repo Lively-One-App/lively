@@ -18,12 +18,14 @@ abstract class MyThemes {
     BurgerText(
         textTheme: _textTheme.copyWith(
       headline1: const TextStyle(
+        height: 1.3,
         letterSpacing: 1.2,
         fontSize: 30,
         fontWeight: _extraBold,
         color: _accent,
       ),
       subtitle1: const TextStyle(
+        height: 1.1,
         fontSize: 22,
         letterSpacing: -1,
         fontWeight: _regular,
@@ -45,7 +47,7 @@ abstract class MyThemes {
     backgroundColor: Colors.transparent,
   );
   static const _iconTheme =
-      IconThemeData(color: const Color(0xFF696969), size: 32);
+      IconThemeData(color: const Color(0xFF696969), size: 28);
   static const _listTileThemeData = const ListTileThemeData(
     iconColor: const Color(0xFFD6D6D6),
     tileColor: const Color(0xFFFFFFFF),
@@ -71,11 +73,15 @@ abstract class MyThemes {
   static ThemeData get darkTheme {
     const backgroundColor = const Color(0xFF363636);
 
-    return lightTheme.copyWith(
+    return ThemeData(
+        fontFamily: 'Muller',
+        extensions: _extension,
         brightness: Brightness.dark,
+        colorSchemeSeed: _accent,
         scaffoldBackgroundColor: backgroundColor,
         textTheme: _textTheme.apply(bodyColor: const Color(0xFFC6C6C6)),
         backgroundColor: backgroundColor,
+        iconTheme: const IconThemeData(color: _accent),
         appBarTheme: _appBarTheme.copyWith(
           systemOverlayStyle: SystemUiOverlayStyle.light,
           iconTheme: _iconTheme.copyWith(color: const Color(0xFFA9A9A9)),

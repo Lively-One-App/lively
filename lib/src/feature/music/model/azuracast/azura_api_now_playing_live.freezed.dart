@@ -179,7 +179,9 @@ class _$_AzuraApiNowPlayingLive implements _AzuraApiNowPlayingLive {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingLiveToJson(this);
+    return _$$_AzuraApiNowPlayingLiveToJson(
+      this,
+    );
   }
 }
 
@@ -195,13 +197,13 @@ abstract class _AzuraApiNowPlayingLive implements AzuraApiNowPlayingLive {
 
   @override
   @JsonKey(name: 'is_live')
-  bool get isLive => throw _privateConstructorUsedError;
+  bool get isLive;
   @override
   @JsonKey(name: 'streamer_name')
-  String get streamerName => throw _privateConstructorUsedError;
+  String get streamerName;
   @override
   @JsonKey(name: 'broadcast_start')
-  int? get broadcastStart => throw _privateConstructorUsedError;
+  int? get broadcastStart;
   @override
   @JsonKey(ignore: true)
   _$$_AzuraApiNowPlayingLiveCopyWith<_$_AzuraApiNowPlayingLive> get copyWith =>

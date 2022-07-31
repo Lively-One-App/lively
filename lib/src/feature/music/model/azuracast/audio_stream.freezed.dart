@@ -193,15 +193,15 @@ abstract class _AudioStream implements AudioStream {
       required final String format}) = _$_AudioStream;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
-  bool get isDefault => throw _privateConstructorUsedError;
+  bool get isDefault;
   @override
-  String get bitRate => throw _privateConstructorUsedError;
+  String get bitRate;
   @override
-  String get format => throw _privateConstructorUsedError;
+  String get format;
   @override
   @JsonKey(ignore: true)
   _$$_AudioStreamCopyWith<_$_AudioStream> get copyWith =>

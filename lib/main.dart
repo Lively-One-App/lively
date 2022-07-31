@@ -12,14 +12,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'src/common/bloc/app_bloc_observer.dart';
 import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
 import 'src/feature/music/bloc/first_run/first_run_cubit.dart';
-import 'src/feature/music/bloc/likes/likes_cubit.dart';
+import 'src/feature/music/bloc/likes/likes_bloc.dart';
 import 'src/feature/music/bloc/radio/radio_cubit.dart';
 import 'src/feature/music/logic/firestore.dart';
 import 'src/feature/music/logic/my_audioplayer_handler.dart';
 import 'src/feature/music/logic/websocket_auto_reconnect.dart';
 import 'src/my_app.dart';
 
-//late MyAudioPlayerHandler audioHandler;
 void main() => runZonedGuarded<void>(
       () async {
         WidgetsFlutterBinding.ensureInitialized();
@@ -39,12 +38,13 @@ void main() => runZonedGuarded<void>(
                 androidNotificationOngoing: true,
               ),
             );
+
             final socket = await WebSocketAutoReconnect(
               Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/lively'),
             );
             final sharedPreferences = await SharedPreferences.getInstance();
             FlutterError.onError =
-                FirebaseCrashlytics.instance.recordFlutterError;
+                await FirebaseCrashlytics.instance.recordFlutterError;
             runApp(MultiBlocProvider(
               providers: [
                 BlocProvider<AzuraApiNowPlayingCubit>(
@@ -62,12 +62,12 @@ void main() => runZonedGuarded<void>(
                         webSocket: socket);
                   },
                 ),
-                BlocProvider<LikesCubit>(
+                BlocProvider<LikesBloc>(
                   create: (context) {
                     final store = Firestore();
-                    final musicBloc = BlocProvider.of<RadioCubit>(context);
+                    final radioCubit = BlocProvider.of<RadioCubit>(context);
 
-                    return LikesCubit(store: store, musicCubit: musicBloc);
+                    return LikesBloc(store: store, radioCubit: radioCubit);
                   },
                 )
               ],

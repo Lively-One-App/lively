@@ -283,7 +283,9 @@ class _$_AzuraApiSong implements _AzuraApiSong {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiSongToJson(this);
+    return _$$_AzuraApiSongToJson(
+      this,
+    );
   }
 }
 
@@ -304,24 +306,24 @@ abstract class _AzuraApiSong implements AzuraApiSong {
       _$_AzuraApiSong.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get text => throw _privateConstructorUsedError;
+  String get text;
   @override
-  String get artist => throw _privateConstructorUsedError;
+  String get artist;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get album => throw _privateConstructorUsedError;
+  String get album;
   @override
-  String get genre => throw _privateConstructorUsedError;
+  String get genre;
   @override
-  String get lyrics => throw _privateConstructorUsedError;
+  String get lyrics;
   @override
-  String get art => throw _privateConstructorUsedError;
+  String get art;
   @override
   @JsonKey(name: 'custom_fields')
-  List<String> get customFields => throw _privateConstructorUsedError;
+  List<String> get customFields;
   @override
   @JsonKey(ignore: true)
   _$$_AzuraApiSongCopyWith<_$_AzuraApiSong> get copyWith =>

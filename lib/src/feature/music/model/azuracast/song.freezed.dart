@@ -253,21 +253,21 @@ abstract class _Song implements Song {
       required final String art}) = _$_Song;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get text => throw _privateConstructorUsedError;
+  String get text;
   @override
-  String get artist => throw _privateConstructorUsedError;
+  String get artist;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get album => throw _privateConstructorUsedError;
+  String get album;
   @override
-  String get genre => throw _privateConstructorUsedError;
+  String get genre;
   @override
-  String get lyrics => throw _privateConstructorUsedError;
+  String get lyrics;
   @override
-  String get art => throw _privateConstructorUsedError;
+  String get art;
   @override
   @JsonKey(ignore: true)
   _$$_SongCopyWith<_$_Song> get copyWith => throw _privateConstructorUsedError;

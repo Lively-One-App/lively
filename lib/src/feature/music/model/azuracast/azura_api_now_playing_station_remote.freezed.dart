@@ -246,7 +246,9 @@ class _$_AzuraApiNowPlayingStationRemote
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingStationRemoteToJson(this);
+    return _$$_AzuraApiNowPlayingStationRemoteToJson(
+      this,
+    );
   }
 }
 
@@ -265,18 +267,17 @@ abstract class _AzuraApiNowPlayingStationRemote
       _$_AzuraApiNowPlayingStationRemote.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
-  int? get bitrate => throw _privateConstructorUsedError;
+  int? get bitrate;
   @override
-  int? get format => throw _privateConstructorUsedError;
+  int? get format;
   @override
-  AzuraApiNowPlayingListeners get listeners =>
-      throw _privateConstructorUsedError;
+  AzuraApiNowPlayingListeners get listeners;
   @override
   @JsonKey(ignore: true)
   _$$_AzuraApiNowPlayingStationRemoteCopyWith<

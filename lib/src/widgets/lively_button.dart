@@ -8,62 +8,56 @@ import 'lively_icon.dart';
 import 'circle_icon_button.dart';
 
 class LivelyButton extends StatelessWidget {
-  LivelyButton({
-    Key? key,
-    required this.radius,
-    this.onTap,
-    required this.controller,
-    required this.beginGradient,
-    required this.endGradient,
-  }) : super(key: key);
+  const LivelyButton(
+      {Key? key,
+      required this.radius,
+      this.onTap,
+      required this.controllerLivelyButton,
+      required this.beginGradient,
+      required this.endGradient,
+      required this.controllerLivelyIcon})
+      : super(key: key);
   final double radius;
   final void Function()? onTap;
-  final AnimationController controller;
+  final AnimationController controllerLivelyButton;
+  final AnimationController controllerLivelyIcon;
   final Gradient beginGradient;
   final Gradient endGradient;
-
-  late final animation =
-      GradientTween(begin: beginGradient, end: endGradient).animate(controller);
-  late final rotateLivelyIcon =
-      Tween(begin: 0.0, end: -0.21).animate(controller);
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final backgroundTheme = Theme.of(context).scaffoldBackgroundColor;
     final width = MediaQuery.of(context).size.width;
+    late final backgroundLivelyButton =
+        GradientTween(begin: beginGradient, end: endGradient)
+            .animate(controllerLivelyButton);
+    late final rotateLivelyIcon =
+        Tween(begin: 0.0, end: -0.21).animate(controllerLivelyIcon);
 
     return BlocBuilder<RadioCubit, RadioState>(
       builder: (context, state) {
         return Center(
           child: AnimatedBuilder(
-            animation: controller,
+            animation: controllerLivelyButton,
             builder: (context, _) => CustomPaint(
                 painter: state.whenOrNull(
-                  initial: () {
-                    return _LivelyButtonPainter(
-                        strokeGradient: beginGradient,
-                        width: width,
-                        backgroundColor: backgroundTheme);
-                  },
-                  beforePlaying: () {
-                    return _LivelyButtonPainter(
-                        strokeGradient: beginGradient,
-                        width: width,
-                        backgroundGradient: animation.value);
-                  },
-                  beforeStopping: () {
-                    return _LivelyButtonPainter(
-                        strokeGradient: beginGradient,
-                        width: width,
-                        backgroundGradient: animation.value);
-                  },
-                  loaded: () {
-                    return _LivelyButtonPainter(
-                        strokeGradient: beginGradient,
-                        width: width,
-                        backgroundColor: backgroundTheme);
-                  },
+                  initial: () => _LivelyButtonPainter(
+                      strokeGradient: beginGradient,
+                      width: width,
+                      backgroundColor: backgroundTheme),
+                  beforePlaying: () => _LivelyButtonPainter(
+                      strokeGradient: beginGradient,
+                      width: width,
+                      backgroundGradient: backgroundLivelyButton.value),
+                  beforeStopping: () => _LivelyButtonPainter(
+                      strokeGradient: beginGradient,
+                      width: width,
+                      backgroundGradient: backgroundLivelyButton.value),
+                  loaded: () => _LivelyButtonPainter(
+                      strokeGradient: beginGradient,
+                      width: width,
+                      backgroundColor: backgroundTheme),
                 ),
                 child: CircleIconButton(
                     onTap: onTap,
@@ -91,18 +85,20 @@ class LivelyButton extends StatelessWidget {
                               padding: EdgeInsets.only(top: radius * 0.04),
                               child: LivelyIcon(
                                 rotate: rotateLivelyIcon,
-                                controller: controller,
+                                controller: controllerLivelyIcon,
                                 size: Size(radius, radius * 0.4),
                               ),
                             ),
-                        beforeStopping: () => Padding(
-                              padding: EdgeInsets.only(top: radius * 0.04),
-                              child: LivelyIcon(
-                                controller: controller,
-                                rotate: rotateLivelyIcon,
-                                size: Size(radius, radius * 0.4),
-                              ),
-                            )))),
+                        beforeStopping: () {
+                          return Padding(
+                            padding: EdgeInsets.only(top: radius * 0.04),
+                            child: LivelyIcon(
+                              controller: controllerLivelyIcon,
+                              rotate: rotateLivelyIcon,
+                              size: Size(radius, radius * 0.4),
+                            ),
+                          );
+                        }))),
           ),
         );
       },

@@ -12,7 +12,7 @@ class WebSocketAutoReconnect {
       StreamController<AzuraApiNowPlaying>.broadcast();
   late WebSocketChannel _webSocketChannel;
 
-  WebSocketAutoReconnect(Uri uri, {this.delay = 1}) : _uri = uri {
+  WebSocketAutoReconnect(Uri uri, {this.delay = 5}) : _uri = uri {
     _connect();
   }
 

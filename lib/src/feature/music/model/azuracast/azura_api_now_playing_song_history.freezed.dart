@@ -266,7 +266,9 @@ class _$_AzuraApiNowPlayingSongHistory
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingSongHistoryToJson(this);
+    return _$$_AzuraApiNowPlayingSongHistoryToJson(
+      this,
+    );
   }
 }
 
@@ -286,21 +288,21 @@ abstract class _AzuraApiNowPlayingSongHistory
 
   @override
   @JsonKey(name: 'sh_id')
-  int get shId => throw _privateConstructorUsedError;
+  int get shId;
   @override
   @JsonKey(name: 'played_at')
-  int get playedAt => throw _privateConstructorUsedError;
+  int get playedAt;
   @override
-  int get duration => throw _privateConstructorUsedError;
+  int get duration;
   @override
-  String? get playlist => throw _privateConstructorUsedError;
+  String? get playlist;
   @override
-  String? get streamer => throw _privateConstructorUsedError;
+  String? get streamer;
   @override
   @JsonKey(name: 'is_request')
-  bool get isRequest => throw _privateConstructorUsedError;
+  bool get isRequest;
   @override
-  AzuraApiSong get song => throw _privateConstructorUsedError;
+  AzuraApiSong get song;
   @override
   @JsonKey(ignore: true)
   _$$_AzuraApiNowPlayingSongHistoryCopyWith<_$_AzuraApiNowPlayingSongHistory>

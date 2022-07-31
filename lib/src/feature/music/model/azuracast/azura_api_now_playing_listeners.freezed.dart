@@ -166,7 +166,9 @@ class _$_AzuraApiNowPlayingListeners implements _AzuraApiNowPlayingListeners {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingListenersToJson(this);
+    return _$$_AzuraApiNowPlayingListenersToJson(
+      this,
+    );
   }
 }
 
@@ -181,11 +183,11 @@ abstract class _AzuraApiNowPlayingListeners
       _$_AzuraApiNowPlayingListeners.fromJson;
 
   @override
-  int get total => throw _privateConstructorUsedError;
+  int get total;
   @override
-  int get unique => throw _privateConstructorUsedError;
+  int get unique;
   @override
-  int get current => throw _privateConstructorUsedError;
+  int get current;
   @override
   @JsonKey(ignore: true)
   _$$_AzuraApiNowPlayingListenersCopyWith<_$_AzuraApiNowPlayingListeners>

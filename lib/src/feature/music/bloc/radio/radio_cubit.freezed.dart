@@ -720,7 +720,7 @@ class _$_Error implements _Error {
 abstract class _Error implements RadioState {
   const factory _Error([final String? message]) = _$_Error;
 
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;

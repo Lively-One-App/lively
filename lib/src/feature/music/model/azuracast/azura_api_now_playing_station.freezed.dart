@@ -399,7 +399,9 @@ class _$_AzuraApiNowPlayingStation implements _AzuraApiNowPlayingStation {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingStationToJson(this);
+    return _$$_AzuraApiNowPlayingStationToJson(
+      this,
+    );
   }
 }
 
@@ -425,40 +427,38 @@ abstract class _AzuraApiNowPlayingStation implements AzuraApiNowPlayingStation {
       _$_AzuraApiNowPlayingStation.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get shortcode => throw _privateConstructorUsedError;
+  String get shortcode;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get frontend => throw _privateConstructorUsedError;
+  String get frontend;
   @override
-  String get backend => throw _privateConstructorUsedError;
+  String get backend;
   @override
   @JsonKey(name: 'listen_url')
-  String get listenUrl => throw _privateConstructorUsedError;
+  String get listenUrl;
   @override
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override
   @JsonKey(name: 'public_player_url')
-  String get publicPlayerUrl => throw _privateConstructorUsedError;
+  String get publicPlayerUrl;
   @override
   @JsonKey(name: 'playlist_pls_url')
-  String get playlistPlsUrl => throw _privateConstructorUsedError;
+  String get playlistPlsUrl;
   @override
   @JsonKey(name: 'playlist_m3u_url')
-  String get playlistM3uUrl => throw _privateConstructorUsedError;
+  String get playlistM3uUrl;
   @override
   @JsonKey(name: 'is_public')
-  bool get isPublic => throw _privateConstructorUsedError;
+  bool get isPublic;
   @override
-  List<AzuraApiNowPlayingStationMount> get mounts =>
-      throw _privateConstructorUsedError;
+  List<AzuraApiNowPlayingStationMount> get mounts;
   @override
-  List<AzuraApiNowPlayingStationRemote> get remotes =>
-      throw _privateConstructorUsedError;
+  List<AzuraApiNowPlayingStationRemote> get remotes;
   @override
   @JsonKey(ignore: true)
   _$$_AzuraApiNowPlayingStationCopyWith<_$_AzuraApiNowPlayingStation>

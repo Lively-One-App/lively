@@ -348,7 +348,9 @@ class _$_AzuraApiNowPlaying implements _AzuraApiNowPlaying {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingToJson(this);
+    return _$$_AzuraApiNowPlayingToJson(
+      this,
+    );
   }
 }
 
@@ -371,29 +373,25 @@ abstract class _AzuraApiNowPlaying implements AzuraApiNowPlaying {
       _$_AzuraApiNowPlaying.fromJson;
 
   @override
-  AzuraApiNowPlayingStation get station => throw _privateConstructorUsedError;
+  AzuraApiNowPlayingStation get station;
   @override
-  AzuraApiNowPlayingListeners get listeners =>
-      throw _privateConstructorUsedError;
+  AzuraApiNowPlayingListeners get listeners;
   @override
-  AzuraApiNowPlayingLive get live => throw _privateConstructorUsedError;
+  AzuraApiNowPlayingLive get live;
   @override
   @JsonKey(name: 'now_playing')
-  AzuraApiNowPlayingCurrentSong get nowPlaying =>
-      throw _privateConstructorUsedError;
+  AzuraApiNowPlayingCurrentSong get nowPlaying;
   @override
   @JsonKey(name: 'playing_next')
-  AzuraApiNowPlayingStationQueue get playingNext =>
-      throw _privateConstructorUsedError;
+  AzuraApiNowPlayingStationQueue get playingNext;
   @override
   @JsonKey(name: 'song_history')
-  List<AzuraApiNowPlayingSongHistory> get songHistory =>
-      throw _privateConstructorUsedError;
+  List<AzuraApiNowPlayingSongHistory> get songHistory;
   @override
   @JsonKey(name: 'is_online')
-  bool get isOnline => throw _privateConstructorUsedError;
+  bool get isOnline;
   @override
-  cacheFrom? get cache => throw _privateConstructorUsedError;
+  cacheFrom? get cache;
   @override
   @JsonKey(ignore: true)
   _$$_AzuraApiNowPlayingCopyWith<_$_AzuraApiNowPlaying> get copyWith =>

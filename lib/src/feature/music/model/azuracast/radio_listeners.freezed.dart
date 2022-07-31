@@ -157,11 +157,11 @@ abstract class _RadioListeners implements RadioListeners {
       required final int unique}) = _$_RadioListeners;
 
   @override
-  int get current => throw _privateConstructorUsedError;
+  int get current;
   @override
-  int get total => throw _privateConstructorUsedError;
+  int get total;
   @override
-  int get unique => throw _privateConstructorUsedError;
+  int get unique;
   @override
   @JsonKey(ignore: true)
   _$$_RadioListenersCopyWith<_$_RadioListeners> get copyWith =>
