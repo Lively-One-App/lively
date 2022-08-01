@@ -30,8 +30,10 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
               .listen((cityData) => add(LikesEvent.getCityData(data: cityData)))
             ..pause(),
           loaded: () => _listenerCityData?.resume(),
-          beforeStopping: () => _listenerCityData?.cancel(),
-          initial: () => add(const LikesEvent.disable()));
+          initial: () async {
+            await _listenerCityData?.cancel();
+            add(const LikesEvent.disable());
+          });
     });
     on<LikesEvent>(
       (event, emit) {

@@ -82,13 +82,10 @@ class RadioCubit extends Cubit<RadioState> {
             previous[0] == next[0] && previous[1] == next[1]))
         .skip(1)
         .listen((event) {
-          print(event);
           if (event[1] && event[0] == AudioProcessingState.ready) {
             emit(const RadioState.loaded());
           } else if (!event[1]) {
-            emit(const RadioState.beforeStopping());
-            Future.delayed(const Duration(milliseconds: 1000))
-                .whenComplete(() => emit(const RadioState.initial()));
+            emit(const RadioState.initial());
           } else {
             emit(const RadioState.beforePlaying());
           }
@@ -111,6 +108,9 @@ class RadioCubit extends Cubit<RadioState> {
   void playAndStop() async {
     try {
       if (await _myAudioHandler.playbackState.value.playing) {
+        emit(const RadioState.beforeStopping());
+        await Future.delayed(const Duration(milliseconds: 1000));
+
         _myAudioHandler.stop();
       } else {
         _myAudioHandler.play();

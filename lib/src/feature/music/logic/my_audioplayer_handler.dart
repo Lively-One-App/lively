@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -46,18 +48,26 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
   }
 
   PlaybackState _transformEvent(PlaybackEvent event) {
+    final mediaControls = [
+      if (Platform.isAndroid)
+        const MediaControl(
+          androidIcon: 'drawable/empty',
+          label: 'Rewind',
+          action: MediaAction.rewind,
+        ),
+      if (_player.playing) MediaControl.pause else MediaControl.play,
+      MediaControl.stop,
+      if (Platform.isAndroid)
+        const MediaControl(
+          androidIcon: 'drawable/empty',
+          label: 'Fast Forward',
+          action: MediaAction.fastForward,
+        ),
+    ];
+
     return PlaybackState(
-      controls: [
-        MediaControl.rewind,
-        if (_player.playing) MediaControl.pause else MediaControl.play,
-        MediaControl.stop,
-        MediaControl.fastForward,
-      ],
-      systemActions: const {
-        MediaAction.seek,
-        MediaAction.seekForward,
-        MediaAction.seekBackward,
-      },
+      controls: mediaControls,
+      systemActions: const {},
       androidCompactActionIndices: const [0, 1, 3],
       processingState: const {
         ProcessingState.idle: AudioProcessingState.idle,
