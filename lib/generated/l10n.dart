@@ -193,20 +193,20 @@ class S {
     );
   }
 
-  /// `Lively doesn't know how to work without the Internet`
+  /// `Lively can't work without the Internet`
   String get noInternet {
     return Intl.message(
-      'Lively doesn`t know how to work without the Internet',
+      'Lively can`t work without the Internet',
       name: 'noInternet',
       desc: '',
       args: [],
     );
   }
 
-  /// `Connect and we will continue`
+  /// `Connect to continue`
   String get noInternetReconnect {
     return Intl.message(
-      'Connect and we will continue',
+      'Connect to continue',
       name: 'noInternetReconnect',
       desc: '',
       args: [],

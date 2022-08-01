@@ -59,6 +59,10 @@ class BurgerMenu extends StatelessWidget {
             SizedBox(
               height: _height * 0.02,
             ),
+            const Divider(
+              height: 1,
+              indent: 1,
+            ),
             ListTile(
               leading: const Icon(LivelyIcons.instagram),
               title: Text(
@@ -78,7 +82,7 @@ class BurgerMenu extends StatelessWidget {
             ),
             const Divider(
               height: 1,
-              indent: 70,
+              indent: 55,
             ),
             ListTile(
               leading: const Icon(
@@ -102,7 +106,7 @@ class BurgerMenu extends StatelessWidget {
             ),
             const Divider(
               height: 1,
-              indent: 70,
+              indent: 55,
             ),
             ListTile(
               leading: const Icon(LivelyIcons.contact),
@@ -121,8 +125,12 @@ class BurgerMenu extends StatelessWidget {
                 }
               },
             ),
-            SizedBox(
-              height: _height * 0.01,
+            const Divider(
+              height: 1,
+              indent: 1,
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -134,6 +142,10 @@ class BurgerMenu extends StatelessWidget {
             ),
             SizedBox(
               height: _height * 0.03,
+            ),
+            const Divider(
+              height: 1,
+              indent: 1,
             ),
             ListTile(
               leading: const Icon(LivelyIcons.privacy),
@@ -152,8 +164,12 @@ class BurgerMenu extends StatelessWidget {
                 }
               },
             ),
-            SizedBox(
-              height: _height * 0.01,
+            const Divider(
+              height: 1,
+              indent: 1,
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),

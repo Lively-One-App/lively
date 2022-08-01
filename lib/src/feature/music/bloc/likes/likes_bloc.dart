@@ -25,20 +25,13 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
         super(const LikesState.initial()) {
     _musicCubit.stream.listen((state) {
       state.whenOrNull(
-        beforePlaying: () {
-          _listenerCityData = _store.getData('Moskow').listen(
-            (cityData) {
-              add(LikesEvent.getCityData(data: cityData));
-            },
-          )..pause();
-        },
-        loaded: () => _listenerCityData?.resume(),
-        initial: () {
-          _listenerCityData?.cancel().whenComplete(
-                () => add(const LikesEvent.disable()),
-              );
-        },
-      );
+          beforePlaying: () => _listenerCityData = _store
+              .getData('Moskow')
+              .listen((cityData) => add(LikesEvent.getCityData(data: cityData)))
+            ..pause(),
+          loaded: () => _listenerCityData?.resume(),
+          beforeStopping: () => _listenerCityData?.cancel(),
+          initial: () => add(const LikesEvent.disable()));
     });
     on<LikesEvent>(
       (event, emit) {

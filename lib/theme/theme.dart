@@ -41,7 +41,7 @@ abstract class MyThemes {
   ];
   static const _appBarTheme = const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle.dark,
-    toolbarHeight: 70,
+    toolbarHeight: 55,
     iconTheme: _iconTheme,
     elevation: 0,
     backgroundColor: Colors.transparent,

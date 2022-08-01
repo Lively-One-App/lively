@@ -37,7 +37,7 @@ class OnBoarding extends StatelessWidget {
         ),
         VideoScreen(
           textButton: Padding(
-            padding: const EdgeInsets.only(top: 6, right: 6),
+            padding: const EdgeInsets.only(top: 6, right: 0),
             child: Text(
               localizations.start,
               style: theme.textTheme.headline1

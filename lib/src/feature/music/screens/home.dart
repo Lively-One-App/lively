@@ -29,11 +29,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   late final AnimationController controllerLivelyButton = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 400));
   late final AnimationController controllerLivelyIcon = AnimationController(
-      vsync: this, duration: const Duration(milliseconds: 200));
+      vsync: this, duration: const Duration(milliseconds: 130));
   late final AnimationController controllerHeart = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 100));
   late final AnimationController controllerResetIcon = AnimationController(
-      vsync: this, duration: const Duration(milliseconds: 300));
+      vsync: this, duration: const Duration(milliseconds: 800));
   late final gradientColors = Theme.of(context).extension<ColorsForGradient>()!;
   final ValueNotifier<bool> isLike = ValueNotifier(false);
 
@@ -101,7 +101,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             loaded: () {
               controllerLivelyButton.reset();
               controllerLivelyIcon.repeat(
-                  reverse: true, period: const Duration(milliseconds: 1500));
+                  reverse: true, period: const Duration(milliseconds: 1000));
             },
             beforeStopping: () {
               controllerLivelyIcon.reverse();
@@ -212,36 +212,46 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           getLikes: (cityData) {
                             return ValueListenableBuilder<bool>(
                               valueListenable: isLike,
-                              builder: (context, value, _) => Stack(
-                                  alignment: AlignmentDirectional.center,
-                                  children: [
-                                    Positioned(
-                                        width: width,
-                                        top: height * 0.27,
-                                        child: !value
-                                            ? ResetAnimatedIcon(
-                                                controller: controllerResetIcon,
-                                                animation: movementResetIcon,
-                                              )
-                                            : const SizedBox()),
-                                    GestureDetector(
-                                      onDoubleTap: value ? null : onTap,
-                                      child: Container(
-                                        color: Colors.transparent,
-                                        height: height * 0.36,
-                                        child: HeartButton(
-                                          text: Text(
-                                              !value
-                                                  ? '+${cityData.likes}'
-                                                  : '',
-                                              style: textTheme.caption),
-                                          increaseHeart: increaseHeart,
-                                          controllerHeart: controllerHeart,
-                                          textTheme: textTheme,
+                              builder: (context, value, _) =>
+                                  TweenAnimationBuilder<double>(
+                                tween: Tween(begin: 0, end: 1),
+                                duration: const Duration(milliseconds: 130),
+                                builder: (context, opacity, child) => Opacity(
+                                  opacity: opacity,
+                                  child: Stack(
+                                      alignment: AlignmentDirectional.center,
+                                      children: [
+                                        Positioned(
+                                            width: width,
+                                            top: height * 0.26,
+                                            child: !value
+                                                ? ResetAnimatedIcon(
+                                                    controller:
+                                                        controllerResetIcon,
+                                                    animation:
+                                                        movementResetIcon,
+                                                  )
+                                                : const SizedBox()),
+                                        GestureDetector(
+                                          onDoubleTap: value ? null : onTap,
+                                          child: Container(
+                                            color: Colors.transparent,
+                                            height: height * 0.36,
+                                            child: HeartButton(
+                                              text: Text(
+                                                  !value
+                                                      ? '+${cityData.likes}'
+                                                      : '',
+                                                  style: textTheme.caption),
+                                              increaseHeart: increaseHeart,
+                                              controllerHeart: controllerHeart,
+                                              textTheme: textTheme,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ]),
+                                      ]),
+                                ),
+                              ),
                             );
                           });
                     },

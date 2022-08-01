@@ -42,10 +42,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("+ 1 LIKE, FROM YOU"),
         "lively": m0,
         "noInternet": MessageLookupByLibrary.simpleMessage(
-            "Lively doesn`t know how to work without the Internet"),
+            "Lively can`t work without the Internet"),
         "noInternetCheck": MessageLookupByLibrary.simpleMessage("Checking.."),
-        "noInternetReconnect": MessageLookupByLibrary.simpleMessage(
-            "Connect and we will continue"),
+        "noInternetReconnect":
+            MessageLookupByLibrary.simpleMessage("Connect to continue"),
         "onBoardingScreen1_1":
             MessageLookupByLibrary.simpleMessage("Welcome to Lively"),
         "onBoardingScreen1_2": MessageLookupByLibrary.simpleMessage(

@@ -83,10 +83,19 @@ class LivelyButton extends StatelessWidget {
                             ),
                         loaded: () => Padding(
                               padding: EdgeInsets.only(top: radius * 0.04),
-                              child: LivelyIcon(
-                                rotate: rotateLivelyIcon,
-                                controller: controllerLivelyIcon,
-                                size: Size(radius, radius * 0.4),
+                              child: TweenAnimationBuilder<double>(
+                                curve: Curves.easeOutBack,
+                                duration: const Duration(milliseconds: 500),
+                                tween: Tween(begin: radius / 7, end: 0),
+                                builder: (context, value, child) =>
+                                    Transform.translate(
+                                  offset: Offset(value, 0),
+                                  child: LivelyIcon(
+                                    rotate: rotateLivelyIcon,
+                                    controller: controllerLivelyIcon,
+                                    size: Size(radius, radius * 0.4),
+                                  ),
+                                ),
                               ),
                             ),
                         beforeStopping: () {
