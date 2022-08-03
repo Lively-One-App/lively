@@ -60,12 +60,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     context.read<LikesBloc>().add(const LikesEvent.writeLike());
     controllerLivelyIcon.forward();
     await controllerHeart.forward();
-    Future.delayed(const Duration(seconds: 2), (() async {
-      await controllerHeart.reverse();
-      isLike.value = !isLike.value;
-      controllerLivelyIcon.repeat(
-          reverse: true, period: const Duration(seconds: 1));
-    }));
+    await Future.delayed(const Duration(seconds: 2));
+    await controllerHeart.reverse();
+    isLike.value = !isLike.value;
+    controllerLivelyIcon.repeat(
+        reverse: true, period: const Duration(seconds: 1));
   }
 
   @override

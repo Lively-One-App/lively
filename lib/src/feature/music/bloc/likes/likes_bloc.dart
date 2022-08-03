@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../logic/online_store_impl.dart';
@@ -16,6 +17,7 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   final RadioCubit _musicCubit;
   StreamSubscription? _listenerCityData = null;
   late final StreamSubscription<RadioState> _musicCubitStream;
+  int? syncLike;
 
   LikesBloc({
     required final RadioCubit radioCubit,
@@ -25,28 +27,33 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
         super(const LikesState.initial()) {
     _musicCubit.stream.listen((state) {
       state.whenOrNull(
-          beforePlaying: () => _listenerCityData = _store
-              .getData('Moskow')
-              .listen((cityData) => add(LikesEvent.getCityData(data: cityData)))
-            ..pause(),
-          loaded: () => _listenerCityData?.resume(),
+          loaded: () =>
+              _listenerCityData = _store.getData('Moskow').listen((cityData) {
+                syncLike = cityData.likes > 0
+                    ? DateTime.now().microsecondsSinceEpoch
+                    : null;
+                add(LikesEvent.getCityData(data: cityData));
+              }),
           initial: () async {
             await _listenerCityData?.cancel();
             add(const LikesEvent.disable());
           });
     });
-    on<LikesEvent>(
-      (event, emit) {
-        event.map(
-          writeLike: (event) => _writeLike(event, emit),
-          getCityData: (event) => _getCityData(event, emit),
-          disable: (event) => _disableLikes(event, emit),
-        );
-      },
+    on<_GetCityData>(
+      (event, emit) => _getCityData(event, emit),
+    );
+    on<_DisableLikes>((event, emit) => _disableLikes(event, emit));
+    on<_WriteLikes>(
+      (event, emit) => _writeLike(event, emit),
+      transformer: bloc_concurrency.droppable(),
     );
   }
 
-  FutureOr<void> _writeLike(_WriteLikes event, Emitter<LikesState> emit) {
+  Future<void> _writeLike(_WriteLikes event, Emitter<LikesState> emit) async {
+    final duration = syncLike == null
+        ? 5100000
+        : 5100000 - (DateTime.now().microsecondsSinceEpoch - syncLike!);
+    await Future.delayed(Duration(microseconds: duration));
     _store.setData('Moskow');
   }
 
