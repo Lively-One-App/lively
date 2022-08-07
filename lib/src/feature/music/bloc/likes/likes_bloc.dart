@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../logic/online_store_impl.dart';
 import '../../model/firestore/city_data.dart';
 import '../radio/radio_cubit.dart';
+import '../sync_server/sync_server.dart';
 
 part 'likes_state.dart';
 part 'likes_event.dart';
@@ -15,33 +16,32 @@ part 'likes_bloc.freezed.dart';
 class LikesBloc extends Bloc<LikesEvent, LikesState> {
   final OnlineStoreImpl _store;
   final RadioCubit _musicCubit;
+  final SyncServerCubit _syncServerCubit;
   StreamSubscription? _listenerCityData = null;
   late final StreamSubscription<RadioState> _musicCubitStream;
-  int? syncLike;
 
   LikesBloc({
     required final RadioCubit radioCubit,
     required final OnlineStoreImpl store,
+    required final SyncServerCubit syncServerCubit,
   })  : _store = store,
         _musicCubit = radioCubit,
+        _syncServerCubit = syncServerCubit,
         super(const LikesState.initial()) {
     _musicCubit.stream.listen((state) {
       state.whenOrNull(
           loaded: () =>
               _listenerCityData = _store.getData('Moskow').listen((cityData) {
-                syncLike = cityData.likes > 0
-                    ? DateTime.now().microsecondsSinceEpoch
-                    : null;
+                syncServerCubit.resetTimer();
                 add(LikesEvent.getCityData(data: cityData));
               }),
           initial: () async {
+            await _syncServerCubit.closeTimer();
             await _listenerCityData?.cancel();
             add(const LikesEvent.disable());
           });
     });
-    on<_GetCityData>(
-      (event, emit) => _getCityData(event, emit),
-    );
+    on<_GetCityData>((event, emit) => _getCityData(event, emit));
     on<_DisableLikes>((event, emit) => _disableLikes(event, emit));
     on<_WriteLikes>(
       (event, emit) => _writeLike(event, emit),
@@ -50,10 +50,10 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   }
 
   Future<void> _writeLike(_WriteLikes event, Emitter<LikesState> emit) async {
-    final duration = syncLike == null
-        ? 5100000
-        : 5100000 - (DateTime.now().microsecondsSinceEpoch - syncLike!);
-    await Future.delayed(Duration(microseconds: duration));
+    final likes = await state.whenOrNull(getLikes: (data) => data.likes);
+    await Future.delayed(Duration(
+        milliseconds:
+            likes == 0 ? 5000 : 5200 - await _syncServerCubit.state * 100));
     _store.setData('Moskow');
   }
 

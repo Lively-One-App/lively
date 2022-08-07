@@ -56,20 +56,13 @@ class BurgerMenu extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: _height * 0.02,
+            const SizedBox(
+              height: 35,
             ),
-            const Divider(
-              height: 1,
-              indent: 1,
-            ),
-            ListTile(
-              leading: const Icon(LivelyIcons.instagram),
-              title: Text(
-                '${_localizations.instagram}',
-                style: _textTheme?.bodyText1,
-              ),
-              trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+            const Divider(height: 1, indent: 1),
+            MyListTile(
+              icon: const Icon(LivelyIcons.instagram),
+              text: '${_localizations.instagram}',
               onTap: () async {
                 final url =
                     Uri.parse('https://www.instagram.com/livelyoneapp/');
@@ -80,20 +73,13 @@ class BurgerMenu extends StatelessWidget {
                 }
               },
             ),
-            const Divider(
-              height: 1,
-              indent: 55,
-            ),
-            ListTile(
-              leading: const Icon(
+            const Divider(height: 1, indent: 55),
+            MyListTile(
+              icon: const Icon(
                 LivelyIcons.telegram,
                 size: 24,
               ),
-              title: Text(
-                '${_localizations.telegram}',
-                style: _textTheme?.bodyText1,
-              ),
-              trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+              text: '${_localizations.telegram}',
               onTap: () async {
                 final url =
                     Uri(scheme: 'https', host: 't.me', path: 'livelyoneapp/');
@@ -108,13 +94,9 @@ class BurgerMenu extends StatelessWidget {
               height: 1,
               indent: 55,
             ),
-            ListTile(
-              leading: const Icon(LivelyIcons.contact),
-              title: Text(
-                _localizations.contact,
-                style: _textTheme?.bodyText1,
-              ),
-              trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+            MyListTile(
+              icon: const Icon(LivelyIcons.contact),
+              text: _localizations.contact,
               onTap: () async {
                 final url = Uri.parse(
                     'https://livelyoneapp.ru/become-part-of-the-project/');
@@ -140,20 +122,16 @@ class BurgerMenu extends StatelessWidget {
                     ?.copyWith(fontSize: 18, letterSpacing: -0.36),
               ),
             ),
-            SizedBox(
-              height: _height * 0.03,
+            const SizedBox(
+              height: 32,
             ),
             const Divider(
               height: 1,
               indent: 1,
             ),
-            ListTile(
-              leading: const Icon(LivelyIcons.privacy),
-              title: Text(
-                _localizations.privacy,
-                style: _textTheme?.bodyText1,
-              ),
-              trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+            MyListTile(
+              icon: const Icon(LivelyIcons.privacy),
+              text: _localizations.privacy,
               onTap: () async {
                 final url =
                     Uri.parse('https://livelyoneapp.ru/private-police/');
@@ -192,5 +170,35 @@ class BurgerMenu extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class MyListTile extends StatelessWidget {
+  const MyListTile(
+      {Key? key, this.onTap, required this.text, required this.icon})
+      : super(key: key);
+
+  final void Function()? onTap;
+  final String text;
+  final Icon icon;
+
+  @override
+  Widget build(BuildContext context) {
+    final _textTheme = Theme.of(context).extension<BurgerText>()?.textTheme;
+
+    return ListTile(
+        leading: icon,
+        title: Padding(
+          padding: const EdgeInsets.only(top: 4),
+          child: Text(
+            text,
+            style: _textTheme?.bodyText1,
+          ),
+        ),
+        trailing: const Icon(
+          Icons.keyboard_arrow_right_outlined,
+          size: 25,
+        ),
+        onTap: onTap);
   }
 }

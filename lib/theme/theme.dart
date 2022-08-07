@@ -25,7 +25,7 @@ abstract class MyThemes {
         color: _accent,
       ),
       subtitle1: const TextStyle(
-        height: 1.1,
+        height: 1.3,
         fontSize: 22,
         letterSpacing: -1,
         fontWeight: _regular,
@@ -48,15 +48,19 @@ abstract class MyThemes {
   );
   static const _iconTheme =
       IconThemeData(color: const Color(0xFF696969), size: 28);
-  static const _listTileThemeData = const ListTileThemeData(
+  static const _listTileThemeData = ListTileThemeData(
     iconColor: const Color(0xFFD6D6D6),
     tileColor: const Color(0xFFFFFFFF),
     minLeadingWidth: 0.0,
+    // minVerticalPadding: 7,
+    visualDensity: VisualDensity.compact,
     contentPadding: const EdgeInsets.symmetric(horizontal: 16),
   );
 
   static ThemeData get lightTheme {
     return ThemeData(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       extensions: _extension,
       brightness: Brightness.light,
       colorSchemeSeed: _accent,
@@ -74,6 +78,8 @@ abstract class MyThemes {
     const backgroundColor = const Color(0xFF363636);
 
     return ThemeData(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         fontFamily: 'Muller',
         extensions: _extension,
         brightness: Brightness.dark,

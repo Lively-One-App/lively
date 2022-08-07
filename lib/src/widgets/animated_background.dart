@@ -8,9 +8,11 @@ class AnimatedBackground extends StatefulWidget {
     this.child,
     this.padding,
     this.borderRadius,
+    this.animationDuration = const Duration(milliseconds: 750),
+    this.width,
+    this.height,
     required this.beginGradient,
     required this.endGradient,
-    this.animationDuration = const Duration(milliseconds: 750),
   }) : super(key: key);
   final Widget? child;
   final Gradient beginGradient;
@@ -18,6 +20,8 @@ class AnimatedBackground extends StatefulWidget {
   final Duration animationDuration;
   final EdgeInsetsGeometry? padding;
   final BorderRadius? borderRadius;
+  final double? width;
+  final double? height;
 
   @override
   State<AnimatedBackground> createState() => _AnimatedBackgroundState();
@@ -43,6 +47,8 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
       animation: _controller,
       builder: (context, _) {
         return Container(
+          width: widget.width,
+          height: widget.height,
           padding: widget.padding,
           decoration: BoxDecoration(
             borderRadius: widget.borderRadius,

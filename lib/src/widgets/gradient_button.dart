@@ -28,7 +28,7 @@ class GradientButton extends StatelessWidget {
         beginGradient: beginGradient,
         endGradient: endGradient,
         padding: EdgeInsets.all(strokeWidth),
-        borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+        borderRadius: BorderRadius.all(Radius.circular(borderRadius + 3)),
         child: DecoratedBox(
           decoration: BoxDecoration(
               color: background,

@@ -55,7 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingScreen2_2": MessageLookupByLibrary.simpleMessage(
             " and make others lively with a simple two-finger gesture."),
         "privacy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-        "resetTime": MessageLookupByLibrary.simpleMessage("5 SEC"),
+        "resetTime": MessageLookupByLibrary.simpleMessage("SEC"),
         "searchTalent": MessageLookupByLibrary.simpleMessage(
             "We are looking for talent and are open to any cooperation, please contact us!"),
         "start": MessageLookupByLibrary.simpleMessage("START"),

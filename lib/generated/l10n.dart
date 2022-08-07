@@ -73,10 +73,10 @@ class S {
     );
   }
 
-  /// `5 SEC`
+  /// `SEC`
   String get resetTime {
     return Intl.message(
-      '5 SEC',
+      'SEC',
       name: 'resetTime',
       desc: '',
       args: [],

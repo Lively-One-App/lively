@@ -14,6 +14,7 @@ import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit
 import 'src/feature/music/bloc/first_run/first_run_cubit.dart';
 import 'src/feature/music/bloc/likes/likes_bloc.dart';
 import 'src/feature/music/bloc/radio/radio_cubit.dart';
+import 'src/feature/music/bloc/sync_server/sync_server.dart';
 import 'src/feature/music/logic/firestore.dart';
 import 'src/feature/music/logic/my_audioplayer_handler.dart';
 import 'src/feature/music/logic/websocket_auto_reconnect.dart';
@@ -62,14 +63,22 @@ void main() => runZonedGuarded<void>(
                         webSocket: socket);
                   },
                 ),
+                BlocProvider<SyncServerCubit>(
+                    create: (context) => SyncServerCubit()),
                 BlocProvider<LikesBloc>(
                   create: (context) {
                     final store = Firestore();
                     final radioCubit = BlocProvider.of<RadioCubit>(context);
+                    final syncServerCubit =
+                        BlocProvider.of<SyncServerCubit>(context);
 
-                    return LikesBloc(store: store, radioCubit: radioCubit);
+                    return LikesBloc(
+                      syncServerCubit: syncServerCubit,
+                      store: store,
+                      radioCubit: radioCubit,
+                    );
                   },
-                )
+                ),
               ],
               child: const MyApp(),
             ));
