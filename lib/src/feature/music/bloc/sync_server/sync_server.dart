@@ -9,7 +9,7 @@ class SyncServerCubit extends Cubit<int> {
   Future<void> resetTimer() async {
     await _timerSubscription?.cancel();
     _timerSubscription =
-        Stream.periodic(const Duration(milliseconds: 100), (i) => i % 51)
+        Stream.periodic(const Duration(milliseconds: 100), (i) => i % 81)
             .listen((i) {
       emit(i);
     });

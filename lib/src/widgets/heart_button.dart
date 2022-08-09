@@ -10,7 +10,7 @@ class HeartButton extends StatelessWidget {
     required this.textTheme,
     required this.increaseHeart,
     required this.controllerHeart,
-    required this.text,
+    required this.child,
     this.onTap,
     this.onTapCancel,
   }) : super(key: key);
@@ -19,7 +19,7 @@ class HeartButton extends StatelessWidget {
   final Animation<double> increaseHeart;
   final AnimationController controllerHeart;
   final void Function()? onTap;
-  final Text text;
+  final Widget child;
   final void Function()? onTapCancel;
 
   @override
@@ -36,7 +36,7 @@ class HeartButton extends StatelessWidget {
                     size: increaseHeart.value,
                   ),
                 ),
-                text
+                child
               ],
             ),
             onTap: onTap,

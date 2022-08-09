@@ -1,15 +1,15 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../feature/music/bloc/likes/likes_bloc.dart';
+import '../feature/music/bloc/sync_server/sync_server.dart';
 import 'heart_button.dart';
 import 'reset_animated_icon.dart';
 
 class LikesArea extends StatelessWidget {
   final AnimationController controllerResetIcon;
   final AnimationController controllerHeart;
+  final AnimationController controllerTextHeart;
   final ValueNotifier<bool> isLike;
   final void Function()? onDoubleTap;
   const LikesArea({
@@ -17,6 +17,7 @@ class LikesArea extends StatelessWidget {
     required this.controllerResetIcon,
     required this.controllerHeart,
     required this.isLike,
+    required this.controllerTextHeart,
     this.onDoubleTap,
   }) : super(key: key);
 
@@ -27,8 +28,21 @@ class LikesArea extends StatelessWidget {
     late final Animation<double> movementResetIcon =
         Tween(begin: 0.0, end: -height * 0.09).animate(CurvedAnimation(
             parent: controllerResetIcon, curve: Curves.easeInOutBack));
+    late final Animation<double> movementTextHeart =
+        Tween(begin: 0.0, end: -2.0).animate(CurvedAnimation(
+            parent: controllerTextHeart, curve: Curves.easeInOutBack));
+    late final Animation<double> opacityTextHeart =
+        Tween(begin: 1.0, end: 0.25).animate(controllerTextHeart);
     late final increaseHeart = Tween(begin: 78.0, end: 95.0).animate(
         CurvedAnimation(parent: controllerHeart, curve: Curves.easeOutBack));
+    void resetAnimation() {
+      controllerTextHeart
+          .forward()
+          .whenComplete(() => controllerTextHeart.reverse());
+      controllerResetIcon
+          .forward()
+          .whenComplete(() => controllerResetIcon.reverse());
+    }
 
     return BlocBuilder<LikesBloc, LikesState>(
       builder: (context, state) {
@@ -37,6 +51,8 @@ class LikesArea extends StatelessWidget {
             child: SizedBox(),
           );
         }, getLikes: (cityData) {
+          resetAnimation();
+
           return ValueListenableBuilder<bool>(
             valueListenable: isLike,
             builder: (context, value, _) => TweenAnimationBuilder<double>(
@@ -56,14 +72,26 @@ class LikesArea extends StatelessWidget {
                               ? Padding(
                                   padding: EdgeInsets.only(top: height * 0.2),
                                   child: ResetAnimatedIcon(
+                                    resetAnimation: resetAnimation,
                                     controller: controllerResetIcon,
                                     animation: movementResetIcon,
                                   ),
                                 )
                               : const SizedBox(),
                           HeartButton(
-                            text: Text(!value ? '+${cityData.likes}' : '',
-                                style: textTheme.caption),
+                            child: AnimatedBuilder(
+                                animation: movementTextHeart,
+                                child: Text(!value ? '+${cityData.likes}' : '',
+                                    style: textTheme.caption),
+                                builder: (context, child) {
+                                  return Transform.translate(
+                                    offset: Offset(movementTextHeart.value, 0),
+                                    child: Opacity(
+                                      opacity: opacityTextHeart.value,
+                                      child: child,
+                                    ),
+                                  );
+                                }),
                             increaseHeart: increaseHeart,
                             controllerHeart: controllerHeart,
                             textTheme: textTheme,

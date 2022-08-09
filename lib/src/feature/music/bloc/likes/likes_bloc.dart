@@ -19,6 +19,7 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   final SyncServerCubit _syncServerCubit;
   StreamSubscription? _listenerCityData = null;
   late final StreamSubscription<RadioState> _musicCubitStream;
+  final a = Stopwatch();
 
   LikesBloc({
     required final RadioCubit radioCubit,
@@ -51,14 +52,18 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
 
   Future<void> _writeLike(_WriteLikes event, Emitter<LikesState> emit) async {
     final likes = await state.whenOrNull(getLikes: (data) => data.likes);
+    a.reset();
+    a.start();
     await Future.delayed(Duration(
         milliseconds:
-            likes == 0 ? 5000 : 5200 - await _syncServerCubit.state * 100));
+            likes == 0 ? 0 : 8000 - await _syncServerCubit.state * 100));
     _store.setData('Moskow');
   }
 
   FutureOr<void> _getCityData(_GetCityData event, Emitter<LikesState> emit) {
+    print(a.elapsedMilliseconds);
     emit(LikesState.getLikes(data: event.data));
+    a.reset();
   }
 
   FutureOr<void> _disableLikes(_DisableLikes event, Emitter<LikesState> emit) {

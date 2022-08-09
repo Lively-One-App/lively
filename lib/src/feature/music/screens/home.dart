@@ -7,7 +7,7 @@ import 'package:lively/generated/l10n.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
-import '../../../widgets/likesArea.dart';
+import '../../../widgets/likes_area.dart';
 import '../../../widgets/lively_button.dart';
 import '../bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
 import '../bloc/first_run/first_run_cubit.dart';
@@ -31,6 +31,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       vsync: this, duration: const Duration(milliseconds: 400));
   late final AnimationController controllerLivelyIcon = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 130));
+  late final AnimationController controllerTextHeart = AnimationController(
+      vsync: this, duration: const Duration(milliseconds: 400));
   late final AnimationController controllerHeart = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 100));
   late final AnimationController controllerResetIcon = AnimationController(
@@ -48,9 +50,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   void onDoubleTap() async {
+    context.read<LikesBloc>().add(const LikesEvent.writeLike());
     HapticFeedback.lightImpact();
     isLike.value = !isLike.value;
-    context.read<LikesBloc>().add(const LikesEvent.writeLike());
     controllerLivelyIcon.forward();
     await controllerHeart.forward();
     await Future.delayed(const Duration(seconds: 2));
@@ -151,7 +153,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             leading: CircleIconButton(
                               onTap: () => Navigator.of(context)
                                   .pushNamed('/burgerMenu'),
-                              child: const Icon(LivelyIcons.menu),
+                              child: const Icon(
+                                LivelyIcons.menu,
+                                size: 30,
+                              ),
                             ),
                             actions: [
                               CircleIconButton(
@@ -188,6 +193,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 ),
                 LikesArea(
+                  controllerTextHeart: controllerTextHeart,
                   isLike: isLike,
                   controllerHeart: controllerHeart,
                   controllerResetIcon: controllerResetIcon,

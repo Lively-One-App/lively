@@ -8,20 +8,19 @@ import '../feature/music/bloc/sync_server/sync_server.dart';
 class ResetAnimatedIcon extends StatelessWidget {
   const ResetAnimatedIcon({
     Key? key,
+    this.resetAnimation,
     required this.animation,
     required this.controller,
   }) : super(key: key);
   final Animation<double> animation;
   final AnimationController controller;
-
+  final void Function()? resetAnimation;
   @override
   Widget build(BuildContext context) {
     return BlocSelector<SyncServerCubit, int, int>(
-        // buildWhen: (previous, current) => Future.delayed(Duration(seconds: 1),()=>true),
         selector: (state) => (state / 10).round(),
         builder: (context, state) {
-          if (state == 5)
-            controller.forward().whenComplete(() => controller.reset());
+          if (state == 8) resetAnimation!();
 
           return AnimatedBuilder(
               animation: controller,
@@ -39,7 +38,8 @@ class ResetAnimatedIcon extends StatelessWidget {
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            state.toString() + ' ' + S.of(context).resetTime,
+                            '${state} '
+                            '${S.of(context).resetTime}',
                             style: const TextStyle(fontSize: 12),
                           )
                         ]));

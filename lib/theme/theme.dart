@@ -92,7 +92,9 @@ abstract class MyThemes {
           systemOverlayStyle: SystemUiOverlayStyle.light,
           iconTheme: _iconTheme.copyWith(color: const Color(0xFFA9A9A9)),
         ),
-        listTileTheme: _listTileThemeData.copyWith(tileColor: backgroundColor));
+        listTileTheme: _listTileThemeData.copyWith(
+          tileColor: const Color(0xFF414141),
+        ));
   }
 
   static const _regular = FontWeight.w400;
