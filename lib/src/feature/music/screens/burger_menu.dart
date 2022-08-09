@@ -34,7 +34,10 @@ class BurgerMenu extends StatelessWidget {
                   AppBar(
                     leadingWidth: 30,
                     leading: CircleIconButton(
-                      child: const Icon(LivelyIcons.burger_menu),
+                      child: const Icon(
+                        LivelyIcons.burger_menu,
+                        size: 30,
+                      ),
                       onTap: () => Navigator.of(context).pop(),
                     ),
                     actions: [
@@ -73,7 +76,10 @@ class BurgerMenu extends StatelessWidget {
                 }
               },
             ),
-            const Divider(height: 1, indent: 55),
+            const Divider(
+              height: 0,
+              indent: 55,
+            ),
             MyListTile(
               icon: const Icon(
                 LivelyIcons.telegram,
@@ -91,7 +97,7 @@ class BurgerMenu extends StatelessWidget {
               },
             ),
             const Divider(
-              height: 1,
+              height: 0,
               indent: 55,
             ),
             MyListTile(
@@ -108,7 +114,7 @@ class BurgerMenu extends StatelessWidget {
               },
             ),
             const Divider(
-              height: 1,
+              height: 0,
               indent: 1,
             ),
             const SizedBox(
@@ -126,7 +132,7 @@ class BurgerMenu extends StatelessWidget {
               height: 32,
             ),
             const Divider(
-              height: 1,
+              height: 0,
               indent: 1,
             ),
             MyListTile(
@@ -143,7 +149,7 @@ class BurgerMenu extends StatelessWidget {
               },
             ),
             const Divider(
-              height: 1,
+              height: 0,
               indent: 1,
             ),
             const SizedBox(

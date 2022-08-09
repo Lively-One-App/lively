@@ -75,7 +75,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height.round();
     final double radiusButton = width > 500 ? width / 2 : width / 2.1;
     final localizations = S.of(context);
 
@@ -149,7 +149,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             systemOverlayStyle: SystemUiOverlayStyle(
                                 systemNavigationBarColor:
                                     Theme.of(context).scaffoldBackgroundColor),
-                            leadingWidth: 28,
+                            leadingWidth: 30,
                             leading: CircleIconButton(
                               onTap: () => Navigator.of(context)
                                   .pushNamed('/burgerMenu'),

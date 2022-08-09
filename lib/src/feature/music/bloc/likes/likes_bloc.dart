@@ -56,7 +56,7 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
     a.start();
     await Future.delayed(Duration(
         milliseconds:
-            likes == 0 ? 0 : 8000 - await _syncServerCubit.state * 100));
+            likes == 0 ? 6000 : 6000 - await _syncServerCubit.state * 100));
     _store.setData('Moskow');
   }
 
