@@ -75,7 +75,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height.round();
+    final height = MediaQuery.of(context).size.height;
     final double radiusButton = width > 500 ? width / 2 : width / 2.1;
     final localizations = S.of(context);
 
@@ -202,7 +202,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 ValueListenableBuilder<bool>(
                   valueListenable: isLike,
                   builder: (context, value, _) => SafeArea(
-                    minimum: const EdgeInsets.only(bottom: 25),
+                    minimum: EdgeInsets.only(bottom: height * 0.02),
                     top: false,
                     child: Text(
                       !value

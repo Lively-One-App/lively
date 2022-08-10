@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      routes: Routes.routing(),
+      onGenerateRoute: Routes.generateRoute,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
       themeMode: ThemeMode.system,

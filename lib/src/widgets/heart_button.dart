@@ -25,22 +25,18 @@ class HeartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return controllerHeart.isDismissed
-        ? CircleIconButton(
-            child: Stack(
-              alignment: AlignmentDirectional.center,
-              children: [
-                InnerShadow(
-                  shadows: const [Shadow(blurRadius: 6, color: Colors.black26)],
-                  child: Icon(
-                    LivelyIcons.heart,
-                    size: increaseHeart.value,
-                  ),
+        ? Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              InnerShadow(
+                shadows: const [Shadow(blurRadius: 6, color: Colors.black26)],
+                child: Icon(
+                  LivelyIcons.heart,
+                  size: increaseHeart.value,
                 ),
-                child
-              ],
-            ),
-            onTap: onTap,
-            onTapCancel: onTapCancel,
+              ),
+              child
+            ],
           )
         : AnimatedBuilder(
             animation: controllerHeart,
