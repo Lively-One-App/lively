@@ -72,7 +72,7 @@ class RadioCubit extends Cubit<RadioState> {
 
     _myAudioHandler.playbackState.stream
         .timeout(
-          const Duration(seconds: 8),
+          const Duration(seconds: 10),
           onTimeout: (sink) {
             sink.addError(TimeoutException('No internet'));
           },
@@ -110,10 +110,9 @@ class RadioCubit extends Cubit<RadioState> {
       if (await _myAudioHandler.playbackState.value.playing) {
         emit(const RadioState.beforeStopping());
         await Future.delayed(const Duration(milliseconds: 1000));
-
-        _myAudioHandler.stop();
+        await _myAudioHandler.stop();
       } else {
-        _myAudioHandler.play();
+        await _myAudioHandler.play();
       }
     } on PlayerException catch (e) {
       l.e(e);
