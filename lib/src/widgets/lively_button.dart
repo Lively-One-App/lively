@@ -134,7 +134,7 @@ class _LivelyButtonPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paintFrame = Paint()
       ..strokeWidth = 3
-      ..shader = strokeGradient!.createShader(Rect.fromLTWH(
+      ..shader = strokeGradient?.createShader(Rect.fromLTWH(
         (-width * 1.2 + size.width) / 2,
         0,
         width * 1.2,
@@ -148,7 +148,7 @@ class _LivelyButtonPainter extends CustomPainter {
       ..strokeWidth = 0;
     if (backgroundGradient != null) {
       paintBackground
-        ..shader = backgroundGradient!.createShader(Rect.fromLTWH(
+        ..shader = backgroundGradient?.createShader(Rect.fromLTWH(
           (-width * 1.2 + size.width) / 2,
           0,
           width * 1.2,
@@ -161,7 +161,7 @@ class _LivelyButtonPainter extends CustomPainter {
     final paintShadow = Paint()
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3)
       // ..maskFilter = MaskFilter.blur(BlurStyle.solid, 0)
-      ..color = const Color(0xFF474747).withOpacity(0.59)
+      ..color = const Color(0xFF474747)
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
@@ -207,26 +207,26 @@ class _LivelyButtonPainter extends CustomPainter {
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.height / 2, size.width / 2),
-          height: size.height - size.height * 0.1 - 7,
-          width: size.width - size.width * 0.1 - 7,
+          height: size.height - size.height * 0.1 - 4,
+          width: size.width - size.width * 0.1 - 4,
         ),
-        math.pi + math.pi / 23,
-        math.pi - math.pi / 11,
+        math.pi + math.pi / 26,
+        math.pi - math.pi / 13,
       )
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.height / 2, size.width / 2),
-          height: size.height - size.height * 0.1 - 7,
-          width: size.width - size.width * 0.1 - 7,
+          height: size.height - size.height * 0.1 - 4,
+          width: size.width - size.width * 0.1 - 4,
         ),
-        math.pi - math.pi / 23,
-        -math.pi + math.pi / 11,
+        math.pi - math.pi / 26,
+        -math.pi + math.pi / 13,
       )
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.width * 0.1 / 2, size.width / 2),
-          height: size.height / 8 - 7,
-          width: width * 1.3 - 7,
+          height: size.height / 8 - 4,
+          width: width * 1.3 - 4,
         ),
         math.pi / 2,
         math.pi,
@@ -234,8 +234,8 @@ class _LivelyButtonPainter extends CustomPainter {
       ..addArc(
         Rect.fromCenter(
           center: Offset(size.width - size.width * 0.1 / 2, size.width / 2),
-          height: size.height / 8 - 7,
-          width: width * 1.3 - 7,
+          height: size.height / 8 - 4,
+          width: width * 1.3 - 4,
         ),
         -math.pi / 2,
         math.pi,

@@ -45,9 +45,13 @@ class _VideoScreenState extends State<VideoScreen> {
         body: Stack(
       alignment: Alignment.center,
       children: [
-        Transform.scale(
-            scaleX: widget.scaleFactorVideo,
-            child: VideoPlayer(videoPlayerController..play())),
+        ClipRect(
+          child: Align(
+            child: Transform.scale(
+                scaleX: widget.scaleFactorVideo,
+                child: VideoPlayer(videoPlayerController..play())),
+          ),
+        ),
         FutureBuilder(
           future: Future.delayed(const Duration(seconds: 5), (() => true)),
           builder: (context, AsyncSnapshot<bool> value) => value.hasData

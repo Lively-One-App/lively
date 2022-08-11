@@ -50,10 +50,8 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   }
 
   Future<void> _writeLike(_WriteLikes event, Emitter<LikesState> emit) async {
-    final likes = await state.whenOrNull(getLikes: (data) => data.likes);
-    await Future.delayed(Duration(
-        milliseconds:
-            likes == 0 ? 8000 : 8000 - await _syncServerCubit.state * 100));
+    await Future.delayed(
+        Duration(milliseconds: 8000 - await _syncServerCubit.state * 100));
     _store.setData('Moskow');
   }
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../feature/music/bloc/likes/likes_bloc.dart';
-import '../feature/music/bloc/sync_server/sync_server.dart';
 import 'heart_button.dart';
 import 'reset_animated_icon.dart';
 
@@ -37,8 +36,8 @@ class LikesArea extends StatelessWidget {
     late final Animation<double> opacityTextHeart =
         Tween(begin: 1.0, end: 0.25).animate(controllerTextHeart);
     late final increaseHeart = Tween(
-            begin: aspectRatio > 0.5 ? 72.0 : 78.0,
-            end: aspectRatio > 0.5 ? 87.0 : 95.0)
+            begin: aspectRatio > 0.5 ? 72.0 : 80.0,
+            end: aspectRatio > 0.5 ? 87.0 : 97.0)
         .animate(CurvedAnimation(
             parent: controllerHeart, curve: Curves.easeOutBack));
     void resetAnimation() {
@@ -73,14 +72,15 @@ class LikesArea extends StatelessWidget {
                       width: double.infinity,
                       height: double.infinity,
                       color: Colors.transparent,
-                      padding: EdgeInsets.only(top: height * 0.16),
+                      margin: const EdgeInsets.only(top: 15),
+                      // padding: EdgeInsets.only(top: height * 0.04),
                       child: Stack(
                           alignment: AlignmentDirectional.topCenter,
                           children: [
                             !value
                                 ? Padding(
                                     padding: EdgeInsets.only(
-                                        top: aspectRatio > 0.5 ? 90 : 101),
+                                        top: aspectRatio > 0.5 ? 131 : 161),
                                     child: ResetAnimatedIcon(
                                       countLikes: cityData.likes,
                                       resetAnimation: resetAnimation,
@@ -89,25 +89,27 @@ class LikesArea extends StatelessWidget {
                                     ),
                                   )
                                 : const SizedBox(),
-                            HeartButton(
-                              child: AnimatedBuilder(
-                                  animation: movementTextHeart,
-                                  child: Text(
-                                      !value ? '+${cityData.likes}' : '',
-                                      style: textTheme.caption),
-                                  builder: (context, child) {
-                                    return Transform.translate(
-                                      offset:
-                                          Offset(movementTextHeart.value, 0),
-                                      child: Opacity(
-                                        opacity: opacityTextHeart.value,
-                                        child: child,
-                                      ),
-                                    );
-                                  }),
-                              increaseHeart: increaseHeart,
-                              controllerHeart: controllerHeart,
-                              textTheme: textTheme,
+                            Center(
+                              child: HeartButton(
+                                child: AnimatedBuilder(
+                                    animation: movementTextHeart,
+                                    child: Text(
+                                        !value ? '+${cityData.likes}' : '',
+                                        style: textTheme.caption),
+                                    builder: (context, child) {
+                                      return Transform.translate(
+                                        offset:
+                                            Offset(movementTextHeart.value, 0),
+                                        child: Opacity(
+                                          opacity: opacityTextHeart.value,
+                                          child: child,
+                                        ),
+                                      );
+                                    }),
+                                increaseHeart: increaseHeart,
+                                controllerHeart: controllerHeart,
+                                textTheme: textTheme,
+                              ),
                             ),
                           ]),
                     ),

@@ -15,7 +15,7 @@ class TextScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late final backGround = Opacity(
-        opacity: 0.8,
+        opacity: 0.6,
         child: AnimatedBackground(
           animationDuration: const Duration(seconds: 2),
           beginGradient: LinearGradient(
@@ -32,6 +32,7 @@ class TextScreen extends StatelessWidget {
         ));
 
     return Scaffold(
+      backgroundColor: const Color(0xFF363636),
       body: Stack(
         alignment: Alignment.center,
         children: [

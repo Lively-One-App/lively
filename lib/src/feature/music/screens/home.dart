@@ -202,7 +202,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 ValueListenableBuilder<bool>(
                   valueListenable: isLike,
                   builder: (context, value, _) => SafeArea(
-                    minimum: EdgeInsets.only(bottom: height * 0.02),
+                    minimum: EdgeInsets.only(bottom: height < 700 ? 14 : 20),
                     top: false,
                     child: Text(
                       !value

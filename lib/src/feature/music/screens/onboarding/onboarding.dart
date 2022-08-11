@@ -41,7 +41,7 @@ class OnBoarding extends StatelessWidget {
             child: Text(
               localizations.start,
               style: theme.textTheme.headline1
-                  ?.copyWith(fontSize: 22, letterSpacing: -1),
+                  ?.copyWith(fontSize: 22, letterSpacing: 0),
             ),
           ),
           gradientColorsButton: gradientColors,
@@ -65,13 +65,13 @@ class OnBoarding extends StatelessWidget {
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       controlsPadding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-      dotsDecorator: DotsDecorator(
-        size: const Size(10.0, 10.0),
-        activeColor: theme.scaffoldBackgroundColor,
+      dotsDecorator: const DotsDecorator(
+        size: Size(10.0, 10.0),
+        activeColor: Colors.white,
         color: Colors.white,
-        activeSize: const Size(22.0, 10.0),
-        activeShape: const RoundedRectangleBorder(
-          borderRadius: const BorderRadius.all(const Radius.circular(25.0)),
+        activeSize: Size(22.0, 10.0),
+        activeShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
     );

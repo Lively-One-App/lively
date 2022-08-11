@@ -31,21 +31,24 @@ class ResetAnimatedIcon extends StatelessWidget {
               builder: (context, child) {
                 return Transform.translate(
                     offset: Offset(0, animation.value),
-                    child: Column(children: [
-                      Icon(
-                        LivelyIcons.reset,
-                        size: aspectRatio > 0.5 ? 17 : 19,
-                        color: Theme.of(context).appBarTheme.iconTheme?.color,
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        '${state} '
-                        '${S.of(context).resetTime}',
-                        style: TextStyle(
-                            fontSize: aspectRatio > 0.5 ? 10 : 12,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ]));
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            LivelyIcons.reset,
+                            size: aspectRatio > 0.5 ? 17 : 19,
+                            color:
+                                Theme.of(context).appBarTheme.iconTheme?.color,
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            '${state} '
+                            '${S.of(context).resetTime}',
+                            style: TextStyle(
+                                fontSize: aspectRatio > 0.5 ? 10 : 12,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ]));
               });
         });
   }

@@ -60,7 +60,6 @@ abstract class MyThemes {
   static ThemeData get lightTheme {
     return ThemeData(
       splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
       extensions: _extension,
       brightness: Brightness.light,
       colorSchemeSeed: _accent,
@@ -79,7 +78,6 @@ abstract class MyThemes {
 
     return ThemeData(
         splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
         fontFamily: 'Muller',
         extensions: _extension,
         brightness: Brightness.dark,
