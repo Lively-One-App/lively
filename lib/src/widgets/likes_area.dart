@@ -23,7 +23,7 @@ class LikesArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final height = MediaQuery.of(context).size.height;
+    // final height = MediaQuery.of(context).size.height;
     final aspectRatio = MediaQuery.of(context).size.aspectRatio;
 
     late final Animation<double> movementResetIcon =
@@ -95,7 +95,7 @@ class LikesArea extends StatelessWidget {
                                     animation: movementTextHeart,
                                     child: Text(
                                         !value ? '+${cityData.likes}' : '',
-                                        style: textTheme.caption),
+                                        style: textTheme.displayMedium),
                                     builder: (context, child) {
                                       return Transform.translate(
                                         offset:

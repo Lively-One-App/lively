@@ -3,19 +3,19 @@ import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+// import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:l/l.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
 import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
 import 'src/feature/music/bloc/first_run/first_run_cubit.dart';
-import 'src/feature/music/bloc/likes/likes_bloc.dart';
+// import 'src/feature/music/bloc/likes/likes_bloc.dart';
 import 'src/feature/music/bloc/radio/radio_cubit.dart';
 import 'src/feature/music/bloc/sync_server/sync_server.dart';
-import 'src/feature/music/logic/firestore.dart';
+// import 'src/feature/music/logic/firestore.dart';
 import 'src/feature/music/logic/my_audioplayer_handler.dart';
 import 'src/feature/music/logic/websocket_auto_reconnect.dart';
 import 'src/my_app.dart';
@@ -23,7 +23,7 @@ import 'src/my_app.dart';
 void main() => runZonedGuarded<void>(
       () async {
         WidgetsFlutterBinding.ensureInitialized();
-        await Firebase.initializeApp();
+        // await Firebase.initializeApp();
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
@@ -44,8 +44,8 @@ void main() => runZonedGuarded<void>(
               Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/lively'),
             );
             final sharedPreferences = await SharedPreferences.getInstance();
-            FlutterError.onError =
-                await FirebaseCrashlytics.instance.recordFlutterError;
+            // FlutterError.onError =
+            //     await FirebaseCrashlytics.instance.recordFlutterError;
             runApp(MultiBlocProvider(
               providers: [
                 BlocProvider<AzuraApiNowPlayingCubit>(
@@ -65,20 +65,21 @@ void main() => runZonedGuarded<void>(
                 ),
                 BlocProvider<SyncServerCubit>(
                     create: (context) => SyncServerCubit()),
-                BlocProvider<LikesBloc>(
-                  create: (context) {
-                    final store = Firestore();
-                    final radioCubit = BlocProvider.of<RadioCubit>(context);
-                    final syncServerCubit =
-                        BlocProvider.of<SyncServerCubit>(context);
+                // BlocProvider<LikesBloc>(
+                //   create: (context) {
 
-                    return LikesBloc(
-                      syncServerCubit: syncServerCubit,
-                      store: store,
-                      radioCubit: radioCubit,
-                    );
-                  },
-                ),
+                //     // final store = Firestore();
+                //     // final radioCubit = BlocProvider.of<RadioCubit>(context);
+                //     // final syncServerCubit =
+                //     //     BlocProvider.of<SyncServerCubit>(context);
+
+                //     // return LikesBloc(
+                //     //   syncServerCubit: syncServerCubit,
+                //     //   store: store,
+                //     //   radioCubit: radioCubit,
+                //     // );
+                //   },
+                // ),
               ],
               child: const MyApp(),
             ));
@@ -90,7 +91,7 @@ void main() => runZonedGuarded<void>(
         if (error is PlatformException) {
           l.e(error);
         } else {
-          FirebaseCrashlytics.instance.recordError(error, stackTrace);
+          // FirebaseCrashlytics.instance.recordError(error, stackTrace);
         }
       },
     );
