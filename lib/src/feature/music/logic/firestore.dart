@@ -11,7 +11,14 @@ class Firestore implements OnlineStoreImpl {
 
     // var a =
     //     await _store.collection('cities').doc(nameCity).update({'likes': 0});
-    yield* request.map((event) => CityData.fromJson(event.data()!));
+
+    
+
+    yield* request.map((event) {
+      var temp = event.data();
+
+      return CityData.fromJson(event.data()!);
+      });
   }
 
   void setData(final String nameCity) async {

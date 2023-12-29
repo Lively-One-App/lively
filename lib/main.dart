@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,8 +21,20 @@ import 'src/feature/music/logic/my_audioplayer_handler.dart';
 import 'src/feature/music/logic/websocket_auto_reconnect.dart';
 import 'src/my_app.dart';
 
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) {
+        return true;
+      };
+  }
+}
+
 void main() => runZonedGuarded<void>(
       () async {
+        HttpOverrides.global = MyHttpOverrides();
+
         WidgetsFlutterBinding.ensureInitialized();
         await Firebase.initializeApp();
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -41,7 +54,9 @@ void main() => runZonedGuarded<void>(
             );
 
             final socket = await WebSocketAutoReconnect(
-              Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/lively'),
+              
+              Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
+              
             );
             final sharedPreferences = await SharedPreferences.getInstance();
             FlutterError.onError =
