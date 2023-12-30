@@ -113,6 +113,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         },
         child: Stack(
           children: [
+            
             Column(
               children: [
                 AnimatedBackground(
@@ -239,7 +240,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       gradientColors.btnColor1!
                     ],
                   ),
-                ))
+                )),
+                Positioned(
+                left: MediaQuery.of(context).size.width * 0.83,
+                top: MediaQuery.of(context).size.height * 0.32,
+                child: IconButton(
+                  icon: Image.asset('assets/map_icon.png'),
+                  iconSize: 57,
+                  onPressed: () {
+                                        
+                    Navigator.of(context)
+                                  .pushNamed('/map');},
+                )),
           ],
         ),
       ),

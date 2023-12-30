@@ -24,6 +24,8 @@ dependencies:
   introduction_screen: ^3.0.2
   shared_preferences: ^2.0.15
   video_player: ^2.4.5
+  flutter_map: ^4.0.0
+  geolocator: ^10.1.0
  
 
 dev_dependencies:
@@ -64,6 +66,8 @@ flutter_native_splash:
 flutter:
   assets: 
     - assets/onboarding_video.mp4
+    - assets/map_icon.png
+    - assets/marker_map.png
   uses-material-design: true
   fonts:
     - family: LivelyIcons

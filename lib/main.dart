@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:l/l.dart';
+import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
@@ -54,9 +55,8 @@ void main() => runZonedGuarded<void>(
             );
 
             final socket = await WebSocketAutoReconnect(
-              
-              Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
-              
+              Uri.parse(
+                  'wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
             );
             final sharedPreferences = await SharedPreferences.getInstance();
             FlutterError.onError =
@@ -94,6 +94,7 @@ void main() => runZonedGuarded<void>(
                     );
                   },
                 ),
+                BlocProvider<MapBloc>(create: ((context) => MapBloc())),
               ],
               child: const MyApp(),
             ));
