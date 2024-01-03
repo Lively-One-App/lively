@@ -94,7 +94,7 @@ void main() => runZonedGuarded<void>(
                     );
                   },
                 ),
-                BlocProvider<MapBloc>(create: ((context) => MapBloc())),
+                BlocProvider<MapBloc>(create: ((context) => MapBloc(Firestore()))),
               ],
               child: const MyApp(),
             ));

@@ -26,6 +26,7 @@ dependencies:
   video_player: ^2.4.5
   flutter_map: ^4.0.0
   geolocator: ^10.1.0
+  flutter_map_marker_cluster: ^1.1.1
  
 
 dev_dependencies:
@@ -68,6 +69,7 @@ flutter:
     - assets/onboarding_video.mp4
     - assets/map_icon.png
     - assets/marker_map.png
+    - assets/marker_map.svg
   uses-material-design: true
   fonts:
     - family: LivelyIcons

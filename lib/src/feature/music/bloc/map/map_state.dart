@@ -2,7 +2,9 @@
 part of 'map_bloc.dart';
 
 @immutable
-class MapState {}
+class MapState {
+  get listMarkers => [];
+}
 
 class MapInitial extends MapState {}
 
@@ -13,4 +15,17 @@ class PositionChanged extends MapState {
     required this.position,
   });
 
+}
+
+class FetchChangeMarkers extends MapState {
+  List<Map> listMarkers;
+  FetchChangeMarkers({
+    required this.listMarkers,
+  });
+}
+
+class ErrorState extends MapState{
+  final String error;
+
+  ErrorState({required this.error});
 }
