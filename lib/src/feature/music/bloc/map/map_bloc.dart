@@ -25,7 +25,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
           _store.addMarker(value);
     });
 
-    final subscription = _store.getMarkers().listen((event) { 
+    _store.getMarkers().listen((event) { 
       
       emit(FetchChangeMarkers(listMarkers: event));
 

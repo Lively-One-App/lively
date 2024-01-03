@@ -91,7 +91,7 @@ class MapScreen extends StatelessWidget {
                   MarkerClusterLayerWidget(
                       options: MarkerClusterLayerOptions(
                     maxClusterRadius: 45,
-                    size: const Size(40, 40),
+                    size: const Size(30, 30),
                     anchor: AnchorPos.align(AnchorAlign.center),
                     fitBoundsOptions: const FitBoundsOptions(
                       padding: EdgeInsets.all(50),
@@ -102,26 +102,26 @@ class MapScreen extends StatelessWidget {
                         (index) => Marker(
                             point: LatLng(state.listMarkers[index]['latitude'],
                                 state.listMarkers[index]['longitude']),
-                            builder: (ctx) => const ImageIcon(
+                            builder: (ctx) => const Image( image:
                                 AssetImage('assets/marker_map.png')))),
                     builder: (BuildContext context, List<Marker> marks) {
                       return Stack(children: [
-                        const ImageIcon(AssetImage('assets/marker_map.png')),
+                        const Image(image: AssetImage('assets/marker_map_count.png')),
                         Positioned(
-                          top: 2,
-                          left: marks.length > 9 ? 6 : 9,
+                          top: 5,
+                          left: marks.length > 9 ? 5 : 8,
                           child: Text(
                             marks.length > 99 ? '99+' : marks.length.toString(),
-                            style: const TextStyle(decoration: TextDecoration.none,
-                                fontSize: 9, color: Colors.white),
+                            style: const TextStyle(
+                                decoration: TextDecoration.none,
+                                fontSize: 10,
+                                color: Colors.white),
                           ),
                         ),
                       ]);
                     },
                   )),
-                  // MarkerLayer(
-                  //   markers: livelyMarkers,
-                  // )
+                  
                 ],
               );
             },
@@ -139,10 +139,12 @@ class MapScreen extends StatelessWidget {
                       'Поделиться геопозицией ',
                       style: TextStyle(color: Colors.black),
                     ),
-                    ImageIcon(
-                      AssetImage('assets/marker_map.png'),
-                      color: Colors.red,
-                      //size: 55,
+                    SizedBox(
+                      height: 41,
+                      width: 41,
+                      child: Image(
+                        image: AssetImage('assets/marker_map.png'),
+                      ),
                     )
                   ],
                 )),

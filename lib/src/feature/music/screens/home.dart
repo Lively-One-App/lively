@@ -241,6 +241,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     ],
                   ),
                 )),
+                 
                 Positioned(
                 left: MediaQuery.of(context).size.width * 0.83,
                 top: MediaQuery.of(context).size.height * 0.32,
