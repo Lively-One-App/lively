@@ -13,23 +13,23 @@ class MapScreen extends StatelessWidget {
         point: LatLng(55.7522, 37.6156),
         builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
   ];
-  // List<Marker> livelyMarkers = [
-  //   Marker(
-  //       point: LatLng(55.7522, 37.5156),
-  //       builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
-  //   Marker(
-  //       point: LatLng(55.7522, 37.6556),
-  //       builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
-  //   Marker(
-  //       point: LatLng(55.7522, 37.6176),
-  //       builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
-  //   Marker(
-  //       point: LatLng(55.7522, 37.6156),
-  //       builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
-  //   Marker(
-  //       point: LatLng(55.7522, 37.6176),
-  //       builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
-  // ];
+  List<Marker> livelyMarkers = [
+    Marker(
+        point: LatLng(55.7522, 37.5156),
+        builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
+    Marker(
+        point: LatLng(55.7522, 37.6556),
+        builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
+    Marker(
+        point: LatLng(55.7522, 37.6176),
+        builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
+    Marker(
+        point: LatLng(55.7522, 37.6156),
+        builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
+    Marker(
+        point: LatLng(55.7522, 37.6176),
+        builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -97,16 +97,11 @@ class MapScreen extends StatelessWidget {
                       padding: EdgeInsets.all(50),
                       maxZoom: 15,
                     ),
-                    markers: List.generate(
-                        state.listMarkers.length,
-                        (index) => Marker(
-                            point: LatLng(state.listMarkers[index]['latitude'],
-                                state.listMarkers[index]['longitude']),
-                            builder: (ctx) => const Image( image:
-                                AssetImage('assets/marker_map.png')))),
+                    markers: livelyMarkers,
                     builder: (BuildContext context, List<Marker> marks) {
                       return Stack(children: [
-                        const Image(image: AssetImage('assets/marker_map_count.png')),
+                        const Image(
+                            image: AssetImage('assets/marker_map_count.png')),
                         Positioned(
                           top: 5,
                           left: marks.length > 9 ? 5 : 8,
@@ -121,7 +116,40 @@ class MapScreen extends StatelessWidget {
                       ]);
                     },
                   )),
-                  
+                  // MarkerClusterLayerWidget(
+                  //     options: MarkerClusterLayerOptions(
+                  //   maxClusterRadius: 45,
+                  //   size: const Size(30, 30),
+                  //   anchor: AnchorPos.align(AnchorAlign.center),
+                  //   fitBoundsOptions: const FitBoundsOptions(
+                  //     padding: EdgeInsets.all(50),
+                  //     maxZoom: 15,
+                  //   ),
+                  //   markers: List.generate(
+                  //       state.listMarkers.length,
+                  //       (index) => Marker(
+                  //           point: LatLng(state.listMarkers[index]['latitude'],
+                  //               state.listMarkers[index]['longitude']),
+                  //           builder: (ctx) => const Image(
+                  //               image: AssetImage('assets/marker_map.png')))),
+                  //   builder: (BuildContext context, List<Marker> marks) {
+                  //     return Stack(children: [
+                  //       const Image(
+                  //           image: AssetImage('assets/marker_map_count.png')),
+                  //       Positioned(
+                  //         top: 5,
+                  //         left: marks.length > 9 ? 5 : 8,
+                  //         child: Text(
+                  //           marks.length > 99 ? '99+' : marks.length.toString(),
+                  //           style: const TextStyle(
+                  //               decoration: TextDecoration.none,
+                  //               fontSize: 10,
+                  //               color: Colors.white),
+                  //         ),
+                  //       ),
+                  //     ]);
+                  //   },
+                  // )),
                 ],
               );
             },
