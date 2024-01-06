@@ -4,9 +4,9 @@ import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+//import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:l/l.dart';
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,7 +37,7 @@ void main() => runZonedGuarded<void>(
         HttpOverrides.global = MyHttpOverrides();
 
         WidgetsFlutterBinding.ensureInitialized();
-        await Firebase.initializeApp();
+        //await Firebase.initializeApp();
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
@@ -59,8 +59,8 @@ void main() => runZonedGuarded<void>(
                   'wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
             );
             final sharedPreferences = await SharedPreferences.getInstance();
-            FlutterError.onError =
-                await FirebaseCrashlytics.instance.recordFlutterError;
+            // FlutterError.onError =
+            //     await FirebaseCrashlytics.instance.recordFlutterError;
             runApp(MultiBlocProvider(
               providers: [
                 BlocProvider<AzuraApiNowPlayingCubit>(
@@ -106,7 +106,7 @@ void main() => runZonedGuarded<void>(
         if (error is PlatformException) {
           l.e(error);
         } else {
-          FirebaseCrashlytics.instance.recordError(error, stackTrace);
+          //FirebaseCrashlytics.instance.recordError(error, stackTrace);
         }
       },
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+//import 'package:video_player/video_player.dart';
 
 import '../../../../widgets/gradient_button.dart';
 
@@ -22,20 +22,20 @@ class VideoScreen extends StatefulWidget {
 }
 
 class _VideoScreenState extends State<VideoScreen> {
-  final videoPlayerController =
-      VideoPlayerController.asset('assets/onboarding_video.mp4');
+  //final videoPlayerController =
+  //    VideoPlayerController.asset('assets/onboarding_video.mp4');
 
   @override
   void initState() {
     super.initState();
-    videoPlayerController
-      ..setLooping(true)
-      ..initialize();
+    // videoPlayerController
+    //   ..setLooping(true)
+    //   ..initialize();
   }
 
   @override
   void dispose() {
-    videoPlayerController.dispose();
+    //videoPlayerController.dispose();
     super.dispose();
   }
 
@@ -45,13 +45,13 @@ class _VideoScreenState extends State<VideoScreen> {
         body: Stack(
       alignment: Alignment.center,
       children: [
-        ClipRect(
-          child: Align(
-            child: Transform.scale(
-                scaleX: widget.scaleFactorVideo,
-                child: VideoPlayer(videoPlayerController..play())),
-          ),
-        ),
+        // ClipRect(
+        //   child: Align(
+        //     child: Transform.scale(
+        //         scaleX: widget.scaleFactorVideo,
+        //         child: VideoPlayer(videoPlayerController..play())),
+        //   ),
+        // ),
         FutureBuilder(
           future: Future.delayed(const Duration(seconds: 5), (() => true)),
           builder: (context, AsyncSnapshot<bool> value) => value.hasData
