@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:l/l.dart';
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
 import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
@@ -37,7 +38,11 @@ void main() => runZonedGuarded<void>(
         HttpOverrides.global = MyHttpOverrides();
 
         WidgetsFlutterBinding.ensureInitialized();
-        //await Firebase.initializeApp();
+        await Supabase.initialize(
+    url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
+  );
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
@@ -54,10 +59,11 @@ void main() => runZonedGuarded<void>(
               ),
             );
 
-            final socket = await WebSocketAutoReconnect(
+            final socket = WebSocketAutoReconnect(
               Uri.parse(
                   'wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
             );
+            
             final sharedPreferences = await SharedPreferences.getInstance();
             // FlutterError.onError =
             //     await FirebaseCrashlytics.instance.recordFlutterError;
@@ -82,7 +88,7 @@ void main() => runZonedGuarded<void>(
                     create: (context) => SyncServerCubit()),
                 BlocProvider<LikesBloc>(
                   create: (context) {
-                    final store = Firestore();
+                    final store = SupabaseHelper();
                     final radioCubit = BlocProvider.of<RadioCubit>(context);
                     final syncServerCubit =
                         BlocProvider.of<SyncServerCubit>(context);
@@ -94,7 +100,7 @@ void main() => runZonedGuarded<void>(
                     );
                   },
                 ),
-                BlocProvider<MapBloc>(create: ((context) => MapBloc(Firestore()))),
+                BlocProvider<MapBloc>(create: ((context) => MapBloc(SupabaseHelper()))),
               ],
               child: const MyApp(),
             ));

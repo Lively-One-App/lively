@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../logic/online_store_impl.dart';
@@ -17,7 +18,7 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   final OnlineStoreImpl _store;
   final RadioCubit _musicCubit;
   final SyncServerCubit _syncServerCubit;
-  StreamSubscription? _listenerCityData = null;
+  StreamSubscription? _listenerCityData;
   late final StreamSubscription<RadioState> _musicCubitStream;
 
   LikesBloc({
@@ -29,17 +30,17 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
         _syncServerCubit = syncServerCubit,
         super(const LikesState.initial()) {
     _musicCubit.stream.listen((state) {
-      state.whenOrNull(
-          loaded: () =>
-              _listenerCityData = _store.getData('Moskow').listen((cityData) {
-                syncServerCubit.resetTimer();
-                add(LikesEvent.getCityData(data: cityData));
-              }),
-          initial: () async {
-            await _syncServerCubit.closeTimer();
-            await _listenerCityData?.cancel();
-            add(const LikesEvent.disable());
-          });
+      state.whenOrNull(loaded: () {
+        _listenerCityData = _store
+            .getData('2e683111-964b-40da-b1bd-b232de6004af')
+            .listen((cityData) {
+          add(LikesEvent.getCityData(data: cityData));
+        });
+      }, initial: () async {
+        await _syncServerCubit.closeTimer();
+        await _listenerCityData?.cancel();
+        add(const LikesEvent.disable());
+      });
     });
     on<_GetCityData>((event, emit) => _getCityData(event, emit));
     on<_DisableLikes>((event, emit) => _disableLikes(event, emit));
@@ -50,9 +51,15 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   }
 
   Future<void> _writeLike(_WriteLikes event, Emitter<LikesState> emit) async {
-    await Future.delayed(
-        Duration(milliseconds: 8000 - await _syncServerCubit.state * 100));
-    _store.setData('Moskow');
+    try {
+      _syncServerCubit.resetTimer();
+      await Future.delayed(const Duration(milliseconds: 7000));
+      await _store.setData('2e683111-964b-40da-b1bd-b232de6004af');
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint(e.toString());
+      }
+    }
   }
 
   FutureOr<void> _getCityData(_GetCityData event, Emitter<LikesState> emit) {

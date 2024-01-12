@@ -23,11 +23,10 @@ class LikesArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final height = MediaQuery.of(context).size.height;
     final aspectRatio = MediaQuery.of(context).size.aspectRatio;
 
     late final Animation<double> movementResetIcon =
-        Tween(begin: 0.0, end: aspectRatio > 0.5 ? -65.0 : -70.0).animate(
+        Tween(begin: (aspectRatio > 0.5 ? -65.0 : -80.0), end: 0.0).animate(
             CurvedAnimation(
                 parent: controllerResetIcon, curve: Curves.easeInOutBack));
     late final Animation<double> movementTextHeart =
@@ -44,9 +43,6 @@ class LikesArea extends StatelessWidget {
       controllerTextHeart
           .forward()
           .whenComplete(() => controllerTextHeart.reverse());
-      controllerResetIcon
-          .forward()
-          .whenComplete(() => controllerResetIcon.reverse());
     }
 
     return BlocBuilder<LikesBloc, LikesState>(
@@ -57,7 +53,6 @@ class LikesArea extends StatelessWidget {
           );
         }, getLikes: (cityData) {
           resetAnimation();
-
           return Expanded(
             child: ValueListenableBuilder<bool>(
               valueListenable: isLike,
@@ -67,7 +62,9 @@ class LikesArea extends StatelessWidget {
                 builder: (context, opacity, child) => Opacity(
                   opacity: opacity,
                   child: GestureDetector(
-                    onDoubleTap: value ? null : onDoubleTap,
+                    onDoubleTap: value
+                        ? null
+                        : onDoubleTap!,
                     child: Container(
                       width: double.infinity,
                       height: double.infinity,
@@ -91,24 +88,25 @@ class LikesArea extends StatelessWidget {
                                 : const SizedBox(),
                             Center(
                               child: HeartButton(
-                                child: AnimatedBuilder(
-                                    animation: movementTextHeart,
-                                    child: Text(
-                                        !value ? '+${cityData.likes}' : '',
-                                        style: textTheme.caption),
-                                    builder: (context, child) {
-                                      return Transform.translate(
-                                        offset:
-                                            Offset(movementTextHeart.value, 0),
-                                        child: Opacity(
-                                          opacity: opacityTextHeart.value,
-                                          child: child,
-                                        ),
-                                      );
-                                    }),
                                 increaseHeart: increaseHeart,
                                 controllerHeart: controllerHeart,
                                 textTheme: textTheme,
+                                child: AnimatedBuilder(
+                                  animation: movementTextHeart,
+                                  builder: (context, child) {
+                                    return Transform.translate(
+                                      offset:
+                                          Offset(movementTextHeart.value, 0),
+                                      child: Opacity(
+                                        opacity: opacityTextHeart.value,
+                                        child: child,
+                                      ),
+                                    );
+                                  },
+                                  child: Text(
+                                      !value ? '+${cityData.likes}' : '22',
+                                      style: textTheme.bodySmall),
+                                ),
                               ),
                             ),
                           ]),

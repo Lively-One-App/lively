@@ -28,12 +28,9 @@ class HeartButton extends StatelessWidget {
         ? Stack(
             alignment: AlignmentDirectional.center,
             children: [
-              InnerShadow(
-                shadows: const [Shadow(blurRadius: 6, color: Colors.black26)],
-                child: Icon(
-                  LivelyIcons.heart,
-                  size: increaseHeart.value,
-                ),
+              Icon(
+                LivelyIcons.heart,
+                size: increaseHeart.value,
               ),
               child
             ],

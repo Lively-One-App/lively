@@ -49,13 +49,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         builder: (context) => showWidget);
   }
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void onDoubleTap() async {
     context.read<LikesBloc>().add(const LikesEvent.writeLike());
     HapticFeedback.lightImpact();
     isLike.value = !isLike.value;
     controllerLivelyIcon.forward();
     await controllerHeart.forward();
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 500));
     await controllerHeart.reverse();
     isLike.value = !isLike.value;
     controllerLivelyIcon.repeat(
@@ -113,7 +118,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         },
         child: Stack(
           children: [
-            
             Column(
               children: [
                 AnimatedBackground(
@@ -179,7 +183,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               final unique = state?.listeners.total ?? 0;
 
                               return Text(
-                                  '${unique} ${localizations.lively(unique)}',
+                                  '$unique ${localizations.lively(unique)}',
                                   style: textTheme.headline1);
                             }),
                         const SizedBox(
@@ -241,17 +245,15 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     ],
                   ),
                 )),
-                 
-                Positioned(
+            Positioned(
                 left: MediaQuery.of(context).size.width * 0.83,
                 top: MediaQuery.of(context).size.height * 0.32,
                 child: IconButton(
                   icon: Image.asset('assets/map_icon.png'),
                   iconSize: 57,
                   onPressed: () {
-                                        
-                    Navigator.of(context)
-                                  .pushNamed('/map');},
+                    Navigator.of(context).pushNamed('/map');
+                  },
                 )),
           ],
         ),

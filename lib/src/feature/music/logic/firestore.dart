@@ -1,26 +1,30 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:math';
+
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../model/firestore/city_data.dart';
 import 'online_store_impl.dart';
 
-class Firestore implements OnlineStoreImpl {
-  //final _store = FirebaseFirestore.instance;
+class SupabaseHelper implements OnlineStoreImpl {
+  final supabase = Supabase.instance.client;
 
   get yield => null;
 
-  Stream<CityData> getData(final String nameCity) async* {
-    //final request = await _store.collection('cities').doc(nameCity).snapshots();
+  @override
+  Stream<CityData> getData(final String cityId) async* {
+    final request = supabase
+        .from('city')
+        .stream(primaryKey: ['id'])
+        .eq('id', cityId)
+        .asBroadcastStream();
 
-    // var a =
-    //     await _store.collection('cities').doc(nameCity).update({'likes': 0});
-
-    // yield* request.map((event) {
-    //   var temp = event.data();
-
-    //   return CityData.fromJson(event.data()!);
-    // });
+    yield* request.map((event) {
+      int likes = event[0]['likes_counter'];
+      return CityData(likes: likes);
+    });
   }
 
   Stream<List<Map>> getMarkers() async* {
@@ -46,11 +50,18 @@ class Firestore implements OnlineStoreImpl {
     // });
   }
 
-  void setData(final String nameCity) async {
-    // await _store
-    //     .collection('cities')
-    //     .doc(nameCity)
-    //     .update({'likes': FieldValue.increment(1)});
+  @override
+  Future<void> setData(final String cityId) async {
+    try {
+      if(supabase.auth.currentUser == null){
+        await signInAnonymously();
+      }
+      await supabase.functions.invoke('processLike', body: {
+        'cityId': cityId,
+      });
+    } catch (e) {
+      rethrow;
+    }
   }
 
   void addMarker(final Position position) async {
@@ -60,5 +71,16 @@ class Firestore implements OnlineStoreImpl {
     //     'longitude': position.longitude
     //   }
     // });
+  }
+
+  Future<void> signInAnonymously() async{
+    const String chars =
+        'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    String email = '';
+    for (var i = 0; i < 10; i++) {
+      email += chars[Random().nextInt(chars.length)];
+    }
+    email =  '$email@gmail.com';
+    await supabase.auth.signUp(password: '12345678', email: email); 
   }
 }
