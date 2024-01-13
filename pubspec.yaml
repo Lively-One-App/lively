@@ -27,6 +27,9 @@ dependencies:
   flutter_map: ^4.0.0
   geolocator: ^10.1.0
   flutter_map_marker_cluster: ^1.1.1
+  supabase_flutter: ^2.2.0
+  device_info_plus: ^9.1.1
+  supabase: ^2.0.4
  
 
 dev_dependencies:
@@ -70,6 +73,7 @@ flutter:
     - assets/map_icon.png
     - assets/marker_map.png
     - assets/marker_map_count.png
+    - assets/close_map.png
     
   uses-material-design: true
   fonts:

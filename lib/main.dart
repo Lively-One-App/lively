@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:l/l.dart';
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
 import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
@@ -34,16 +35,26 @@ class MyHttpOverrides extends HttpOverrides {
 
 void main() => runZonedGuarded<void>(
       () async {
-        HttpOverrides.global = MyHttpOverrides();
+        //HttpOverrides.global = MyHttpOverrides();
 
         WidgetsFlutterBinding.ensureInitialized();
+        await Supabase.initialize(
+          debug: true,
+          url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
+          anonKey:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
+        );
+
+        //final supabase = Supabase.instance.client;
+
         //await Firebase.initializeApp();
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
-
-        BlocOverrides.runZoned(
-          () async {
+        
+        Bloc.observer = AppBlocObserver.instance();
+        // BlocOverrides.runZoned(
+        //   () async {
             final audioHandler = await AudioService.init(
               builder: () => MyAudioPlayerHandler(),
               config: const AudioServiceConfig(
@@ -94,13 +105,14 @@ void main() => runZonedGuarded<void>(
                     );
                   },
                 ),
-                BlocProvider<MapBloc>(create: ((context) => MapBloc(Firestore()))),
+                BlocProvider<MapBloc>(
+                    create: ((context) => MapBloc(Firestore()))),
               ],
               child: const MyApp(),
             ));
-          },
-          blocObserver: AppBlocObserver.instance(),
-        );
+        //   },
+        //   blocObserver: AppBlocObserver.instance(),
+        // );
       },
       (error, stackTrace) {
         if (error is PlatformException) {

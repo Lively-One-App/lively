@@ -1,12 +1,19 @@
-//import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_map/flutter_map.dart';
+import 'dart:async';
+
 import 'package:geolocator/geolocator.dart';
+import 'package:lively/credential/supabase_cred.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../model/firestore/city_data.dart';
 import 'online_store_impl.dart';
 
 class Firestore implements OnlineStoreImpl {
   //final _store = FirebaseFirestore.instance;
+  final _store = supabase;
+
+  //RealtimeChannel sup = supabase.client.channel('public:geoPoints');
+
+  //StreamController controller = StreamController<String>();
 
   get yield => null;
 
@@ -23,27 +30,12 @@ class Firestore implements OnlineStoreImpl {
     // });
   }
 
-  Stream<List<Map>> getMarkers() async* {
-    //final request = await _store.collection('livelymarkers').snapshots();
+  Stream getMarkers() async* {
+    //final channelGeoPoints = supabase.channel('channelGeoPoints');
+    final Stream request =
+        await _store.client.from('geoPoints').stream(primaryKey: ['id']);
 
-    // yield* request.map((event) {
-    //   List<Map> listMarkers = [];
-
-    //   //request.listen((event) {
-    //     //listMarkers.clear();
-
-    //     event.docs.forEach((element) {
-    //       var temp = element.data();
-
-    //       listMarkers.add({
-    //         'latitude': temp['position']['latitude'],
-    //         'longitude': temp['position']['longitude']
-    //       });
-    //     });
-    //   //});
-
-    //   return listMarkers;
-    // });
+    yield* request;
   }
 
   void setData(final String nameCity) async {
@@ -53,12 +45,28 @@ class Firestore implements OnlineStoreImpl {
     //     .update({'likes': FieldValue.increment(1)});
   }
 
-  void addMarker(final Position position) async {
-    // await _store.collection('livelymarkers').add({
-    //   'position': {
-    //     'latitude': position.latitude,
-    //     'longitude': position.longitude
-    //   }
-    // });
+  void addUpdateMarker(final Position position, final String city, final String devInfo) async {
+
+    List res = await supabase.client.from('geoPoints').update({
+          'lat': position.latitude,
+          'lng': position.longitude,
+          'city':'Moscow'
+          
+        }).eq('devid',devInfo).select();
+        if(res.length == 0){
+           await supabase.client.from('geoPoints').insert({
+          'lat': position.latitude,
+          'lng': position.longitude,
+          'city':'Moscow',
+          'devid':devInfo
+          });
+
+        }
+   
   }
+  void removeMarker(String id) {
+    supabase.client.from('geoPoints').delete().eq('devid', id);
+  }
+  
+ 
 }
