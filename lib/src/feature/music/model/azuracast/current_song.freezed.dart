@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'current_song.dart';
 
@@ -35,7 +35,8 @@ mixin _$CurrentSong {
 abstract class $CurrentSongCopyWith<$Res> {
   factory $CurrentSongCopyWith(
           CurrentSong value, $Res Function(CurrentSong) then) =
-      _$CurrentSongCopyWithImpl<$Res>;
+      _$CurrentSongCopyWithImpl<$Res, CurrentSong>;
+  @useResult
   $Res call(
       {int elapsed,
       int remaining,
@@ -51,80 +52,85 @@ abstract class $CurrentSongCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CurrentSongCopyWithImpl<$Res> implements $CurrentSongCopyWith<$Res> {
+class _$CurrentSongCopyWithImpl<$Res, $Val extends CurrentSong>
+    implements $CurrentSongCopyWith<$Res> {
   _$CurrentSongCopyWithImpl(this._value, this._then);
 
-  final CurrentSong _value;
   // ignore: unused_field
-  final $Res Function(CurrentSong) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? elapsed = freezed,
-    Object? remaining = freezed,
-    Object? shId = freezed,
-    Object? playedAt = freezed,
-    Object? duration = freezed,
+    Object? elapsed = null,
+    Object? remaining = null,
+    Object? shId = null,
+    Object? playedAt = null,
+    Object? duration = null,
     Object? playList = freezed,
     Object? streamer = freezed,
-    Object? isRequest = freezed,
-    Object? song = freezed,
+    Object? isRequest = null,
+    Object? song = null,
   }) {
     return _then(_value.copyWith(
-      elapsed: elapsed == freezed
+      elapsed: null == elapsed
           ? _value.elapsed
           : elapsed // ignore: cast_nullable_to_non_nullable
               as int,
-      remaining: remaining == freezed
+      remaining: null == remaining
           ? _value.remaining
           : remaining // ignore: cast_nullable_to_non_nullable
               as int,
-      shId: shId == freezed
+      shId: null == shId
           ? _value.shId
           : shId // ignore: cast_nullable_to_non_nullable
               as int,
-      playedAt: playedAt == freezed
+      playedAt: null == playedAt
           ? _value.playedAt
           : playedAt // ignore: cast_nullable_to_non_nullable
               as int,
-      duration: duration == freezed
+      duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-      playList: playList == freezed
+      playList: freezed == playList
           ? _value.playList
           : playList // ignore: cast_nullable_to_non_nullable
               as String?,
-      streamer: streamer == freezed
+      streamer: freezed == streamer
           ? _value.streamer
           : streamer // ignore: cast_nullable_to_non_nullable
               as String?,
-      isRequest: isRequest == freezed
+      isRequest: null == isRequest
           ? _value.isRequest
           : isRequest // ignore: cast_nullable_to_non_nullable
               as bool,
-      song: song == freezed
+      song: null == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as Song,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SongCopyWith<$Res> get song {
     return $SongCopyWith<$Res>(_value.song, (value) {
-      return _then(_value.copyWith(song: value));
+      return _then(_value.copyWith(song: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_CurrentSongCopyWith<$Res>
+abstract class _$$CurrentSongImplCopyWith<$Res>
     implements $CurrentSongCopyWith<$Res> {
-  factory _$$_CurrentSongCopyWith(
-          _$_CurrentSong value, $Res Function(_$_CurrentSong) then) =
-      __$$_CurrentSongCopyWithImpl<$Res>;
+  factory _$$CurrentSongImplCopyWith(
+          _$CurrentSongImpl value, $Res Function(_$CurrentSongImpl) then) =
+      __$$CurrentSongImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int elapsed,
       int remaining,
@@ -141,61 +147,60 @@ abstract class _$$_CurrentSongCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CurrentSongCopyWithImpl<$Res> extends _$CurrentSongCopyWithImpl<$Res>
-    implements _$$_CurrentSongCopyWith<$Res> {
-  __$$_CurrentSongCopyWithImpl(
-      _$_CurrentSong _value, $Res Function(_$_CurrentSong) _then)
-      : super(_value, (v) => _then(v as _$_CurrentSong));
+class __$$CurrentSongImplCopyWithImpl<$Res>
+    extends _$CurrentSongCopyWithImpl<$Res, _$CurrentSongImpl>
+    implements _$$CurrentSongImplCopyWith<$Res> {
+  __$$CurrentSongImplCopyWithImpl(
+      _$CurrentSongImpl _value, $Res Function(_$CurrentSongImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_CurrentSong get _value => super._value as _$_CurrentSong;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? elapsed = freezed,
-    Object? remaining = freezed,
-    Object? shId = freezed,
-    Object? playedAt = freezed,
-    Object? duration = freezed,
+    Object? elapsed = null,
+    Object? remaining = null,
+    Object? shId = null,
+    Object? playedAt = null,
+    Object? duration = null,
     Object? playList = freezed,
     Object? streamer = freezed,
-    Object? isRequest = freezed,
-    Object? song = freezed,
+    Object? isRequest = null,
+    Object? song = null,
   }) {
-    return _then(_$_CurrentSong(
-      elapsed: elapsed == freezed
+    return _then(_$CurrentSongImpl(
+      elapsed: null == elapsed
           ? _value.elapsed
           : elapsed // ignore: cast_nullable_to_non_nullable
               as int,
-      remaining: remaining == freezed
+      remaining: null == remaining
           ? _value.remaining
           : remaining // ignore: cast_nullable_to_non_nullable
               as int,
-      shId: shId == freezed
+      shId: null == shId
           ? _value.shId
           : shId // ignore: cast_nullable_to_non_nullable
               as int,
-      playedAt: playedAt == freezed
+      playedAt: null == playedAt
           ? _value.playedAt
           : playedAt // ignore: cast_nullable_to_non_nullable
               as int,
-      duration: duration == freezed
+      duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-      playList: playList == freezed
+      playList: freezed == playList
           ? _value.playList
           : playList // ignore: cast_nullable_to_non_nullable
               as String?,
-      streamer: streamer == freezed
+      streamer: freezed == streamer
           ? _value.streamer
           : streamer // ignore: cast_nullable_to_non_nullable
               as String?,
-      isRequest: isRequest == freezed
+      isRequest: null == isRequest
           ? _value.isRequest
           : isRequest // ignore: cast_nullable_to_non_nullable
               as bool,
-      song: song == freezed
+      song: null == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as Song,
@@ -205,8 +210,8 @@ class __$$_CurrentSongCopyWithImpl<$Res> extends _$CurrentSongCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CurrentSong implements _CurrentSong {
-  const _$_CurrentSong(
+class _$CurrentSongImpl implements _CurrentSong {
+  const _$CurrentSongImpl(
       {required this.elapsed,
       required this.remaining,
       required this.shId,
@@ -242,38 +247,36 @@ class _$_CurrentSong implements _CurrentSong {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CurrentSong &&
-            const DeepCollectionEquality().equals(other.elapsed, elapsed) &&
-            const DeepCollectionEquality().equals(other.remaining, remaining) &&
-            const DeepCollectionEquality().equals(other.shId, shId) &&
-            const DeepCollectionEquality().equals(other.playedAt, playedAt) &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality().equals(other.playList, playList) &&
-            const DeepCollectionEquality().equals(other.streamer, streamer) &&
-            const DeepCollectionEquality().equals(other.isRequest, isRequest) &&
-            const DeepCollectionEquality().equals(other.song, song));
+            other is _$CurrentSongImpl &&
+            (identical(other.elapsed, elapsed) || other.elapsed == elapsed) &&
+            (identical(other.remaining, remaining) ||
+                other.remaining == remaining) &&
+            (identical(other.shId, shId) || other.shId == shId) &&
+            (identical(other.playedAt, playedAt) ||
+                other.playedAt == playedAt) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.playList, playList) ||
+                other.playList == playList) &&
+            (identical(other.streamer, streamer) ||
+                other.streamer == streamer) &&
+            (identical(other.isRequest, isRequest) ||
+                other.isRequest == isRequest) &&
+            (identical(other.song, song) || other.song == song));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(elapsed),
-      const DeepCollectionEquality().hash(remaining),
-      const DeepCollectionEquality().hash(shId),
-      const DeepCollectionEquality().hash(playedAt),
-      const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(playList),
-      const DeepCollectionEquality().hash(streamer),
-      const DeepCollectionEquality().hash(isRequest),
-      const DeepCollectionEquality().hash(song));
+  int get hashCode => Object.hash(runtimeType, elapsed, remaining, shId,
+      playedAt, duration, playList, streamer, isRequest, song);
 
   @JsonKey(ignore: true)
   @override
-  _$$_CurrentSongCopyWith<_$_CurrentSong> get copyWith =>
-      __$$_CurrentSongCopyWithImpl<_$_CurrentSong>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$CurrentSongImplCopyWith<_$CurrentSongImpl> get copyWith =>
+      __$$CurrentSongImplCopyWithImpl<_$CurrentSongImpl>(this, _$identity);
 }
 
 abstract class _CurrentSong implements CurrentSong {
@@ -286,7 +289,7 @@ abstract class _CurrentSong implements CurrentSong {
       final String? playList,
       final String? streamer,
       required final bool isRequest,
-      required final Song song}) = _$_CurrentSong;
+      required final Song song}) = _$CurrentSongImpl;
 
   @override
   int get elapsed;
@@ -308,6 +311,6 @@ abstract class _CurrentSong implements CurrentSong {
   Song get song;
   @override
   @JsonKey(ignore: true)
-  _$$_CurrentSongCopyWith<_$_CurrentSong> get copyWith =>
+  _$$CurrentSongImplCopyWith<_$CurrentSongImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -4,11 +4,11 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 
 import '../../logic/online_store_impl.dart';
 import '../../model/firestore/city_data.dart';
 import '../radio/radio_cubit.dart';
-import '../sync_server/sync_server.dart';
 
 part 'likes_state.dart';
 part 'likes_event.dart';
@@ -19,6 +19,7 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   final RadioCubit _musicCubit;
   final SyncServerCubit _syncServerCubit;
   StreamSubscription? _listenerCityData;
+  StreamSubscription? _timerSubForProcessingLikes;
   late final StreamSubscription<RadioState> _musicCubitStream;
 
   LikesBloc({
@@ -46,6 +47,10 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
     on<_DisableLikes>((event, emit) => _disableLikes(event, emit));
     on<_WriteLikes>(
       (event, emit) => _writeLike(event, emit),
+      transformer: bloc_concurrency.droppable(),
+    );
+    on<_ProcessLikes>(
+      (event, emit) => _processLikes(event, emit),
       transformer: bloc_concurrency.droppable(),
     );
   }
@@ -77,5 +82,16 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
     _listenerCityData?.cancel();
 
     return super.close();
+  }
+
+  FutureOr<void> _processLikes(
+      _ProcessLikes event, Emitter<LikesState> emit) async {
+    try {
+      await _store.proccessLikes();
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint(e.toString());
+      }
+    }
   }
 }

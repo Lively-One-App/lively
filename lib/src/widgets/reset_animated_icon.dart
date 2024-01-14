@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 
 import '../../generated/l10n.dart';
 import '../../lively_icons.dart';
-import '../feature/music/bloc/sync_server/sync_server.dart';
 
 class ResetAnimatedIcon extends StatelessWidget {
   const ResetAnimatedIcon(

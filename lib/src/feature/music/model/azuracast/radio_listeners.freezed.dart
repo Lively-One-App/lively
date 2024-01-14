@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'radio_listeners.dart';
 
@@ -29,79 +29,81 @@ mixin _$RadioListeners {
 abstract class $RadioListenersCopyWith<$Res> {
   factory $RadioListenersCopyWith(
           RadioListeners value, $Res Function(RadioListeners) then) =
-      _$RadioListenersCopyWithImpl<$Res>;
+      _$RadioListenersCopyWithImpl<$Res, RadioListeners>;
+  @useResult
   $Res call({int current, int total, int unique});
 }
 
 /// @nodoc
-class _$RadioListenersCopyWithImpl<$Res>
+class _$RadioListenersCopyWithImpl<$Res, $Val extends RadioListeners>
     implements $RadioListenersCopyWith<$Res> {
   _$RadioListenersCopyWithImpl(this._value, this._then);
 
-  final RadioListeners _value;
   // ignore: unused_field
-  final $Res Function(RadioListeners) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? current = freezed,
-    Object? total = freezed,
-    Object? unique = freezed,
+    Object? current = null,
+    Object? total = null,
+    Object? unique = null,
   }) {
     return _then(_value.copyWith(
-      current: current == freezed
+      current: null == current
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
               as int,
-      total: total == freezed
+      total: null == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int,
-      unique: unique == freezed
+      unique: null == unique
           ? _value.unique
           : unique // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_RadioListenersCopyWith<$Res>
+abstract class _$$RadioListenersImplCopyWith<$Res>
     implements $RadioListenersCopyWith<$Res> {
-  factory _$$_RadioListenersCopyWith(
-          _$_RadioListeners value, $Res Function(_$_RadioListeners) then) =
-      __$$_RadioListenersCopyWithImpl<$Res>;
+  factory _$$RadioListenersImplCopyWith(_$RadioListenersImpl value,
+          $Res Function(_$RadioListenersImpl) then) =
+      __$$RadioListenersImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int current, int total, int unique});
 }
 
 /// @nodoc
-class __$$_RadioListenersCopyWithImpl<$Res>
-    extends _$RadioListenersCopyWithImpl<$Res>
-    implements _$$_RadioListenersCopyWith<$Res> {
-  __$$_RadioListenersCopyWithImpl(
-      _$_RadioListeners _value, $Res Function(_$_RadioListeners) _then)
-      : super(_value, (v) => _then(v as _$_RadioListeners));
+class __$$RadioListenersImplCopyWithImpl<$Res>
+    extends _$RadioListenersCopyWithImpl<$Res, _$RadioListenersImpl>
+    implements _$$RadioListenersImplCopyWith<$Res> {
+  __$$RadioListenersImplCopyWithImpl(
+      _$RadioListenersImpl _value, $Res Function(_$RadioListenersImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_RadioListeners get _value => super._value as _$_RadioListeners;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? current = freezed,
-    Object? total = freezed,
-    Object? unique = freezed,
+    Object? current = null,
+    Object? total = null,
+    Object? unique = null,
   }) {
-    return _then(_$_RadioListeners(
-      current: current == freezed
+    return _then(_$RadioListenersImpl(
+      current: null == current
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
               as int,
-      total: total == freezed
+      total: null == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int,
-      unique: unique == freezed
+      unique: null == unique
           ? _value.unique
           : unique // ignore: cast_nullable_to_non_nullable
               as int,
@@ -111,8 +113,8 @@ class __$$_RadioListenersCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RadioListeners implements _RadioListeners {
-  const _$_RadioListeners(
+class _$RadioListenersImpl implements _RadioListeners {
+  const _$RadioListenersImpl(
       {required this.current, required this.total, required this.unique});
 
   @override
@@ -128,33 +130,31 @@ class _$_RadioListeners implements _RadioListeners {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RadioListeners &&
-            const DeepCollectionEquality().equals(other.current, current) &&
-            const DeepCollectionEquality().equals(other.total, total) &&
-            const DeepCollectionEquality().equals(other.unique, unique));
+            other is _$RadioListenersImpl &&
+            (identical(other.current, current) || other.current == current) &&
+            (identical(other.total, total) || other.total == total) &&
+            (identical(other.unique, unique) || other.unique == unique));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(current),
-      const DeepCollectionEquality().hash(total),
-      const DeepCollectionEquality().hash(unique));
+  int get hashCode => Object.hash(runtimeType, current, total, unique);
 
   @JsonKey(ignore: true)
   @override
-  _$$_RadioListenersCopyWith<_$_RadioListeners> get copyWith =>
-      __$$_RadioListenersCopyWithImpl<_$_RadioListeners>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$RadioListenersImplCopyWith<_$RadioListenersImpl> get copyWith =>
+      __$$RadioListenersImplCopyWithImpl<_$RadioListenersImpl>(
+          this, _$identity);
 }
 
 abstract class _RadioListeners implements RadioListeners {
   const factory _RadioListeners(
       {required final int current,
       required final int total,
-      required final int unique}) = _$_RadioListeners;
+      required final int unique}) = _$RadioListenersImpl;
 
   @override
   int get current;
@@ -164,6 +164,6 @@ abstract class _RadioListeners implements RadioListeners {
   int get unique;
   @override
   @JsonKey(ignore: true)
-  _$$_RadioListenersCopyWith<_$_RadioListeners> get copyWith =>
+  _$$RadioListenersImplCopyWith<_$RadioListenersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

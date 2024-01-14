@@ -1,6 +1,6 @@
-import 'dart:async';
+import 'package:bloc/bloc.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:async';
 
 
 class SyncServerCubit extends Cubit<int> {
@@ -28,3 +28,4 @@ class SyncServerCubit extends Cubit<int> {
     return super.close();
   }
 }
+

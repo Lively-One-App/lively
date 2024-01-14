@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'azura_api_song.dart';
 
@@ -41,7 +41,8 @@ mixin _$AzuraApiSong {
 abstract class $AzuraApiSongCopyWith<$Res> {
   factory $AzuraApiSongCopyWith(
           AzuraApiSong value, $Res Function(AzuraApiSong) then) =
-      _$AzuraApiSongCopyWithImpl<$Res>;
+      _$AzuraApiSongCopyWithImpl<$Res, AzuraApiSong>;
+  @useResult
   $Res call(
       {String id,
       String text,
@@ -55,73 +56,77 @@ abstract class $AzuraApiSongCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AzuraApiSongCopyWithImpl<$Res> implements $AzuraApiSongCopyWith<$Res> {
+class _$AzuraApiSongCopyWithImpl<$Res, $Val extends AzuraApiSong>
+    implements $AzuraApiSongCopyWith<$Res> {
   _$AzuraApiSongCopyWithImpl(this._value, this._then);
 
-  final AzuraApiSong _value;
   // ignore: unused_field
-  final $Res Function(AzuraApiSong) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? text = freezed,
-    Object? artist = freezed,
-    Object? title = freezed,
-    Object? album = freezed,
-    Object? genre = freezed,
-    Object? lyrics = freezed,
-    Object? art = freezed,
-    Object? customFields = freezed,
+    Object? id = null,
+    Object? text = null,
+    Object? artist = null,
+    Object? title = null,
+    Object? album = null,
+    Object? genre = null,
+    Object? lyrics = null,
+    Object? art = null,
+    Object? customFields = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: text == freezed
+      text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      artist: artist == freezed
+      artist: null == artist
           ? _value.artist
           : artist // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      album: album == freezed
+      album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
               as String,
-      genre: genre == freezed
+      genre: null == genre
           ? _value.genre
           : genre // ignore: cast_nullable_to_non_nullable
               as String,
-      lyrics: lyrics == freezed
+      lyrics: null == lyrics
           ? _value.lyrics
           : lyrics // ignore: cast_nullable_to_non_nullable
               as String,
-      art: art == freezed
+      art: null == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
               as String,
-      customFields: customFields == freezed
+      customFields: null == customFields
           ? _value.customFields
           : customFields // ignore: cast_nullable_to_non_nullable
               as List<String>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_AzuraApiSongCopyWith<$Res>
+abstract class _$$AzuraApiSongImplCopyWith<$Res>
     implements $AzuraApiSongCopyWith<$Res> {
-  factory _$$_AzuraApiSongCopyWith(
-          _$_AzuraApiSong value, $Res Function(_$_AzuraApiSong) then) =
-      __$$_AzuraApiSongCopyWithImpl<$Res>;
+  factory _$$AzuraApiSongImplCopyWith(
+          _$AzuraApiSongImpl value, $Res Function(_$AzuraApiSongImpl) then) =
+      __$$AzuraApiSongImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String text,
@@ -135,62 +140,60 @@ abstract class _$$_AzuraApiSongCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AzuraApiSongCopyWithImpl<$Res>
-    extends _$AzuraApiSongCopyWithImpl<$Res>
-    implements _$$_AzuraApiSongCopyWith<$Res> {
-  __$$_AzuraApiSongCopyWithImpl(
-      _$_AzuraApiSong _value, $Res Function(_$_AzuraApiSong) _then)
-      : super(_value, (v) => _then(v as _$_AzuraApiSong));
+class __$$AzuraApiSongImplCopyWithImpl<$Res>
+    extends _$AzuraApiSongCopyWithImpl<$Res, _$AzuraApiSongImpl>
+    implements _$$AzuraApiSongImplCopyWith<$Res> {
+  __$$AzuraApiSongImplCopyWithImpl(
+      _$AzuraApiSongImpl _value, $Res Function(_$AzuraApiSongImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_AzuraApiSong get _value => super._value as _$_AzuraApiSong;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? text = freezed,
-    Object? artist = freezed,
-    Object? title = freezed,
-    Object? album = freezed,
-    Object? genre = freezed,
-    Object? lyrics = freezed,
-    Object? art = freezed,
-    Object? customFields = freezed,
+    Object? id = null,
+    Object? text = null,
+    Object? artist = null,
+    Object? title = null,
+    Object? album = null,
+    Object? genre = null,
+    Object? lyrics = null,
+    Object? art = null,
+    Object? customFields = null,
   }) {
-    return _then(_$_AzuraApiSong(
-      id: id == freezed
+    return _then(_$AzuraApiSongImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: text == freezed
+      text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      artist: artist == freezed
+      artist: null == artist
           ? _value.artist
           : artist // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      album: album == freezed
+      album: null == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
               as String,
-      genre: genre == freezed
+      genre: null == genre
           ? _value.genre
           : genre // ignore: cast_nullable_to_non_nullable
               as String,
-      lyrics: lyrics == freezed
+      lyrics: null == lyrics
           ? _value.lyrics
           : lyrics // ignore: cast_nullable_to_non_nullable
               as String,
-      art: art == freezed
+      art: null == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
               as String,
-      customFields: customFields == freezed
+      customFields: null == customFields
           ? _value._customFields
           : customFields // ignore: cast_nullable_to_non_nullable
               as List<String>,
@@ -200,8 +203,8 @@ class __$$_AzuraApiSongCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AzuraApiSong implements _AzuraApiSong {
-  _$_AzuraApiSong(
+class _$AzuraApiSongImpl implements _AzuraApiSong {
+  _$AzuraApiSongImpl(
       {required this.id,
       required this.text,
       required this.artist,
@@ -213,8 +216,8 @@ class _$_AzuraApiSong implements _AzuraApiSong {
       @JsonKey(name: 'custom_fields') required final List<String> customFields})
       : _customFields = customFields;
 
-  factory _$_AzuraApiSong.fromJson(Map<String, dynamic> json) =>
-      _$$_AzuraApiSongFromJson(json);
+  factory _$AzuraApiSongImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AzuraApiSongImplFromJson(json);
 
   @override
   final String id;
@@ -236,6 +239,7 @@ class _$_AzuraApiSong implements _AzuraApiSong {
   @override
   @JsonKey(name: 'custom_fields')
   List<String> get customFields {
+    if (_customFields is EqualUnmodifiableListView) return _customFields;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_customFields);
   }
@@ -246,44 +250,36 @@ class _$_AzuraApiSong implements _AzuraApiSong {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AzuraApiSong &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.text, text) &&
-            const DeepCollectionEquality().equals(other.artist, artist) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.album, album) &&
-            const DeepCollectionEquality().equals(other.genre, genre) &&
-            const DeepCollectionEquality().equals(other.lyrics, lyrics) &&
-            const DeepCollectionEquality().equals(other.art, art) &&
+            other is _$AzuraApiSongImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.artist, artist) || other.artist == artist) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.album, album) || other.album == album) &&
+            (identical(other.genre, genre) || other.genre == genre) &&
+            (identical(other.lyrics, lyrics) || other.lyrics == lyrics) &&
+            (identical(other.art, art) || other.art == art) &&
             const DeepCollectionEquality()
                 .equals(other._customFields, _customFields));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(text),
-      const DeepCollectionEquality().hash(artist),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(album),
-      const DeepCollectionEquality().hash(genre),
-      const DeepCollectionEquality().hash(lyrics),
-      const DeepCollectionEquality().hash(art),
-      const DeepCollectionEquality().hash(_customFields));
+  int get hashCode => Object.hash(runtimeType, id, text, artist, title, album,
+      genre, lyrics, art, const DeepCollectionEquality().hash(_customFields));
 
   @JsonKey(ignore: true)
   @override
-  _$$_AzuraApiSongCopyWith<_$_AzuraApiSong> get copyWith =>
-      __$$_AzuraApiSongCopyWithImpl<_$_AzuraApiSong>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$AzuraApiSongImplCopyWith<_$AzuraApiSongImpl> get copyWith =>
+      __$$AzuraApiSongImplCopyWithImpl<_$AzuraApiSongImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiSongToJson(
+    return _$$AzuraApiSongImplToJson(
       this,
     );
   }
@@ -300,10 +296,10 @@ abstract class _AzuraApiSong implements AzuraApiSong {
       required final String lyrics,
       required final String art,
       @JsonKey(name: 'custom_fields')
-          required final List<String> customFields}) = _$_AzuraApiSong;
+      required final List<String> customFields}) = _$AzuraApiSongImpl;
 
   factory _AzuraApiSong.fromJson(Map<String, dynamic> json) =
-      _$_AzuraApiSong.fromJson;
+      _$AzuraApiSongImpl.fromJson;
 
   @override
   String get id;
@@ -326,6 +322,6 @@ abstract class _AzuraApiSong implements AzuraApiSong {
   List<String> get customFields;
   @override
   @JsonKey(ignore: true)
-  _$$_AzuraApiSongCopyWith<_$_AzuraApiSong> get copyWith =>
+  _$$AzuraApiSongImplCopyWith<_$AzuraApiSongImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

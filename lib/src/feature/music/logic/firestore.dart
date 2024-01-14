@@ -53,7 +53,7 @@ class SupabaseHelper implements OnlineStoreImpl {
   @override
   Future<void> setData(final String cityId) async {
     try {
-      if(supabase.auth.currentUser == null){
+      if (supabase.auth.currentUser == null) {
         await signInAnonymously();
       }
       await supabase.functions.invoke('processLike', body: {
@@ -73,14 +73,23 @@ class SupabaseHelper implements OnlineStoreImpl {
     // });
   }
 
-  Future<void> signInAnonymously() async{
+  Future<void> signInAnonymously() async {
     const String chars =
         'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     String email = '';
     for (var i = 0; i < 10; i++) {
       email += chars[Random().nextInt(chars.length)];
     }
-    email =  '$email@gmail.com';
-    await supabase.auth.signUp(password: '12345678', email: email); 
+    email = '$email@gmail.com';
+    await supabase.auth.signUp(password: '12345678', email: email);
+  }
+
+  @override
+  Future<void> proccessLikes() async {
+    try {
+      await supabase.functions.invoke('resetLikeCounter');
+    } catch (e) {
+      rethrow;
+    }
   }
 }

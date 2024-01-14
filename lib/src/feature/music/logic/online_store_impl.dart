@@ -7,4 +7,5 @@ abstract class OnlineStoreImpl {
   Stream getMarkers();
   Future<void> setData(final String nameCity);
   void addMarker(final Position position);
+  Future<void> proccessLikes();
 }

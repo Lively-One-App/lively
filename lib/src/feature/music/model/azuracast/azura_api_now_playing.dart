@@ -29,6 +29,7 @@ class AzuraApiNowPlaying with _$AzuraApiNowPlaying {
       cacheFrom? cache}) = _AzuraApiNowPlaying;
 
   factory AzuraApiNowPlaying.fromJson(Map<String, dynamic> json) {
-    return _$AzuraApiNowPlayingFromJson(json);
+    return _$$AzuraApiNowPlayingImplFromJson(json);
   }
 }
+

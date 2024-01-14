@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'city_data.dart';
 
@@ -31,56 +31,61 @@ mixin _$CityData {
 /// @nodoc
 abstract class $CityDataCopyWith<$Res> {
   factory $CityDataCopyWith(CityData value, $Res Function(CityData) then) =
-      _$CityDataCopyWithImpl<$Res>;
+      _$CityDataCopyWithImpl<$Res, CityData>;
+  @useResult
   $Res call({int likes});
 }
 
 /// @nodoc
-class _$CityDataCopyWithImpl<$Res> implements $CityDataCopyWith<$Res> {
+class _$CityDataCopyWithImpl<$Res, $Val extends CityData>
+    implements $CityDataCopyWith<$Res> {
   _$CityDataCopyWithImpl(this._value, this._then);
 
-  final CityData _value;
   // ignore: unused_field
-  final $Res Function(CityData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? likes = freezed,
+    Object? likes = null,
   }) {
     return _then(_value.copyWith(
-      likes: likes == freezed
+      likes: null == likes
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_CityDataCopyWith<$Res> implements $CityDataCopyWith<$Res> {
-  factory _$$_CityDataCopyWith(
-          _$_CityData value, $Res Function(_$_CityData) then) =
-      __$$_CityDataCopyWithImpl<$Res>;
+abstract class _$$CityDataImplCopyWith<$Res>
+    implements $CityDataCopyWith<$Res> {
+  factory _$$CityDataImplCopyWith(
+          _$CityDataImpl value, $Res Function(_$CityDataImpl) then) =
+      __$$CityDataImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int likes});
 }
 
 /// @nodoc
-class __$$_CityDataCopyWithImpl<$Res> extends _$CityDataCopyWithImpl<$Res>
-    implements _$$_CityDataCopyWith<$Res> {
-  __$$_CityDataCopyWithImpl(
-      _$_CityData _value, $Res Function(_$_CityData) _then)
-      : super(_value, (v) => _then(v as _$_CityData));
+class __$$CityDataImplCopyWithImpl<$Res>
+    extends _$CityDataCopyWithImpl<$Res, _$CityDataImpl>
+    implements _$$CityDataImplCopyWith<$Res> {
+  __$$CityDataImplCopyWithImpl(
+      _$CityDataImpl _value, $Res Function(_$CityDataImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_CityData get _value => super._value as _$_CityData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? likes = freezed,
+    Object? likes = null,
   }) {
-    return _then(_$_CityData(
-      likes: likes == freezed
+    return _then(_$CityDataImpl(
+      likes: null == likes
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
               as int,
@@ -90,11 +95,11 @@ class __$$_CityDataCopyWithImpl<$Res> extends _$CityDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CityData implements _CityData {
-  const _$_CityData({required this.likes});
+class _$CityDataImpl implements _CityData {
+  const _$CityDataImpl({required this.likes});
 
-  factory _$_CityData.fromJson(Map<String, dynamic> json) =>
-      _$$_CityDataFromJson(json);
+  factory _$CityDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CityDataImplFromJson(json);
 
   @override
   final int likes;
@@ -105,40 +110,41 @@ class _$_CityData implements _CityData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CityData &&
-            const DeepCollectionEquality().equals(other.likes, likes));
+            other is _$CityDataImpl &&
+            (identical(other.likes, likes) || other.likes == likes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(likes));
+  int get hashCode => Object.hash(runtimeType, likes);
 
   @JsonKey(ignore: true)
   @override
-  _$$_CityDataCopyWith<_$_CityData> get copyWith =>
-      __$$_CityDataCopyWithImpl<_$_CityData>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$CityDataImplCopyWith<_$CityDataImpl> get copyWith =>
+      __$$CityDataImplCopyWithImpl<_$CityDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CityDataToJson(
+    return _$$CityDataImplToJson(
       this,
     );
   }
 }
 
 abstract class _CityData implements CityData {
-  const factory _CityData({required final int likes}) = _$_CityData;
+  const factory _CityData({required final int likes}) = _$CityDataImpl;
 
-  factory _CityData.fromJson(Map<String, dynamic> json) = _$_CityData.fromJson;
+  factory _CityData.fromJson(Map<String, dynamic> json) =
+      _$CityDataImpl.fromJson;
 
   @override
   int get likes;
   @override
   @JsonKey(ignore: true)
-  _$$_CityDataCopyWith<_$_CityData> get copyWith =>
+  _$$CityDataImplCopyWith<_$CityDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
