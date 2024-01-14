@@ -29,6 +29,14 @@ class Firestore implements OnlineStoreImpl {
     //   return CityData.fromJson(event.data()!);
     // });
   }
+  Stream getRunString() async* {
+    //final channelGeoPoints = supabase.channel('channelGeoPoints');
+    final Stream request =
+        await _store.client.from('runString').stream(primaryKey: ['id']);
+
+    yield* request;
+  }
+
 
   Stream getMarkers() async* {
     //final channelGeoPoints = supabase.channel('channelGeoPoints');

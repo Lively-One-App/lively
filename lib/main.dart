@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:l/l.dart';
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
+import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -72,6 +73,7 @@ void main() => runZonedGuarded<void>(
             final sharedPreferences = await SharedPreferences.getInstance();
             // FlutterError.onError =
             //     await FirebaseCrashlytics.instance.recordFlutterError;
+            final store = Firestore();
             runApp(MultiBlocProvider(
               providers: [
                 BlocProvider<AzuraApiNowPlayingCubit>(
@@ -93,7 +95,7 @@ void main() => runZonedGuarded<void>(
                     create: (context) => SyncServerCubit()),
                 BlocProvider<LikesBloc>(
                   create: (context) {
-                    final store = Firestore();
+//                    final store = Firestore();
                     final radioCubit = BlocProvider.of<RadioCubit>(context);
                     final syncServerCubit =
                         BlocProvider.of<SyncServerCubit>(context);
@@ -106,7 +108,9 @@ void main() => runZonedGuarded<void>(
                   },
                 ),
                 BlocProvider<MapBloc>(
-                    create: ((context) => MapBloc(Firestore()))),
+                    create: ((context) => MapBloc(store))),
+                    BlocProvider<RunStringBloc>(
+                    create: ((context) => RunStringBloc(store))),
               ],
               child: const MyApp(),
             ));

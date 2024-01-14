@@ -30,6 +30,8 @@ dependencies:
   supabase_flutter: ^2.2.0
   device_info_plus: ^9.1.1
   supabase: ^2.0.4
+  #marquee: ^2.2.3
+  marquee_widget: ^1.2.0
  
 
 dev_dependencies:
