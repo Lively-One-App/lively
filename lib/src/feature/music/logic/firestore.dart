@@ -26,6 +26,7 @@ class SupabaseHelper implements OnlineStoreImpl {
       return CityData(likes: likes);
     });
   }
+
   Stream getRunString() async* {
     //final channelGeoPoints = supabase.channel('channelGeoPoints');
     final Stream request =
@@ -33,7 +34,6 @@ class SupabaseHelper implements OnlineStoreImpl {
 
     yield* request;
   }
-
 
   Stream getMarkers() async* {
     //final channelGeoPoints = supabase.channel('channelGeoPoints');
@@ -57,24 +57,25 @@ class SupabaseHelper implements OnlineStoreImpl {
     }
   }
 
-  void addUpdateMarker(final Position position, final String city, final String devInfo) async {
-
-    List res = await supabase.from('geoPoints').update({
+  void addUpdateMarker(
+      final Position position, final String city, final String devInfo) async {
+    List res = await supabase
+        .from('geoPoints')
+        .update({
           'lat': position.latitude,
           'lng': position.longitude,
-          'city':'Moscow'
-          
-        }).eq('devid',devInfo).select();
-        if(res.length == 0){
-           await supabase.from('geoPoints').insert({
-          'lat': position.latitude,
-          'lng': position.longitude,
-          'city':'Moscow',
-          'devid':devInfo
-          });
-
-        }
-   
+          'city': 'Moscow'
+        })
+        .eq('devid', devInfo)
+        .select();
+    if (res.length == 0) {
+      await supabase.from('geoPoints').insert({
+        'lat': position.latitude,
+        'lng': position.longitude,
+        'city': 'Moscow',
+        'devid': devInfo
+      });
+    }
   }
 
   Future<void> signInAnonymously() async {
@@ -96,6 +97,7 @@ class SupabaseHelper implements OnlineStoreImpl {
       rethrow;
     }
   }
+
   void removeMarker(String id) {
     supabase.from('geoPoints').delete().eq('devid', id);
   }
