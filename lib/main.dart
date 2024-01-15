@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:l/l.dart';
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
+import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -35,7 +36,7 @@ class MyHttpOverrides extends HttpOverrides {
 
 void main() => runZonedGuarded<void>(
       () async {
-        HttpOverrides.global = MyHttpOverrides();
+        //HttpOverrides.global = MyHttpOverrides();
 
         WidgetsFlutterBinding.ensureInitialized();
         await Supabase.initialize(
@@ -46,9 +47,10 @@ void main() => runZonedGuarded<void>(
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
-
-        BlocOverrides.runZoned(
-          () async {
+        
+        Bloc.observer = AppBlocObserver.instance();
+        // BlocOverrides.runZoned(
+        //   () async {
             final audioHandler = await AudioService.init(
               builder: () => MyAudioPlayerHandler(),
               config: const AudioServiceConfig(
@@ -67,6 +69,7 @@ void main() => runZonedGuarded<void>(
             final sharedPreferences = await SharedPreferences.getInstance();
             // FlutterError.onError =
             //     await FirebaseCrashlytics.instance.recordFlutterError;
+            final store = SupabaseHelper();
             runApp(MultiBlocProvider(
               providers: [
                 BlocProvider<AzuraApiNowPlayingCubit>(
@@ -100,13 +103,16 @@ void main() => runZonedGuarded<void>(
                     );
                   },
                 ),
-                BlocProvider<MapBloc>(create: ((context) => MapBloc(SupabaseHelper()))),
+                BlocProvider<MapBloc>(
+                    create: ((context) => MapBloc(store))),
+                    BlocProvider<RunStringBloc>(
+                    create: ((context) => RunStringBloc(store))),
               ],
               child: const MyApp(),
             ));
-          },
-          blocObserver: AppBlocObserver.instance(),
-        );
+        //   },
+        //   blocObserver: AppBlocObserver.instance(),
+        // );
       },
       (error, stackTrace) {
         if (error is PlatformException) {

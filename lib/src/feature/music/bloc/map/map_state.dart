@@ -29,3 +29,7 @@ class ErrorState extends MapState{
 
   ErrorState({required this.error});
 }
+
+class OffSharedPositionState extends MapState{}
+
+class OnSharedPositionState extends MapState{}

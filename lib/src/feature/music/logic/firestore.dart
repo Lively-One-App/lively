@@ -26,28 +26,21 @@ class SupabaseHelper implements OnlineStoreImpl {
       return CityData(likes: likes);
     });
   }
+  Stream getRunString() async* {
+    //final channelGeoPoints = supabase.channel('channelGeoPoints');
+    final Stream request =
+        await supabase.from('runString').stream(primaryKey: ['id']);
 
-  Stream<List<Map>> getMarkers() async* {
-    //final request = await _store.collection('livelymarkers').snapshots();
+    yield* request;
+  }
 
-    // yield* request.map((event) {
-    //   List<Map> listMarkers = [];
 
-    //   //request.listen((event) {
-    //     //listMarkers.clear();
+  Stream getMarkers() async* {
+    //final channelGeoPoints = supabase.channel('channelGeoPoints');
+    final Stream request =
+        await supabase.from('geoPoints').stream(primaryKey: ['id']);
 
-    //     event.docs.forEach((element) {
-    //       var temp = element.data();
-
-    //       listMarkers.add({
-    //         'latitude': temp['position']['latitude'],
-    //         'longitude': temp['position']['longitude']
-    //       });
-    //     });
-    //   //});
-
-    //   return listMarkers;
-    // });
+    yield* request;
   }
 
   @override
@@ -64,13 +57,24 @@ class SupabaseHelper implements OnlineStoreImpl {
     }
   }
 
-  void addMarker(final Position position) async {
-    // await _store.collection('livelymarkers').add({
-    //   'position': {
-    //     'latitude': position.latitude,
-    //     'longitude': position.longitude
-    //   }
-    // });
+  void addUpdateMarker(final Position position, final String city, final String devInfo) async {
+
+    List res = await supabase.from('geoPoints').update({
+          'lat': position.latitude,
+          'lng': position.longitude,
+          'city':'Moscow'
+          
+        }).eq('devid',devInfo).select();
+        if(res.length == 0){
+           await supabase.from('geoPoints').insert({
+          'lat': position.latitude,
+          'lng': position.longitude,
+          'city':'Moscow',
+          'devid':devInfo
+          });
+
+        }
+   
   }
 
   Future<void> signInAnonymously() async {
@@ -91,5 +95,8 @@ class SupabaseHelper implements OnlineStoreImpl {
     } catch (e) {
       rethrow;
     }
+  }
+  void removeMarker(String id) {
+    supabase.from('geoPoints').delete().eq('devid', id);
   }
 }
