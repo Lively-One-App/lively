@@ -1,13 +1,17 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+//import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:l/l.dart';
+import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
+import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
 import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
@@ -20,16 +24,38 @@ import 'src/feature/music/logic/my_audioplayer_handler.dart';
 import 'src/feature/music/logic/websocket_auto_reconnect.dart';
 import 'src/my_app.dart';
 
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) {
+        return true;
+      };
+  }
+}
+
 void main() => runZonedGuarded<void>(
       () async {
+        //HttpOverrides.global = MyHttpOverrides();
+
         WidgetsFlutterBinding.ensureInitialized();
-        await Firebase.initializeApp();
+        await Supabase.initialize(
+          debug: true,
+          url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
+          anonKey:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
+        );
+
+        //final supabase = Supabase.instance.client;
+
+        //await Firebase.initializeApp();
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
-
-        BlocOverrides.runZoned(
-          () async {
+        
+        Bloc.observer = AppBlocObserver.instance();
+        // BlocOverrides.runZoned(
+        //   () async {
             final audioHandler = await AudioService.init(
               builder: () => MyAudioPlayerHandler(),
               config: const AudioServiceConfig(
@@ -41,11 +67,13 @@ void main() => runZonedGuarded<void>(
             );
 
             final socket = await WebSocketAutoReconnect(
-              Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/lively'),
+              Uri.parse(
+                  'wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
             );
             final sharedPreferences = await SharedPreferences.getInstance();
-            FlutterError.onError =
-                await FirebaseCrashlytics.instance.recordFlutterError;
+            // FlutterError.onError =
+            //     await FirebaseCrashlytics.instance.recordFlutterError;
+            final store = Firestore();
             runApp(MultiBlocProvider(
               providers: [
                 BlocProvider<AzuraApiNowPlayingCubit>(
@@ -67,7 +95,7 @@ void main() => runZonedGuarded<void>(
                     create: (context) => SyncServerCubit()),
                 BlocProvider<LikesBloc>(
                   create: (context) {
-                    final store = Firestore();
+//                    final store = Firestore();
                     final radioCubit = BlocProvider.of<RadioCubit>(context);
                     final syncServerCubit =
                         BlocProvider.of<SyncServerCubit>(context);
@@ -79,18 +107,22 @@ void main() => runZonedGuarded<void>(
                     );
                   },
                 ),
+                BlocProvider<MapBloc>(
+                    create: ((context) => MapBloc(store))),
+                    BlocProvider<RunStringBloc>(
+                    create: ((context) => RunStringBloc(store))),
               ],
               child: const MyApp(),
             ));
-          },
-          blocObserver: AppBlocObserver.instance(),
-        );
+        //   },
+        //   blocObserver: AppBlocObserver.instance(),
+        // );
       },
       (error, stackTrace) {
         if (error is PlatformException) {
           l.e(error);
         } else {
-          FirebaseCrashlytics.instance.recordError(error, stackTrace);
+          //FirebaseCrashlytics.instance.recordError(error, stackTrace);
         }
       },
     );

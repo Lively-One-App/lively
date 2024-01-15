@@ -12,7 +12,7 @@ class WebSocketAutoReconnect {
       StreamController<AzuraApiNowPlaying>.broadcast();
   late WebSocketChannel _webSocketChannel;
 
-  WebSocketAutoReconnect(Uri uri, {this.delay = 5}) : _uri = uri {
+  WebSocketAutoReconnect(Uri uri, {this.delay = 10}) : _uri = uri {
     _connect();
   }
 
@@ -20,8 +20,15 @@ class WebSocketAutoReconnect {
 
   StreamSink<AzuraApiNowPlaying> get sink => _myWebSocketController.sink;
 
-  void _connect() {
-    _webSocketChannel = WebSocketChannel.connect(_uri);
+  void _connect() async {
+
+    
+    _webSocketChannel = await WebSocketChannel.connect(
+      _uri,
+    );
+    _webSocketChannel.sink
+        .add('{ "subs": { "station:lively": {}, "global:time": {} }}');
+    
 
     _webSocketChannel.stream
         .timeout(
@@ -29,11 +36,28 @@ class WebSocketAutoReconnect {
       onTimeout: (sink) => sink.addError(TimeoutException('time is up')),
     )
         .map((event) {
-      return AzuraApiNowPlaying.fromJson(jsonDecode(event));
+      Map<String,dynamic> temp = jsonDecode(event);
+      
+      //var res = AzuraApiNowPlaying.fromJson(jsonDecode(event));
+      
+      if(
+        !temp.containsKey('pub')||!temp['pub']['data'].containsKey('np')
+       
+        ){
+         return null;
+       }
+      var res = AzuraApiNowPlaying.fromJson(temp['pub']['data']['np']);
+
+           
+
+      return res;
     }).listen((event) {
-      _myWebSocketController.add(event);
+      
+      if(event!= null){
+      _myWebSocketController.add(event);}
+
     }, onError: (e) async {
-      _myWebSocketController.addError(e);
+      //_myWebSocketController.addError(e);
       await Future.delayed(Duration(seconds: delay));
       _connect();
     }, onDone: () async {

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
+import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
+import 'package:marquee_widget/marquee_widget.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
@@ -204,11 +206,33 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   builder: (context, value, _) => SafeArea(
                     minimum: EdgeInsets.only(bottom: height < 700 ? 14 : 20),
                     top: false,
-                    child: Text(
-                      !value
-                          ? localizations.changeTheGame
-                          : localizations.likeNotification,
-                      style: textTheme.bodyText1,
+                    child: BlocBuilder<RunStringBloc, RunStringState>(
+                      // buildWhen: (previous, current) =>
+                      //     current is RunStringUpdateState,
+                      builder: (context, state) {
+                        return state is RunStringUpdateState
+                            ? SizedBox(
+                                height: 30,
+                                width: MediaQuery.of(context).size.width,
+                                child: Center(
+                                  child: Marquee(
+                                    directionMarguee: DirectionMarguee.oneDirection,
+                                    child: Text(state.runString,
+                                        style: textTheme.bodyText1),
+                                  
+                                    // style: TextStyle(color: Colors.black),
+                                    // text:
+                                    //     state.runString,
+                                  ),
+                                ),
+                              )
+                            : Text(
+                                !value
+                                    ? localizations.changeTheGame
+                                    : localizations.likeNotification,
+                                style: textTheme.bodyText1,
+                              );
+                      },
                     ),
                   ),
                 ),
@@ -239,7 +263,17 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       gradientColors.btnColor1!
                     ],
                   ),
-                ))
+                )),
+            Positioned(
+                left: MediaQuery.of(context).size.width * 0.83,
+                top: MediaQuery.of(context).size.height * 0.32,
+                child: IconButton(
+                  icon: Image.asset('assets/map_icon.png'),
+                  iconSize: 57,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/map');
+                  },
+                )),
           ],
         ),
       ),

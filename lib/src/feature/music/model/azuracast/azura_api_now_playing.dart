@@ -19,15 +19,15 @@ class AzuraApiNowPlaying with _$AzuraApiNowPlaying {
       required AzuraApiNowPlayingListeners listeners,
       required AzuraApiNowPlayingLive live,
       @JsonKey(name: 'now_playing')
-          required AzuraApiNowPlayingCurrentSong nowPlaying,
+      required AzuraApiNowPlayingCurrentSong nowPlaying,
       @JsonKey(name: 'playing_next')
-          required AzuraApiNowPlayingStationQueue playingNext,
+      required AzuraApiNowPlayingStationQueue playingNext,
       @JsonKey(name: 'song_history')
-          required List<AzuraApiNowPlayingSongHistory> songHistory,
-      @JsonKey(name: 'is_online')
-          required bool isOnline,
+      required List<AzuraApiNowPlayingSongHistory> songHistory,
+      @JsonKey(name: 'is_online') required bool isOnline,
       cacheFrom? cache}) = _AzuraApiNowPlaying;
 
-  factory AzuraApiNowPlaying.fromJson(Map<String, dynamic> json) =>
-      _$AzuraApiNowPlayingFromJson(json);
+  factory AzuraApiNowPlaying.fromJson(Map<String, dynamic> json) {
+    return _$AzuraApiNowPlayingFromJson(json);
+  }
 }

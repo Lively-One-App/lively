@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lively/src/feature/music/screens/map.dart';
 
 import 'feature/music/screens/burger_menu.dart';
 import 'feature/music/screens/home.dart';
@@ -24,6 +25,8 @@ abstract class Routes {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case '/map':
+        return _myRouteAnimation(MapScreen());
       case '/burgerMenu':
         return _myRouteAnimation(const BurgerMenu());
       case '/home':
