@@ -1,16 +1,18 @@
+import 'package:bloc/bloc.dart';
+
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 
 class SyncServerCubit extends Cubit<int> {
   StreamSubscription<int>? _timerSubscription;
-  SyncServerCubit() : super(0);
+  SyncServerCubit() : super(-1);
 
   Future<void> resetTimer() async {
+    const duration = 9;
     await _timerSubscription?.cancel();
-    _timerSubscription =
-        Stream.periodic(const Duration(milliseconds: 100), (i) => i % 81)
-            .listen((i) {
+    _timerSubscription = Stream.periodic(const Duration(seconds: 1), (i) => i)
+        .take(duration)
+        .listen((i) {
       emit(i);
     });
   }
@@ -26,3 +28,4 @@ class SyncServerCubit extends Cubit<int> {
     return super.close();
   }
 }
+

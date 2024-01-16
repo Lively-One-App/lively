@@ -15,7 +15,7 @@ class InnerShadow extends SingleChildRenderObjectWidget {
   RenderObject createRenderObject(BuildContext context) {
     final renderObject = _RenderInnerShadow();
     updateRenderObject(context, renderObject);
-
+    
     return renderObject;
   }
 
@@ -23,6 +23,7 @@ class InnerShadow extends SingleChildRenderObjectWidget {
   void updateRenderObject(
       BuildContext context, _RenderInnerShadow renderObject) {
     renderObject.shadows = shadows;
+    
   }
 }
 

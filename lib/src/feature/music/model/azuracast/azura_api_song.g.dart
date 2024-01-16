@@ -6,8 +6,8 @@ part of 'azura_api_song.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AzuraApiSong _$$_AzuraApiSongFromJson(Map<String, dynamic> json) =>
-    _$_AzuraApiSong(
+_$AzuraApiSongImpl _$$AzuraApiSongImplFromJson(Map<String, dynamic> json) =>
+    _$AzuraApiSongImpl(
       id: json['id'] as String,
       text: json['text'] as String,
       artist: json['artist'] as String,
@@ -21,7 +21,7 @@ _$_AzuraApiSong _$$_AzuraApiSongFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_AzuraApiSongToJson(_$_AzuraApiSong instance) =>
+Map<String, dynamic> _$$AzuraApiSongImplToJson(_$AzuraApiSongImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'text': instance.text,

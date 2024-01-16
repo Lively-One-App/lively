@@ -6,20 +6,20 @@ part of 'azura_api_now_playing_station_remote.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AzuraApiNowPlayingStationRemote _$$_AzuraApiNowPlayingStationRemoteFromJson(
-        Map<String, dynamic> json) =>
-    _$_AzuraApiNowPlayingStationRemote(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      url: json['url'] as String,
-      bitrate: json['bitrate'] as int?,
-      format: json['format'] as int?,
-      listeners: AzuraApiNowPlayingListeners.fromJson(
-          json['listeners'] as Map<String, dynamic>),
-    );
+_$AzuraApiNowPlayingStationRemoteImpl
+    _$$AzuraApiNowPlayingStationRemoteImplFromJson(Map<String, dynamic> json) =>
+        _$AzuraApiNowPlayingStationRemoteImpl(
+          id: json['id'] as int,
+          name: json['name'] as String,
+          url: json['url'] as String,
+          bitrate: json['bitrate'] as int?,
+          format: json['format'] as int?,
+          listeners: AzuraApiNowPlayingListeners.fromJson(
+              json['listeners'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$$_AzuraApiNowPlayingStationRemoteToJson(
-        _$_AzuraApiNowPlayingStationRemote instance) =>
+Map<String, dynamic> _$$AzuraApiNowPlayingStationRemoteImplToJson(
+        _$AzuraApiNowPlayingStationRemoteImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

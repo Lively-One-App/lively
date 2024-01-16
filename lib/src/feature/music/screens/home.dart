@@ -51,13 +51,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         builder: (context) => showWidget);
   }
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void onDoubleTap() async {
     context.read<LikesBloc>().add(const LikesEvent.writeLike());
     HapticFeedback.lightImpact();
     isLike.value = !isLike.value;
     controllerLivelyIcon.forward();
     await controllerHeart.forward();
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 500));
     await controllerHeart.reverse();
     isLike.value = !isLike.value;
     controllerLivelyIcon.repeat(
@@ -180,7 +185,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               final unique = state?.listeners.total ?? 0;
 
                               return Text(
-                                  '${unique} ${localizations.lively(unique)}',
+                                  '$unique ${localizations.lively(unique)}',
                                   style: textTheme.headline1);
                             }),
                         const SizedBox(

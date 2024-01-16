@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 
 import '../../generated/l10n.dart';
 import '../../lively_icons.dart';
-import '../feature/music/bloc/sync_server/sync_server.dart';
 
 class ResetAnimatedIcon extends StatelessWidget {
   const ResetAnimatedIcon(
@@ -22,10 +22,11 @@ class ResetAnimatedIcon extends StatelessWidget {
     final aspectRatio = MediaQuery.of(context).size.aspectRatio;
 
     return BlocSelector<SyncServerCubit, int, int>(
-        selector: (state) => (state / 10).round(),
+        selector: (state) => state,
         builder: (context, state) {
-          if (state == 8 && countLikes == 0) resetAnimation();
-
+          final timerValue = state == 9 ? 0 : state;
+          if (timerValue == 8) controller.reverse();
+          if (timerValue == 0) controller.forward();
           return AnimatedBuilder(
               animation: controller,
               builder: (context, child) {
@@ -42,7 +43,7 @@ class ResetAnimatedIcon extends StatelessWidget {
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            '${state} '
+                            '$timerValue '
                             '${S.of(context).resetTime}',
                             style: TextStyle(
                                 fontSize: aspectRatio > 0.5 ? 10 : 12,

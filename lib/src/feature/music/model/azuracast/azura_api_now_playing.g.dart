@@ -6,9 +6,9 @@ part of 'azura_api_now_playing.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AzuraApiNowPlaying _$$_AzuraApiNowPlayingFromJson(
+_$AzuraApiNowPlayingImpl _$$AzuraApiNowPlayingImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AzuraApiNowPlaying(
+    _$AzuraApiNowPlayingImpl(
       station: AzuraApiNowPlayingStation.fromJson(
           json['station'] as Map<String, dynamic>),
       listeners: AzuraApiNowPlayingListeners.fromJson(
@@ -27,8 +27,8 @@ _$_AzuraApiNowPlaying _$$_AzuraApiNowPlayingFromJson(
       cache: $enumDecodeNullable(_$cacheFromEnumMap, json['cache']),
     );
 
-Map<String, dynamic> _$$_AzuraApiNowPlayingToJson(
-        _$_AzuraApiNowPlaying instance) =>
+Map<String, dynamic> _$$AzuraApiNowPlayingImplToJson(
+        _$AzuraApiNowPlayingImpl instance) =>
     <String, dynamic>{
       'station': instance.station.toJson(),
       'listeners': instance.listeners.toJson(),

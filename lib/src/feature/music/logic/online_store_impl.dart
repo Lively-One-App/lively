@@ -9,8 +9,9 @@ abstract class OnlineStoreImpl {
   
   Stream<CityData> getData(final String nameCity);
   Stream getMarkers();
+  Future<void> setData(final String nameCity);
+  Future<void> proccessLikes();
   Stream getRunString();
-  void setData(final String nameCity);
   void addUpdateMarker(final Position position, final String city, final String devInfo);
   void removeMarker(final String id);
 }

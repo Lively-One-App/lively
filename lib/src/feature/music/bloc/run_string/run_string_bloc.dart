@@ -7,13 +7,12 @@ part 'run_string_state.dart';
 
 class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
   final OnlineStoreImpl _store;
-  RunStringBloc(this._store) : super(RunStringInitial()) {
+  RunStringBloc(this._store) : super(const RunStringInitial()) {
     // on<RunStringEvent>((event, emit) {
     //   // TODO: implement event handler
     // });
     _store.getRunString().listen((event) {
       String runString = '';
-
       event.forEach((element) {
         runString = element['runstring'];
 
@@ -32,10 +31,9 @@ class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
       //        'longitude': temp['position']['longitude']
       //      )};
 
-      if(runString != ''){
-         emit(RunStringUpdateState(runString: runString));
+      if (runString != '') {
+        emit(RunStringUpdateState(runString: runString));
       }
-          
     });
   }
 }

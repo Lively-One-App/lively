@@ -56,7 +56,6 @@ class MapScreen extends StatelessWidget {
           //       builder: (ctx) =>
           //           const Image(image: AssetImage('assets/marker_map.png'))));
           // });
-          print('p');
         }
         ;
         // TODO: implement listener

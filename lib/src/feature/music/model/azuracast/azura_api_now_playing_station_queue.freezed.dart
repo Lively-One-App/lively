@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'azura_api_now_playing_station_queue.dart';
 
@@ -42,7 +42,9 @@ abstract class $AzuraApiNowPlayingStationQueueCopyWith<$Res> {
   factory $AzuraApiNowPlayingStationQueueCopyWith(
           AzuraApiNowPlayingStationQueue value,
           $Res Function(AzuraApiNowPlayingStationQueue) then) =
-      _$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>;
+      _$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res,
+          AzuraApiNowPlayingStationQueue>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'cued_at') int cuedAt,
       @JsonKey(name: 'played_at') int playedAt,
@@ -55,67 +57,72 @@ abstract class $AzuraApiNowPlayingStationQueueCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>
+class _$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res,
+        $Val extends AzuraApiNowPlayingStationQueue>
     implements $AzuraApiNowPlayingStationQueueCopyWith<$Res> {
   _$AzuraApiNowPlayingStationQueueCopyWithImpl(this._value, this._then);
 
-  final AzuraApiNowPlayingStationQueue _value;
   // ignore: unused_field
-  final $Res Function(AzuraApiNowPlayingStationQueue) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cuedAt = freezed,
-    Object? playedAt = freezed,
-    Object? duration = freezed,
+    Object? cuedAt = null,
+    Object? playedAt = null,
+    Object? duration = null,
     Object? playlist = freezed,
-    Object? isRequest = freezed,
-    Object? song = freezed,
+    Object? isRequest = null,
+    Object? song = null,
   }) {
     return _then(_value.copyWith(
-      cuedAt: cuedAt == freezed
+      cuedAt: null == cuedAt
           ? _value.cuedAt
           : cuedAt // ignore: cast_nullable_to_non_nullable
               as int,
-      playedAt: playedAt == freezed
+      playedAt: null == playedAt
           ? _value.playedAt
           : playedAt // ignore: cast_nullable_to_non_nullable
               as int,
-      duration: duration == freezed
+      duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-      playlist: playlist == freezed
+      playlist: freezed == playlist
           ? _value.playlist
           : playlist // ignore: cast_nullable_to_non_nullable
               as String?,
-      isRequest: isRequest == freezed
+      isRequest: null == isRequest
           ? _value.isRequest
           : isRequest // ignore: cast_nullable_to_non_nullable
               as bool,
-      song: song == freezed
+      song: null == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as AzuraApiSong,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AzuraApiSongCopyWith<$Res> get song {
     return $AzuraApiSongCopyWith<$Res>(_value.song, (value) {
-      return _then(_value.copyWith(song: value));
+      return _then(_value.copyWith(song: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_AzuraApiNowPlayingStationQueueCopyWith<$Res>
+abstract class _$$AzuraApiNowPlayingStationQueueImplCopyWith<$Res>
     implements $AzuraApiNowPlayingStationQueueCopyWith<$Res> {
-  factory _$$_AzuraApiNowPlayingStationQueueCopyWith(
-          _$_AzuraApiNowPlayingStationQueue value,
-          $Res Function(_$_AzuraApiNowPlayingStationQueue) then) =
-      __$$_AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>;
+  factory _$$AzuraApiNowPlayingStationQueueImplCopyWith(
+          _$AzuraApiNowPlayingStationQueueImpl value,
+          $Res Function(_$AzuraApiNowPlayingStationQueueImpl) then) =
+      __$$AzuraApiNowPlayingStationQueueImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'cued_at') int cuedAt,
       @JsonKey(name: 'played_at') int playedAt,
@@ -129,49 +136,47 @@ abstract class _$$_AzuraApiNowPlayingStationQueueCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>
-    extends _$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>
-    implements _$$_AzuraApiNowPlayingStationQueueCopyWith<$Res> {
-  __$$_AzuraApiNowPlayingStationQueueCopyWithImpl(
-      _$_AzuraApiNowPlayingStationQueue _value,
-      $Res Function(_$_AzuraApiNowPlayingStationQueue) _then)
-      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingStationQueue));
+class __$$AzuraApiNowPlayingStationQueueImplCopyWithImpl<$Res>
+    extends _$AzuraApiNowPlayingStationQueueCopyWithImpl<$Res,
+        _$AzuraApiNowPlayingStationQueueImpl>
+    implements _$$AzuraApiNowPlayingStationQueueImplCopyWith<$Res> {
+  __$$AzuraApiNowPlayingStationQueueImplCopyWithImpl(
+      _$AzuraApiNowPlayingStationQueueImpl _value,
+      $Res Function(_$AzuraApiNowPlayingStationQueueImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_AzuraApiNowPlayingStationQueue get _value =>
-      super._value as _$_AzuraApiNowPlayingStationQueue;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cuedAt = freezed,
-    Object? playedAt = freezed,
-    Object? duration = freezed,
+    Object? cuedAt = null,
+    Object? playedAt = null,
+    Object? duration = null,
     Object? playlist = freezed,
-    Object? isRequest = freezed,
-    Object? song = freezed,
+    Object? isRequest = null,
+    Object? song = null,
   }) {
-    return _then(_$_AzuraApiNowPlayingStationQueue(
-      cuedAt: cuedAt == freezed
+    return _then(_$AzuraApiNowPlayingStationQueueImpl(
+      cuedAt: null == cuedAt
           ? _value.cuedAt
           : cuedAt // ignore: cast_nullable_to_non_nullable
               as int,
-      playedAt: playedAt == freezed
+      playedAt: null == playedAt
           ? _value.playedAt
           : playedAt // ignore: cast_nullable_to_non_nullable
               as int,
-      duration: duration == freezed
+      duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-      playlist: playlist == freezed
+      playlist: freezed == playlist
           ? _value.playlist
           : playlist // ignore: cast_nullable_to_non_nullable
               as String?,
-      isRequest: isRequest == freezed
+      isRequest: null == isRequest
           ? _value.isRequest
           : isRequest // ignore: cast_nullable_to_non_nullable
               as bool,
-      song: song == freezed
+      song: null == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as AzuraApiSong,
@@ -182,9 +187,9 @@ class __$$_AzuraApiNowPlayingStationQueueCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_AzuraApiNowPlayingStationQueue
+class _$AzuraApiNowPlayingStationQueueImpl
     implements _AzuraApiNowPlayingStationQueue {
-  const _$_AzuraApiNowPlayingStationQueue(
+  const _$AzuraApiNowPlayingStationQueueImpl(
       {@JsonKey(name: 'cued_at') required this.cuedAt,
       @JsonKey(name: 'played_at') required this.playedAt,
       required this.duration,
@@ -192,9 +197,9 @@ class _$_AzuraApiNowPlayingStationQueue
       @JsonKey(name: 'is_request') required this.isRequest,
       required this.song});
 
-  factory _$_AzuraApiNowPlayingStationQueue.fromJson(
+  factory _$AzuraApiNowPlayingStationQueueImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_AzuraApiNowPlayingStationQueueFromJson(json);
+      _$$AzuraApiNowPlayingStationQueueImplFromJson(json);
 
   @override
   @JsonKey(name: 'cued_at')
@@ -218,38 +223,38 @@ class _$_AzuraApiNowPlayingStationQueue
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AzuraApiNowPlayingStationQueue &&
-            const DeepCollectionEquality().equals(other.cuedAt, cuedAt) &&
-            const DeepCollectionEquality().equals(other.playedAt, playedAt) &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality().equals(other.playlist, playlist) &&
-            const DeepCollectionEquality().equals(other.isRequest, isRequest) &&
-            const DeepCollectionEquality().equals(other.song, song));
+            other is _$AzuraApiNowPlayingStationQueueImpl &&
+            (identical(other.cuedAt, cuedAt) || other.cuedAt == cuedAt) &&
+            (identical(other.playedAt, playedAt) ||
+                other.playedAt == playedAt) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.playlist, playlist) ||
+                other.playlist == playlist) &&
+            (identical(other.isRequest, isRequest) ||
+                other.isRequest == isRequest) &&
+            (identical(other.song, song) || other.song == song));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(cuedAt),
-      const DeepCollectionEquality().hash(playedAt),
-      const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(playlist),
-      const DeepCollectionEquality().hash(isRequest),
-      const DeepCollectionEquality().hash(song));
+      runtimeType, cuedAt, playedAt, duration, playlist, isRequest, song);
 
   @JsonKey(ignore: true)
   @override
-  _$$_AzuraApiNowPlayingStationQueueCopyWith<_$_AzuraApiNowPlayingStationQueue>
-      get copyWith => __$$_AzuraApiNowPlayingStationQueueCopyWithImpl<
-          _$_AzuraApiNowPlayingStationQueue>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$AzuraApiNowPlayingStationQueueImplCopyWith<
+          _$AzuraApiNowPlayingStationQueueImpl>
+      get copyWith => __$$AzuraApiNowPlayingStationQueueImplCopyWithImpl<
+          _$AzuraApiNowPlayingStationQueueImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingStationQueueToJson(
+    return _$$AzuraApiNowPlayingStationQueueImplToJson(
       this,
     );
   }
@@ -263,10 +268,10 @@ abstract class _AzuraApiNowPlayingStationQueue
       required final int duration,
       final String? playlist,
       @JsonKey(name: 'is_request') required final bool isRequest,
-      required final AzuraApiSong song}) = _$_AzuraApiNowPlayingStationQueue;
+      required final AzuraApiSong song}) = _$AzuraApiNowPlayingStationQueueImpl;
 
   factory _AzuraApiNowPlayingStationQueue.fromJson(Map<String, dynamic> json) =
-      _$_AzuraApiNowPlayingStationQueue.fromJson;
+      _$AzuraApiNowPlayingStationQueueImpl.fromJson;
 
   @override
   @JsonKey(name: 'cued_at')
@@ -285,6 +290,7 @@ abstract class _AzuraApiNowPlayingStationQueue
   AzuraApiSong get song;
   @override
   @JsonKey(ignore: true)
-  _$$_AzuraApiNowPlayingStationQueueCopyWith<_$_AzuraApiNowPlayingStationQueue>
+  _$$AzuraApiNowPlayingStationQueueImplCopyWith<
+          _$AzuraApiNowPlayingStationQueueImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

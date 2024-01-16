@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'azura_api_now_playing_station_remote.dart';
 
@@ -40,7 +40,9 @@ abstract class $AzuraApiNowPlayingStationRemoteCopyWith<$Res> {
   factory $AzuraApiNowPlayingStationRemoteCopyWith(
           AzuraApiNowPlayingStationRemote value,
           $Res Function(AzuraApiNowPlayingStationRemote) then) =
-      _$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>;
+      _$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res,
+          AzuraApiNowPlayingStationRemote>;
+  @useResult
   $Res call(
       {int id,
       String name,
@@ -53,68 +55,73 @@ abstract class $AzuraApiNowPlayingStationRemoteCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>
+class _$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res,
+        $Val extends AzuraApiNowPlayingStationRemote>
     implements $AzuraApiNowPlayingStationRemoteCopyWith<$Res> {
   _$AzuraApiNowPlayingStationRemoteCopyWithImpl(this._value, this._then);
 
-  final AzuraApiNowPlayingStationRemote _value;
   // ignore: unused_field
-  final $Res Function(AzuraApiNowPlayingStationRemote) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? url = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? url = null,
     Object? bitrate = freezed,
     Object? format = freezed,
-    Object? listeners = freezed,
+    Object? listeners = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      bitrate: bitrate == freezed
+      bitrate: freezed == bitrate
           ? _value.bitrate
           : bitrate // ignore: cast_nullable_to_non_nullable
               as int?,
-      format: format == freezed
+      format: freezed == format
           ? _value.format
           : format // ignore: cast_nullable_to_non_nullable
               as int?,
-      listeners: listeners == freezed
+      listeners: null == listeners
           ? _value.listeners
           : listeners // ignore: cast_nullable_to_non_nullable
               as AzuraApiNowPlayingListeners,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AzuraApiNowPlayingListenersCopyWith<$Res> get listeners {
     return $AzuraApiNowPlayingListenersCopyWith<$Res>(_value.listeners,
         (value) {
-      return _then(_value.copyWith(listeners: value));
+      return _then(_value.copyWith(listeners: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_AzuraApiNowPlayingStationRemoteCopyWith<$Res>
+abstract class _$$AzuraApiNowPlayingStationRemoteImplCopyWith<$Res>
     implements $AzuraApiNowPlayingStationRemoteCopyWith<$Res> {
-  factory _$$_AzuraApiNowPlayingStationRemoteCopyWith(
-          _$_AzuraApiNowPlayingStationRemote value,
-          $Res Function(_$_AzuraApiNowPlayingStationRemote) then) =
-      __$$_AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>;
+  factory _$$AzuraApiNowPlayingStationRemoteImplCopyWith(
+          _$AzuraApiNowPlayingStationRemoteImpl value,
+          $Res Function(_$AzuraApiNowPlayingStationRemoteImpl) then) =
+      __$$AzuraApiNowPlayingStationRemoteImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id,
       String name,
@@ -128,49 +135,47 @@ abstract class _$$_AzuraApiNowPlayingStationRemoteCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>
-    extends _$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>
-    implements _$$_AzuraApiNowPlayingStationRemoteCopyWith<$Res> {
-  __$$_AzuraApiNowPlayingStationRemoteCopyWithImpl(
-      _$_AzuraApiNowPlayingStationRemote _value,
-      $Res Function(_$_AzuraApiNowPlayingStationRemote) _then)
-      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingStationRemote));
+class __$$AzuraApiNowPlayingStationRemoteImplCopyWithImpl<$Res>
+    extends _$AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res,
+        _$AzuraApiNowPlayingStationRemoteImpl>
+    implements _$$AzuraApiNowPlayingStationRemoteImplCopyWith<$Res> {
+  __$$AzuraApiNowPlayingStationRemoteImplCopyWithImpl(
+      _$AzuraApiNowPlayingStationRemoteImpl _value,
+      $Res Function(_$AzuraApiNowPlayingStationRemoteImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_AzuraApiNowPlayingStationRemote get _value =>
-      super._value as _$_AzuraApiNowPlayingStationRemote;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? url = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? url = null,
     Object? bitrate = freezed,
     Object? format = freezed,
-    Object? listeners = freezed,
+    Object? listeners = null,
   }) {
-    return _then(_$_AzuraApiNowPlayingStationRemote(
-      id: id == freezed
+    return _then(_$AzuraApiNowPlayingStationRemoteImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      bitrate: bitrate == freezed
+      bitrate: freezed == bitrate
           ? _value.bitrate
           : bitrate // ignore: cast_nullable_to_non_nullable
               as int?,
-      format: format == freezed
+      format: freezed == format
           ? _value.format
           : format // ignore: cast_nullable_to_non_nullable
               as int?,
-      listeners: listeners == freezed
+      listeners: null == listeners
           ? _value.listeners
           : listeners // ignore: cast_nullable_to_non_nullable
               as AzuraApiNowPlayingListeners,
@@ -181,9 +186,9 @@ class __$$_AzuraApiNowPlayingStationRemoteCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_AzuraApiNowPlayingStationRemote
+class _$AzuraApiNowPlayingStationRemoteImpl
     implements _AzuraApiNowPlayingStationRemote {
-  _$_AzuraApiNowPlayingStationRemote(
+  _$AzuraApiNowPlayingStationRemoteImpl(
       {required this.id,
       required this.name,
       required this.url,
@@ -191,9 +196,9 @@ class _$_AzuraApiNowPlayingStationRemote
       this.format,
       required this.listeners});
 
-  factory _$_AzuraApiNowPlayingStationRemote.fromJson(
+  factory _$AzuraApiNowPlayingStationRemoteImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_AzuraApiNowPlayingStationRemoteFromJson(json);
+      _$$AzuraApiNowPlayingStationRemoteImplFromJson(json);
 
   @override
   final int id;
@@ -214,39 +219,35 @@ class _$_AzuraApiNowPlayingStationRemote
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AzuraApiNowPlayingStationRemote &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.bitrate, bitrate) &&
-            const DeepCollectionEquality().equals(other.format, format) &&
-            const DeepCollectionEquality().equals(other.listeners, listeners));
+            other is _$AzuraApiNowPlayingStationRemoteImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.bitrate, bitrate) || other.bitrate == bitrate) &&
+            (identical(other.format, format) || other.format == format) &&
+            (identical(other.listeners, listeners) ||
+                other.listeners == listeners));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(bitrate),
-      const DeepCollectionEquality().hash(format),
-      const DeepCollectionEquality().hash(listeners));
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, url, bitrate, format, listeners);
 
   @JsonKey(ignore: true)
   @override
-  _$$_AzuraApiNowPlayingStationRemoteCopyWith<
-          _$_AzuraApiNowPlayingStationRemote>
-      get copyWith => __$$_AzuraApiNowPlayingStationRemoteCopyWithImpl<
-          _$_AzuraApiNowPlayingStationRemote>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$AzuraApiNowPlayingStationRemoteImplCopyWith<
+          _$AzuraApiNowPlayingStationRemoteImpl>
+      get copyWith => __$$AzuraApiNowPlayingStationRemoteImplCopyWithImpl<
+          _$AzuraApiNowPlayingStationRemoteImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingStationRemoteToJson(
+    return _$$AzuraApiNowPlayingStationRemoteImplToJson(
       this,
     );
   }
@@ -261,10 +262,10 @@ abstract class _AzuraApiNowPlayingStationRemote
           final int? bitrate,
           final int? format,
           required final AzuraApiNowPlayingListeners listeners}) =
-      _$_AzuraApiNowPlayingStationRemote;
+      _$AzuraApiNowPlayingStationRemoteImpl;
 
   factory _AzuraApiNowPlayingStationRemote.fromJson(Map<String, dynamic> json) =
-      _$_AzuraApiNowPlayingStationRemote.fromJson;
+      _$AzuraApiNowPlayingStationRemoteImpl.fromJson;
 
   @override
   int get id;
@@ -280,7 +281,7 @@ abstract class _AzuraApiNowPlayingStationRemote
   AzuraApiNowPlayingListeners get listeners;
   @override
   @JsonKey(ignore: true)
-  _$$_AzuraApiNowPlayingStationRemoteCopyWith<
-          _$_AzuraApiNowPlayingStationRemote>
+  _$$AzuraApiNowPlayingStationRemoteImplCopyWith<
+          _$AzuraApiNowPlayingStationRemoteImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

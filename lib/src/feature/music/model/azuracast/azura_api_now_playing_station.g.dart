@@ -6,9 +6,9 @@ part of 'azura_api_now_playing_station.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AzuraApiNowPlayingStation _$$_AzuraApiNowPlayingStationFromJson(
+_$AzuraApiNowPlayingStationImpl _$$AzuraApiNowPlayingStationImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AzuraApiNowPlayingStation(
+    _$AzuraApiNowPlayingStationImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       shortcode: json['shortcode'] as String,
@@ -31,8 +31,8 @@ _$_AzuraApiNowPlayingStation _$$_AzuraApiNowPlayingStationFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_AzuraApiNowPlayingStationToJson(
-        _$_AzuraApiNowPlayingStation instance) =>
+Map<String, dynamic> _$$AzuraApiNowPlayingStationImplToJson(
+        _$AzuraApiNowPlayingStationImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
