@@ -124,7 +124,7 @@ class BurgerMenu extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 _localizations.searchTalent,
-                style: _textTheme?.subtitle1
+                style: _textTheme?.titleMedium
                     ?.copyWith(fontSize: 18, letterSpacing: -0.36),
               ),
             ),

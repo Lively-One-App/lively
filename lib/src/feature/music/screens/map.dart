@@ -13,9 +13,7 @@ class MapScreen extends StatelessWidget {
     //     point: LatLng(55.7522, 37.6156),
     //     builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
   ];
-  List<Marker> livelyMarkers = [
-   
-  ];
+  List<Marker> livelyMarkers = [];
 
   @override
   Widget build(BuildContext context) {
@@ -32,22 +30,18 @@ class MapScreen extends StatelessWidget {
           _mapCtrl.move(
               LatLng(state.position.latitude, state.position.longitude), 13);
         }
-        if(state is OffSharedPositionState){
+        if (state is OffSharedPositionState) {
           myMarkers.clear();
         }
         if (state is FetchChangeMarkers) {
           //livelyMarkers.clear();
 
-          
           for (int i = 0; i <= state.listMarkers.length - 1; i++) {
-                        
-
             livelyMarkers.add(Marker(
                 point: LatLng(state.listMarkers[i]['latitude'],
                     state.listMarkers[i]['longitude']),
                 builder: (ctx) =>
                     const ImageIcon(AssetImage('assets/marker_map.png'))));
-                    
           }
 
           // state.listMarkers.forEach((element) {
@@ -81,7 +75,6 @@ class MapScreen extends StatelessWidget {
                   MarkerLayer(
                     markers: myMarkers,
                   ),
-                  
                   MarkerClusterLayerWidget(
                       options: MarkerClusterLayerOptions(
                     maxClusterRadius: 45,
@@ -134,7 +127,7 @@ class MapScreen extends StatelessWidget {
                             const Color.fromRGBO(248, 247, 247, 1)),
                     onPressed: () {
                       mapBloc.isShareMyPosition
-                          ? (mapBloc.add(OffSharedPositionEvent()) )
+                          ? (mapBloc.add(OffSharedPositionEvent()))
                           : mapBloc.add(OnSharedPositionEvent());
                     },
                     child: Row(

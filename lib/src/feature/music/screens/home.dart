@@ -212,8 +212,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     minimum: EdgeInsets.only(bottom: height < 700 ? 14 : 20),
                     top: false,
                     child: BlocBuilder<RunStringBloc, RunStringState>(
-                      // buildWhen: (previous, current) =>
-                      //     current is RunStringUpdateState,
                       builder: (context, state) {
                         return state is RunStringUpdateState
                             ? SizedBox(
@@ -221,13 +219,12 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 width: MediaQuery.of(context).size.width,
                                 child: Center(
                                   child: Marquee(
-                                    directionMarguee: DirectionMarguee.oneDirection,
-                                    child: Text(state.runString,
-                                        style: textTheme.bodyText1),
-                                  
-                                    // style: TextStyle(color: Colors.black),
-                                    // text:
-                                    //     state.runString,
+                                    directionMarguee:
+                                        DirectionMarguee.oneDirection,
+                                    child: Text(
+                                      state.runString,
+                                      style: textTheme.bodyLarge,
+                                    ),
                                   ),
                                 ),
                               )
@@ -235,7 +232,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 !value
                                     ? localizations.changeTheGame
                                     : localizations.likeNotification,
-                                style: textTheme.bodyText1,
+                                style: textTheme.bodyLarge,
                               );
                       },
                     ),

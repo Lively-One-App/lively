@@ -1,20 +1,15 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:math';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:l/l.dart';
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 import 'src/common/bloc/app_bloc_observer.dart';
 import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
 import 'src/feature/music/bloc/first_run/first_run_cubit.dart';
@@ -44,11 +39,13 @@ void main() => runZonedGuarded<void>(
           anonKey:
               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
         );
+
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
 
         Bloc.observer = AppBlocObserver.instance();
+
         final audioHandler = await AudioService.init(
           builder: () => MyAudioPlayerHandler(),
           config: const AudioServiceConfig(
@@ -59,8 +56,7 @@ void main() => runZonedGuarded<void>(
         );
 
         final socket = WebSocketAutoReconnect(
-          Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
-        );
+            Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'));
 
         final sharedPreferences = await SharedPreferences.getInstance();
         final store = SupabaseHelper();

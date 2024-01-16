@@ -55,14 +55,14 @@ class NoInternet extends StatelessWidget {
                   Text(
                     Localizations.noInternet,
                     textAlign: TextAlign.center,
-                    style: textTheme.subtitle1
+                    style: textTheme.titleMedium
                         ?.copyWith(fontSize: 30, fontWeight: FontWeight.w800),
                   ),
                   const SizedBox(height: 30),
                   Text(
                     Localizations.noInternetReconnect,
                     textAlign: TextAlign.center,
-                    style: textTheme.subtitle1?.copyWith(fontSize: 24),
+                    style: textTheme.titleMedium?.copyWith(fontSize: 24),
                   ),
                   const SizedBox(height: 52),
                   GradientButton(
@@ -85,7 +85,7 @@ class NoInternet extends StatelessWidget {
                           vertical: 20, horizontal: 41),
                       child: Text(
                         Localizations.noInternetCheck,
-                        style: textTheme.headline1?.copyWith(fontSize: 22),
+                        style: textTheme.displayLarge?.copyWith(fontSize: 22),
                       ),
                     ),
                   )
