@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:geolocator/geolocator.dart';
 import 'package:lively/credential/supabase_cred.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../model/firestore/city_data.dart';
 import 'online_store_impl.dart';
@@ -17,6 +16,8 @@ class Firestore implements OnlineStoreImpl {
 
   get yield => null;
 
+  
+
   Stream<CityData> getData(final String nameCity) async* {
     //final request = await _store.collection('cities').doc(nameCity).snapshots();
 
@@ -30,9 +31,10 @@ class Firestore implements OnlineStoreImpl {
     // });
   }
   Stream getRunString() async* {
+    
     //final channelGeoPoints = supabase.channel('channelGeoPoints');
     final Stream request =
-        await _store.client.from('runString').stream(primaryKey: ['id']);
+        await _store.client.from('runString').stream(primaryKey: ['id']).where((event) =>event[0]['city']=='moscow');
 
     yield* request;
   }

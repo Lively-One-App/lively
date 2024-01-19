@@ -14,3 +14,8 @@ class RunStringUpdateState extends RunStringState {
   });
 
 }
+
+class RunStringDefaultState extends RunStringState {
+  
+  
+}

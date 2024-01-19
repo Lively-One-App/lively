@@ -32,6 +32,8 @@ dependencies:
   supabase: ^2.0.4
   #marquee: ^2.2.3
   marquee_widget: ^1.2.0
+  flutter_local_notifications: ^16.3.0
+  
  
 
 dev_dependencies:

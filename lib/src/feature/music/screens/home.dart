@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
+import 'package:lively/src/feature/music/logic/notification_service.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
@@ -271,6 +272,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   icon: Image.asset('assets/map_icon.png'),
                   iconSize: 57,
                   onPressed: () {
+                    
                     Navigator.of(context).pushNamed('/map');
                   },
                 )),
