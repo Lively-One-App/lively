@@ -69,7 +69,7 @@ void main() => runZonedGuarded<void>(
             final sharedPreferences = await SharedPreferences.getInstance();
             // FlutterError.onError =
             //     await FirebaseCrashlytics.instance.recordFlutterError;
-            final store = SupabaseHelper();
+            final store = SupabaseHelper(  );
             runApp(MultiBlocProvider(
               providers: [
                 BlocProvider<AzuraApiNowPlayingCubit>(
@@ -91,7 +91,6 @@ void main() => runZonedGuarded<void>(
                     create: (context) => SyncServerCubit()),
                 BlocProvider<LikesBloc>(
                   create: (context) {
-                    final store = SupabaseHelper();
                     final radioCubit = BlocProvider.of<RadioCubit>(context);
                     final syncServerCubit =
                         BlocProvider.of<SyncServerCubit>(context);

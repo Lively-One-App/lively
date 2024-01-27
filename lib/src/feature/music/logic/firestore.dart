@@ -1,7 +1,6 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
 
-import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -9,10 +8,9 @@ import '../model/firestore/city_data.dart';
 import 'online_store_impl.dart';
 
 class SupabaseHelper implements OnlineStoreImpl {
-  final supabase = Supabase.instance.client;
-
-  get yield => null;
-
+  final SupabaseClient supabase = Supabase.instance.client;
+  static const String _locationsRoom = 'Moscow';
+  late final RealtimeChannel room;
   @override
   Stream<CityData> getData(final String cityId) async* {
     final request = supabase
@@ -23,24 +21,39 @@ class SupabaseHelper implements OnlineStoreImpl {
 
     yield* request.map((event) {
       int likes = event[0]['likes_counter'];
+
       return CityData(likes: likes);
     });
   }
 
   Stream getRunString() async* {
     //final channelGeoPoints = supabase.channel('channelGeoPoints');
+    String moscowId = '2e683111-964b-40da-b1bd-b232de6004af';
     final Stream request =
-        await supabase.from('runString').stream(primaryKey: ['id']);
+        await supabase.from('runString:city=eq.$moscowId').stream(
+      primaryKey: ['id'],
+    );
 
     yield* request;
   }
 
-  Stream getMarkers() async* {
-    //final channelGeoPoints = supabase.channel('channelGeoPoints');
-    final Stream request =
-        await supabase.from('geoPoints').stream(primaryKey: ['id']);
-
-    yield* request;
+  @override
+  void setGeoPointController(Sink<Map<String, dynamic>> controller) async {
+    try {
+      if (supabase.auth.currentUser == null) {
+        await signInAnonymously();
+      }
+      room = Supabase.instance.client.channel(
+        _locationsRoom,
+        opts: RealtimeChannelConfig(key: supabase.auth.currentUser!.id),
+      );
+      room.onPresenceSync((_) {
+        final userData = room.presenceState();
+        controller.add({'type': 'sync', 'data': userData});
+      }).subscribe();
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
@@ -56,37 +69,31 @@ class SupabaseHelper implements OnlineStoreImpl {
       rethrow;
     }
   }
-
-  void addUpdateMarker(
-      final Position position, final String city, final String devInfo) async {
-    List res = await supabase
-        .from('geoPoints')
-        .update({
-          'lat': position.latitude,
-          'lng': position.longitude,
-          'city': 'Moscow'
-        })
-        .eq('devid', devInfo)
-        .select();
-    if (res.length == 0) {
-      await supabase.from('geoPoints').insert({
-        'lat': position.latitude,
-        'lng': position.longitude,
-        'city': 'Moscow',
-        'devid': devInfo
-      });
+  @override
+  Future<void> addUpdateMarker(final Position position) async {
+    try {
+      final userStatus = {
+        'geopoint': position,
+      };
+      await room.track(userStatus);
+    } catch (e) {
+      rethrow;
     }
   }
 
   Future<void> signInAnonymously() async {
-    const String chars =
-        'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    String email = '';
-    for (var i = 0; i < 10; i++) {
-      email += chars[Random().nextInt(chars.length)];
+    try {
+      const String chars =
+          'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      String email = '';
+      for (var i = 0; i < 10; i++) {
+        email += chars[Random().nextInt(chars.length)];
+      }
+      email = '$email@gmail.com';
+      await supabase.auth.signUp(password: '12345678', email: email);
+    } catch (e) {
+      rethrow;
     }
-    email = '$email@gmail.com';
-    await supabase.auth.signUp(password: '12345678', email: email);
   }
 
   @override
@@ -98,7 +105,11 @@ class SupabaseHelper implements OnlineStoreImpl {
     }
   }
 
-  void removeMarker(String id) {
-    supabase.from('geoPoints').delete().eq('devid', id);
+  Future<void> removeMarker() async {
+    try {
+      await room.untrack();
+    } catch (e) {
+      rethrow;
+    }
   }
 }
