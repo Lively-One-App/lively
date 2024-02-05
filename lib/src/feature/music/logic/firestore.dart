@@ -27,12 +27,11 @@ class SupabaseHelper implements OnlineStoreImpl {
   }
 
   Stream getRunString() async* {
-    //final channelGeoPoints = supabase.channel('channelGeoPoints');
     String moscowId = '2e683111-964b-40da-b1bd-b232de6004af';
     final Stream request =
-        await supabase.from('runString:city=eq.$moscowId').stream(
+        await supabase.from('runString').stream(
       primaryKey: ['id'],
-    );
+    ).eq("city", moscowId);
 
     yield* request;
   }

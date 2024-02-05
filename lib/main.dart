@@ -60,7 +60,6 @@ void main() => runZonedGuarded<void>(
       androidStopForegroundOnPause: true,
               ),
             );
-
             final socket = WebSocketAutoReconnect(
               Uri.parse(
                   'wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),

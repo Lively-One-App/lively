@@ -12,28 +12,12 @@ class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
     //   // TODO: implement event handler
     // });
     _store.getRunString().listen((event) {
-      String runString = '';
-      event.forEach((element) {
-        runString = element['runstring'];
+      final runString = (event as List)[0]['runstring'];
+      add(RunStringUpdateEvent(runString));
+    });
 
-        //   if (elemnt['devid'] != allInfoDevice['host']) {
-        //     listMarkers
-        //         .add({'latitude': elemnt['lat'], 'longitude': elemnt['lng']});
-        //   }
-      });
-      //);
-
-      // event.forEach((element) {
-      //      var temp = element.data();
-
-      //      listMarkers.add({
-      //        'latitude': temp['position']['latitude'],
-      //        'longitude': temp['position']['longitude']
-      //      )};
-
-      if (runString != '') {
-        emit(RunStringUpdateState(runString: runString));
-      }
+    on<RunStringUpdateEvent>((event, emit) {
+      emit(RunStringUpdateState(runString: event.runString));
     });
   }
 }
