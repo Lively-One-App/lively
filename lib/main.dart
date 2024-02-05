@@ -54,10 +54,10 @@ void main() => runZonedGuarded<void>(
             final audioHandler = await AudioService.init(
               builder: () => MyAudioPlayerHandler(),
               config: const AudioServiceConfig(
-                androidNotificationChannelId:
-                    'com.ryanheise.lively.channel.audio',
-                androidNotificationChannelName: 'Audio playback',
-                androidNotificationOngoing: true,
+                androidNotificationChannelId: 'com.mycompany.myapp.audio',
+      androidNotificationChannelName: 'Audio Service Demo',
+      androidNotificationOngoing: true,
+      androidStopForegroundOnPause: true,
               ),
             );
 
