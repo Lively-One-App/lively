@@ -21,6 +21,7 @@ import '/lively_icons.dart';
 import '../../../widgets/circle_icon_button.dart';
 import 'no_internet.dart';
 import 'onboarding/onboarding.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -205,7 +206,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 ValueListenableBuilder<bool>(
                   valueListenable: isLike,
                   builder: (context, value, _) => SafeArea(
-                    minimum: EdgeInsets.only(bottom: height < 700 ? 14 : 20),
+                    minimum: EdgeInsets.only(bottom: height < 700 ? 20 : 26),
                     top: false,
                     child: BlocBuilder<RunStringBloc, RunStringState>(
                       // buildWhen: (previous, current) =>
@@ -269,7 +270,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 left: MediaQuery.of(context).size.width * 0.83,
                 top: MediaQuery.of(context).size.height * 0.32,
                 child: IconButton(
-                  icon: Image.asset('assets/map_icon.png'),
+                  icon: SvgPicture.asset('assets/map_icon.svg'),
                   iconSize: 57,
                   onPressed: () {
                     

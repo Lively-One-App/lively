@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 
@@ -13,9 +14,7 @@ class MapScreen extends StatelessWidget {
     //     point: LatLng(55.7522, 37.6156),
     //     builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
   ];
-  List<Marker> livelyMarkers = [
-   
-  ];
+  List<Marker> livelyMarkers = [];
 
   @override
   Widget build(BuildContext context) {
@@ -32,22 +31,18 @@ class MapScreen extends StatelessWidget {
           _mapCtrl.move(
               LatLng(state.position.latitude, state.position.longitude), 13);
         }
-        if(state is OffSharedPositionState){
+        if (state is OffSharedPositionState) {
           myMarkers.clear();
         }
         if (state is FetchChangeMarkers) {
           //livelyMarkers.clear();
 
-          
           for (int i = 0; i <= state.listMarkers.length - 1; i++) {
-                        
-
             livelyMarkers.add(Marker(
                 point: LatLng(state.listMarkers[i]['latitude'],
                     state.listMarkers[i]['longitude']),
                 builder: (ctx) =>
                     const ImageIcon(AssetImage('assets/marker_map.png'))));
-                    
           }
 
           // state.listMarkers.forEach((element) {
@@ -82,7 +77,6 @@ class MapScreen extends StatelessWidget {
                   MarkerLayer(
                     markers: myMarkers,
                   ),
-                  
                   MarkerClusterLayerWidget(
                       options: MarkerClusterLayerOptions(
                     maxClusterRadius: 45,
@@ -122,39 +116,57 @@ class MapScreen extends StatelessWidget {
             },
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.9,
-            left: MediaQuery.of(context).size.width * 0.2,
+            top: MediaQuery.of(context).size.height * 0.87,
+            left: MediaQuery.of(context).size.width * 0.05,
             child: BlocBuilder<MapBloc, MapState>(
               // buildWhen: (previous, current) {
               //   return current is OnSharedPositionState || current is OffSharedPositionEvent;
               // },
               builder: (context, state) {
-                return ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromRGBO(248, 247, 247, 1)),
-                    onPressed: () {
-                      mapBloc.isShareMyPosition
-                          ? (mapBloc.add(OffSharedPositionEvent()) )
-                          : mapBloc.add(OnSharedPositionEvent());
-                    },
-                    child: Row(
-                      children: [
-                        Text(
-                          state is OffSharedPositionState
-                              ? 'Поделиться геопозицией'
-                              : 'Не делится геопозицией',
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                        const SizedBox(
-                          height: 41,
-                          width: 41,
-                          child: Image(
-                            image: AssetImage('assets/marker_map.png'),
+                return GestureDetector(
+                  onTap: () {
+                    mapBloc.isShareMyPosition
+                        ? (mapBloc.add(OffSharedPositionEvent()))
+                        : mapBloc.add(OnSharedPositionEvent());
+                  },
+                  child: Container(
+                      height: MediaQuery.of(context).size.height * 0.08,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.7),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset:
+                                  const Offset(0, 5), // changes position of shadow
+                            ),
+                          ],
+                          color: const Color.fromRGBO(248, 247, 247, 1),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            state is OffSharedPositionState
+                                ? 'Поделиться геопозицией'
+                                : 'Перестать делиться',
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 19,
+                                decoration: TextDecoration.none),
                           ),
-                        )
-                      ],
-                    ));
+                          const SizedBox(
+                            height: 35,
+                            width: 35,
+                            child: Image(
+                              image: AssetImage('assets/marker_map.png'),
+                            ),
+                          )
+                        ],
+                      )),
+                );
               },
             ),
           ),
@@ -162,7 +174,9 @@ class MapScreen extends StatelessWidget {
               left: MediaQuery.of(context).size.width * 0.83,
               top: MediaQuery.of(context).size.height * 0.32,
               child: IconButton(
-                  icon: Image.asset('assets/close_map.png'),
+                  icon:
+                      //Icon(Icons.abc),
+                      SvgPicture.asset('assets/close_map.svg'),
                   iconSize: 57,
                   onPressed: () {
                     Navigator.pop(context);

@@ -34,7 +34,8 @@ class Firestore implements OnlineStoreImpl {
     
     //final channelGeoPoints = supabase.channel('channelGeoPoints');
     final Stream request =
-        await _store.client.from('runString').stream(primaryKey: ['id']).where((event) =>event[0]['city']=='moscow');
+        await _store.client.from('runString').stream(primaryKey: ['id']);
+        //.where((event) =>event[0]['city']=='moscow');
 
     yield* request;
   }
