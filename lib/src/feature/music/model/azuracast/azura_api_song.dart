@@ -14,8 +14,7 @@ class AzuraApiSong with _$AzuraApiSong {
           required String genre,
           required String lyrics,
           required String art,
-          @JsonKey(name: 'custom_fields') required List<String> customFields}) =
-      _AzuraApiSong;
+          @JsonKey(name: 'custom_fields') required List<String> customFields}) = _AzuraApiSong;
   factory AzuraApiSong.fromJson(Map<String, dynamic> json) =>
       _$AzuraApiSongFromJson(json);
 }
