@@ -4,12 +4,16 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
 
 import '../model/firestore/city_data.dart';
 import 'online_store_impl.dart';
 
+
+=======
 class SupabaseHelper implements OnlineStoreImpl {
   final SupabaseClient supabase = Supabase.instance.client;
   static const String _locationsRoom = 'Moscow';
@@ -31,13 +35,16 @@ class SupabaseHelper implements OnlineStoreImpl {
 
       return CityData(likes: likes);
     });
+
   }
 
   Stream getRunString() async* {
+
     String moscowId = '2e683111-964b-40da-b1bd-b232de6004af';
     final Stream request = await supabase.from('runString').stream(
       primaryKey: ['id'],
     ).eq("city", moscowId);
+
 
     yield* request;
   }

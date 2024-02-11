@@ -1,3 +1,4 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:bloc/bloc.dart';
 import 'package:l/l.dart';
 import 'package:meta/meta.dart';
@@ -45,6 +46,10 @@ class AppBlocObserver extends BlocObserver {
       stackTrace: stackTrace,
       hint: 'BLoC: ${bloc.runtimeType.toString()}',
     );
+    AppMetrica.reportError(
+        message: 'Error message',
+        errorDescription: AppMetricaErrorDescription.fromCurrentStackTrace(
+            message: 'Error message', type: 'Error type'));
   }
 
   @override

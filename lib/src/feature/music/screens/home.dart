@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
+import 'package:lively/src/feature/music/logic/notification_service.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
@@ -20,6 +21,7 @@ import '/lively_icons.dart';
 import '../../../widgets/circle_icon_button.dart';
 import 'no_internet.dart';
 import 'onboarding/onboarding.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -209,7 +211,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 ValueListenableBuilder<bool>(
                   valueListenable: isLike,
                   builder: (context, value, _) => SafeArea(
+        minimum: EdgeInsets.only(bottom: height < 700 ? 20 : 26),
+=======
                     minimum: EdgeInsets.only(bottom: height < 700 ? 31 : 45),
+
                     top: false,
                     child: BlocBuilder<RunStringBloc, RunStringState>(
                       // buildWhen: (previous, current) =>
@@ -273,9 +278,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 left: MediaQuery.of(context).size.width * 0.83,
                 top: MediaQuery.of(context).size.height * 0.32,
                 child: IconButton(
-                  icon: Image.asset('assets/map_icon.png'),
+                  icon: SvgPicture.asset('assets/map_icon.svg'),
                   iconSize: 57,
                   onPressed: () {
+                    
                     Navigator.of(context).pushNamed('/map');
                   },
                 )),
