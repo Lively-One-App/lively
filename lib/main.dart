@@ -6,9 +6,8 @@ import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+
 import 'package:l/l.dart';
 
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
@@ -38,8 +37,7 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-
-String stateApp ='';
+String stateApp = '';
 
 const notificationChannelId = 'my_foreground';
 
@@ -47,19 +45,10 @@ const notificationChannelId = 'my_foreground';
 const notificationId = 888;
 
 AppMetricaConfig get _config =>
-    const AppMetricaConfig('bff95dc2-5350-4449-8579-f052cc574ecc', logs: true);
-
-
-
+    const AppMetricaConfig('3b254864-c192-486a-8393-c4e233b75edd', logs: true);
 
 void main() => runZonedGuarded<void>(
-
-  
-
-  
       () async {
-
-        
         HttpOverrides.global = MyHttpOverrides();
 
         WidgetsFlutterBinding.ensureInitialized();
@@ -75,22 +64,16 @@ void main() => runZonedGuarded<void>(
               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
         );
 
-        //await Firebase.initializeApp();
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
 
-        //WidgetsBinding.instance.addObserver(LifecycleEventHandler());
-
-      
-
         Bloc.observer = AppBlocObserver.instance();
 
-        SystemChannels.lifecycle.setMessageHandler((message)async {
-          stateApp = message??'';
+        SystemChannels.lifecycle.setMessageHandler((message) async {
+          stateApp = message ?? '';
         });
-        // BlocOverrides.runZoned(
-        //   () async {
+
         final audioHandler = await AudioService.init(
           builder: () => MyAudioPlayerHandler(),
           config: const AudioServiceConfig(
@@ -158,31 +141,3 @@ void main() => runZonedGuarded<void>(
         }
       },
     );
-
-// class LifecycleEventHandler extends WidgetsBindingObserver {
-//   final AsyncCallback? resumeCallBack;
-//   final AsyncCallback? suspendingCallBack;
-//   LifecycleEventHandler({
-//     this.resumeCallBack,
-//     this.suspendingCallBack,
-//   });
-//   @override
-//   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
-//     print("state changed ${state.name}");
-//     switch (state) {
-//       case AppLifecycleState.resumed:
-//         if (resumeCallBack != null) {
-//           await resumeCallBack!();
-//         }
-//         break;
-//       case AppLifecycleState.inactive:
-//       case AppLifecycleState.paused:
-//       case AppLifecycleState.detached:
-//       case AppLifecycleState.hidden:
-//         if (suspendingCallBack != null) {
-//           await suspendingCallBack!();
-//         }
-//         break;
-//     }
-//   }
-// }
