@@ -13,7 +13,7 @@ import '../model/firestore/city_data.dart';
 import 'online_store_impl.dart';
 
 
-=======
+
 class SupabaseHelper implements OnlineStoreImpl {
   final SupabaseClient supabase = Supabase.instance.client;
   static const String _locationsRoom = 'Moscow';
