@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:l/l.dart';
 
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
+import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:lively/src/feature/music/logic/notification_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,7 +22,6 @@ import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit
 import 'src/feature/music/bloc/first_run/first_run_cubit.dart';
 import 'src/feature/music/bloc/likes/likes_bloc.dart';
 import 'src/feature/music/bloc/radio/radio_cubit.dart';
-import 'src/feature/music/bloc/sync_server/sync_server.dart';
 import 'src/feature/music/logic/firestore.dart';
 import 'src/feature/music/logic/my_audioplayer_handler.dart';
 import 'src/feature/music/logic/websocket_auto_reconnect.dart';
@@ -58,17 +58,18 @@ void main() => runZonedGuarded<void>(
         NotificationService.initialize();
 
         await Supabase.initialize(
-          debug: true,
-          url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
-          anonKey:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
-        );
+
+    url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
+  );
 
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
 
         Bloc.observer = AppBlocObserver.instance();
+
 
         SystemChannels.lifecycle.setMessageHandler((message) async {
           stateApp = message ?? '';
@@ -129,6 +130,7 @@ void main() => runZonedGuarded<void>(
           ],
           child: const MyApp(),
         ));
+
         //   },
         //   blocObserver: AppBlocObserver.instance(),
         // );

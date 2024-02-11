@@ -1,3 +1,4 @@
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:lively/src/feature/music/model/azuracast/azura_api_now_playing_station_mount.dart';
 import 'package:lively/src/feature/music/model/azuracast/azura_api_now_playing_station_remote.dart';

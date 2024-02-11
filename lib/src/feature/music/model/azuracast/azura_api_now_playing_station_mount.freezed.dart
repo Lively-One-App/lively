@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'azura_api_now_playing_station_mount.dart';
 
@@ -43,7 +43,9 @@ abstract class $AzuraApiNowPlayingStationMountCopyWith<$Res> {
   factory $AzuraApiNowPlayingStationMountCopyWith(
           AzuraApiNowPlayingStationMount value,
           $Res Function(AzuraApiNowPlayingStationMount) then) =
-      _$AzuraApiNowPlayingStationMountCopyWithImpl<$Res>;
+      _$AzuraApiNowPlayingStationMountCopyWithImpl<$Res,
+          AzuraApiNowPlayingStationMount>;
+  @useResult
   $Res call(
       {String path,
       @JsonKey(name: 'is_default') bool isDefault,
@@ -58,78 +60,83 @@ abstract class $AzuraApiNowPlayingStationMountCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AzuraApiNowPlayingStationMountCopyWithImpl<$Res>
+class _$AzuraApiNowPlayingStationMountCopyWithImpl<$Res,
+        $Val extends AzuraApiNowPlayingStationMount>
     implements $AzuraApiNowPlayingStationMountCopyWith<$Res> {
   _$AzuraApiNowPlayingStationMountCopyWithImpl(this._value, this._then);
 
-  final AzuraApiNowPlayingStationMount _value;
   // ignore: unused_field
-  final $Res Function(AzuraApiNowPlayingStationMount) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? path = freezed,
-    Object? isDefault = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? url = freezed,
+    Object? path = null,
+    Object? isDefault = null,
+    Object? id = null,
+    Object? name = null,
+    Object? url = null,
     Object? bitrate = freezed,
     Object? format = freezed,
-    Object? listeners = freezed,
+    Object? listeners = null,
   }) {
     return _then(_value.copyWith(
-      path: path == freezed
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      isDefault: isDefault == freezed
+      isDefault: null == isDefault
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      bitrate: bitrate == freezed
+      bitrate: freezed == bitrate
           ? _value.bitrate
           : bitrate // ignore: cast_nullable_to_non_nullable
               as int?,
-      format: format == freezed
+      format: freezed == format
           ? _value.format
           : format // ignore: cast_nullable_to_non_nullable
               as String?,
-      listeners: listeners == freezed
+      listeners: null == listeners
           ? _value.listeners
           : listeners // ignore: cast_nullable_to_non_nullable
               as AzuraApiNowPlayingListeners,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AzuraApiNowPlayingListenersCopyWith<$Res> get listeners {
     return $AzuraApiNowPlayingListenersCopyWith<$Res>(_value.listeners,
         (value) {
-      return _then(_value.copyWith(listeners: value));
+      return _then(_value.copyWith(listeners: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_AzuraApiNowPlayingStationMountCopyWith<$Res>
+abstract class _$$AzuraApiNowPlayingStationMountImplCopyWith<$Res>
     implements $AzuraApiNowPlayingStationMountCopyWith<$Res> {
-  factory _$$_AzuraApiNowPlayingStationMountCopyWith(
-          _$_AzuraApiNowPlayingStationMount value,
-          $Res Function(_$_AzuraApiNowPlayingStationMount) then) =
-      __$$_AzuraApiNowPlayingStationMountCopyWithImpl<$Res>;
+  factory _$$AzuraApiNowPlayingStationMountImplCopyWith(
+          _$AzuraApiNowPlayingStationMountImpl value,
+          $Res Function(_$AzuraApiNowPlayingStationMountImpl) then) =
+      __$$AzuraApiNowPlayingStationMountImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String path,
       @JsonKey(name: 'is_default') bool isDefault,
@@ -145,59 +152,57 @@ abstract class _$$_AzuraApiNowPlayingStationMountCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AzuraApiNowPlayingStationMountCopyWithImpl<$Res>
-    extends _$AzuraApiNowPlayingStationMountCopyWithImpl<$Res>
-    implements _$$_AzuraApiNowPlayingStationMountCopyWith<$Res> {
-  __$$_AzuraApiNowPlayingStationMountCopyWithImpl(
-      _$_AzuraApiNowPlayingStationMount _value,
-      $Res Function(_$_AzuraApiNowPlayingStationMount) _then)
-      : super(_value, (v) => _then(v as _$_AzuraApiNowPlayingStationMount));
+class __$$AzuraApiNowPlayingStationMountImplCopyWithImpl<$Res>
+    extends _$AzuraApiNowPlayingStationMountCopyWithImpl<$Res,
+        _$AzuraApiNowPlayingStationMountImpl>
+    implements _$$AzuraApiNowPlayingStationMountImplCopyWith<$Res> {
+  __$$AzuraApiNowPlayingStationMountImplCopyWithImpl(
+      _$AzuraApiNowPlayingStationMountImpl _value,
+      $Res Function(_$AzuraApiNowPlayingStationMountImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_AzuraApiNowPlayingStationMount get _value =>
-      super._value as _$_AzuraApiNowPlayingStationMount;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? path = freezed,
-    Object? isDefault = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? url = freezed,
+    Object? path = null,
+    Object? isDefault = null,
+    Object? id = null,
+    Object? name = null,
+    Object? url = null,
     Object? bitrate = freezed,
     Object? format = freezed,
-    Object? listeners = freezed,
+    Object? listeners = null,
   }) {
-    return _then(_$_AzuraApiNowPlayingStationMount(
-      path: path == freezed
+    return _then(_$AzuraApiNowPlayingStationMountImpl(
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      isDefault: isDefault == freezed
+      isDefault: null == isDefault
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      bitrate: bitrate == freezed
+      bitrate: freezed == bitrate
           ? _value.bitrate
           : bitrate // ignore: cast_nullable_to_non_nullable
               as int?,
-      format: format == freezed
+      format: freezed == format
           ? _value.format
           : format // ignore: cast_nullable_to_non_nullable
               as String?,
-      listeners: listeners == freezed
+      listeners: null == listeners
           ? _value.listeners
           : listeners // ignore: cast_nullable_to_non_nullable
               as AzuraApiNowPlayingListeners,
@@ -208,9 +213,9 @@ class __$$_AzuraApiNowPlayingStationMountCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_AzuraApiNowPlayingStationMount
+class _$AzuraApiNowPlayingStationMountImpl
     implements _AzuraApiNowPlayingStationMount {
-  _$_AzuraApiNowPlayingStationMount(
+  _$AzuraApiNowPlayingStationMountImpl(
       {required this.path,
       @JsonKey(name: 'is_default') required this.isDefault,
       required this.id,
@@ -220,9 +225,9 @@ class _$_AzuraApiNowPlayingStationMount
       this.format,
       required this.listeners});
 
-  factory _$_AzuraApiNowPlayingStationMount.fromJson(
+  factory _$AzuraApiNowPlayingStationMountImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_AzuraApiNowPlayingStationMountFromJson(json);
+      _$$AzuraApiNowPlayingStationMountImplFromJson(json);
 
   @override
   final String path;
@@ -248,42 +253,38 @@ class _$_AzuraApiNowPlayingStationMount
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AzuraApiNowPlayingStationMount &&
-            const DeepCollectionEquality().equals(other.path, path) &&
-            const DeepCollectionEquality().equals(other.isDefault, isDefault) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.bitrate, bitrate) &&
-            const DeepCollectionEquality().equals(other.format, format) &&
-            const DeepCollectionEquality().equals(other.listeners, listeners));
+            other is _$AzuraApiNowPlayingStationMountImpl &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.isDefault, isDefault) ||
+                other.isDefault == isDefault) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.bitrate, bitrate) || other.bitrate == bitrate) &&
+            (identical(other.format, format) || other.format == format) &&
+            (identical(other.listeners, listeners) ||
+                other.listeners == listeners));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(path),
-      const DeepCollectionEquality().hash(isDefault),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(bitrate),
-      const DeepCollectionEquality().hash(format),
-      const DeepCollectionEquality().hash(listeners));
+      runtimeType, path, isDefault, id, name, url, bitrate, format, listeners);
 
   @JsonKey(ignore: true)
   @override
-  _$$_AzuraApiNowPlayingStationMountCopyWith<_$_AzuraApiNowPlayingStationMount>
-      get copyWith => __$$_AzuraApiNowPlayingStationMountCopyWithImpl<
-          _$_AzuraApiNowPlayingStationMount>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$AzuraApiNowPlayingStationMountImplCopyWith<
+          _$AzuraApiNowPlayingStationMountImpl>
+      get copyWith => __$$AzuraApiNowPlayingStationMountImplCopyWithImpl<
+          _$AzuraApiNowPlayingStationMountImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AzuraApiNowPlayingStationMountToJson(
+    return _$$AzuraApiNowPlayingStationMountImplToJson(
       this,
     );
   }
@@ -300,10 +301,10 @@ abstract class _AzuraApiNowPlayingStationMount
           final int? bitrate,
           final String? format,
           required final AzuraApiNowPlayingListeners listeners}) =
-      _$_AzuraApiNowPlayingStationMount;
+      _$AzuraApiNowPlayingStationMountImpl;
 
   factory _AzuraApiNowPlayingStationMount.fromJson(Map<String, dynamic> json) =
-      _$_AzuraApiNowPlayingStationMount.fromJson;
+      _$AzuraApiNowPlayingStationMountImpl.fromJson;
 
   @override
   String get path;
@@ -324,6 +325,7 @@ abstract class _AzuraApiNowPlayingStationMount
   AzuraApiNowPlayingListeners get listeners;
   @override
   @JsonKey(ignore: true)
-  _$$_AzuraApiNowPlayingStationMountCopyWith<_$_AzuraApiNowPlayingStationMount>
+  _$$AzuraApiNowPlayingStationMountImplCopyWith<
+          _$AzuraApiNowPlayingStationMountImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

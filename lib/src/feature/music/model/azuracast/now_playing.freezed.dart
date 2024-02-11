@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'now_playing.dart';
 
@@ -30,7 +30,8 @@ mixin _$NowPlaying {
 abstract class $NowPlayingCopyWith<$Res> {
   factory $NowPlayingCopyWith(
           NowPlaying value, $Res Function(NowPlaying) then) =
-      _$NowPlayingCopyWithImpl<$Res>;
+      _$NowPlayingCopyWithImpl<$Res, NowPlaying>;
+  @useResult
   $Res call(
       {Song song,
       CurrentSong currentSong,
@@ -44,76 +45,84 @@ abstract class $NowPlayingCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NowPlayingCopyWithImpl<$Res> implements $NowPlayingCopyWith<$Res> {
+class _$NowPlayingCopyWithImpl<$Res, $Val extends NowPlaying>
+    implements $NowPlayingCopyWith<$Res> {
   _$NowPlayingCopyWithImpl(this._value, this._then);
 
-  final NowPlaying _value;
   // ignore: unused_field
-  final $Res Function(NowPlaying) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? song = freezed,
-    Object? currentSong = freezed,
-    Object? station = freezed,
-    Object? listeners = freezed,
+    Object? song = null,
+    Object? currentSong = null,
+    Object? station = null,
+    Object? listeners = null,
   }) {
     return _then(_value.copyWith(
-      song: song == freezed
+      song: null == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as Song,
-      currentSong: currentSong == freezed
+      currentSong: null == currentSong
           ? _value.currentSong
           : currentSong // ignore: cast_nullable_to_non_nullable
               as CurrentSong,
-      station: station == freezed
+      station: null == station
           ? _value.station
           : station // ignore: cast_nullable_to_non_nullable
               as Station,
-      listeners: listeners == freezed
+      listeners: null == listeners
           ? _value.listeners
           : listeners // ignore: cast_nullable_to_non_nullable
               as RadioListeners,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SongCopyWith<$Res> get song {
     return $SongCopyWith<$Res>(_value.song, (value) {
-      return _then(_value.copyWith(song: value));
+      return _then(_value.copyWith(song: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CurrentSongCopyWith<$Res> get currentSong {
     return $CurrentSongCopyWith<$Res>(_value.currentSong, (value) {
-      return _then(_value.copyWith(currentSong: value));
+      return _then(_value.copyWith(currentSong: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $StationCopyWith<$Res> get station {
     return $StationCopyWith<$Res>(_value.station, (value) {
-      return _then(_value.copyWith(station: value));
+      return _then(_value.copyWith(station: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $RadioListenersCopyWith<$Res> get listeners {
     return $RadioListenersCopyWith<$Res>(_value.listeners, (value) {
-      return _then(_value.copyWith(listeners: value));
+      return _then(_value.copyWith(listeners: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_NowPlayingCopyWith<$Res>
+abstract class _$$NowPlayingImplCopyWith<$Res>
     implements $NowPlayingCopyWith<$Res> {
-  factory _$$_NowPlayingCopyWith(
-          _$_NowPlaying value, $Res Function(_$_NowPlaying) then) =
-      __$$_NowPlayingCopyWithImpl<$Res>;
+  factory _$$NowPlayingImplCopyWith(
+          _$NowPlayingImpl value, $Res Function(_$NowPlayingImpl) then) =
+      __$$NowPlayingImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Song song,
       CurrentSong currentSong,
@@ -131,36 +140,35 @@ abstract class _$$_NowPlayingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_NowPlayingCopyWithImpl<$Res> extends _$NowPlayingCopyWithImpl<$Res>
-    implements _$$_NowPlayingCopyWith<$Res> {
-  __$$_NowPlayingCopyWithImpl(
-      _$_NowPlaying _value, $Res Function(_$_NowPlaying) _then)
-      : super(_value, (v) => _then(v as _$_NowPlaying));
+class __$$NowPlayingImplCopyWithImpl<$Res>
+    extends _$NowPlayingCopyWithImpl<$Res, _$NowPlayingImpl>
+    implements _$$NowPlayingImplCopyWith<$Res> {
+  __$$NowPlayingImplCopyWithImpl(
+      _$NowPlayingImpl _value, $Res Function(_$NowPlayingImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_NowPlaying get _value => super._value as _$_NowPlaying;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? song = freezed,
-    Object? currentSong = freezed,
-    Object? station = freezed,
-    Object? listeners = freezed,
+    Object? song = null,
+    Object? currentSong = null,
+    Object? station = null,
+    Object? listeners = null,
   }) {
-    return _then(_$_NowPlaying(
-      song: song == freezed
+    return _then(_$NowPlayingImpl(
+      song: null == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as Song,
-      currentSong: currentSong == freezed
+      currentSong: null == currentSong
           ? _value.currentSong
           : currentSong // ignore: cast_nullable_to_non_nullable
               as CurrentSong,
-      station: station == freezed
+      station: null == station
           ? _value.station
           : station // ignore: cast_nullable_to_non_nullable
               as Station,
-      listeners: listeners == freezed
+      listeners: null == listeners
           ? _value.listeners
           : listeners // ignore: cast_nullable_to_non_nullable
               as RadioListeners,
@@ -170,8 +178,8 @@ class __$$_NowPlayingCopyWithImpl<$Res> extends _$NowPlayingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NowPlaying implements _NowPlaying {
-  const _$_NowPlaying(
+class _$NowPlayingImpl implements _NowPlaying {
+  const _$NowPlayingImpl(
       {required this.song,
       required this.currentSong,
       required this.station,
@@ -192,29 +200,27 @@ class _$_NowPlaying implements _NowPlaying {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NowPlaying &&
-            const DeepCollectionEquality().equals(other.song, song) &&
-            const DeepCollectionEquality()
-                .equals(other.currentSong, currentSong) &&
-            const DeepCollectionEquality().equals(other.station, station) &&
-            const DeepCollectionEquality().equals(other.listeners, listeners));
+            other is _$NowPlayingImpl &&
+            (identical(other.song, song) || other.song == song) &&
+            (identical(other.currentSong, currentSong) ||
+                other.currentSong == currentSong) &&
+            (identical(other.station, station) || other.station == station) &&
+            (identical(other.listeners, listeners) ||
+                other.listeners == listeners));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(song),
-      const DeepCollectionEquality().hash(currentSong),
-      const DeepCollectionEquality().hash(station),
-      const DeepCollectionEquality().hash(listeners));
+  int get hashCode =>
+      Object.hash(runtimeType, song, currentSong, station, listeners);
 
   @JsonKey(ignore: true)
   @override
-  _$$_NowPlayingCopyWith<_$_NowPlaying> get copyWith =>
-      __$$_NowPlayingCopyWithImpl<_$_NowPlaying>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$NowPlayingImplCopyWith<_$NowPlayingImpl> get copyWith =>
+      __$$NowPlayingImplCopyWithImpl<_$NowPlayingImpl>(this, _$identity);
 }
 
 abstract class _NowPlaying implements NowPlaying {
@@ -222,7 +228,7 @@ abstract class _NowPlaying implements NowPlaying {
       {required final Song song,
       required final CurrentSong currentSong,
       required final Station station,
-      required final RadioListeners listeners}) = _$_NowPlaying;
+      required final RadioListeners listeners}) = _$NowPlayingImpl;
 
   @override
   Song get song;
@@ -234,6 +240,6 @@ abstract class _NowPlaying implements NowPlaying {
   RadioListeners get listeners;
   @override
   @JsonKey(ignore: true)
-  _$$_NowPlayingCopyWith<_$_NowPlaying> get copyWith =>
+  _$$NowPlayingImplCopyWith<_$NowPlayingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

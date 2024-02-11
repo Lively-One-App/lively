@@ -11,12 +11,13 @@ part 'run_string_state.dart';
 
 class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
   final OnlineStoreImpl _store;
-  RunStringBloc(this._store) : super(RunStringInitial()) {
+  RunStringBloc(this._store) : super(const RunStringInitial()) {
     // on<RunStringEvent>((event, emit) {
     //   // TODO: implement event handler
     // });
 
     _store.getRunString().listen((event) {
+
       String runString = '';
       int timeView = 0;
 
@@ -37,6 +38,7 @@ class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
           });
         }
       }
+
     });
   }
 }

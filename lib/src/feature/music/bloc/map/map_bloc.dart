@@ -1,15 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
-import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:meta/meta.dart';
 
 import 'package:lively/src/feature/music/logic/online_store_impl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'map_event.dart';
 part 'map_state.dart';
@@ -17,122 +16,94 @@ part 'map_state.dart';
 class MapBloc extends Bloc<MapEvent, MapState> {
   final OnlineStoreImpl _store;
 
-  bool isShareMyPosition = false;
-
-  MapBloc(this._store) : super(MapInitial()) {
-    Map allInfoDevice = {};
-
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-
-    deviceInfo.deviceInfo.then((value) {
-      allInfoDevice = value.data;
-    });
-
-    _sharedGeo();
-    //   if (Platform.isIOS) { // import 'dart:io'
-    //   //var iosDeviceInfo = await
-    //   deviceInfo.iosInfo.then((value) {
-    //     print(value);
-    //   });
-    //   //return iosDeviceInfo.identifierForVendor; // unique ID on iOS
-    // } else if(Platform.isAndroid) {
-    //   //var androidDeviceInfo = await
-    //   deviceInfo.androidInfo.then((value) {
-    //     print(value);
-    //   });
-    //   //return androidDeviceInfo.androidId; // unique ID on Android
-    // }
-
-    // _requestGps().then((value) {
-    //   // if (value == Error) {
-    //   //   emit(ErrorState(error: 'error'));
-    //   //   return;
-    //   // } else if (!value) {
-    //   //   emit(OffSharedPositionState());
-    //   //   return;
-    //   // }
-
-    //   emit(PositionChanged(position: value));
-    //   _store.addMarker(value);
-    //   supabase.from('geoPoints').insert({
-    //       'lat': value.latitude,
-    //       'lng': value.longitude,
-    //       'city': 'Moscow',
-    //       'devid': '123'
-    //     });
-
-    // });
-
-    _store.getMarkers().listen((event) {
+  MapBloc(this._store)
+      : super(const MapInitial(isShared: false, listMarkers: [])) {
+    final StreamController<Map<String, dynamic>> _controller =
+        StreamController<Map<String, dynamic>>();
+    _controller.stream.listen((event) {
       List<Map> listMarkers = [];
+      List<SinglePresenceState> presenceStates = event['data'];
 
-      event.forEach((elemnt) {
-        if (elemnt['devid'] != allInfoDevice['host']) {
-          listMarkers
-              .add({'latitude': elemnt['lat'], 'longitude': elemnt['lng']});
-        }
-      });
-
-      // event.forEach((element) {
-      //      var temp = element.data();
-
-      //      listMarkers.add({
-      //        'latitude': temp['position']['latitude'],
-      //        'longitude': temp['position']['longitude']
-      //      )};
-
-      emit(FetchChangeMarkers(listMarkers: listMarkers));
+      for (var i = 0; i < presenceStates.length; i++) {
+        listMarkers.add({
+          'latitude': presenceStates[i].presences.first.payload['geopoint']
+              ['latitude'],
+          'longitude': presenceStates[i].presences.first.payload['geopoint']
+              ['longitude']
+        });
+      }
+      add(ChangeMarkersEvent(listMarkers: listMarkers));
     });
-
+    _store.setGeoPointController(_controller.sink);
     const LocationSettings locationSettings = LocationSettings(
       accuracy: LocationAccuracy.best,
       distanceFilter: 50,
     );
-    StreamSubscription<Position> positionStream =
-        Geolocator.getPositionStream(locationSettings: locationSettings)
-            .listen((Position? position) async {
-      if (position != null && isShareMyPosition) {
-        emit(PositionChanged(position: position));
-        _store.addUpdateMarker(position, 'moscow', allInfoDevice['host']);
+    StreamSubscription<Position>? positionStream;
+
+    on<SharePositionEvent>((event, emit) async {
+      await _store.addUpdateMarker(
+        event.position,
+      );
+      emit(PositionChanged(
+        position: event.position,
+        isShareMyPosition: true,
+        listMarkers: state.listMarkers,
+      ));
+    });
+
+    on<ChangeMarkersEvent>((event, emit) {
+      emit(FetchChangeMarkers(
+        listMarkers: event.listMarkers,
+        isShareMyPosition: state.isShareMyPosition,
+      ));
+    });
+
+    on<OffSharedPositionEvent>((event, emit) async {
+      positionStream?.pause();
+      await _store.removeMarker();
+      emit(OffSharedPositionState(
+        listMarkers: state.listMarkers,
+      ));
+    });
+
+    on<GetLastKnownPositionEvent>((event, emit) async {
+      final position = await _requestGps();
+      if (position != null) {
+        emit(PositionChanged(
+          position: position,
+          isShareMyPosition: state.isShareMyPosition,
+          listMarkers: state.listMarkers,
+        ));
       }
     });
-
-    // on<MapEvent>((event, emit) {
-
-    //   // TODO: implement event handler
-    // });
-
-    on<OffSharedPositionEvent>((event, emit) {
-      _sharedGeo(false);
-      _store.removeMarker(allInfoDevice['host']);
-      isShareMyPosition = false;
-
-      positionStream.pause();
-      //emit(OffSharedPositionState());
-    });
-
-    on<OnSharedPositionEvent>((event, emit) {
-      _sharedGeo(true);
-      isShareMyPosition = true;
-      _requestGps().then((value) {
-        if (value == Error) {
-          emit(ErrorState(error: 'error'));
-          return;
+    on<OnSharedPositionEvent>((event, emit) async {
+      try {
+        if (positionStream == null) {
+          positionStream =
+              Geolocator.getPositionStream(locationSettings: locationSettings)
+                  .listen((Position position) {
+            add(SharePositionEvent(position: position));
+          });
+        } else {
+          positionStream?.resume();
+          final position = await _requestGps();
+          if (position != null) {
+            add(SharePositionEvent(
+              position: position,
+            ));
+          }
         }
-
-        emit(PositionChanged(position: value));
-        _store.addUpdateMarker(value, 'moscow', allInfoDevice['host']);
-      });
-      positionStream.resume();
-      //emit(OnSharedPositionState());
+      } catch (e) {
+        emit(ErrorState(
+            error: e.toString(),
+            isShareMyPosition: state.isShareMyPosition,
+            listMarkers: state.listMarkers));
+      }
     });
   }
 
-  Future _requestGps() async {
-    if (!isShareMyPosition) {
-      return false;
-    }
-
+  Future<Position?> _requestGps() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -166,21 +137,6 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
-  }
-
-  _sharedGeo([on]) async {
-    final SharedPreferences _sharedPreferences =
-        await SharedPreferences.getInstance();
-
-    var res = await _sharedPreferences.getBool('isShareMyPosition');
-
-    if (on != null) {
-      on ? emit(OnSharedPositionState()) : emit(OffSharedPositionState());
-      _sharedPreferences.setBool('isShareMyPosition', on);
-    } else if (res != null) {
-      isShareMyPosition = res;
-      res ? emit(OnSharedPositionState()) : emit(OffSharedPositionState());
-    }
+    return await Geolocator.getLastKnownPosition();
   }
 }

@@ -2,17 +2,19 @@
 part of 'run_string_bloc.dart';
 
 @immutable
-class RunStringState {}
+abstract class RunStringState {
+  const RunStringState();
+}
 
-class RunStringInitial extends RunStringState {}
+class RunStringInitial extends RunStringState {
+  const RunStringInitial();
+}
 
 class RunStringUpdateState extends RunStringState {
-  
-  String runString;
-  RunStringUpdateState({
+  final String runString;
+  const RunStringUpdateState({
     required this.runString,
   });
-
 }
 
 class RunStringDefaultState extends RunStringState {

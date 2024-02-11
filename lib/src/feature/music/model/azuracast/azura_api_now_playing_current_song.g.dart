@@ -6,22 +6,22 @@ part of 'azura_api_now_playing_current_song.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AzuraApiNowPlayingCurrentSong _$$_AzuraApiNowPlayingCurrentSongFromJson(
-        Map<String, dynamic> json) =>
-    _$_AzuraApiNowPlayingCurrentSong(
-      elapsed: json['elapsed'] as int,
-      remaining: json['remaining'] as int,
-      shId: json['sh_id'] as int,
-      playedAt: json['played_at'] as int,
-      duration: json['duration'] as int,
-      playlist: json['playlist'] as String?,
-      streamer: json['streamer'] as String?,
-      isRequest: json['is_request'] as bool,
-      song: AzuraApiSong.fromJson(json['song'] as Map<String, dynamic>),
-    );
+_$AzuraApiNowPlayingCurrentSongImpl
+    _$$AzuraApiNowPlayingCurrentSongImplFromJson(Map<String, dynamic> json) =>
+        _$AzuraApiNowPlayingCurrentSongImpl(
+          elapsed: json['elapsed'] as int,
+          remaining: json['remaining'] as int,
+          shId: json['sh_id'] as int,
+          playedAt: json['played_at'] as int,
+          duration: json['duration'] as int,
+          playlist: json['playlist'] as String?,
+          streamer: json['streamer'] as String?,
+          isRequest: json['is_request'] as bool,
+          song: AzuraApiSong.fromJson(json['song'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$$_AzuraApiNowPlayingCurrentSongToJson(
-        _$_AzuraApiNowPlayingCurrentSong instance) =>
+Map<String, dynamic> _$$AzuraApiNowPlayingCurrentSongImplToJson(
+        _$AzuraApiNowPlayingCurrentSongImpl instance) =>
     <String, dynamic>{
       'elapsed': instance.elapsed,
       'remaining': instance.remaining,

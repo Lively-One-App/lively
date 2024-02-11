@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'radio_cubit.dart';
 
@@ -27,11 +27,11 @@ mixin _$RadioState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? beforePlaying,
-    TResult Function()? beforeStopping,
-    TResult Function()? loaded,
-    TResult Function(String? message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? beforePlaying,
+    TResult? Function()? beforeStopping,
+    TResult? Function()? loaded,
+    TResult? Function(String? message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,11 +55,11 @@ mixin _$RadioState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_BeforePlaying value)? beforePlaying,
-    TResult Function(_BeforeStopping value)? beforeStopping,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_BeforePlaying value)? beforePlaying,
+    TResult? Function(_BeforeStopping value)? beforeStopping,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,39 +78,40 @@ mixin _$RadioState {
 abstract class $RadioStateCopyWith<$Res> {
   factory $RadioStateCopyWith(
           RadioState value, $Res Function(RadioState) then) =
-      _$RadioStateCopyWithImpl<$Res>;
+      _$RadioStateCopyWithImpl<$Res, RadioState>;
 }
 
 /// @nodoc
-class _$RadioStateCopyWithImpl<$Res> implements $RadioStateCopyWith<$Res> {
+class _$RadioStateCopyWithImpl<$Res, $Val extends RadioState>
+    implements $RadioStateCopyWith<$Res> {
   _$RadioStateCopyWithImpl(this._value, this._then);
 
-  final RadioState _value;
   // ignore: unused_field
-  final $Res Function(RadioState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$RadioStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$RadioStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -118,9 +119,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -141,11 +142,11 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? beforePlaying,
-    TResult Function()? beforeStopping,
-    TResult Function()? loaded,
-    TResult Function(String? message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? beforePlaying,
+    TResult? Function()? beforeStopping,
+    TResult? Function()? loaded,
+    TResult? Function(String? message)? error,
   }) {
     return initial?.call();
   }
@@ -181,11 +182,11 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_BeforePlaying value)? beforePlaying,
-    TResult Function(_BeforeStopping value)? beforeStopping,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_BeforePlaying value)? beforePlaying,
+    TResult? Function(_BeforeStopping value)? beforeStopping,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -208,32 +209,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements RadioState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_BeforePlayingCopyWith<$Res> {
-  factory _$$_BeforePlayingCopyWith(
-          _$_BeforePlaying value, $Res Function(_$_BeforePlaying) then) =
-      __$$_BeforePlayingCopyWithImpl<$Res>;
+abstract class _$$BeforePlayingImplCopyWith<$Res> {
+  factory _$$BeforePlayingImplCopyWith(
+          _$BeforePlayingImpl value, $Res Function(_$BeforePlayingImpl) then) =
+      __$$BeforePlayingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_BeforePlayingCopyWithImpl<$Res>
-    extends _$RadioStateCopyWithImpl<$Res>
-    implements _$$_BeforePlayingCopyWith<$Res> {
-  __$$_BeforePlayingCopyWithImpl(
-      _$_BeforePlaying _value, $Res Function(_$_BeforePlaying) _then)
-      : super(_value, (v) => _then(v as _$_BeforePlaying));
-
-  @override
-  _$_BeforePlaying get _value => super._value as _$_BeforePlaying;
+class __$$BeforePlayingImplCopyWithImpl<$Res>
+    extends _$RadioStateCopyWithImpl<$Res, _$BeforePlayingImpl>
+    implements _$$BeforePlayingImplCopyWith<$Res> {
+  __$$BeforePlayingImplCopyWithImpl(
+      _$BeforePlayingImpl _value, $Res Function(_$BeforePlayingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_BeforePlaying implements _BeforePlaying {
-  const _$_BeforePlaying();
+class _$BeforePlayingImpl implements _BeforePlaying {
+  const _$BeforePlayingImpl();
 
   @override
   String toString() {
@@ -241,9 +239,9 @@ class _$_BeforePlaying implements _BeforePlaying {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_BeforePlaying);
+        (other.runtimeType == runtimeType && other is _$BeforePlayingImpl);
   }
 
   @override
@@ -264,11 +262,11 @@ class _$_BeforePlaying implements _BeforePlaying {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? beforePlaying,
-    TResult Function()? beforeStopping,
-    TResult Function()? loaded,
-    TResult Function(String? message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? beforePlaying,
+    TResult? Function()? beforeStopping,
+    TResult? Function()? loaded,
+    TResult? Function(String? message)? error,
   }) {
     return beforePlaying?.call();
   }
@@ -304,11 +302,11 @@ class _$_BeforePlaying implements _BeforePlaying {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_BeforePlaying value)? beforePlaying,
-    TResult Function(_BeforeStopping value)? beforeStopping,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_BeforePlaying value)? beforePlaying,
+    TResult? Function(_BeforeStopping value)? beforeStopping,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return beforePlaying?.call(this);
   }
@@ -331,32 +329,29 @@ class _$_BeforePlaying implements _BeforePlaying {
 }
 
 abstract class _BeforePlaying implements RadioState {
-  const factory _BeforePlaying() = _$_BeforePlaying;
+  const factory _BeforePlaying() = _$BeforePlayingImpl;
 }
 
 /// @nodoc
-abstract class _$$_BeforeStoppingCopyWith<$Res> {
-  factory _$$_BeforeStoppingCopyWith(
-          _$_BeforeStopping value, $Res Function(_$_BeforeStopping) then) =
-      __$$_BeforeStoppingCopyWithImpl<$Res>;
+abstract class _$$BeforeStoppingImplCopyWith<$Res> {
+  factory _$$BeforeStoppingImplCopyWith(_$BeforeStoppingImpl value,
+          $Res Function(_$BeforeStoppingImpl) then) =
+      __$$BeforeStoppingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_BeforeStoppingCopyWithImpl<$Res>
-    extends _$RadioStateCopyWithImpl<$Res>
-    implements _$$_BeforeStoppingCopyWith<$Res> {
-  __$$_BeforeStoppingCopyWithImpl(
-      _$_BeforeStopping _value, $Res Function(_$_BeforeStopping) _then)
-      : super(_value, (v) => _then(v as _$_BeforeStopping));
-
-  @override
-  _$_BeforeStopping get _value => super._value as _$_BeforeStopping;
+class __$$BeforeStoppingImplCopyWithImpl<$Res>
+    extends _$RadioStateCopyWithImpl<$Res, _$BeforeStoppingImpl>
+    implements _$$BeforeStoppingImplCopyWith<$Res> {
+  __$$BeforeStoppingImplCopyWithImpl(
+      _$BeforeStoppingImpl _value, $Res Function(_$BeforeStoppingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_BeforeStopping implements _BeforeStopping {
-  const _$_BeforeStopping();
+class _$BeforeStoppingImpl implements _BeforeStopping {
+  const _$BeforeStoppingImpl();
 
   @override
   String toString() {
@@ -364,9 +359,9 @@ class _$_BeforeStopping implements _BeforeStopping {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_BeforeStopping);
+        (other.runtimeType == runtimeType && other is _$BeforeStoppingImpl);
   }
 
   @override
@@ -387,11 +382,11 @@ class _$_BeforeStopping implements _BeforeStopping {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? beforePlaying,
-    TResult Function()? beforeStopping,
-    TResult Function()? loaded,
-    TResult Function(String? message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? beforePlaying,
+    TResult? Function()? beforeStopping,
+    TResult? Function()? loaded,
+    TResult? Function(String? message)? error,
   }) {
     return beforeStopping?.call();
   }
@@ -427,11 +422,11 @@ class _$_BeforeStopping implements _BeforeStopping {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_BeforePlaying value)? beforePlaying,
-    TResult Function(_BeforeStopping value)? beforeStopping,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_BeforePlaying value)? beforePlaying,
+    TResult? Function(_BeforeStopping value)? beforeStopping,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return beforeStopping?.call(this);
   }
@@ -454,29 +449,29 @@ class _$_BeforeStopping implements _BeforeStopping {
 }
 
 abstract class _BeforeStopping implements RadioState {
-  const factory _BeforeStopping() = _$_BeforeStopping;
+  const factory _BeforeStopping() = _$BeforeStoppingImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res> extends _$RadioStateCopyWithImpl<$Res>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
-      : super(_value, (v) => _then(v as _$_Loaded));
-
-  @override
-  _$_Loaded get _value => super._value as _$_Loaded;
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$RadioStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded();
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl();
 
   @override
   String toString() {
@@ -484,9 +479,9 @@ class _$_Loaded implements _Loaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loaded);
+        (other.runtimeType == runtimeType && other is _$LoadedImpl);
   }
 
   @override
@@ -507,11 +502,11 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? beforePlaying,
-    TResult Function()? beforeStopping,
-    TResult Function()? loaded,
-    TResult Function(String? message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? beforePlaying,
+    TResult? Function()? beforeStopping,
+    TResult? Function()? loaded,
+    TResult? Function(String? message)? error,
   }) {
     return loaded?.call();
   }
@@ -547,11 +542,11 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_BeforePlaying value)? beforePlaying,
-    TResult Function(_BeforeStopping value)? beforeStopping,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_BeforePlaying value)? beforePlaying,
+    TResult? Function(_BeforeStopping value)? beforeStopping,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -574,31 +569,33 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements RadioState {
-  const factory _Loaded() = _$_Loaded;
+  const factory _Loaded() = _$LoadedImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$RadioStateCopyWithImpl<$Res>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$RadioStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Error get _value => super._value as _$_Error;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_Error(
-      message == freezed
+    return _then(_$ErrorImpl(
+      freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -608,8 +605,8 @@ class __$$_ErrorCopyWithImpl<$Res> extends _$RadioStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error([this.message]);
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl([this.message]);
 
   @override
   final String? message;
@@ -620,21 +617,21 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
-            const DeepCollectionEquality().equals(other.message, message));
+            other is _$ErrorImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -651,11 +648,11 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? beforePlaying,
-    TResult Function()? beforeStopping,
-    TResult Function()? loaded,
-    TResult Function(String? message)? error,
+    TResult? Function()? initial,
+    TResult? Function()? beforePlaying,
+    TResult? Function()? beforeStopping,
+    TResult? Function()? loaded,
+    TResult? Function(String? message)? error,
   }) {
     return error?.call(message);
   }
@@ -691,11 +688,11 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_BeforePlaying value)? beforePlaying,
-    TResult Function(_BeforeStopping value)? beforeStopping,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_BeforePlaying value)? beforePlaying,
+    TResult? Function(_BeforeStopping value)? beforeStopping,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
   }
@@ -718,10 +715,10 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements RadioState {
-  const factory _Error([final String? message]) = _$_Error;
+  const factory _Error([final String? message]) = _$ErrorImpl;
 
   String? get message;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

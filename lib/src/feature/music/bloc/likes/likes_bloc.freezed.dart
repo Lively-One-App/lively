@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'likes_bloc.dart';
 
@@ -24,8 +24,8 @@ mixin _$LikesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(CityData data)? getLikes,
+    TResult? Function()? initial,
+    TResult? Function(CityData data)? getLikes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$LikesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialLikes value)? initial,
-    TResult Function(_GetLikes value)? getLikes,
+    TResult? Function(_InitialLikes value)? initial,
+    TResult? Function(_GetLikes value)? getLikes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,50 +60,56 @@ mixin _$LikesState {
 abstract class $LikesStateCopyWith<$Res> {
   factory $LikesStateCopyWith(
           LikesState value, $Res Function(LikesState) then) =
-      _$LikesStateCopyWithImpl<$Res>;
+      _$LikesStateCopyWithImpl<$Res, LikesState>;
 }
 
 /// @nodoc
-class _$LikesStateCopyWithImpl<$Res> implements $LikesStateCopyWith<$Res> {
+class _$LikesStateCopyWithImpl<$Res, $Val extends LikesState>
+    implements $LikesStateCopyWith<$Res> {
   _$LikesStateCopyWithImpl(this._value, this._then);
 
-  final LikesState _value;
   // ignore: unused_field
-  final $Res Function(LikesState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$$_InitialLikesCopyWith<$Res> {
-  factory _$$_InitialLikesCopyWith(
-          _$_InitialLikes value, $Res Function(_$_InitialLikes) then) =
-      __$$_InitialLikesCopyWithImpl<$Res>;
+abstract class _$$InitialLikesImplCopyWith<$Res> {
+  factory _$$InitialLikesImplCopyWith(
+          _$InitialLikesImpl value, $Res Function(_$InitialLikesImpl) then) =
+      __$$InitialLikesImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialLikesCopyWithImpl<$Res> extends _$LikesStateCopyWithImpl<$Res>
-    implements _$$_InitialLikesCopyWith<$Res> {
-  __$$_InitialLikesCopyWithImpl(
-      _$_InitialLikes _value, $Res Function(_$_InitialLikes) _then)
-      : super(_value, (v) => _then(v as _$_InitialLikes));
+class __$$InitialLikesImplCopyWithImpl<$Res>
+    extends _$LikesStateCopyWithImpl<$Res, _$InitialLikesImpl>
+    implements _$$InitialLikesImplCopyWith<$Res> {
+  __$$InitialLikesImplCopyWithImpl(
+      _$InitialLikesImpl _value, $Res Function(_$InitialLikesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitialLikesImpl with DiagnosticableTreeMixin implements _InitialLikes {
+  const _$InitialLikesImpl();
 
   @override
-  _$_InitialLikes get _value => super._value as _$_InitialLikes;
-}
-
-/// @nodoc
-
-class _$_InitialLikes implements _InitialLikes {
-  const _$_InitialLikes();
-
-  @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LikesState.initial()';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LikesState.initial'));
+  }
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialLikes);
+        (other.runtimeType == runtimeType && other is _$InitialLikesImpl);
   }
 
   @override
@@ -121,8 +127,8 @@ class _$_InitialLikes implements _InitialLikes {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(CityData data)? getLikes,
+    TResult? Function()? initial,
+    TResult? Function(CityData data)? getLikes,
   }) {
     return initial?.call();
   }
@@ -152,8 +158,8 @@ class _$_InitialLikes implements _InitialLikes {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialLikes value)? initial,
-    TResult Function(_GetLikes value)? getLikes,
+    TResult? Function(_InitialLikes value)? initial,
+    TResult? Function(_GetLikes value)? getLikes,
   }) {
     return initial?.call(this);
   }
@@ -173,35 +179,35 @@ class _$_InitialLikes implements _InitialLikes {
 }
 
 abstract class _InitialLikes implements LikesState {
-  const factory _InitialLikes() = _$_InitialLikes;
+  const factory _InitialLikes() = _$InitialLikesImpl;
 }
 
 /// @nodoc
-abstract class _$$_GetLikesCopyWith<$Res> {
-  factory _$$_GetLikesCopyWith(
-          _$_GetLikes value, $Res Function(_$_GetLikes) then) =
-      __$$_GetLikesCopyWithImpl<$Res>;
+abstract class _$$GetLikesImplCopyWith<$Res> {
+  factory _$$GetLikesImplCopyWith(
+          _$GetLikesImpl value, $Res Function(_$GetLikesImpl) then) =
+      __$$GetLikesImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({CityData data});
 
   $CityDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$_GetLikesCopyWithImpl<$Res> extends _$LikesStateCopyWithImpl<$Res>
-    implements _$$_GetLikesCopyWith<$Res> {
-  __$$_GetLikesCopyWithImpl(
-      _$_GetLikes _value, $Res Function(_$_GetLikes) _then)
-      : super(_value, (v) => _then(v as _$_GetLikes));
+class __$$GetLikesImplCopyWithImpl<$Res>
+    extends _$LikesStateCopyWithImpl<$Res, _$GetLikesImpl>
+    implements _$$GetLikesImplCopyWith<$Res> {
+  __$$GetLikesImplCopyWithImpl(
+      _$GetLikesImpl _value, $Res Function(_$GetLikesImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_GetLikes get _value => super._value as _$_GetLikes;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? data = null,
   }) {
-    return _then(_$_GetLikes(
-      data: data == freezed
+    return _then(_$GetLikesImpl(
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as CityData,
@@ -209,6 +215,7 @@ class __$$_GetLikesCopyWithImpl<$Res> extends _$LikesStateCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CityDataCopyWith<$Res> get data {
     return $CityDataCopyWith<$Res>(_value.data, (value) {
       return _then(_value.copyWith(data: value));
@@ -218,33 +225,41 @@ class __$$_GetLikesCopyWithImpl<$Res> extends _$LikesStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetLikes implements _GetLikes {
-  const _$_GetLikes({required this.data});
+class _$GetLikesImpl with DiagnosticableTreeMixin implements _GetLikes {
+  const _$GetLikesImpl({required this.data});
 
   @override
   final CityData data;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LikesState.getLikes(data: $data)';
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_GetLikes &&
-            const DeepCollectionEquality().equals(other.data, data));
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LikesState.getLikes'))
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetLikesImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
-  _$$_GetLikesCopyWith<_$_GetLikes> get copyWith =>
-      __$$_GetLikesCopyWithImpl<_$_GetLikes>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$GetLikesImplCopyWith<_$GetLikesImpl> get copyWith =>
+      __$$GetLikesImplCopyWithImpl<_$GetLikesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -258,8 +273,8 @@ class _$_GetLikes implements _GetLikes {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(CityData data)? getLikes,
+    TResult? Function()? initial,
+    TResult? Function(CityData data)? getLikes,
   }) {
     return getLikes?.call(data);
   }
@@ -289,8 +304,8 @@ class _$_GetLikes implements _GetLikes {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialLikes value)? initial,
-    TResult Function(_GetLikes value)? getLikes,
+    TResult? Function(_InitialLikes value)? initial,
+    TResult? Function(_GetLikes value)? getLikes,
   }) {
     return getLikes?.call(this);
   }
@@ -310,11 +325,11 @@ class _$_GetLikes implements _GetLikes {
 }
 
 abstract class _GetLikes implements LikesState {
-  const factory _GetLikes({required final CityData data}) = _$_GetLikes;
+  const factory _GetLikes({required final CityData data}) = _$GetLikesImpl;
 
   CityData get data;
   @JsonKey(ignore: true)
-  _$$_GetLikesCopyWith<_$_GetLikes> get copyWith =>
+  _$$GetLikesImplCopyWith<_$GetLikesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -325,13 +340,15 @@ mixin _$LikesEvent {
     required TResult Function() disable,
     required TResult Function() writeLike,
     required TResult Function(CityData data) getCityData,
+    required TResult Function() processLikes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? disable,
-    TResult Function()? writeLike,
-    TResult Function(CityData data)? getCityData,
+    TResult? Function()? disable,
+    TResult? Function()? writeLike,
+    TResult? Function(CityData data)? getCityData,
+    TResult? Function()? processLikes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -339,6 +356,7 @@ mixin _$LikesEvent {
     TResult Function()? disable,
     TResult Function()? writeLike,
     TResult Function(CityData data)? getCityData,
+    TResult Function()? processLikes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -347,13 +365,15 @@ mixin _$LikesEvent {
     required TResult Function(_DisableLikes value) disable,
     required TResult Function(_WriteLikes value) writeLike,
     required TResult Function(_GetCityData value) getCityData,
+    required TResult Function(_ProcessLikes value) processLikes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_DisableLikes value)? disable,
-    TResult Function(_WriteLikes value)? writeLike,
-    TResult Function(_GetCityData value)? getCityData,
+    TResult? Function(_DisableLikes value)? disable,
+    TResult? Function(_WriteLikes value)? writeLike,
+    TResult? Function(_GetCityData value)? getCityData,
+    TResult? Function(_ProcessLikes value)? processLikes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -361,6 +381,7 @@ mixin _$LikesEvent {
     TResult Function(_DisableLikes value)? disable,
     TResult Function(_WriteLikes value)? writeLike,
     TResult Function(_GetCityData value)? getCityData,
+    TResult Function(_ProcessLikes value)? processLikes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -370,50 +391,56 @@ mixin _$LikesEvent {
 abstract class $LikesEventCopyWith<$Res> {
   factory $LikesEventCopyWith(
           LikesEvent value, $Res Function(LikesEvent) then) =
-      _$LikesEventCopyWithImpl<$Res>;
+      _$LikesEventCopyWithImpl<$Res, LikesEvent>;
 }
 
 /// @nodoc
-class _$LikesEventCopyWithImpl<$Res> implements $LikesEventCopyWith<$Res> {
+class _$LikesEventCopyWithImpl<$Res, $Val extends LikesEvent>
+    implements $LikesEventCopyWith<$Res> {
   _$LikesEventCopyWithImpl(this._value, this._then);
 
-  final LikesEvent _value;
   // ignore: unused_field
-  final $Res Function(LikesEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$$_DisableLikesCopyWith<$Res> {
-  factory _$$_DisableLikesCopyWith(
-          _$_DisableLikes value, $Res Function(_$_DisableLikes) then) =
-      __$$_DisableLikesCopyWithImpl<$Res>;
+abstract class _$$DisableLikesImplCopyWith<$Res> {
+  factory _$$DisableLikesImplCopyWith(
+          _$DisableLikesImpl value, $Res Function(_$DisableLikesImpl) then) =
+      __$$DisableLikesImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_DisableLikesCopyWithImpl<$Res> extends _$LikesEventCopyWithImpl<$Res>
-    implements _$$_DisableLikesCopyWith<$Res> {
-  __$$_DisableLikesCopyWithImpl(
-      _$_DisableLikes _value, $Res Function(_$_DisableLikes) _then)
-      : super(_value, (v) => _then(v as _$_DisableLikes));
+class __$$DisableLikesImplCopyWithImpl<$Res>
+    extends _$LikesEventCopyWithImpl<$Res, _$DisableLikesImpl>
+    implements _$$DisableLikesImplCopyWith<$Res> {
+  __$$DisableLikesImplCopyWithImpl(
+      _$DisableLikesImpl _value, $Res Function(_$DisableLikesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DisableLikesImpl with DiagnosticableTreeMixin implements _DisableLikes {
+  const _$DisableLikesImpl();
 
   @override
-  _$_DisableLikes get _value => super._value as _$_DisableLikes;
-}
-
-/// @nodoc
-
-class _$_DisableLikes implements _DisableLikes {
-  const _$_DisableLikes();
-
-  @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LikesEvent.disable()';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LikesEvent.disable'));
+  }
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DisableLikes);
+        (other.runtimeType == runtimeType && other is _$DisableLikesImpl);
   }
 
   @override
@@ -425,6 +452,7 @@ class _$_DisableLikes implements _DisableLikes {
     required TResult Function() disable,
     required TResult Function() writeLike,
     required TResult Function(CityData data) getCityData,
+    required TResult Function() processLikes,
   }) {
     return disable();
   }
@@ -432,9 +460,10 @@ class _$_DisableLikes implements _DisableLikes {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? disable,
-    TResult Function()? writeLike,
-    TResult Function(CityData data)? getCityData,
+    TResult? Function()? disable,
+    TResult? Function()? writeLike,
+    TResult? Function(CityData data)? getCityData,
+    TResult? Function()? processLikes,
   }) {
     return disable?.call();
   }
@@ -445,6 +474,7 @@ class _$_DisableLikes implements _DisableLikes {
     TResult Function()? disable,
     TResult Function()? writeLike,
     TResult Function(CityData data)? getCityData,
+    TResult Function()? processLikes,
     required TResult orElse(),
   }) {
     if (disable != null) {
@@ -459,6 +489,7 @@ class _$_DisableLikes implements _DisableLikes {
     required TResult Function(_DisableLikes value) disable,
     required TResult Function(_WriteLikes value) writeLike,
     required TResult Function(_GetCityData value) getCityData,
+    required TResult Function(_ProcessLikes value) processLikes,
   }) {
     return disable(this);
   }
@@ -466,9 +497,10 @@ class _$_DisableLikes implements _DisableLikes {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_DisableLikes value)? disable,
-    TResult Function(_WriteLikes value)? writeLike,
-    TResult Function(_GetCityData value)? getCityData,
+    TResult? Function(_DisableLikes value)? disable,
+    TResult? Function(_WriteLikes value)? writeLike,
+    TResult? Function(_GetCityData value)? getCityData,
+    TResult? Function(_ProcessLikes value)? processLikes,
   }) {
     return disable?.call(this);
   }
@@ -479,6 +511,7 @@ class _$_DisableLikes implements _DisableLikes {
     TResult Function(_DisableLikes value)? disable,
     TResult Function(_WriteLikes value)? writeLike,
     TResult Function(_GetCityData value)? getCityData,
+    TResult Function(_ProcessLikes value)? processLikes,
     required TResult orElse(),
   }) {
     if (disable != null) {
@@ -489,41 +522,45 @@ class _$_DisableLikes implements _DisableLikes {
 }
 
 abstract class _DisableLikes implements LikesEvent {
-  const factory _DisableLikes() = _$_DisableLikes;
+  const factory _DisableLikes() = _$DisableLikesImpl;
 }
 
 /// @nodoc
-abstract class _$$_WriteLikesCopyWith<$Res> {
-  factory _$$_WriteLikesCopyWith(
-          _$_WriteLikes value, $Res Function(_$_WriteLikes) then) =
-      __$$_WriteLikesCopyWithImpl<$Res>;
+abstract class _$$WriteLikesImplCopyWith<$Res> {
+  factory _$$WriteLikesImplCopyWith(
+          _$WriteLikesImpl value, $Res Function(_$WriteLikesImpl) then) =
+      __$$WriteLikesImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WriteLikesCopyWithImpl<$Res> extends _$LikesEventCopyWithImpl<$Res>
-    implements _$$_WriteLikesCopyWith<$Res> {
-  __$$_WriteLikesCopyWithImpl(
-      _$_WriteLikes _value, $Res Function(_$_WriteLikes) _then)
-      : super(_value, (v) => _then(v as _$_WriteLikes));
+class __$$WriteLikesImplCopyWithImpl<$Res>
+    extends _$LikesEventCopyWithImpl<$Res, _$WriteLikesImpl>
+    implements _$$WriteLikesImplCopyWith<$Res> {
+  __$$WriteLikesImplCopyWithImpl(
+      _$WriteLikesImpl _value, $Res Function(_$WriteLikesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$WriteLikesImpl with DiagnosticableTreeMixin implements _WriteLikes {
+  const _$WriteLikesImpl();
 
   @override
-  _$_WriteLikes get _value => super._value as _$_WriteLikes;
-}
-
-/// @nodoc
-
-class _$_WriteLikes implements _WriteLikes {
-  const _$_WriteLikes();
-
-  @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LikesEvent.writeLike()';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LikesEvent.writeLike'));
+  }
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WriteLikes);
+        (other.runtimeType == runtimeType && other is _$WriteLikesImpl);
   }
 
   @override
@@ -535,6 +572,7 @@ class _$_WriteLikes implements _WriteLikes {
     required TResult Function() disable,
     required TResult Function() writeLike,
     required TResult Function(CityData data) getCityData,
+    required TResult Function() processLikes,
   }) {
     return writeLike();
   }
@@ -542,9 +580,10 @@ class _$_WriteLikes implements _WriteLikes {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? disable,
-    TResult Function()? writeLike,
-    TResult Function(CityData data)? getCityData,
+    TResult? Function()? disable,
+    TResult? Function()? writeLike,
+    TResult? Function(CityData data)? getCityData,
+    TResult? Function()? processLikes,
   }) {
     return writeLike?.call();
   }
@@ -555,6 +594,7 @@ class _$_WriteLikes implements _WriteLikes {
     TResult Function()? disable,
     TResult Function()? writeLike,
     TResult Function(CityData data)? getCityData,
+    TResult Function()? processLikes,
     required TResult orElse(),
   }) {
     if (writeLike != null) {
@@ -569,6 +609,7 @@ class _$_WriteLikes implements _WriteLikes {
     required TResult Function(_DisableLikes value) disable,
     required TResult Function(_WriteLikes value) writeLike,
     required TResult Function(_GetCityData value) getCityData,
+    required TResult Function(_ProcessLikes value) processLikes,
   }) {
     return writeLike(this);
   }
@@ -576,9 +617,10 @@ class _$_WriteLikes implements _WriteLikes {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_DisableLikes value)? disable,
-    TResult Function(_WriteLikes value)? writeLike,
-    TResult Function(_GetCityData value)? getCityData,
+    TResult? Function(_DisableLikes value)? disable,
+    TResult? Function(_WriteLikes value)? writeLike,
+    TResult? Function(_GetCityData value)? getCityData,
+    TResult? Function(_ProcessLikes value)? processLikes,
   }) {
     return writeLike?.call(this);
   }
@@ -589,6 +631,7 @@ class _$_WriteLikes implements _WriteLikes {
     TResult Function(_DisableLikes value)? disable,
     TResult Function(_WriteLikes value)? writeLike,
     TResult Function(_GetCityData value)? getCityData,
+    TResult Function(_ProcessLikes value)? processLikes,
     required TResult orElse(),
   }) {
     if (writeLike != null) {
@@ -599,35 +642,35 @@ class _$_WriteLikes implements _WriteLikes {
 }
 
 abstract class _WriteLikes implements LikesEvent {
-  const factory _WriteLikes() = _$_WriteLikes;
+  const factory _WriteLikes() = _$WriteLikesImpl;
 }
 
 /// @nodoc
-abstract class _$$_GetCityDataCopyWith<$Res> {
-  factory _$$_GetCityDataCopyWith(
-          _$_GetCityData value, $Res Function(_$_GetCityData) then) =
-      __$$_GetCityDataCopyWithImpl<$Res>;
+abstract class _$$GetCityDataImplCopyWith<$Res> {
+  factory _$$GetCityDataImplCopyWith(
+          _$GetCityDataImpl value, $Res Function(_$GetCityDataImpl) then) =
+      __$$GetCityDataImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({CityData data});
 
   $CityDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$_GetCityDataCopyWithImpl<$Res> extends _$LikesEventCopyWithImpl<$Res>
-    implements _$$_GetCityDataCopyWith<$Res> {
-  __$$_GetCityDataCopyWithImpl(
-      _$_GetCityData _value, $Res Function(_$_GetCityData) _then)
-      : super(_value, (v) => _then(v as _$_GetCityData));
+class __$$GetCityDataImplCopyWithImpl<$Res>
+    extends _$LikesEventCopyWithImpl<$Res, _$GetCityDataImpl>
+    implements _$$GetCityDataImplCopyWith<$Res> {
+  __$$GetCityDataImplCopyWithImpl(
+      _$GetCityDataImpl _value, $Res Function(_$GetCityDataImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_GetCityData get _value => super._value as _$_GetCityData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? data = null,
   }) {
-    return _then(_$_GetCityData(
-      data: data == freezed
+    return _then(_$GetCityDataImpl(
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as CityData,
@@ -635,6 +678,7 @@ class __$$_GetCityDataCopyWithImpl<$Res> extends _$LikesEventCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CityDataCopyWith<$Res> get data {
     return $CityDataCopyWith<$Res>(_value.data, (value) {
       return _then(_value.copyWith(data: value));
@@ -644,33 +688,41 @@ class __$$_GetCityDataCopyWithImpl<$Res> extends _$LikesEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetCityData implements _GetCityData {
-  const _$_GetCityData({required this.data});
+class _$GetCityDataImpl with DiagnosticableTreeMixin implements _GetCityData {
+  const _$GetCityDataImpl({required this.data});
 
   @override
   final CityData data;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LikesEvent.getCityData(data: $data)';
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_GetCityData &&
-            const DeepCollectionEquality().equals(other.data, data));
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LikesEvent.getCityData'))
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetCityDataImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
-  _$$_GetCityDataCopyWith<_$_GetCityData> get copyWith =>
-      __$$_GetCityDataCopyWithImpl<_$_GetCityData>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$GetCityDataImplCopyWith<_$GetCityDataImpl> get copyWith =>
+      __$$GetCityDataImplCopyWithImpl<_$GetCityDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -678,6 +730,7 @@ class _$_GetCityData implements _GetCityData {
     required TResult Function() disable,
     required TResult Function() writeLike,
     required TResult Function(CityData data) getCityData,
+    required TResult Function() processLikes,
   }) {
     return getCityData(data);
   }
@@ -685,9 +738,10 @@ class _$_GetCityData implements _GetCityData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? disable,
-    TResult Function()? writeLike,
-    TResult Function(CityData data)? getCityData,
+    TResult? Function()? disable,
+    TResult? Function()? writeLike,
+    TResult? Function(CityData data)? getCityData,
+    TResult? Function()? processLikes,
   }) {
     return getCityData?.call(data);
   }
@@ -698,6 +752,7 @@ class _$_GetCityData implements _GetCityData {
     TResult Function()? disable,
     TResult Function()? writeLike,
     TResult Function(CityData data)? getCityData,
+    TResult Function()? processLikes,
     required TResult orElse(),
   }) {
     if (getCityData != null) {
@@ -712,6 +767,7 @@ class _$_GetCityData implements _GetCityData {
     required TResult Function(_DisableLikes value) disable,
     required TResult Function(_WriteLikes value) writeLike,
     required TResult Function(_GetCityData value) getCityData,
+    required TResult Function(_ProcessLikes value) processLikes,
   }) {
     return getCityData(this);
   }
@@ -719,9 +775,10 @@ class _$_GetCityData implements _GetCityData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_DisableLikes value)? disable,
-    TResult Function(_WriteLikes value)? writeLike,
-    TResult Function(_GetCityData value)? getCityData,
+    TResult? Function(_DisableLikes value)? disable,
+    TResult? Function(_WriteLikes value)? writeLike,
+    TResult? Function(_GetCityData value)? getCityData,
+    TResult? Function(_ProcessLikes value)? processLikes,
   }) {
     return getCityData?.call(this);
   }
@@ -732,6 +789,7 @@ class _$_GetCityData implements _GetCityData {
     TResult Function(_DisableLikes value)? disable,
     TResult Function(_WriteLikes value)? writeLike,
     TResult Function(_GetCityData value)? getCityData,
+    TResult Function(_ProcessLikes value)? processLikes,
     required TResult orElse(),
   }) {
     if (getCityData != null) {
@@ -742,10 +800,131 @@ class _$_GetCityData implements _GetCityData {
 }
 
 abstract class _GetCityData implements LikesEvent {
-  const factory _GetCityData({required final CityData data}) = _$_GetCityData;
+  const factory _GetCityData({required final CityData data}) =
+      _$GetCityDataImpl;
 
   CityData get data;
   @JsonKey(ignore: true)
-  _$$_GetCityDataCopyWith<_$_GetCityData> get copyWith =>
+  _$$GetCityDataImplCopyWith<_$GetCityDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ProcessLikesImplCopyWith<$Res> {
+  factory _$$ProcessLikesImplCopyWith(
+          _$ProcessLikesImpl value, $Res Function(_$ProcessLikesImpl) then) =
+      __$$ProcessLikesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ProcessLikesImplCopyWithImpl<$Res>
+    extends _$LikesEventCopyWithImpl<$Res, _$ProcessLikesImpl>
+    implements _$$ProcessLikesImplCopyWith<$Res> {
+  __$$ProcessLikesImplCopyWithImpl(
+      _$ProcessLikesImpl _value, $Res Function(_$ProcessLikesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ProcessLikesImpl with DiagnosticableTreeMixin implements _ProcessLikes {
+  const _$ProcessLikesImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LikesEvent.processLikes()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LikesEvent.processLikes'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ProcessLikesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() disable,
+    required TResult Function() writeLike,
+    required TResult Function(CityData data) getCityData,
+    required TResult Function() processLikes,
+  }) {
+    return processLikes();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? disable,
+    TResult? Function()? writeLike,
+    TResult? Function(CityData data)? getCityData,
+    TResult? Function()? processLikes,
+  }) {
+    return processLikes?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? disable,
+    TResult Function()? writeLike,
+    TResult Function(CityData data)? getCityData,
+    TResult Function()? processLikes,
+    required TResult orElse(),
+  }) {
+    if (processLikes != null) {
+      return processLikes();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DisableLikes value) disable,
+    required TResult Function(_WriteLikes value) writeLike,
+    required TResult Function(_GetCityData value) getCityData,
+    required TResult Function(_ProcessLikes value) processLikes,
+  }) {
+    return processLikes(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DisableLikes value)? disable,
+    TResult? Function(_WriteLikes value)? writeLike,
+    TResult? Function(_GetCityData value)? getCityData,
+    TResult? Function(_ProcessLikes value)? processLikes,
+  }) {
+    return processLikes?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DisableLikes value)? disable,
+    TResult Function(_WriteLikes value)? writeLike,
+    TResult Function(_GetCityData value)? getCityData,
+    TResult Function(_ProcessLikes value)? processLikes,
+    required TResult orElse(),
+  }) {
+    if (processLikes != null) {
+      return processLikes(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ProcessLikes implements LikesEvent {
+  const factory _ProcessLikes() = _$ProcessLikesImpl;
 }

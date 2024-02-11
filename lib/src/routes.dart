@@ -26,7 +26,7 @@ abstract class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/map':
-        return _myRouteAnimation(MapScreen());
+        return _myRouteAnimation(const MapScreen());
       case '/burgerMenu':
         return _myRouteAnimation(const BurgerMenu());
       case '/home':

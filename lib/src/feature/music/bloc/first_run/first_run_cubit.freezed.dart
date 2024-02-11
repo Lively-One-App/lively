@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'first_run_cubit.dart';
 
@@ -24,8 +24,8 @@ mixin _$FirstRunState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onFirstRun,
+    TResult? Function()? initial,
+    TResult? Function()? onFirstRun,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$FirstRunState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnFirstRun value)? onFirstRun,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnFirstRun value)? onFirstRun,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,40 +60,40 @@ mixin _$FirstRunState {
 abstract class $FirstRunStateCopyWith<$Res> {
   factory $FirstRunStateCopyWith(
           FirstRunState value, $Res Function(FirstRunState) then) =
-      _$FirstRunStateCopyWithImpl<$Res>;
+      _$FirstRunStateCopyWithImpl<$Res, FirstRunState>;
 }
 
 /// @nodoc
-class _$FirstRunStateCopyWithImpl<$Res>
+class _$FirstRunStateCopyWithImpl<$Res, $Val extends FirstRunState>
     implements $FirstRunStateCopyWith<$Res> {
   _$FirstRunStateCopyWithImpl(this._value, this._then);
 
-  final FirstRunState _value;
   // ignore: unused_field
-  final $Res Function(FirstRunState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$FirstRunStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$FirstRunStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -101,9 +101,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -121,8 +121,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onFirstRun,
+    TResult? Function()? initial,
+    TResult? Function()? onFirstRun,
   }) {
     return initial?.call();
   }
@@ -152,8 +152,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnFirstRun value)? onFirstRun,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnFirstRun value)? onFirstRun,
   }) {
     return initial?.call(this);
   }
@@ -173,32 +173,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements FirstRunState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnFirstRunCopyWith<$Res> {
-  factory _$$_OnFirstRunCopyWith(
-          _$_OnFirstRun value, $Res Function(_$_OnFirstRun) then) =
-      __$$_OnFirstRunCopyWithImpl<$Res>;
+abstract class _$$OnFirstRunImplCopyWith<$Res> {
+  factory _$$OnFirstRunImplCopyWith(
+          _$OnFirstRunImpl value, $Res Function(_$OnFirstRunImpl) then) =
+      __$$OnFirstRunImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnFirstRunCopyWithImpl<$Res>
-    extends _$FirstRunStateCopyWithImpl<$Res>
-    implements _$$_OnFirstRunCopyWith<$Res> {
-  __$$_OnFirstRunCopyWithImpl(
-      _$_OnFirstRun _value, $Res Function(_$_OnFirstRun) _then)
-      : super(_value, (v) => _then(v as _$_OnFirstRun));
-
-  @override
-  _$_OnFirstRun get _value => super._value as _$_OnFirstRun;
+class __$$OnFirstRunImplCopyWithImpl<$Res>
+    extends _$FirstRunStateCopyWithImpl<$Res, _$OnFirstRunImpl>
+    implements _$$OnFirstRunImplCopyWith<$Res> {
+  __$$OnFirstRunImplCopyWithImpl(
+      _$OnFirstRunImpl _value, $Res Function(_$OnFirstRunImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OnFirstRun implements _OnFirstRun {
-  const _$_OnFirstRun();
+class _$OnFirstRunImpl implements _OnFirstRun {
+  const _$OnFirstRunImpl();
 
   @override
   String toString() {
@@ -206,9 +203,9 @@ class _$_OnFirstRun implements _OnFirstRun {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnFirstRun);
+        (other.runtimeType == runtimeType && other is _$OnFirstRunImpl);
   }
 
   @override
@@ -226,8 +223,8 @@ class _$_OnFirstRun implements _OnFirstRun {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onFirstRun,
+    TResult? Function()? initial,
+    TResult? Function()? onFirstRun,
   }) {
     return onFirstRun?.call();
   }
@@ -257,8 +254,8 @@ class _$_OnFirstRun implements _OnFirstRun {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnFirstRun value)? onFirstRun,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnFirstRun value)? onFirstRun,
   }) {
     return onFirstRun?.call(this);
   }
@@ -278,5 +275,5 @@ class _$_OnFirstRun implements _OnFirstRun {
 }
 
 abstract class _OnFirstRun implements FirstRunState {
-  const factory _OnFirstRun() = _$_OnFirstRun;
+  const factory _OnFirstRun() = _$OnFirstRunImpl;
 }

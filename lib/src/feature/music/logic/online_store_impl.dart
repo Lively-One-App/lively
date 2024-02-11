@@ -6,9 +6,10 @@ import '../model/firestore/city_data.dart';
 abstract class OnlineStoreImpl {
   
   Stream<CityData> getData(final String nameCity);
-  Stream getMarkers();
+  void setGeoPointController(Sink<Map<String, dynamic>> controller);
+  Future<void> setData(final String nameCity);
+  Future<void> proccessLikes();
   Stream getRunString();
-  void setData(final String nameCity);
-  void addUpdateMarker(final Position position, final String city, final String devInfo);
-  void removeMarker(final String id);
+  Future<void> addUpdateMarker(final Position position);
+  Future<void> removeMarker();
 }

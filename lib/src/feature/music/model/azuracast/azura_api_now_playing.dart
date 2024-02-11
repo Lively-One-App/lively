@@ -1,3 +1,4 @@
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:lively/src/feature/music/model/azuracast/azura_api_now_playing_current_song.dart';
 import 'package:lively/src/feature/music/model/azuracast/azura_api_now_playing_listeners.dart';
@@ -28,6 +29,7 @@ class AzuraApiNowPlaying with _$AzuraApiNowPlaying {
       cacheFrom? cache}) = _AzuraApiNowPlaying;
 
   factory AzuraApiNowPlaying.fromJson(Map<String, dynamic> json) {
-    return _$AzuraApiNowPlayingFromJson(json);
+    return _$$AzuraApiNowPlayingImplFromJson(json);
   }
 }
+
