@@ -82,6 +82,7 @@ void main() => runZonedGuarded<void>(
             androidNotificationChannelName: 'Audio playback',
             androidNotificationOngoing: true,
           ),
+          
         );
 
         final socket = await WebSocketAutoReconnect(
@@ -90,7 +91,7 @@ void main() => runZonedGuarded<void>(
         final sharedPreferences = await SharedPreferences.getInstance();
         // FlutterError.onError =
         //     await FirebaseCrashlytics.instance.recordFlutterError;
-        final store = Firestore();
+        final store = SupabaseHelper(sharedPreferences);
         runApp(MultiBlocProvider(
           providers: [
             BlocProvider<AzuraApiNowPlayingCubit>(
@@ -124,7 +125,7 @@ void main() => runZonedGuarded<void>(
                 );
               },
             ),
-            BlocProvider<MapBloc>(create: ((context) => MapBloc(store))),
+            BlocProvider<MapBloc>(create: ((context) => MapBloc(store, sharedPreferences))),
             BlocProvider<RunStringBloc>(
                 create: ((context) => RunStringBloc(store))),
           ],

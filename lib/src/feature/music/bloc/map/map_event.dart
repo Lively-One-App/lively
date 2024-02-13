@@ -29,4 +29,3 @@ class SharePositionEvent extends MapEvent {
   final Position position;
   const SharePositionEvent({required this.position});
 }
-

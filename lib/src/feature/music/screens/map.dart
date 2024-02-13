@@ -25,9 +25,27 @@ class _MapScreenState extends State<MapScreen>
     //     point: LatLng(55.7522, 37.6156),
     //     builder: (ctx) => const ImageIcon(AssetImage('assets/marker_map.png'))),
   ];
-
-  List<Marker> livelyMarkers = [];
-
+  @override
+  void initState() {
+    super.initState();
+    _mapCtrl = MapController();
+    _cameraAnimationController = AnimationController(
+        duration: const Duration(milliseconds: 500), vsync: this);
+    if (BlocProvider.of<MapBloc>(context).state.listMarkers.isNotEmpty) {
+      BlocProvider.of<MapBloc>(context).state.listMarkers.forEach((element) {
+        markers.add(Marker(
+            point: LatLng(element['latitude'], element['longitude']),
+            builder: (ctx) =>
+                const ImageIcon(AssetImage('assets/marker_map_count.png'))));
+      });
+      isShareMyPosition =
+          BlocProvider.of<MapBloc>(context).state.isShareMyPosition;
+      if (isShareMyPosition) {
+        BlocProvider.of<MapBloc>(context)
+            .add(const GetLastKnownPositionEvent());
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -46,63 +64,63 @@ class _MapScreenState extends State<MapScreen>
               LatLng(state.position.latitude, state.position.longitude),
               cameraZoom);
         }
-
-        if (state is OffSharedPositionState) {
-          myMarkers.clear();
+        if (state.isShareMyPosition != isShareMyPosition) {
+          setState(() {
+            isShareMyPosition = state.isShareMyPosition;
+          });
         }
         if (state is FetchChangeMarkers) {
-          //livelyMarkers.clear();
-
-          for (int i = 0; i <= state.listMarkers.length - 1; i++) {
-            livelyMarkers.add(Marker(
-                point: LatLng(state.listMarkers[i]['latitude'],
-                    state.listMarkers[i]['longitude']),
-                builder: (ctx) =>
-                    const ImageIcon(AssetImage('assets/marker_map.png'))));
-          }
-
-          // state.listMarkers.forEach((element) {
-          //   livelyMarkers.add(Marker(
-          //       point: LatLng(element['latitude'], element['longitude']),
-          //       builder: (ctx) =>
-          //           const Image(image: AssetImage('assets/marker_map.png'))));
-          // });
-          print('p');
-
+          setState(() {
+            markers.clear();
+            state.listMarkers.forEach((element) {
+              markers.add(Marker(
+                  point: LatLng(element['latitude'], element['longitude']),
+                  builder: (ctx) => const ImageIcon(
+                      AssetImage('assets/marker_map_count.png'))));
+            });
+            markers = List.from(markers);
+          });
         }
       },
       child: Stack(
         alignment: Alignment.center,
         children: [
-
-          BlocBuilder<MapBloc, MapState>(
-            buildWhen: (previous, current) => current is FetchChangeMarkers,
-            builder: (context, state) {
-              return FlutterMap(
-                mapController: _mapCtrl,
-                options: MapOptions(
-                    center: LatLng(55.7522, 37.6156),
-                    zoom: 9.2,
-                    maxZoom: 18,
-                    interactiveFlags:
-                        InteractiveFlag.all & ~InteractiveFlag.rotate),
-                children: [
-                  TileLayer(
-                    urlTemplate:
-                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  ),
-                  MarkerLayer(
-                    markers: myMarkers,
-                  ),
-                  MarkerClusterLayerWidget(
-                      options: MarkerClusterLayerOptions(
-                    maxClusterRadius: 45,
-                    size: const Size(30, 30),
-                    anchor: AnchorPos.align(AnchorAlign.center),
-                    fitBoundsOptions: const FitBoundsOptions(
-                      padding: EdgeInsets.all(50),
-                      maxZoom: 15,
-
+          FlutterMap(
+            mapController: _mapCtrl,
+            options: MapOptions(
+                center: LatLng(55.7522, 37.6156),
+                zoom: 9.2,
+                maxZoom: 18,
+                interactiveFlags:
+                    InteractiveFlag.all & ~InteractiveFlag.rotate),
+            children: [
+              TileLayer(
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              ),
+              MarkerClusterLayerWidget(
+                  options: MarkerClusterLayerOptions(
+                maxClusterRadius: 45,
+                size: const Size(30, 30),
+                anchor: AnchorPos.align(AnchorAlign.center),
+                fitBoundsOptions: const FitBoundsOptions(
+                  padding: EdgeInsets.all(50),
+                  maxZoom: 15,
+                ),
+                markers: markers,
+                builder: (BuildContext context, List<Marker> marks) {
+                  return Stack(children: [
+                    const Image(
+                        image: AssetImage('assets/marker_map_count.png')),
+                    Positioned(
+                      top: 5,
+                      left: marks.length > 9 ? 5 : 8,
+                      child: Text(
+                        marks.length > 99 ? '99+' : marks.length.toString(),
+                        style: const TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 10,
+                            color: Colors.white),
+                      ),
                     ),
                   ]);
                 },
@@ -110,19 +128,18 @@ class _MapScreenState extends State<MapScreen>
             ],
           ),
           Positioned(
-
             top: MediaQuery.of(context).size.height * 0.87,
             left: MediaQuery.of(context).size.width * 0.05,
             child: BlocBuilder<MapBloc, MapState>(
-              // buildWhen: (previous, current) {
-              //   return current is OnSharedPositionState || current is OffSharedPositionEvent;
-              // },
+              buildWhen: (previous, current) {
+                return current is OnSharedPositionState || current is OffSharedPositionEvent;
+              },
               builder: (context, state) {
                 return GestureDetector(
                   onTap: () {
-                    mapBloc.isShareMyPosition
-                        ? (mapBloc.add(OffSharedPositionEvent()))
-                        : mapBloc.add(OnSharedPositionEvent());
+                    isShareMyPosition
+                        ? BlocProvider.of<MapBloc>(context).add(const OffSharedPositionEvent())
+                        : BlocProvider.of<MapBloc>(context).add(const OnSharedPositionEvent());
                   },
                   child: Container(
                       height: MediaQuery.of(context).size.height * 0.08,
@@ -144,20 +161,18 @@ class _MapScreenState extends State<MapScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            state is OffSharedPositionState
-                                ? 'Поделиться геопозицией'
-                                : 'Перестать делиться',
+                            isShareMyPosition 
+                                ? 'Перестать делиться'
+                                : 'Поделиться геопозицией',
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 19,
                                 decoration: TextDecoration.none),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 35,
                             width: 35,
-                            child: Image(
-                              image: AssetImage('assets/marker_map.png'),
-                            ),
+                            child: SvgPicture.asset('assets/marker_map.svg')
                           )
                         ],
                       )),
@@ -165,7 +180,6 @@ class _MapScreenState extends State<MapScreen>
               },
             ),
           ),
-
           Positioned(
               left: MediaQuery.of(context).size.width * 0.83,
               top: MediaQuery.of(context).size.height * 0.32,

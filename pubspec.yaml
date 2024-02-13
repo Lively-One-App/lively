@@ -81,6 +81,7 @@ flutter:
     - assets/map_icon.png
     - assets/map_icon.svg
     - assets/marker_map.png
+    - assets/marker_map.svg
     - assets/marker_map_count.png
     - assets/close_map.png
     - assets/close_map.svg
