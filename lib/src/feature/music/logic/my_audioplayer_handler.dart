@@ -4,7 +4,9 @@ import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
 
 class MyAudioPlayerHandler extends BaseAudioHandler {
-  final _player = AudioPlayer()..setAutomaticallyWaitsToMinimizeStalling(true);
+  final _player = AudioPlayer()
+    ..setAutomaticallyWaitsToMinimizeStalling(true)
+    ..setCanUseNetworkResourcesForLiveStreamingWhilePaused(true);
 
   MyAudioPlayerHandler() {
     _player.playbackEventStream
@@ -25,7 +27,9 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
 
   @override
   Future<void> stop() async {
+    final audioSource = _player.audioSource!;
     await _player.stop();
+    await setAudioSource(audioSource);
   }
 
   Future<void> dispose() async {
@@ -35,7 +39,7 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
   AudioSource? get audioSource => _player.audioSource;
   Future<Duration?> setAudioSource(
     AudioSource source, {
-    bool preload = false,
+    bool preload = true,
     int? initialIndex,
     Duration? initialPosition,
   }) {

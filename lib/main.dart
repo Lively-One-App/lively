@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:l/l.dart';
+import 'package:lively/src/feature/music/bloc/azura_api_now_paying/azura_api_now_playing_cubit.dart';
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
@@ -15,7 +16,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
-import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
 import 'src/feature/music/bloc/first_run/first_run_cubit.dart';
 import 'src/feature/music/bloc/likes/likes_bloc.dart';
 import 'src/feature/music/bloc/radio/radio_cubit.dart';
@@ -58,6 +58,7 @@ void main() => runZonedGuarded<void>(
       androidNotificationChannelName: 'Audio Service Demo',
       androidNotificationOngoing: true,
       androidStopForegroundOnPause: true,
+      
               ),
             );
             final socket = WebSocketAutoReconnect(

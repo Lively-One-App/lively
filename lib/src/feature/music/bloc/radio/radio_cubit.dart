@@ -5,12 +5,11 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:l/l.dart';
+import 'package:lively/src/feature/music/bloc/azura_api_now_paying/azura_api_now_playing_cubit.dart';
+import 'package:lively/src/feature/music/model/azura_model/azura_model.dart';
 
 import '../../logic/my_audioplayer_handler.dart';
 import '../../logic/websocket_auto_reconnect.dart';
-import '../../model/azuracast/azura_api_now_playing.dart';
-import '../../model/azuracast/azura_api_song.dart';
-import '../azura_api_now_playing/azura_api_now_playing_cubit.dart';
 
 part 'radio_state.dart';
 part 'radio_cubit.freezed.dart';
@@ -18,10 +17,10 @@ part 'radio_cubit.freezed.dart';
 class RadioCubit extends Cubit<RadioState> {
   final MyAudioPlayerHandler _myAudioHandler;
   final AzuraApiNowPlayingCubit _azuraApiNowPlayingCubit;
-  late final StreamSubscription<AzuraApiNowPlaying> _listenUrl;
-  late final StreamSubscription<AzuraApiSong> _listenMediaItem;
-  late final StreamSubscription<AzuraApiNowPlaying> _azuraApiNowPlaying;
-  late final Stream<AzuraApiNowPlaying> _handleErrorAzuracast;
+  late final StreamSubscription<AzuraApiModel> _listenUrl;
+  late final StreamSubscription<Song> _listenMediaItem;
+  late final StreamSubscription<AzuraApiModel> _azuraApiNowPlaying;
+  late final Stream<AzuraApiModel> _handleErrorAzuracast;
   RadioCubit({
     required AzuraApiNowPlayingCubit azuraApiNowPlayingCubit,
     required MyAudioPlayerHandler myAudioHandler,
@@ -40,7 +39,7 @@ class RadioCubit extends Cubit<RadioState> {
           emit(const RadioState.initial());
           _myAudioHandler.setAudioSource(
             AudioSource.uri(Uri.parse(azuraApiNowPlaying.station.listenUrl)),
-            preload: false,
+            preload: true,
           );
         },
       );
@@ -53,7 +52,7 @@ class RadioCubit extends Cubit<RadioState> {
         .listen((azuraApiNowPlaying) {
       _myAudioHandler.setAudioSource(
         AudioSource.uri(Uri.parse(azuraApiNowPlaying.station.listenUrl)),
-        preload: false,
+        preload: true,
       );
     });
 
@@ -112,6 +111,7 @@ class RadioCubit extends Cubit<RadioState> {
         await Future.delayed(const Duration(milliseconds: 1000));
         await _myAudioHandler.stop();
       } else {
+        await Future.delayed(const Duration(milliseconds: 500));
         await _myAudioHandler.play();
       }
     } on PlayerException catch (e) {

@@ -19,7 +19,6 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   final RadioCubit _musicCubit;
   final SyncServerCubit _syncServerCubit;
   StreamSubscription? _listenerCityData;
-  StreamSubscription? _timerSubForProcessingLikes;
   late final StreamSubscription<RadioState> _musicCubitStream;
 
   LikesBloc({

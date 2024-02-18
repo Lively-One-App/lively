@@ -27,6 +27,7 @@ class ResetAnimatedIcon extends StatelessWidget {
           final timerValue = state == 9 ? 0 : state;
           if (timerValue == 8) controller.reverse();
           if (timerValue == 0) controller.forward();
+          
           return AnimatedBuilder(
               animation: controller,
               builder: (context, child) {

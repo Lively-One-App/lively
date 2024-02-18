@@ -1,24 +1,22 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:lively/src/feature/music/model/azura_model/azura_model.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-
-import '../model/azuracast/azura_api_now_playing.dart';
 
 class WebSocketAutoReconnect {
   final Uri _uri;
   final int delay;
-  final _myWebSocketController =
-      StreamController<AzuraApiNowPlaying>.broadcast();
+  final _myWebSocketController = StreamController<AzuraApiModel>.broadcast();
   late WebSocketChannel _webSocketChannel;
 
   WebSocketAutoReconnect(Uri uri, {this.delay = 10}) : _uri = uri {
     _connect();
   }
 
-  Stream<AzuraApiNowPlaying> get stream => _myWebSocketController.stream;
+  Stream<AzuraApiModel> get stream => _myWebSocketController.stream;
 
-  StreamSink<AzuraApiNowPlaying> get sink => _myWebSocketController.sink;
+  StreamSink<AzuraApiModel> get sink => _myWebSocketController.sink;
 
   void _connect() async {
 
@@ -39,16 +37,12 @@ class WebSocketAutoReconnect {
       Map<String,dynamic> temp = jsonDecode(event);
       
       //var res = AzuraApiNowPlaying.fromJson(jsonDecode(event));
-      
-      if(
-        !temp.containsKey('pub')||!temp['pub']['data'].containsKey('np')
-       
-        ){
-         return null;
-       }
-      var res = AzuraApiNowPlaying.fromJson(temp['pub']['data']['np']);
 
-           
+      if (!temp.containsKey('pub') || !temp['pub']['data'].containsKey('np')) {
+        return null;
+      }
+      var res = AzuraApiModel.fromMap(temp['pub']['data']['np']);
+      print(res.nowPlaying.song.title);
 
       return res;
     }).listen((event) {
