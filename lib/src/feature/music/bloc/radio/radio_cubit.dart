@@ -7,6 +7,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:l/l.dart';
 import 'package:lively/src/feature/music/bloc/azura_api_now_paying/azura_api_now_playing_cubit.dart';
 import 'package:lively/src/feature/music/model/azura_model/azura_model.dart';
+import 'package:lively/src/feature/music/model/azura_model/song.dart';
 
 import '../../logic/my_audioplayer_handler.dart';
 import '../../logic/websocket_auto_reconnect.dart';
