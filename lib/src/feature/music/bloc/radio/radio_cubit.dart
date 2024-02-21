@@ -112,7 +112,8 @@ class RadioCubit extends Cubit<RadioState> {
         await Future.delayed(const Duration(milliseconds: 1000));
         await _myAudioHandler.stop();
       } else {
-        await Future.delayed(const Duration(milliseconds: 1000));
+        emit(const RadioState.beforePlaying());
+        await Future.delayed(const Duration(milliseconds: 1500));
         await _myAudioHandler.play();
       }
     } on PlayerException catch (e) {
