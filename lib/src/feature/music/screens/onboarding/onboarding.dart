@@ -48,7 +48,7 @@ class OnBoarding extends StatelessWidget {
           bgButton: theme.scaffoldBackgroundColor.withOpacity(0.8),
           scaleFactorVideo:
               size.height > 768 ? size.height / 768 : 768 / size.height,
-          bottomPaddingButton: size.height * 0.2,
+          bottomPaddingButton: size.height * 0.1,
         ),
       ],
       showNextButton: false,

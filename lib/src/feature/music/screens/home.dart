@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:lively/src/feature/music/logic/notification_service.dart';
+import 'package:lively/src/widgets/animated_dots.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
@@ -211,10 +212,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 ValueListenableBuilder<bool>(
                   valueListenable: isLike,
                   builder: (context, value, _) => SafeArea(
-        
-
                     minimum: EdgeInsets.only(bottom: height < 700 ? 31 : 45),
-
                     top: false,
                     child: BlocBuilder<RunStringBloc, RunStringState>(
                       // buildWhen: (previous, current) =>
@@ -226,10 +224,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 width: MediaQuery.of(context).size.width,
                                 child: Center(
                                   child: Marquee(
-                                    directionMarguee: DirectionMarguee.oneDirection,
+                                    directionMarguee:
+                                        DirectionMarguee.oneDirection,
                                     child: Text(state.runString,
                                         style: textTheme.bodyText1),
-                                  
+
                                     // style: TextStyle(color: Colors.black),
                                     // text:
                                     //     state.runString,
@@ -281,10 +280,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   icon: SvgPicture.asset('assets/map_icon.svg'),
                   iconSize: 57,
                   onPressed: () {
-                    
                     Navigator.of(context).pushNamed('/map');
                   },
                 )),
+            // Positioned(
+            //     left: MediaQuery.of(context).size.width * 0.5,
+            //     top: MediaQuery.of(context).size.height * 0.8,
+            //     child: const AnimatedDots())
           ],
         ),
       ),
