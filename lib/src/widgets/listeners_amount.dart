@@ -19,8 +19,20 @@ class ListenersAmount extends StatelessWidget {
         builder: (context, state) {
           final unique = state?.listeners.total ?? 0;
 
-          return Text('$unique ${localizations.lively(unique)}',
-              style: textTheme.displayLarge);
+          return ConstrainedBox(
+            constraints: const BoxConstraints(minWidth: 280),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+              unique != 0 ? Text('$unique ',
+                style: textTheme.displayLarge) : SizedBox(
+                  width: 50,
+                  child: Image.asset('assets/animation/infinity_animation.gif', fit: BoxFit.contain,)),
+                  Text(' ${localizations.lively(unique)}',
+                style: textTheme.displayLarge)
+            ],),
+          );
         });
   }
 }

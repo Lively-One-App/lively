@@ -76,7 +76,7 @@ flutter:
     - assets/marker_map.png
     - assets/marker_map_count.png
     - assets/close_map.png
-    - assets/svg_animation/
+    - assets/animation/
     
   uses-material-design: true
   fonts:
