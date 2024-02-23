@@ -187,14 +187,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
                               return Text(
                                   '$unique ${localizations.lively(unique)}',
-                                  style: textTheme.headline1);
+                                  style: textTheme.displayLarge);
                             }),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
                           localizations.inTheStreamOf,
-                          style: textTheme.subtitle1,
+                          style: textTheme.titleMedium,
                         )
                       ],
                     ),
@@ -231,14 +231,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                         child: MarqueeWidget(
                                           text: state.runString,
                                           direction: Axis.horizontal,
-                                          style: textTheme.bodyText1!,
+                                          style: textTheme.bodyLarge!,
                                         ))),
                               )
                             : Text(
                                 !value
                                     ? localizations.changeTheGame
                                     : localizations.likeNotification,
-                                style: textTheme.bodyText1,
+                                style: textTheme.bodyLarge,
                               );
                       },
                     ),
@@ -273,7 +273,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 )),
             Positioned(
-                left: MediaQuery.of(context).size.width * 0.83,
+                //left: MediaQuery.of(context).size.width * 0.83,
+                left: MediaQuery.of(context).size.width * 0.5,
                 top: MediaQuery.of(context).size.height * 0.32,
                 child: IconButton(
                   icon: SvgPicture.asset('assets/map_icon.svg'),

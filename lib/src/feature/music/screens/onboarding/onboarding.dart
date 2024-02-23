@@ -40,7 +40,7 @@ class OnBoarding extends StatelessWidget {
             padding: const EdgeInsets.only(top: 6, right: 0),
             child: Text(
               localizations.start,
-              style: theme.textTheme.headline1
+              style: theme.textTheme.displayLarge
                   ?.copyWith(fontSize: 22, letterSpacing: 0),
             ),
           ),

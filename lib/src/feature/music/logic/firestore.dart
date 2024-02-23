@@ -45,9 +45,10 @@ class SupabaseHelper implements OnlineStoreImpl {
     String moscowId = '2e683111-964b-40da-b1bd-b232de6004af';
     final Stream request = await _store.client.from('runString').stream(
       primaryKey: ['id'],
+
     ).eq("city", moscowId);
-
-
+        
+    
     yield* request;
   }
 
