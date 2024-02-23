@@ -6,9 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:lively/src/feature/music/logic/notification_service.dart';
-import 'package:lively/src/widgets/animated_dots.dart';
-import 'package:marquee_widget/marquee_widget.dart';
-
+import 'package:lively/src/widgets/marquee.dart';
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
 import '../../../widgets/likes_area.dart';
@@ -223,17 +221,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 height: 30,
                                 width: MediaQuery.of(context).size.width,
                                 child: Center(
-                                  child: Marquee(
-                                    directionMarguee:
-                                        DirectionMarguee.oneDirection,
-                                    child: Text(state.runString,
-                                        style: textTheme.bodyText1),
-
-                                    // style: TextStyle(color: Colors.black),
-                                    // text:
-                                    //     state.runString,
-                                  ),
-                                ),
+                                    child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                                horizontal:
+                                                    MediaQuery.of(context)
+                                                        .size
+                                                        .width) *
+                                            0.05,
+                                        child: MarqueeWidget(
+                                          text: state.runString,
+                                          direction: Axis.horizontal,
+                                          style: textTheme.bodyText1!,
+                                        ))),
                               )
                             : Text(
                                 !value
@@ -283,10 +282,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     Navigator.of(context).pushNamed('/map');
                   },
                 )),
-            // Positioned(
-            //     left: MediaQuery.of(context).size.width * 0.5,
-            //     top: MediaQuery.of(context).size.height * 0.8,
-            //     child: const AnimatedDots())
           ],
         ),
       ),

@@ -55,6 +55,8 @@ class _MapScreenState extends State<MapScreen>
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return BlocListener<MapBloc, MapState>(
       listener: (context, state) {
         if (state is PositionChanged) {
@@ -164,10 +166,7 @@ class _MapScreenState extends State<MapScreen>
                             isShareMyPosition 
                                 ? 'Перестать делиться'
                                 : 'Поделиться геопозицией',
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 19,
-                                decoration: TextDecoration.none),
+                            style: textTheme.bodyMedium,
                           ),
                           SizedBox(
                             height: 35,

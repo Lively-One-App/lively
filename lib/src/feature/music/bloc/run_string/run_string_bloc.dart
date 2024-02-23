@@ -26,7 +26,7 @@ class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
         timeView = element['timeview'];
       });
 
-      if (runString != '') {
+      if (runString != ''&& !(this.state is RunStringInitial)) {
         //"AppLifecycleState.paused"
         if (stateApp == "AppLifecycleState.paused") {
           NotificationService.display(runString);
