@@ -163,7 +163,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                   .pushNamed('/burgerMenu'),
                               child: const Icon(
                                 LivelyIcons.menu,
-                                size: 30,
+                                size: 40,
                               ),
                             ),
                             actions: [

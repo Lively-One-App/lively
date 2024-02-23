@@ -35,8 +35,8 @@ class BurgerMenu extends StatelessWidget {
                     leadingWidth: 30,
                     leading: CircleIconButton(
                       child: const Icon(
-                        LivelyIcons.burger_menu,
-                        size: 30,
+                        LivelyIcons.menu,
+                        size: 40,
                       ),
                       onTap: () => Navigator.of(context).pop(),
                     ),
