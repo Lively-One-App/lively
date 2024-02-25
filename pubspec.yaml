@@ -77,7 +77,7 @@ flutter:
     - assets/marker_map_count.png
     - assets/close_map.png
     - assets/animation/
-    
+    - assets/audio/
   uses-material-design: true
   fonts:
     - family: LivelyIcons

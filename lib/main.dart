@@ -49,10 +49,11 @@ void main() => runZonedGuarded<void>(
             statusBarIconBrightness: Brightness.dark));
         
         Bloc.observer = AppBlocObserver.instance();
+        final sharedPreferences = await SharedPreferences.getInstance();
         // BlocOverrides.runZoned(
         //   () async {
             final audioHandler = await AudioService.init(
-              builder: () => MyAudioPlayerHandler(),
+              builder: () => MyAudioPlayerHandler(sharedPreferences),
               config: const AudioServiceConfig(
                 androidNotificationChannelId: 'com.mycompany.myapp.audio',
       androidNotificationChannelName: 'Audio Service Demo',
@@ -66,7 +67,7 @@ void main() => runZonedGuarded<void>(
                   'wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
             );
             
-            final sharedPreferences = await SharedPreferences.getInstance();
+            
             // FlutterError.onError =
             //     await FirebaseCrashlytics.instance.recordFlutterError;
             final store = SupabaseHelper(  sharedPreferences);

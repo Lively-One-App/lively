@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'dart:convert';
 
@@ -67,4 +68,39 @@ class Station {
 
   factory Station.fromJson(String source) =>
       Station.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  bool operator ==(covariant Station other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.id == id &&
+      other.name == name &&
+      other.shortcode == shortcode &&
+      other.description == description &&
+      other.frontend == frontend &&
+      other.backend == backend &&
+      other.listenUrl == listenUrl &&
+      other.url == url &&
+      other.publicPlayerUrl == publicPlayerUrl &&
+      other.playlistPlsUrl == playlistPlsUrl &&
+      other.playlistM3uUrl == playlistM3uUrl &&
+      other.isPublic == isPublic;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+      name.hashCode ^
+      shortcode.hashCode ^
+      description.hashCode ^
+      frontend.hashCode ^
+      backend.hashCode ^
+      listenUrl.hashCode ^
+      url.hashCode ^
+      publicPlayerUrl.hashCode ^
+      playlistPlsUrl.hashCode ^
+      playlistM3uUrl.hashCode ^
+      isPublic.hashCode;
+  }
 }

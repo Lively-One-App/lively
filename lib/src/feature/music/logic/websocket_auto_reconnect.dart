@@ -42,7 +42,6 @@ class WebSocketAutoReconnect {
         return null;
       }
       var res = AzuraApiModel.fromMap(temp['pub']['data']['np']);
-      print(res.nowPlaying.song.title);
 
       return res;
     }).listen((event) {
@@ -51,7 +50,7 @@ class WebSocketAutoReconnect {
       _myWebSocketController.add(event);}
 
     }, onError: (e) async {
-      //_myWebSocketController.addError(e);
+      _myWebSocketController.addError(e);
       await Future.delayed(Duration(seconds: delay));
       _connect();
     }, onDone: () async {

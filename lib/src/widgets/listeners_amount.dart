@@ -17,17 +17,17 @@ class ListenersAmount extends StatelessWidget {
         buildWhen: (previous, current) =>
             previous?.listeners.unique != current?.listeners.unique,
         builder: (context, state) {
-          final unique = state?.listeners.total ?? 0;
+          final unique = state?.listeners.total ?? -1;
 
           return Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-            unique != 0 ? Text('$unique ',
+            unique != -1 ? Text('$unique',
               style: textTheme.displayLarge) : SizedBox(
                 width: 50,
                 child: Image.asset('assets/animation/infinity_animation.gif', fit: BoxFit.contain,)),
-                Text((unique != 0 ? '' : ' ' )+'${localizations.lively(unique)}',
+                Text(' ${localizations.lively(unique)}',
               style: textTheme.displayLarge)
           ],);
         });

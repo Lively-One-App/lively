@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 
 import 'dart:convert';
@@ -29,4 +30,17 @@ class Listeners {
 
   factory Listeners.fromJson(String source) =>
       Listeners.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  bool operator ==(covariant Listeners other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.total == total &&
+      other.unique == unique &&
+      other.current == current;
+  }
+
+  @override
+  int get hashCode => total.hashCode ^ unique.hashCode ^ current.hashCode;
 }

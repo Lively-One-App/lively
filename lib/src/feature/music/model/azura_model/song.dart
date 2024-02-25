@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'dart:convert';
 
@@ -55,4 +56,33 @@ class Song {
 
   factory Song.fromJson(String source) =>
       Song.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  bool operator ==(covariant Song other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.id == id &&
+      other.text == text &&
+      other.artist == artist &&
+      other.title == title &&
+      other.album == album &&
+      other.genre == genre &&
+      other.isrc == isrc &&
+      other.lyrics == lyrics &&
+      other.art == art;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+      text.hashCode ^
+      artist.hashCode ^
+      title.hashCode ^
+      album.hashCode ^
+      genre.hashCode ^
+      isrc.hashCode ^
+      lyrics.hashCode ^
+      art.hashCode;
+  }
 }

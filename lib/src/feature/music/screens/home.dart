@@ -114,7 +114,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             error: (message) {
               controllerLivelyButton.reset();
               controllerLivelyIcon.reset();
-
+              
               return myShowDialog(context, const NoInternet());
             },
           );

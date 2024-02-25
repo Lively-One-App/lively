@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:lively/src/feature/music/model/azura_model/listeners.dart';
@@ -42,4 +43,25 @@ class AzuraApiModel {
 
   factory AzuraApiModel.fromJson(String source) =>
       AzuraApiModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  bool operator ==(covariant AzuraApiModel other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.station == station &&
+      other.listeners == listeners &&
+      other.nowPlaying == nowPlaying &&
+      other.isOnline == isOnline &&
+      other.cache == cache;
+  }
+
+  @override
+  int get hashCode {
+    return station.hashCode ^
+      listeners.hashCode ^
+      nowPlaying.hashCode ^
+      isOnline.hashCode ^
+      cache.hashCode;
+  }
 }

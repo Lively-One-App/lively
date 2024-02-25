@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'dart:convert';
 
@@ -57,4 +58,33 @@ class NowPlaying {
 
   factory NowPlaying.fromJson(String source) =>
       NowPlaying.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  bool operator ==(covariant NowPlaying other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.shId == shId &&
+      other.playedAt == playedAt &&
+      other.duration == duration &&
+      other.playlist == playlist &&
+      other.streamer == streamer &&
+      other.isRequest == isRequest &&
+      other.song == song &&
+      other.elapsed == elapsed &&
+      other.remaining == remaining;
+  }
+
+  @override
+  int get hashCode {
+    return shId.hashCode ^
+      playedAt.hashCode ^
+      duration.hashCode ^
+      playlist.hashCode ^
+      streamer.hashCode ^
+      isRequest.hashCode ^
+      song.hashCode ^
+      elapsed.hashCode ^
+      remaining.hashCode;
+  }
 }
