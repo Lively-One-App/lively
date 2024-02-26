@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 
@@ -156,12 +157,11 @@ class _MapScreenState extends State<MapScreen>
                     ],
                   ))),
           Positioned(
-              left: MediaQuery.of(context).size.width * 0.83,
+              right: 0,
               top: MediaQuery.of(context).size.height * 0.32,
-              child: IconButton(
-                  icon: Image.asset('assets/close_map.png'),
-                  iconSize: 57,
-                  onPressed: () {
+              child: GestureDetector(
+                  child: SvgPicture.asset('assets/close_map.svg'),
+                  onTap: () {
                     Navigator.pop(context);
                   })),
         ],

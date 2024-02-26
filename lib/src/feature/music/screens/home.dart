@@ -5,20 +5,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lively/generated/l10n.dart';
-import 'package:lively/src/feature/music/bloc/azura_api_now_paying/azura_api_now_playing_cubit.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:lively/src/widgets/listeners_amount.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
+import '../../../widgets/circle_icon_button.dart';
 import '../../../widgets/likes_area.dart';
 import '../../../widgets/lively_button.dart';
 import '../bloc/first_run/first_run_cubit.dart';
 import '../bloc/likes/likes_bloc.dart';
 import '../bloc/radio/radio_cubit.dart';
 import '/lively_icons.dart';
-import '../../../widgets/circle_icon_button.dart';
 import 'no_internet.dart';
 import 'onboarding/onboarding.dart';
 
@@ -114,7 +113,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             error: (message) {
               controllerLivelyButton.reset();
               controllerLivelyIcon.reset();
-              
+
               return myShowDialog(context, const NoInternet());
             },
           );
@@ -255,12 +254,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 )),
             Positioned(
-                left: MediaQuery.of(context).size.width * 0.83,
+                right: 0,
                 top: MediaQuery.of(context).size.height * 0.32,
-                child: IconButton(
-                  icon: Image.asset('assets/map_icon.png'),
-                  iconSize: 57,
-                  onPressed: () {
+                child: GestureDetector(
+                  child: SvgPicture.asset(
+                    'assets/map_icon.svg',
+                    alignment: Alignment.centerRight,
+                  ),
+                  onTap: () {
                     Navigator.of(context).pushNamed('/map');
                   },
                 )),
