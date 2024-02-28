@@ -29,7 +29,7 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
 
   Future<void> setFirstPlay(bool value) async {
     _isFirstPlay = value;
-    // await _sharedPreferences.setBool('firstPlay', value);
+    await _sharedPreferences.setBool('firstPlay', value);
   }
   @override
   Future<void> play() async {
