@@ -62,6 +62,9 @@ void main() => runZonedGuarded<void>(
       
               ),
             );
+            if (audioHandler.isFirstPlay) {
+              await audioHandler.setFirstPlayAudio();
+            }
             final socket = WebSocketAutoReconnect(
               Uri.parse(
                   'wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),

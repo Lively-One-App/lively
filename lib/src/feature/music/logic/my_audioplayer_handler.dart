@@ -26,6 +26,11 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
   }
 
   bool get isFirstPlay => _isFirstPlay;
+
+  Future<void> setFirstPlay(bool value) async {
+    _isFirstPlay = value;
+    // await _sharedPreferences.setBool('firstPlay', value);
+  }
   @override
   Future<void> play() async {
     await _player.play();
@@ -61,18 +66,15 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
       required Uri listenUrl}) async {
     _listenUrl = listenUrl;
     try {
-      if (_isFirstPlay) {
-        await setFirstPlayAudio();
-        _isFirstPlay = false;
-        await _sharedPreferences.setBool('firstPlay', _isFirstPlay);
-      } else {
-        await _player.setAudioSource(
+        if (!_isFirstPlay) {
+          await _player.setAudioSource(
           AudioSource.uri(listenUrl),
           preload: preload,
           initialIndex: initialIndex,
           initialPosition: initialPosition,
         );
-      }
+        }
+      
     } catch (e) {
       rethrow;
     }
