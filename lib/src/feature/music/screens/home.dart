@@ -8,10 +8,8 @@ import 'package:lively/generated/l10n.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 
 import 'package:lively/src/widgets/listeners_amount.dart';
-=======
 import 'package:lively/src/feature/music/logic/notification_service.dart';
 
-import 'package:marquee_widget/marquee_widget.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
@@ -215,12 +213,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 height: 30,
                                 width: MediaQuery.of(context).size.width,
                                 child: Center(
-                                  child: Marquee(
-                                    directionMarguee:
-                                        DirectionMarguee.oneDirection,
-                                    child: Text(state.runString,
-                                        style: textTheme.bodyLarge),
-                                  ),
+                                  child: SizedBox(),
                                 ),
                               )
                             : Text(
