@@ -6,7 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
+
 import 'package:lively/src/widgets/listeners_amount.dart';
+=======
+import 'package:lively/src/feature/music/logic/notification_service.dart';
+
 import 'package:marquee_widget/marquee_widget.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
@@ -20,6 +24,7 @@ import '../bloc/radio/radio_cubit.dart';
 import '/lively_icons.dart';
 import 'no_internet.dart';
 import 'onboarding/onboarding.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -198,7 +203,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 ValueListenableBuilder<bool>(
                   valueListenable: isLike,
                   builder: (context, value, _) => SafeArea(
+        
+
                     minimum: EdgeInsets.only(bottom: height < 700 ? 31 : 45),
+
                     top: false,
                     child: BlocBuilder<RunStringBloc, RunStringState>(
                       builder: (context, state) {
@@ -256,12 +264,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             Positioned(
                 right: 0,
                 top: MediaQuery.of(context).size.height * 0.32,
+
                 child: GestureDetector(
                   child: SvgPicture.asset(
                     'assets/map_icon.svg',
                     alignment: Alignment.centerRight,
                   ),
                   onTap: () {
+
                     Navigator.of(context).pushNamed('/map');
                   },
                 )),

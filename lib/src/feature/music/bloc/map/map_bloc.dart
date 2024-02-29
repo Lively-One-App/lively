@@ -8,6 +8,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:meta/meta.dart';
 
 import 'package:lively/src/feature/music/logic/online_store_impl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'map_event.dart';
@@ -15,9 +16,12 @@ part 'map_state.dart';
 
 class MapBloc extends Bloc<MapEvent, MapState> {
   final OnlineStoreImpl _store;
+  final SharedPreferences _prefs;
 
-  MapBloc(this._store)
-      : super(const MapInitial(isShared: false, listMarkers: [])) {
+  MapBloc(
+    this._store,
+    this._prefs,
+  ) : super(const MapInitial(isShared: false, listMarkers: [])) {
     final StreamController<Map<String, dynamic>> _controller =
         StreamController<Map<String, dynamic>>();
     _controller.stream.listen((event) {
@@ -34,6 +38,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       }
       add(ChangeMarkersEvent(listMarkers: listMarkers));
     });
+    getIsShared();
     _store.setGeoPointController(_controller.sink);
     const LocationSettings locationSettings = LocationSettings(
       accuracy: LocationAccuracy.best,
@@ -42,9 +47,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     StreamSubscription<Position>? positionStream;
 
     on<SharePositionEvent>((event, emit) async {
-      await _store.addUpdateMarker(
-        event.position,
-      );
+      await _store.addUpdateMarker(event.position);
       emit(PositionChanged(
         position: event.position,
         isShareMyPosition: true,
@@ -60,6 +63,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     });
 
     on<OffSharedPositionEvent>((event, emit) async {
+      _prefs.setBool('isShared', false);
+
       positionStream?.pause();
       await _store.removeMarker();
       emit(OffSharedPositionState(
@@ -78,6 +83,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       }
     });
     on<OnSharedPositionEvent>((event, emit) async {
+      _prefs.setBool('isShared', true);
       try {
         if (positionStream == null) {
           positionStream =
@@ -94,6 +100,9 @@ class MapBloc extends Bloc<MapEvent, MapState> {
             ));
           }
         }
+        emit(OnSharedPositionState(
+            isShareMyPosition: state.isShareMyPosition,
+            listMarkers: state.listMarkers));
       } catch (e) {
         emit(ErrorState(
             error: e.toString(),
@@ -138,5 +147,13 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
     return await Geolocator.getLastKnownPosition();
+  }
+
+  void getIsShared() async {
+    //emit(MapInitial(isShared: true == await _prefs.getBool('isShared')));
+    //return true == await _prefs.getBool('isShared');
+    if(true == await _prefs.getBool('isShared')){
+      add(const OnSharedPositionEvent());
+    }
   }
 }

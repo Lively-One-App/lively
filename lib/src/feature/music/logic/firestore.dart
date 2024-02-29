@@ -4,23 +4,29 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:lively/credential/supabase_cred.dart';
+
 
 import '../model/firestore/city_data.dart';
 import 'online_store_impl.dart';
 
+
+
 class SupabaseHelper implements OnlineStoreImpl {
-  final SupabaseClient supabase = Supabase.instance.client;
+  //final SupabaseClient supabase = Supabase.instance.client;
+  final _store = supabase;
   static const String _locationsRoom = 'Moscow';
-  final SharedPreferences _prefs;
+  final SharedPreferences prefs;
   late final RealtimeChannel room;
   SupabaseHelper(
-    this._prefs,
+    this.prefs,
   );
   @override
   Stream<CityData> getData(final String cityId) async* {
-    final request = supabase
+    final request = _store.client
         .from('city')
         .stream(primaryKey: ['id'])
         .eq('id', cityId)
@@ -31,13 +37,16 @@ class SupabaseHelper implements OnlineStoreImpl {
 
       return CityData(likes: likes);
     });
+
   }
 
   Stream getRunString() async* {
+
     String moscowId = '2e683111-964b-40da-b1bd-b232de6004af';
-    final Stream request = await supabase.from('runString').stream(
+    final Stream request = await _store.client.from('runString').stream(
       primaryKey: ['id'],
     ).eq("city", moscowId);
+
 
     yield* request;
   }
@@ -45,12 +54,14 @@ class SupabaseHelper implements OnlineStoreImpl {
   @override
   void setGeoPointController(Sink<Map<String, dynamic>> controller) async {
     try {
+
       String? uid = _prefs.getString('device_id');
       if (uid == null) {
         uid = await getDeviceIdentifier();
         _prefs.setString('device_id', uid);
       }
       room = Supabase.instance.client.channel(
+
         _locationsRoom,
         opts: RealtimeChannelConfig(key: uid),
       );
@@ -63,15 +74,15 @@ class SupabaseHelper implements OnlineStoreImpl {
     }
   }
 
-  @override
+    @override
   Future<void> setData(final String cityId) async {
     try {
-      String? uid = _prefs.getString('device_id');
+      String? uid = prefs.getString('device_id');
       if (uid == null) {
         uid = await getDeviceIdentifier();
-        _prefs.setString('device_id', uid);
+        prefs.setString('device_id', uid);
       }
-      await supabase.functions.invoke('processLike', body: {
+      await _store.client.functions.invoke('processLike', body: {
         'cityId': cityId,
         'uid': uid,
       });
@@ -118,7 +129,7 @@ class SupabaseHelper implements OnlineStoreImpl {
   @override
   Future<void> proccessLikes() async {
     try {
-      await supabase.functions.invoke('resetLikeCounter');
+      await _store.client.functions.invoke('resetLikeCounter');
     } catch (e) {
       rethrow;
     }
@@ -131,4 +142,12 @@ class SupabaseHelper implements OnlineStoreImpl {
       rethrow;
     }
   }
+  Stream getMarkers() async* {
+    //final channelGeoPoints = supabase.channel('channelGeoPoints');
+    final Stream request =
+        await _store.client.from('geoPoints').stream(primaryKey: ['id']);
+
+    yield* request;
+  }
+  
 }

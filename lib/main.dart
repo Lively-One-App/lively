@@ -1,17 +1,21 @@
 import 'dart:async';
 import 'dart:io';
+
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+
 import 'package:l/l.dart';
+
 import 'package:lively/src/feature/music/bloc/azura_api_now_paying/azura_api_now_playing_cubit.dart';
+
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
+import 'package:lively/src/feature/music/logic/notification_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -34,24 +38,44 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
+String stateApp = '';
+
+const notificationChannelId = 'my_foreground';
+
+// this will be used for notification id, So you can update your custom notification with this id.
+const notificationId = 888;
+
+AppMetricaConfig get _config =>
+    const AppMetricaConfig('3b254864-c192-486a-8393-c4e233b75edd', logs: true);
+
 void main() => runZonedGuarded<void>(
       () async {
-        //HttpOverrides.global = MyHttpOverrides();
+        HttpOverrides.global = MyHttpOverrides();
 
         WidgetsFlutterBinding.ensureInitialized();
+
+        AppMetrica.activate(_config);
+
+        NotificationService.initialize();
+
         await Supabase.initialize(
+
     url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
   );
+
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark));
-        
+
         Bloc.observer = AppBlocObserver.instance();
+
         final sharedPreferences = await SharedPreferences.getInstance();
-        // BlocOverrides.runZoned(
-        //   () async {
+        
+        SystemChannels.lifecycle.setMessageHandler((message) async {
+          stateApp = message ?? '';
+        });
             final audioHandler = await AudioService.init(
               builder: () => MyAudioPlayerHandler(sharedPreferences),
               config: const AudioServiceConfig(
@@ -113,6 +137,7 @@ void main() => runZonedGuarded<void>(
               ],
               child: const MyApp(),
             ));
+
         //   },
         //   blocObserver: AppBlocObserver.instance(),
         // );

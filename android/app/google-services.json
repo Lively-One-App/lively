@@ -9,7 +9,8 @@
       "client_info": {
         "mobilesdk_app_id": "1:963261682807:android:60d6f573b58f6858016272",
         "android_client_info": {
-          "package_name": "com.example.lively"
+          
+          "package_name": "com.livelyone.app"
         }
       },
       "oauth_client": [

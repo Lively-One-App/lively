@@ -16,3 +16,8 @@ class RunStringUpdateState extends RunStringState {
     required this.runString,
   });
 }
+
+class RunStringDefaultState extends RunStringState {
+  
+  
+}
