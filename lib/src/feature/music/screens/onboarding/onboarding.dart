@@ -40,7 +40,7 @@ class OnBoarding extends StatelessWidget {
             padding: const EdgeInsets.only(top: 6, right: 0),
             child: Text(
               localizations.start,
-              style: theme.textTheme.headline1
+              style: theme.textTheme.displayLarge
                   ?.copyWith(fontSize: 22, letterSpacing: 0),
             ),
           ),
@@ -48,7 +48,7 @@ class OnBoarding extends StatelessWidget {
           bgButton: theme.scaffoldBackgroundColor.withOpacity(0.8),
           scaleFactorVideo:
               size.height > 768 ? size.height / 768 : 768 / size.height,
-          bottomPaddingButton: size.height * 0.2,
+          bottomPaddingButton: size.height * 0.1,
         ),
       ],
       showNextButton: false,

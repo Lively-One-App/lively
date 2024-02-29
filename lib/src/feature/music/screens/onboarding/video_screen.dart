@@ -22,8 +22,9 @@ class VideoScreen extends StatefulWidget {
 }
 
 class _VideoScreenState extends State<VideoScreen> {
-  final videoPlayerController =
-     VideoPlayerController.asset('assets/firstStartVideo.mp4');
+  final videoPlayerController = VideoPlayerController.asset(
+      'assets/firstStartVideo.mp4',
+      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true));
 
   @override
   void initState() {

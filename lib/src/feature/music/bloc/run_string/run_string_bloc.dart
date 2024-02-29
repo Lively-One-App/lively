@@ -15,9 +15,9 @@ class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
     // on<RunStringEvent>((event, emit) {
     //   // TODO: implement event handler
     // });
-
+    var firstValueReceived = Completer<void>();
     _store.getRunString().listen((event) {
-
+     
       String runString = '';
       int timeView = 0;
 
@@ -25,8 +25,8 @@ class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
         runString = element['runstring'];
         timeView = element['timeview'];
       });
-
-      if (runString != '') {
+      var tttp = this.state is RunStringInitial;
+      if (runString != '' && firstValueReceived.isCompleted) {
         //"AppLifecycleState.paused"
         if (stateApp == "AppLifecycleState.paused") {
           NotificationService.display(runString);
@@ -38,7 +38,9 @@ class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
           });
         }
       }
-
+       if (!firstValueReceived.isCompleted) {
+        firstValueReceived.complete();
+      }
     });
   }
 }

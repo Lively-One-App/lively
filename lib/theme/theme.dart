@@ -17,25 +17,25 @@ abstract class MyThemes {
     ),
     BurgerText(
         textTheme: _textTheme.copyWith(
-      headline1: const TextStyle(
+      displayLarge: const TextStyle(
         height: 1.3,
         letterSpacing: 1.2,
         fontSize: 30,
         fontWeight: _extraBold,
         color: _accent,
       ),
-      subtitle1: const TextStyle(
+      titleMedium: const TextStyle(
         height: 1.3,
         fontSize: 22,
         letterSpacing: -1,
         fontWeight: _regular,
       ),
-      subtitle2: const TextStyle(
+      titleSmall: const TextStyle(
           fontSize: 18,
           fontWeight: _regular,
           letterSpacing: 0.36,
           color: Color(0xFF646464)),
-      bodyText1:
+      bodyLarge:
           const TextStyle(fontSize: 19, fontWeight: _regular, letterSpacing: 0),
     )),
   ];
@@ -81,10 +81,9 @@ abstract class MyThemes {
         fontFamily: 'Muller',
         extensions: _extension,
         brightness: Brightness.dark,
-        colorSchemeSeed: _accent,
+        //colorSchemeSeed: _accent,
         scaffoldBackgroundColor: backgroundColor,
         textTheme: _textTheme.apply(bodyColor: const Color(0xFFC6C6C6)),
-        backgroundColor: backgroundColor,
         iconTheme: const IconThemeData(color: _accent),
         appBarTheme: _appBarTheme.copyWith(
           systemOverlayStyle: SystemUiOverlayStyle.light,
@@ -92,26 +91,34 @@ abstract class MyThemes {
         ),
         listTileTheme: _listTileThemeData.copyWith(
           tileColor: const Color(0xFF414141),
-        ));
+        ),
+        colorScheme: const ColorScheme(
+            background: backgroundColor,
+            brightness: Brightness.dark,
+            primary: _accent,
+            onPrimary: _accent,
+            secondary: _accent,
+            onSecondary: _accent,
+            error: _accent,
+            onError: _accent,
+            onBackground: backgroundColor,
+            surface: _accent,
+            onSurface: _accent));
   }
 
   static const _regular = FontWeight.w400;
   static const _extraBold = FontWeight.w800;
-  static const TextTheme _textTheme = TextTheme(
-    headline1: const TextStyle(
-      letterSpacing: 0.76,
-      fontSize: 38,
-      fontWeight: _extraBold,
-      color: _accent,
-    ),
-    subtitle1:
-        const TextStyle(fontSize: 15, letterSpacing: 1, fontWeight: _extraBold),
-    bodyText1: const TextStyle(
-        fontSize: 18, letterSpacing: 3.24, fontWeight: _extraBold),
-    caption: const TextStyle(
-        fontSize: 24,
+  static TextTheme _textTheme = const TextTheme(
+      displayLarge: const TextStyle(
+        letterSpacing: 0.76,
+        fontSize: 38,
         fontWeight: _extraBold,
-        letterSpacing: -0.005,
-        color: const Color(0xFFFFFFFF)),
-  );
+        color: _accent,
+      ),
+      titleMedium: const TextStyle(
+          fontSize: 15, letterSpacing: 1, fontWeight: _extraBold),
+      bodyLarge: const TextStyle(
+          fontSize: 18, letterSpacing: 3.24, fontWeight: _extraBold),
+      bodyMedium: const TextStyle(
+          fontSize: 19, fontWeight: _extraBold, color: Colors.black));
 }

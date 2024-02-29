@@ -10,6 +10,7 @@ import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:lively/src/widgets/listeners_amount.dart';
 import 'package:lively/src/feature/music/logic/notification_service.dart';
 
+import 'package:lively/src/widgets/marquee.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
@@ -179,7 +180,22 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
+
+                        BlocBuilder<AzuraApiNowPlayingCubit,
+                                AzuraApiNowPlaying?>(
+                            buildWhen: (previous, current) =>
+                                previous?.listeners.unique !=
+                                current?.listeners.unique,
+                            builder: (context, state) {
+                              final unique = state?.listeners.total ?? 0;
+
+                              return Text(
+                                  '$unique ${localizations.lively(unique)}',
+                                  style: textTheme.displayLarge);
+                            }),
+
                         const ListenersAmount(),
+
                         const SizedBox(
                           height: 10,
                         ),
@@ -201,10 +217,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 ValueListenableBuilder<bool>(
                   valueListenable: isLike,
                   builder: (context, value, _) => SafeArea(
-        
-
                     minimum: EdgeInsets.only(bottom: height < 700 ? 31 : 45),
-
                     top: false,
                     child: BlocBuilder<RunStringBloc, RunStringState>(
                       builder: (context, state) {
@@ -213,8 +226,20 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 height: 30,
                                 width: MediaQuery.of(context).size.width,
                                 child: Center(
-                                  child: SizedBox(),
-                                ),
+
+                                    child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                                horizontal:
+                                                    MediaQuery.of(context)
+                                                        .size
+                                                        .width) *
+                                            0.05,
+                                        child: MarqueeWidget(
+                                          text: state.runString,
+                                          direction: Axis.horizontal,
+                                          style: textTheme.bodyLarge!,
+                                        ))),
+
                               )
                             : Text(
                                 !value
@@ -255,6 +280,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 )),
             Positioned(
+
                 right: 0,
                 top: MediaQuery.of(context).size.height * 0.32,
 
@@ -264,6 +290,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     alignment: Alignment.centerRight,
                   ),
                   onTap: () {
+
 
                     Navigator.of(context).pushNamed('/map');
                   },

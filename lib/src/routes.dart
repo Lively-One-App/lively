@@ -23,12 +23,16 @@ abstract class Routes {
             ));
   }
 
+  static Route _noRouteAnimation(Widget child) {
+    return MaterialPageRoute(builder: (context) => child);
+  }
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/map':
-        return _myRouteAnimation(MapScreen());
+        return _myRouteAnimation(const MapScreen());
       case '/burgerMenu':
-        return _myRouteAnimation(const BurgerMenu());
+        return _noRouteAnimation(const BurgerMenu());
       case '/home':
         return _myRouteAnimation(const Home());
       default:

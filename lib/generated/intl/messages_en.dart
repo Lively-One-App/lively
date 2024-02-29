@@ -43,7 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lively": m0,
         "noInternet": MessageLookupByLibrary.simpleMessage(
             "Lively can`t work without the Internet"),
-        "noInternetCheck": MessageLookupByLibrary.simpleMessage("Checking.."),
+        "noInternetCheck": MessageLookupByLibrary.simpleMessage("Checking"),
         "noInternetReconnect":
             MessageLookupByLibrary.simpleMessage("Connect to continue"),
         "onBoardingScreen1_1":
