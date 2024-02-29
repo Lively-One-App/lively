@@ -10,6 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:l/l.dart';
 
+import 'package:lively/src/feature/music/bloc/azura_api_now_paying/azura_api_now_playing_cubit.dart';
+
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
@@ -18,7 +20,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
-import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
 import 'src/feature/music/bloc/first_run/first_run_cubit.dart';
 import 'src/feature/music/bloc/likes/likes_bloc.dart';
 import 'src/feature/music/bloc/radio/radio_cubit.dart';
@@ -70,67 +71,72 @@ void main() => runZonedGuarded<void>(
 
         Bloc.observer = AppBlocObserver.instance();
 
-
+        final sharedPreferences = await SharedPreferences.getInstance();
+        
         SystemChannels.lifecycle.setMessageHandler((message) async {
           stateApp = message ?? '';
         });
+            final audioHandler = await AudioService.init(
+              builder: () => MyAudioPlayerHandler(sharedPreferences),
+              config: const AudioServiceConfig(
+                androidNotificationChannelId: 'com.mycompany.myapp.audio',
+      androidNotificationChannelName: 'Audio Service Demo',
+      androidNotificationOngoing: true,
+      androidStopForegroundOnPause: true,
+      
+              ),
+            );
+            if (audioHandler.isFirstPlay) {
+              await audioHandler.setFirstPlayAudio();
+            }
+            final socket = WebSocketAutoReconnect(
+              Uri.parse(
+                  'wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
+            );
+            
+            
+            // FlutterError.onError =
+            //     await FirebaseCrashlytics.instance.recordFlutterError;
+            final store = SupabaseHelper(  sharedPreferences);
+            runApp(MultiBlocProvider(
+              providers: [
+                BlocProvider<AzuraApiNowPlayingCubit>(
+                    create: (context) => AzuraApiNowPlayingCubit()),
+                BlocProvider<FirstRunCubit>(
+                    create: (context) => FirstRunCubit(sharedPreferences)),
+                BlocProvider<RadioCubit>(
+                  create: (context) {
+                    final azuraApiNowPlayingCubit =
+                        BlocProvider.of<AzuraApiNowPlayingCubit>(context);
 
-        final audioHandler = await AudioService.init(
-          builder: () => MyAudioPlayerHandler(),
-          config: const AudioServiceConfig(
-            androidNotificationChannelId: 'com.ryanheise.lively.channel.audio',
-            androidNotificationChannelName: 'Audio playback',
-            androidNotificationOngoing: true,
-          ),
-          
-        );
+                    return RadioCubit(
+                        myAudioHandler: audioHandler,
+                        azuraApiNowPlayingCubit: azuraApiNowPlayingCubit,
+                        webSocket: socket);
+                  },
+                ),
+                BlocProvider<SyncServerCubit>(
+                    create: (context) => SyncServerCubit()),
+                BlocProvider<LikesBloc>(
+                  create: (context) {
+                    final radioCubit = BlocProvider.of<RadioCubit>(context);
+                    final syncServerCubit =
+                        BlocProvider.of<SyncServerCubit>(context);
 
-        final socket = await WebSocketAutoReconnect(
-          Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
-        );
-        final sharedPreferences = await SharedPreferences.getInstance();
-        // FlutterError.onError =
-        //     await FirebaseCrashlytics.instance.recordFlutterError;
-        final store = SupabaseHelper(sharedPreferences);
-        runApp(MultiBlocProvider(
-          providers: [
-            BlocProvider<AzuraApiNowPlayingCubit>(
-                create: (context) => AzuraApiNowPlayingCubit()),
-            BlocProvider<FirstRunCubit>(
-                create: (context) => FirstRunCubit(sharedPreferences)),
-            BlocProvider<RadioCubit>(
-              create: (context) {
-                final azuraApiNowPlayingCubit =
-                    BlocProvider.of<AzuraApiNowPlayingCubit>(context);
-
-                return RadioCubit(
-                    myAudioHandler: audioHandler,
-                    azuraApiNowPlayingCubit: azuraApiNowPlayingCubit,
-                    webSocket: socket);
-              },
-            ),
-            BlocProvider<SyncServerCubit>(
-                create: (context) => SyncServerCubit()),
-            BlocProvider<LikesBloc>(
-              create: (context) {
-//                    final store = Firestore();
-                final radioCubit = BlocProvider.of<RadioCubit>(context);
-                final syncServerCubit =
-                    BlocProvider.of<SyncServerCubit>(context);
-
-                return LikesBloc(
-                  syncServerCubit: syncServerCubit,
-                  store: store,
-                  radioCubit: radioCubit,
-                );
-              },
-            ),
-            BlocProvider<MapBloc>(create: ((context) => MapBloc(store, sharedPreferences))),
-            BlocProvider<RunStringBloc>(
-                create: ((context) => RunStringBloc(store))),
-          ],
-          child: const MyApp(),
-        ));
+                    return LikesBloc(
+                      syncServerCubit: syncServerCubit,
+                      store: store,
+                      radioCubit: radioCubit,
+                    );
+                  },
+                ),
+                BlocProvider<MapBloc>(
+                    create: ((context) => MapBloc(store))),
+                    BlocProvider<RunStringBloc>(
+                    create: ((context) => RunStringBloc(store))),
+              ],
+              child: const MyApp(),
+            ));
 
         //   },
         //   blocObserver: AppBlocObserver.instance(),

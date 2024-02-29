@@ -2,17 +2,35 @@ import 'dart:io' show Platform;
 
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyAudioPlayerHandler extends BaseAudioHandler {
-  final _player = AudioPlayer()..setAutomaticallyWaitsToMinimizeStalling(true);
+  final _player = AudioPlayer()
+    ..setAutomaticallyWaitsToMinimizeStalling(true)
+    ..setCanUseNetworkResourcesForLiveStreamingWhilePaused(true);
 
-  MyAudioPlayerHandler() {
+  late bool _isFirstPlay;
+  final SharedPreferences _sharedPreferences;
+  Uri? _listenUrl;
+
+  MyAudioPlayerHandler(this._sharedPreferences) {
     _player.playbackEventStream
         .map(_transformEvent)
         .distinct()
         .pipe(playbackState);
+    _initFirstPlay();
   }
 
+  void _initFirstPlay() {
+    _isFirstPlay = _sharedPreferences.getBool('firstPlay') ?? true;
+  }
+
+  bool get isFirstPlay => _isFirstPlay;
+
+  Future<void> setFirstPlay(bool value) async {
+    _isFirstPlay = value;
+    await _sharedPreferences.setBool('firstPlay', value);
+  }
   @override
   Future<void> play() async {
     await _player.play();
@@ -25,7 +43,15 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
 
   @override
   Future<void> stop() async {
-    await _player.stop();
+    try {
+      final audioSource = _player.audioSource;
+      await _player.stop();
+      if (_listenUrl != null && audioSource is UriAudioSource) {
+        await setAudioSource(listenUrl: _listenUrl!);
+      }
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<void> dispose() async {
@@ -33,18 +59,30 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
   }
 
   AudioSource? get audioSource => _player.audioSource;
-  Future<Duration?> setAudioSource(
-    AudioSource source, {
-    bool preload = false,
-    int? initialIndex,
-    Duration? initialPosition,
-  }) {
-    return _player.setAudioSource(
-      source,
-      preload: preload,
-      initialIndex: initialIndex,
-      initialPosition: initialPosition,
-    );
+  Future<void> setAudioSource(
+      {bool preload = true,
+      int? initialIndex,
+      Duration? initialPosition,
+      required Uri listenUrl}) async {
+    _listenUrl = listenUrl;
+    try {
+        if (!_isFirstPlay) {
+          await _player.setAudioSource(
+          AudioSource.uri(listenUrl),
+          preload: preload,
+          initialIndex: initialIndex,
+          initialPosition: initialPosition,
+        );
+        }
+      
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> setFirstPlayAudio() async {
+    await _player
+        .setAudioSource(AudioSource.asset('assets/audio/first_play.mp3'));
   }
 
   PlaybackState _transformEvent(PlaybackEvent event) {
