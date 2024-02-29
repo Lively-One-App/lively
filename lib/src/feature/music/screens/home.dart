@@ -3,21 +3,24 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
+
+import 'package:lively/src/widgets/listeners_amount.dart';
 import 'package:lively/src/feature/music/logic/notification_service.dart';
+
 import 'package:lively/src/widgets/marquee.dart';
+
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
+import '../../../widgets/circle_icon_button.dart';
 import '../../../widgets/likes_area.dart';
 import '../../../widgets/lively_button.dart';
-import '../bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
 import '../bloc/first_run/first_run_cubit.dart';
 import '../bloc/likes/likes_bloc.dart';
 import '../bloc/radio/radio_cubit.dart';
-import '../model/azuracast/azura_api_now_playing.dart';
 import '/lively_icons.dart';
-import '../../../widgets/circle_icon_button.dart';
 import 'no_internet.dart';
 import 'onboarding/onboarding.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -163,7 +166,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                   .pushNamed('/burgerMenu'),
                               child: const Icon(
                                 LivelyIcons.menu,
-                                size: 30,
+                                size: 40,
                               ),
                             ),
                             actions: [
@@ -177,6 +180,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
+
                         BlocBuilder<AzuraApiNowPlayingCubit,
                                 AzuraApiNowPlaying?>(
                             buildWhen: (previous, current) =>
@@ -189,6 +193,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                   '$unique ${localizations.lively(unique)}',
                                   style: textTheme.displayLarge);
                             }),
+
+                        const ListenersAmount(),
+
                         const SizedBox(
                           height: 10,
                         ),
@@ -213,14 +220,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     minimum: EdgeInsets.only(bottom: height < 700 ? 31 : 45),
                     top: false,
                     child: BlocBuilder<RunStringBloc, RunStringState>(
-                      // buildWhen: (previous, current) =>
-                      //     current is RunStringUpdateState,
                       builder: (context, state) {
                         return state is RunStringUpdateState
                             ? SizedBox(
                                 height: 30,
                                 width: MediaQuery.of(context).size.width,
                                 child: Center(
+
                                     child: Padding(
                                         padding: EdgeInsets.symmetric(
                                                 horizontal:
@@ -233,6 +239,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                           direction: Axis.horizontal,
                                           style: textTheme.bodyLarge!,
                                         ))),
+
                               )
                             : Text(
                                 !value
@@ -273,13 +280,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 )),
             Positioned(
-                left: MediaQuery.of(context).size.width * 0.83,
-                //left: MediaQuery.of(context).size.width * 0.5,
+
+                right: 0,
                 top: MediaQuery.of(context).size.height * 0.32,
-                child: IconButton(
-                  icon: SvgPicture.asset('assets/map_icon.svg'),
-                  iconSize: 57,
-                  onPressed: () {
+
+                child: GestureDetector(
+                  child: SvgPicture.asset(
+                    'assets/map_icon.svg',
+                    alignment: Alignment.centerRight,
+                  ),
+                  onTap: () {
+
+
                     Navigator.of(context).pushNamed('/map');
                   },
                 )),

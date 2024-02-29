@@ -10,6 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:l/l.dart';
 
+import 'package:lively/src/feature/music/bloc/azura_api_now_paying/azura_api_now_playing_cubit.dart';
+
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
 import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
@@ -18,7 +20,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'src/common/bloc/app_bloc_observer.dart';
-import 'src/feature/music/bloc/azura_api_now_playing/azura_api_now_playing_cubit.dart';
 import 'src/feature/music/bloc/first_run/first_run_cubit.dart';
 import 'src/feature/music/bloc/likes/likes_bloc.dart';
 import 'src/feature/music/bloc/radio/radio_cubit.dart';
@@ -58,11 +59,10 @@ void main() => runZonedGuarded<void>(
         NotificationService.initialize();
 
         await Supabase.initialize(
-
-    url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
-  );
+          url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
+          anonKey:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
+        );
 
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -70,25 +70,27 @@ void main() => runZonedGuarded<void>(
 
         Bloc.observer = AppBlocObserver.instance();
 
+        final sharedPreferences = await SharedPreferences.getInstance();
 
         SystemChannels.lifecycle.setMessageHandler((message) async {
           stateApp = message ?? '';
         });
-
         final audioHandler = await AudioService.init(
-          builder: () => MyAudioPlayerHandler(),
+          builder: () => MyAudioPlayerHandler(sharedPreferences),
           config: const AudioServiceConfig(
-            androidNotificationChannelId: 'com.ryanheise.lively.channel.audio',
-            androidNotificationChannelName: 'Audio playback',
+            androidNotificationChannelId: 'com.mycompany.myapp.audio',
+            androidNotificationChannelName: 'Audio Service Demo',
             androidNotificationOngoing: true,
+            androidStopForegroundOnPause: true,
           ),
-          
         );
-
-        final socket = await WebSocketAutoReconnect(
+        if (audioHandler.isFirstPlay) {
+          await audioHandler.setFirstPlayAudio();
+        }
+        final socket = WebSocketAutoReconnect(
           Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
         );
-        final sharedPreferences = await SharedPreferences.getInstance();
+
         // FlutterError.onError =
         //     await FirebaseCrashlytics.instance.recordFlutterError;
         final store = SupabaseHelper(sharedPreferences);
@@ -113,7 +115,6 @@ void main() => runZonedGuarded<void>(
                 create: (context) => SyncServerCubit()),
             BlocProvider<LikesBloc>(
               create: (context) {
-//                    final store = Firestore();
                 final radioCubit = BlocProvider.of<RadioCubit>(context);
                 final syncServerCubit =
                     BlocProvider.of<SyncServerCubit>(context);
@@ -125,7 +126,8 @@ void main() => runZonedGuarded<void>(
                 );
               },
             ),
-            BlocProvider<MapBloc>(create: ((context) => MapBloc(store, sharedPreferences))),
+            BlocProvider<MapBloc>(
+                create: ((context) => MapBloc(store, sharedPreferences))),
             BlocProvider<RunStringBloc>(
                 create: ((context) => RunStringBloc(store))),
           ],

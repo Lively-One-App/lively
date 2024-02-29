@@ -55,12 +55,14 @@ class SupabaseHelper implements OnlineStoreImpl {
   @override
   void setGeoPointController(Sink<Map<String, dynamic>> controller) async {
     try {
+
       String? uid = prefs.getString('device_id');
       if (uid == null) {
         uid = await getDeviceIdentifier();
         prefs.setString('device_id', uid);
       }
-      room = _store.client.channel(
+      room = Supabase.instance.client.channel(
+
         _locationsRoom,
         opts: RealtimeChannelConfig(key: uid),
       );
