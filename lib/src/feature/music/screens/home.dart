@@ -273,8 +273,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 )),
             Positioned(
-                //left: MediaQuery.of(context).size.width * 0.83,
-                left: MediaQuery.of(context).size.width * 0.5,
+                left: MediaQuery.of(context).size.width * 0.83,
+                //left: MediaQuery.of(context).size.width * 0.5,
                 top: MediaQuery.of(context).size.height * 0.32,
                 child: IconButton(
                   icon: SvgPicture.asset('assets/map_icon.svg'),
