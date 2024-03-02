@@ -24,7 +24,11 @@ abstract class Routes {
   }
 
   static Route _noRouteAnimation(Widget child) {
-    return MaterialPageRoute(builder: (context) => child);
+    return     PageRouteBuilder(
+        pageBuilder: (context, animation1, animation2) => child,
+        transitionDuration: Duration.zero,
+        reverseTransitionDuration: Duration.zero,
+    );
   }
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
