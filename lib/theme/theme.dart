@@ -115,6 +115,12 @@ abstract class MyThemes {
         fontWeight: _extraBold,
         color: _accent,
       ),
+      bodySmall:const TextStyle(
+      fontSize: 24,
+      fontWeight: _extraBold,
+      letterSpacing: -0.005,
+      color: const Color(0xFFFFFFFF),
+    ),
       titleMedium: const TextStyle(
           fontSize: 15, letterSpacing: 1, fontWeight: _extraBold),
       bodyLarge: const TextStyle(

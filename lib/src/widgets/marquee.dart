@@ -22,7 +22,7 @@ class MarqueeWidget extends StatefulWidget {
 class _MarqueeWidgetState extends State<MarqueeWidget> {
   late ScrollController scrollController;
   @override
-  void initState() {
+  void initState()async {
     //widget.length = widget.child.data!.length;
 
     scrollController = ScrollController(
@@ -42,6 +42,7 @@ class _MarqueeWidgetState extends State<MarqueeWidget> {
         //   //setState(() {});
         // }
       });
+    await Future.delayed(const Duration(seconds: 3));
     WidgetsBinding.instance.addPostFrameCallback(scroll);
     super.initState();
   }
