@@ -126,5 +126,5 @@ abstract class MyThemes {
       bodyLarge: const TextStyle(
           fontSize: 18, letterSpacing: 3.24, fontWeight: _extraBold),
       bodyMedium: const TextStyle(
-          fontSize: 19, fontWeight: _extraBold, color: Colors.black));
+          fontSize: 19, color: Colors.black));
 }
