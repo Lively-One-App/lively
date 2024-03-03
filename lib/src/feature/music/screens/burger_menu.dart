@@ -20,7 +20,7 @@ class BurgerMenu extends StatelessWidget {
     final _textTheme = Theme.of(context).extension<BurgerText>()?.textTheme;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         minimum: EdgeInsets.only(top: _height * 0.07),
         child: SingleChildScrollView(
@@ -34,15 +34,15 @@ class BurgerMenu extends StatelessWidget {
                   AppBar(
                     leadingWidth: 30,
                     leading: CircleIconButton(
-                      child: const Icon(
+                      child:  Icon(
                         LivelyIcons.menu,
-                        size: 40,
+                        size: MediaQuery.of(context).size.height / 24,
                       ),
                       onTap: () => Navigator.of(context).pop(),
                     ),
                     actions: [
                       CircleIconButton(
-                          child: const Icon(LivelyIcons.question),
+                          child:  Icon(LivelyIcons.question, size: MediaQuery.of(context).size.height / 27,),
                           onTap: () => showDialog(
                               useSafeArea: false,
                               context: context,
@@ -50,12 +50,12 @@ class BurgerMenu extends StatelessWidget {
                     ],
                   ),
                   Text('${_localizations.headlineBurgerMenu}',
-                      style: _textTheme?.headline1),
+                      style: _textTheme?.displayLarge),
                   const SizedBox(
                     height: 10,
                   ),
                   Text('${_localizations.subtitleBurgerMenu}',
-                      style: _textTheme?.subtitle1),
+                      style: _textTheme?.titleMedium),
                 ],
               ),
             ),
@@ -124,7 +124,7 @@ class BurgerMenu extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 _localizations.searchTalent,
-                style: _textTheme?.subtitle1
+                style: _textTheme?.titleMedium
                     ?.copyWith(fontSize: 18, letterSpacing: -0.36),
               ),
             ),
@@ -159,7 +159,7 @@ class BurgerMenu extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   '${_localizations.appVersion}',
-                  style: _textTheme?.subtitle2,
+                  style: _textTheme?.titleSmall,
                 )),
             // SizedBox(
             //   height: _height * 0.01,
@@ -198,7 +198,7 @@ class MyListTile extends StatelessWidget {
           padding: const EdgeInsets.only(top: 4),
           child: Text(
             text,
-            style: _textTheme?.bodyText1,
+            style: _textTheme?.bodyLarge,
           ),
         ),
         trailing: const Icon(

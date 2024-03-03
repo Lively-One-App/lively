@@ -54,16 +54,15 @@ void main() => runZonedGuarded<void>(
 
         WidgetsFlutterBinding.ensureInitialized();
 
-        AppMetrica.activate(_config);
+        await AppMetrica.activate(_config);
 
-        NotificationService.initialize();
+        await NotificationService.initialize();
 
         await Supabase.initialize(
-
-    url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
-  );
+          url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',
+          anonKey:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYnh4cGhnYnRrem55Ym5ycm13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDIzMDE2NzcsImV4cCI6MjAxNzg3NzY3N30.gLCP-HMKfYoWZKUPe4bMyRRYifProxRObRaNcB-X664',
+        );
 
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -72,71 +71,68 @@ void main() => runZonedGuarded<void>(
         Bloc.observer = AppBlocObserver.instance();
 
         final sharedPreferences = await SharedPreferences.getInstance();
-        
+
         SystemChannels.lifecycle.setMessageHandler((message) async {
           stateApp = message ?? '';
         });
-            final audioHandler = await AudioService.init(
-              builder: () => MyAudioPlayerHandler(sharedPreferences),
-              config: const AudioServiceConfig(
-                androidNotificationChannelId: 'com.mycompany.myapp.audio',
-      androidNotificationChannelName: 'Audio Service Demo',
-      androidNotificationOngoing: true,
-      androidStopForegroundOnPause: true,
-      
-              ),
-            );
-            if (audioHandler.isFirstPlay) {
-              await audioHandler.setFirstPlayAudio();
-            }
-            final socket = WebSocketAutoReconnect(
-              Uri.parse(
-                  'wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
-            );
-            
-            
-            // FlutterError.onError =
-            //     await FirebaseCrashlytics.instance.recordFlutterError;
-            final store = SupabaseHelper(  sharedPreferences);
-            runApp(MultiBlocProvider(
-              providers: [
-                BlocProvider<AzuraApiNowPlayingCubit>(
-                    create: (context) => AzuraApiNowPlayingCubit()),
-                BlocProvider<FirstRunCubit>(
-                    create: (context) => FirstRunCubit(sharedPreferences)),
-                BlocProvider<RadioCubit>(
-                  create: (context) {
-                    final azuraApiNowPlayingCubit =
-                        BlocProvider.of<AzuraApiNowPlayingCubit>(context);
+        final audioHandler = await AudioService.init(
+          builder: () => MyAudioPlayerHandler(sharedPreferences),
+          config: const AudioServiceConfig(
+            androidNotificationChannelId: 'com.mycompany.myapp.audio',
+            androidNotificationChannelName: 'Audio Service Demo',
+            androidNotificationOngoing: true,
+            androidStopForegroundOnPause: true,
+          ),
+        );
+        if (audioHandler.isFirstPlay) {
+          await audioHandler.setFirstPlayAudio();
+        }
+        final socket = WebSocketAutoReconnect(
+          Uri.parse('wss://s.livelyoneapp.ru/api/live/nowplaying/websocket'),
+        );
 
-                    return RadioCubit(
-                        myAudioHandler: audioHandler,
-                        azuraApiNowPlayingCubit: azuraApiNowPlayingCubit,
-                        webSocket: socket);
-                  },
-                ),
-                BlocProvider<SyncServerCubit>(
-                    create: (context) => SyncServerCubit()),
-                BlocProvider<LikesBloc>(
-                  create: (context) {
-                    final radioCubit = BlocProvider.of<RadioCubit>(context);
-                    final syncServerCubit =
-                        BlocProvider.of<SyncServerCubit>(context);
+        // FlutterError.onError =
+        //     await FirebaseCrashlytics.instance.recordFlutterError;
+        final store = SupabaseHelper(sharedPreferences);
+        runApp(MultiBlocProvider(
+          providers: [
+            BlocProvider<AzuraApiNowPlayingCubit>(
+                create: (context) => AzuraApiNowPlayingCubit()),
+            BlocProvider<FirstRunCubit>(
+                create: (context) => FirstRunCubit(sharedPreferences)),
+            BlocProvider<RadioCubit>(
+              create: (context) {
+                final azuraApiNowPlayingCubit =
+                    BlocProvider.of<AzuraApiNowPlayingCubit>(context);
 
-                    return LikesBloc(
-                      syncServerCubit: syncServerCubit,
-                      store: store,
-                      radioCubit: radioCubit,
-                    );
-                  },
-                ),
-                BlocProvider<MapBloc>(
-                    create: ((context) => MapBloc(store))),
-                    BlocProvider<RunStringBloc>(
-                    create: ((context) => RunStringBloc(store))),
-              ],
-              child: const MyApp(),
-            ));
+                return RadioCubit(
+                    myAudioHandler: audioHandler,
+                    azuraApiNowPlayingCubit: azuraApiNowPlayingCubit,
+                    webSocket: socket);
+              },
+            ),
+            BlocProvider<SyncServerCubit>(
+                create: (context) => SyncServerCubit()),
+            BlocProvider<LikesBloc>(
+              create: (context) {
+                final radioCubit = BlocProvider.of<RadioCubit>(context);
+                final syncServerCubit =
+                    BlocProvider.of<SyncServerCubit>(context);
+
+                return LikesBloc(
+                  syncServerCubit: syncServerCubit,
+                  store: store,
+                  radioCubit: radioCubit,
+                );
+              },
+            ),
+            BlocProvider<MapBloc>(
+                create: ((context) => MapBloc(store, sharedPreferences))),
+            BlocProvider<RunStringBloc>(
+                create: ((context) => RunStringBloc(store))),
+          ],
+          child: const MyApp(),
+        ));
 
         //   },
         //   blocObserver: AppBlocObserver.instance(),

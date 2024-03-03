@@ -45,9 +45,10 @@ class SupabaseHelper implements OnlineStoreImpl {
     String moscowId = '2e683111-964b-40da-b1bd-b232de6004af';
     final Stream request = await _store.client.from('runString').stream(
       primaryKey: ['id'],
+
     ).eq("city", moscowId);
-
-
+        
+    
     yield* request;
   }
 
@@ -55,10 +56,10 @@ class SupabaseHelper implements OnlineStoreImpl {
   void setGeoPointController(Sink<Map<String, dynamic>> controller) async {
     try {
 
-      String? uid = _prefs.getString('device_id');
+      String? uid = prefs.getString('device_id');
       if (uid == null) {
         uid = await getDeviceIdentifier();
-        _prefs.setString('device_id', uid);
+        prefs.setString('device_id', uid);
       }
       room = Supabase.instance.client.channel(
 

@@ -23,12 +23,29 @@ abstract class Routes {
             ));
   }
 
+  static Route _noRouteAnimation(Widget child) {
+    return  PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => child,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(
+              opacity: animation.drive(
+                Tween<double>(
+                  begin: 0,
+                  end: 1
+                ).chain(
+                  CurveTween(curve: Curves.ease),
+                ),
+              ),
+              child: child,
+            ));
+  }
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/map':
-        return _myRouteAnimation(MapScreen());
+        return _myRouteAnimation(const MapScreen());
       case '/burgerMenu':
-        return _myRouteAnimation(const BurgerMenu());
+        return _noRouteAnimation(const BurgerMenu());
       case '/home':
         return _myRouteAnimation(const Home());
       default:

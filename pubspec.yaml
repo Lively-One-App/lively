@@ -32,7 +32,8 @@ dependencies:
   supabase_flutter: ^2.2.0
   device_info_plus: ^9.1.2
   supabase: ^2.0.4
-  marquee_widget: ^1.2.0
+
+  flutter_local_notifications: ^16.3.0
 
   flutter_svg: ^2.0.9
   media_kit_libs_audio: ^1.0.4 
@@ -40,10 +41,11 @@ dependencies:
   audioplayers: ^5.2.1
   webview_flutter: ^4.7.0
 
-  flutter_local_notifications: ^16.3.0
-  flutter_svg: ^2.0.9
+  
+ 
   flutter_background_service: ^5.0.5
   appmetrica_plugin: ^1.4.0
+  
 
 dev_dependencies:
   flutter_test:

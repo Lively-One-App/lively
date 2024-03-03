@@ -32,7 +32,9 @@ class _LikesAreaState extends State<LikesArea> {
   Future<void> startTimerForProcessingLikes() async {
     await _timerSubForProcessingLikes?.cancel();
     _timerSubForProcessingLikes =
-        Stream.periodic(const Duration(seconds: 1), (i) => i).take(7).listen((i) {
+        Stream.periodic(const Duration(seconds: 1), (i) => i)
+            .take(7)
+            .listen((i) {
       if (i == 6 && likes != 0) {
         BlocProvider.of<LikesBloc>(context)
             .add(const LikesEvent.processLikes());
@@ -75,7 +77,7 @@ class _LikesAreaState extends State<LikesArea> {
 
     return BlocConsumer<LikesBloc, LikesState>(
       listener: (context, state) {
-        state.whenOrNull(getLikes: (cityData)  {
+        state.whenOrNull(getLikes: (cityData) {
           resetAnimation();
           if (cityData.likes != likes) {
             likes = cityData.likes;

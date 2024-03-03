@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lively/src/widgets/animated_dots.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../theme/burger_text.dart';
@@ -83,9 +84,25 @@ class NoInternet extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 41),
-                      child: Text(
-                        Localizations.noInternetCheck,
-                        style: textTheme.headline1?.copyWith(fontSize: 22),
+                      child: Row(
+                         crossAxisAlignment: CrossAxisAlignment.end,
+                        
+                        children: [
+                          Text(
+                            Localizations.noInternetCheck,
+                            style: textTheme.headline1?.copyWith(fontSize: 22),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.01,
+                            
+                          ),
+                           Column(
+                             children: [
+                               const AnimatedDots(),
+                               SizedBox(height: MediaQuery.of(context).size.height * 0.011,)
+                             ],
+                           )
+                        ],
                       ),
                     ),
                   )

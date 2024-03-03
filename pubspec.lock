@@ -893,14 +893,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  marquee_widget:
-    dependency: "direct main"
-    description:
-      name: marquee_widget
-      sha256: a8333b921508a2777727f66f26eaed69ee625ea9580e9504999d3281f44fe4d0
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.0"
   matcher:
     dependency: transitive
     description:
@@ -1534,32 +1526,26 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics
-
       sha256: "4ac59808bbfca6da38c99f415ff2d3a5d7ca0a6b4809c71d9cf30fba5daf9752"
       url: "https://pub.dev"
     source: hosted
     version: "1.1.10+1"
-
   vector_graphics_codec:
     dependency: transitive
     description:
       name: vector_graphics_codec
-
       sha256: f3247e7ab0ec77dc759263e68394990edc608fb2b480b80db8aa86ed09279e33
       url: "https://pub.dev"
     source: hosted
     version: "1.1.10+1"
-
   vector_graphics_compiler:
     dependency: transitive
     description:
       name: vector_graphics_compiler
-
       sha256: "18489bdd8850de3dd7ca8a34e0c446f719ec63e2bab2e7a8cc66a9028dd76c5a"
       url: "https://pub.dev"
     source: hosted
     version: "1.1.10+1"
-
   vector_math:
     dependency: transitive
     description:
