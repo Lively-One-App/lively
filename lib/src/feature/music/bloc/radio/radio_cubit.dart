@@ -39,9 +39,9 @@ class RadioCubit extends Cubit<RadioState> {
     _azuraApiNowPlaying =
         _handleErrorAzuracast.distinct().listen((azuraApiNowPlaying) {
       state.whenOrNull(
-        error: (_) {
+        error: (_) async {
           emit(const RadioState.initial());
-          _myAudioHandler.setAudioSource(
+          await _myAudioHandler.setAudioSource(
             listenUrl: Uri.parse(azuraApiNowPlaying.station.listenUrl),
           );
         },
@@ -52,10 +52,14 @@ class RadioCubit extends Cubit<RadioState> {
     _listenUrl = _handleErrorAzuracast
         .distinct(((previous, next) =>
             previous.station.listenUrl == next.station.listenUrl))
-        .listen((azuraApiNowPlaying) {
-      _myAudioHandler.setAudioSource(
-        listenUrl: Uri.parse(azuraApiNowPlaying.station.listenUrl),
-      );
+        .listen((azuraApiNowPlaying) async {
+      try {
+        await _myAudioHandler.setAudioSource(
+          listenUrl: Uri.parse(azuraApiNowPlaying.station.listenUrl),
+        );
+      } catch (e) {
+        _myAudioHandler.playbackState.addError(e);
+      }
     });
 
     _listenMediaItem = _handleErrorAzuracast
@@ -74,7 +78,6 @@ class RadioCubit extends Cubit<RadioState> {
   }
   void _initializeStreamSubscriptions() {
     Stream<PlaybackState> stream = _myAudioHandler.playbackState.stream
-        // .map<List<dynamic>>((event) => [event.processingState, event.playing])
         .distinct((previous, next) =>
             previous.processingState == next.processingState &&
             previous.playing == next.playing)
@@ -100,9 +103,17 @@ class RadioCubit extends Cubit<RadioState> {
         await _myAudioHandler.stop();
         playAndStop();
       } else if (!event.playing) {
-        emit(const RadioState.initial());
+        if (state == const RadioState.beforePlaying()) {
+          if (event.processingState == AudioProcessingState.loading) {
+            emit(const RadioState.beforePlaying());
+          } else {
+            playAndStop();
+          }
+        } else {
+          emit(const RadioState.initial());
+        }
         await _myAudioHandler.setFirstPlay(false);
-      }  else {
+      } else {
         emit(const RadioState.beforePlaying());
       }
     }, onError: (e, stackTrace) async {
@@ -129,8 +140,11 @@ class RadioCubit extends Cubit<RadioState> {
         await _myAudioHandler.stop();
       } else {
         emit(const RadioState.beforePlaying());
-        await Future.delayed(const Duration(milliseconds: 1500));
-        await _myAudioHandler.play();
+        if (await _myAudioHandler.playbackState.value.processingState ==
+            AudioProcessingState.ready) {
+          await Future.delayed(const Duration(milliseconds: 1500));
+          await _myAudioHandler.play();
+        }
       }
     } catch (e, stackTrace) {
       l.e('all');

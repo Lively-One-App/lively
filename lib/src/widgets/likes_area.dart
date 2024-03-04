@@ -45,6 +45,7 @@ class _LikesAreaState extends State<LikesArea> {
   @override
   void dispose() {
     _timerSubForProcessingLikes?.cancel();
+    // widget.isLike.value = true;
     super.dispose();
   }
 
@@ -115,12 +116,11 @@ class _LikesAreaState extends State<LikesArea> {
                                     padding: EdgeInsets.only(
                                         top: aspectRatio > 0.5 ? 131 : 161),
                                     child: ResetAnimatedIcon(
-                                      countLikes: cityData.likes,
-                                      resetAnimation: resetAnimation,
-                                      controller: widget.controllerResetIcon,
-                                      animation: movementResetIcon,
-                                    ),
-                                  )
+                                        countLikes: cityData.likes,
+                                        resetAnimation: resetAnimation,
+                                        controller:
+                                            widget.controllerResetIcon,
+                                        animation: movementResetIcon))
                                 : const SizedBox(),
                             Center(
                               child: HeartButton(

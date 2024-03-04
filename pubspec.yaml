@@ -45,6 +45,7 @@ dependencies:
  
   flutter_background_service: ^5.0.5
   appmetrica_plugin: ^1.4.0
+  connectivity_plus: ^5.0.2
   
 
 dev_dependencies:
