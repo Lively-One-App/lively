@@ -37,7 +37,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   late final AnimationController controllerTextHeart = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 400));
   late final AnimationController controllerHeart = AnimationController(
-      vsync: this, duration: const Duration(milliseconds: 500));
+      vsync: this, duration: const Duration(milliseconds: 375));
   late final AnimationController controllerResetIcon = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 800));
   late final gradientColors = Theme.of(context).extension<ColorsForGradient>()!;
