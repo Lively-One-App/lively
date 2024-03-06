@@ -36,7 +36,7 @@ class BurgerMenu extends StatelessWidget {
                     leading: CircleIconButton(
                       child:  Icon(
                         LivelyIcons.menu,
-                        size: MediaQuery.of(context).size.height / 24,
+                        size: MediaQuery.of(context).size.height / 27,
                       ),
                       onTap: () => Navigator.of(context).pop(),
                     ),
