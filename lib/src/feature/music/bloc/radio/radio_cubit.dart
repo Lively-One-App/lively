@@ -57,8 +57,14 @@ class RadioCubit extends Cubit<RadioState> {
         await _myAudioHandler.setAudioSource(
           listenUrl: Uri.parse(azuraApiNowPlaying.station.listenUrl),
         );
-      } catch (e) {
-        _myAudioHandler.playbackState.addError(e);
+      } on PlayerException catch (e) {
+
+        if (e.code == -1009 || e.code == -1003) {
+          emit(const RadioState.error());
+        } else {
+          l.e(e);
+          emit(const RadioState.initial());
+        }
       }
     });
 
@@ -120,7 +126,7 @@ class RadioCubit extends Cubit<RadioState> {
       if (e is TimeoutException || e is PlatformException) {
         if (await _myAudioHandler.playbackState.value.playing) {
           await _myAudioHandler.stop();
-          emit(const RadioState.error());
+          emit(const RadioState.initial());
         }
       } else if (e is PlayerException) {
         l.e('Error code: ${e.code}');
@@ -144,12 +150,25 @@ class RadioCubit extends Cubit<RadioState> {
             AudioProcessingState.ready) {
           await Future.delayed(const Duration(milliseconds: 1500));
           await _myAudioHandler.play();
+        } else if (await _myAudioHandler.playbackState.value.processingState ==
+                AudioProcessingState.idle &&
+            _myAudioHandler.listenUrl != null) {
+          await _myAudioHandler.setAudioSource(
+            listenUrl: _myAudioHandler.listenUrl!,
+          );
         }
+      }
+    } on PlayerException catch (e) {
+      if (e.code == -1009 || e.code == -1003) {
+        emit(const RadioState.error());
+      } else {
+        l.e(e);
+        emit(const RadioState.initial());
       }
     } catch (e, stackTrace) {
       l.e('all');
-      l.e(e);
-      _myAudioHandler.playbackState.addError(e, stackTrace);
+      l.e(e, stackTrace);
+      emit(const RadioState.initial());
     }
   }
 

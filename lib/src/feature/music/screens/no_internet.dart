@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lively/src/widgets/animated_dots.dart';
+import 'package:lively/src/widgets/animated_checking.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../theme/burger_text.dart';
@@ -56,14 +56,14 @@ class NoInternet extends StatelessWidget {
                   Text(
                     Localizations.noInternet,
                     textAlign: TextAlign.center,
-                    style: textTheme.subtitle1
+                    style: textTheme.titleMedium
                         ?.copyWith(fontSize: 30, fontWeight: FontWeight.w800),
                   ),
                   const SizedBox(height: 30),
                   Text(
                     Localizations.noInternetReconnect,
                     textAlign: TextAlign.center,
-                    style: textTheme.subtitle1?.copyWith(fontSize: 24),
+                    style: textTheme.titleMedium?.copyWith(fontSize: 24),
                   ),
                   const SizedBox(height: 52),
                   GradientButton(
@@ -81,29 +81,10 @@ class NoInternet extends StatelessWidget {
                     ]),
                     borderRadius: 34,
                     strokeWidth: 3,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 41),
-                      child: Row(
-                         crossAxisAlignment: CrossAxisAlignment.end,
-                        
-                        children: [
-                          Text(
-                            Localizations.noInternetCheck,
-                            style: textTheme.headline1?.copyWith(fontSize: 22),
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.01,
-                            
-                          ),
-                           Column(
-                             children: [
-                               const AnimatedDots(),
-                               SizedBox(height: MediaQuery.of(context).size.height * 0.011,)
-                             ],
-                           )
-                        ],
-                      ),
+                    child: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 41),
+                      child: AnimatedChecking(),
                     ),
                   )
                 ],

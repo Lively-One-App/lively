@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io' show Platform;
 
 import 'package:audio_service/audio_service.dart';
@@ -13,6 +14,7 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
   final SharedPreferences _sharedPreferences;
   Uri? _listenUrl;
 
+  Uri? get listenUrl => _listenUrl;
   MyAudioPlayerHandler(this._sharedPreferences) {
     _player.playbackEventStream
         .map(_transformEvent)
@@ -31,8 +33,12 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
     _isFirstPlay = value;
     await _sharedPreferences.setBool('firstPlay', value);
   }
+
   @override
   Future<void> play() async {
+    if (_player.audioSource == null) {
+      await setAudioSource(listenUrl: _listenUrl!);
+    }
     await _player.play();
   }
 
@@ -43,15 +49,7 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
 
   @override
   Future<void> stop() async {
-    try {
-      final audioSource = _player.audioSource;
-      await _player.stop();
-      if (_listenUrl != null && audioSource is UriAudioSource) {
-        await setAudioSource(listenUrl: _listenUrl!);
-      }
-    } catch (e) {
-      rethrow;
-    }
+    await _player.stop();
   }
 
   Future<void> dispose() async {
@@ -64,17 +62,17 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
       int? initialIndex,
       Duration? initialPosition,
       required Uri listenUrl}) async {
-    _listenUrl = listenUrl;
     try {
+        _listenUrl = listenUrl;
         if (!_isFirstPlay) {
           await _player.setAudioSource(
-          AudioSource.uri(listenUrl),
-          preload: preload,
-          initialIndex: initialIndex,
-          initialPosition: initialPosition,
-        );
+            AudioSource.uri(listenUrl),
+            preload: preload,
+            initialIndex: initialIndex,
+            initialPosition: initialPosition,
+          );
+          
         }
-      
     } catch (e) {
       rethrow;
     }

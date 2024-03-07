@@ -41,10 +41,15 @@ class WebSocketAutoReconnect {
         _myWebSocketController.add(event);
       }
     }, onError: (e) async {
+      
       _myWebSocketController.addError(e);
       await Future.delayed(Duration(seconds: delay));
       _connect();
-    }, onDone: () async {
+    }, 
+
+    onDone: () async {
+     
+      _myWebSocketController.addError(TimeoutException('time is up'));
       await Future.delayed(Duration(seconds: delay));
       _connect();
     }, cancelOnError: true);
@@ -55,7 +60,7 @@ class WebSocketAutoReconnect {
         _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       if (result == ConnectivityResult.none) {
         _myWebSocketController.addError(TimeoutException(
-            'time is up')); 
+            'time is up'));
       }
     });
   }
