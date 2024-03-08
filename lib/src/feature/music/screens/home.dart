@@ -161,9 +161,31 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             leading: CircleIconButton(
                               onTap: () => Navigator.of(context)
                                   .pushNamed('/burgerMenu'),
-                              child: Icon(
-                                LivelyIcons.menu,
-                                size: MediaQuery.of(context).size.height / 27,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.height / 27,
+                                    height: 2,
+                                    child: const DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: Color(0xff696969)),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 7,
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.height / 27,
+                                    height: 2,
+                                    child: const DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: Color(0xff696969)),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             actions: [

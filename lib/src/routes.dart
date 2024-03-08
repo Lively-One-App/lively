@@ -27,17 +27,7 @@ abstract class Routes {
     return  PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => child,
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            FadeTransition(
-              opacity: animation.drive(
-                Tween<double>(
-                  begin: 0,
-                  end: 1
-                ).chain(
-                  CurveTween(curve: Curves.ease),
-                ),
-              ),
-              child: child,
-            ));
+            child);
   }
 
   static Route<dynamic> generateRoute(RouteSettings settings) {

@@ -99,6 +99,7 @@ class RadioCubit extends Cubit<RadioState> {
     // }
 
     _playbackState = stream.listen((event) async {
+      
       if (event.playing &&
           event.processingState == AudioProcessingState.ready &&
           !_myAudioHandler.isFirstPlay) {
@@ -109,13 +110,19 @@ class RadioCubit extends Cubit<RadioState> {
         await _myAudioHandler.stop();
         playAndStop();
       } else if (!event.playing) {
+        // this code when user is connecting to the web socket state is before playing, and when user connects to web socket it emits beforePlaying state again
         if (state == const RadioState.beforePlaying()) {
           if (event.processingState == AudioProcessingState.loading) {
             emit(const RadioState.beforePlaying());
           } else {
             playAndStop();
           }
-        } else {
+        } else if (state == const RadioState.loaded()) {
+          if (event.processingState == AudioProcessingState.ready) {
+            stop();
+          }
+        }
+        else {
           emit(const RadioState.initial());
         }
         await _myAudioHandler.setFirstPlay(false);
@@ -158,6 +165,25 @@ class RadioCubit extends Cubit<RadioState> {
           );
         }
       }
+    } on PlayerException catch (e) {
+      if (e.code == -1009 || e.code == -1003) {
+        emit(const RadioState.error());
+      } else {
+        l.e(e);
+        emit(const RadioState.initial());
+      }
+    } catch (e, stackTrace) {
+      l.e('all');
+      l.e(e, stackTrace);
+      emit(const RadioState.initial());
+    }
+  }
+
+  void stop() async {
+    try {
+      emit(const RadioState.beforeStopping());
+        await Future.delayed(const Duration(milliseconds: 1000));
+        await _myAudioHandler.stop();
     } on PlayerException catch (e) {
       if (e.code == -1009 || e.code == -1003) {
         emit(const RadioState.error());
