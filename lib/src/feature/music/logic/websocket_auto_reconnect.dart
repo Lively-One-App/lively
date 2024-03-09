@@ -9,7 +9,7 @@ class WebSocketAutoReconnect {
   final Uri _uri;
   final int delay;
   final _myWebSocketController = StreamController<AzuraApiModel>.broadcast();
-  late WebSocketChannel _webSocketChannel;
+   WebSocketChannel? _webSocketChannel;
   final _connectivity = Connectivity();
   StreamSubscription? _connectivitySubscription;
 
@@ -24,10 +24,10 @@ class WebSocketAutoReconnect {
 
   void _connect() async {
     _webSocketChannel = WebSocketChannel.connect(_uri);
-    _webSocketChannel.sink
+    _webSocketChannel?.sink
         .add('{ "subs": { "station:lively": {}, "global:time": {} }}');
 
-    _webSocketChannel.stream.map((event) {
+    _webSocketChannel?.stream.map((event) {
       Map<String, dynamic> temp = jsonDecode(event);
 
       if (!temp.containsKey('pub') || !temp['pub']['data'].containsKey('np')) {
@@ -48,9 +48,7 @@ class WebSocketAutoReconnect {
     }, 
 
     onDone: () async {
-     
       _myWebSocketController.addError(TimeoutException('time is up'));
-      await Future.delayed(Duration(seconds: delay));
       _connect();
     }, cancelOnError: true);
 
@@ -59,11 +57,13 @@ class WebSocketAutoReconnect {
 
   void _listenToConnectivity() {
     _connectivitySubscription = _connectivity.onConnectivityChanged
-        .skip(1)
+        .skip(2)
         .distinct()
         .listen((ConnectivityResult result) async {
       if (result == ConnectivityResult.none) {
         _myWebSocketController.addError(TimeoutException('time is up'));
+      } else {
+        await _webSocketChannel?.sink.close();
       }
     });
   }

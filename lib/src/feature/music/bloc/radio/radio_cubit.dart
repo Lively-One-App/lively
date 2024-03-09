@@ -37,7 +37,7 @@ class RadioCubit extends Cubit<RadioState> {
     });
 
     _azuraApiNowPlaying =
-        _handleErrorAzuracast.distinct().listen((azuraApiNowPlaying) {
+        _handleErrorAzuracast.listen((azuraApiNowPlaying) {
       state.whenOrNull(
         error: (_) async {
           emit(const RadioState.initial());
@@ -117,7 +117,8 @@ class RadioCubit extends Cubit<RadioState> {
           } else {
             playAndStop();
           }
-        } else if (state == const RadioState.loaded()) {
+        }
+        else if (state == const RadioState.loaded()) {
           if (event.processingState == AudioProcessingState.ready) {
             stop();
           }
