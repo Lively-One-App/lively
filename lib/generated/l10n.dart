@@ -243,21 +243,41 @@ class S {
     );
   }
 
-  /// `Listen to the music, become lively`
+  /// `Our misson`
   String get onBoardingScreen2_1 {
     return Intl.message(
-      'Listen to the music, become lively',
+      'Our misson',
       name: 'onBoardingScreen2_1',
       desc: '',
       args: [],
     );
   }
 
-  /// ` and make others lively with a simple two-finger gesture.`
+  /// `is to increase people's desire to live on Earth`
   String get onBoardingScreen2_2 {
     return Intl.message(
-      ' and make others lively with a simple two-finger gesture.',
+      ' is to increase people\'s desire to live on Earth.',
       name: 'onBoardingScreen2_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Listen to the music, become lively`
+  String get onBoardingScreen3_1 {
+    return Intl.message(
+      'Listen to the music, become lively',
+      name: 'onBoardingScreen3_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` and make others lively with a simple two-finger gesture.`
+  String get onBoardingScreen3_2 {
+    return Intl.message(
+      ' and make others lively with a simple «two-finger» gesture.',
+      name: 'onBoardingScreen3_2',
       desc: '',
       args: [],
     );

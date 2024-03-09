@@ -44,7 +44,12 @@ class TextScreen extends StatelessWidget {
                 TextSpan(
                     text: firstPart,
                     style: const TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: secondPart)
+                TextSpan(
+                  text: secondPart,
+                  style: const TextStyle(
+                    fontFamily: 'MullerRegular',
+                  ),
+                )
               ]),
               style: const TextStyle(
                 color: Colors.white,

@@ -31,9 +31,13 @@ class OnBoarding extends StatelessWidget {
           secondPart: localizations.onBoardingScreen1_2,
         ),
         TextScreen(
+            firstPart: localizations.onBoardingScreen2_1,
+            secondPart: localizations.onBoardingScreen2_2,
+            gradientColors: gradientColors),
+        TextScreen(
           gradientColors: gradientColors,
-          firstPart: localizations.onBoardingScreen2_1,
-          secondPart: localizations.onBoardingScreen2_2,
+          firstPart: localizations.onBoardingScreen3_1,
+          secondPart: localizations.onBoardingScreen3_2,
         ),
         VideoScreen(
           textButton: Padding(

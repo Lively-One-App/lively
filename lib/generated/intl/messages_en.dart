@@ -50,10 +50,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Welcome to Lively"),
         "onBoardingScreen1_2": MessageLookupByLibrary.simpleMessage(
             " in Moscow\'s united music flow!"),
-        "onBoardingScreen2_1": MessageLookupByLibrary.simpleMessage(
-            "Listen to the music, become lively"),
+        "onBoardingScreen2_1":
+            MessageLookupByLibrary.simpleMessage("Our misson"),
         "onBoardingScreen2_2": MessageLookupByLibrary.simpleMessage(
-            " and make others lively with a simple two-finger gesture."),
+            " is to increase people's desire to live on Earth."),
+        "onBoardingScreen3_1": MessageLookupByLibrary.simpleMessage(
+            "Listen to the music, become lively"),
+        "onBoardingScreen3_2": MessageLookupByLibrary.simpleMessage(
+            " and make others lively with a simple «two-finger» gesture."),
         "privacy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "resetTime": MessageLookupByLibrary.simpleMessage("SEC"),
         "searchTalent": MessageLookupByLibrary.simpleMessage(
