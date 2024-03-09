@@ -60,7 +60,7 @@ class _VideoScreenState extends State<VideoScreen> {
                   bottom: widget.bottomPaddingButton,
                   child: GradientButton(
                     onPressed: (() => Navigator.of(context).pop()),
-                    background: widget.bgButton,
+                    background: Colors.black.withOpacity(0.1),
                     beginGradient:
                         LinearGradient(colors: widget.gradientColorsButton),
                     endGradient: LinearGradient(
