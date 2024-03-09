@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lively/src/const.dart';
 import 'package:lively/src/widgets/animated_dots.dart';
 
 import '../../../../generated/l10n.dart';
@@ -93,13 +94,13 @@ class NoInternet extends StatelessWidget {
                             style: textTheme.headline1?.copyWith(fontSize: 22),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.01,
+                            width: Const.widthScreen * 0.01,
                             
                           ),
                            Column(
                              children: [
                                const AnimatedDots(),
-                               SizedBox(height: MediaQuery.of(context).size.height * 0.011,)
+                               SizedBox(height: Const.hightScreen * 0.011,)
                              ],
                            )
                         ],

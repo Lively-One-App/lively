@@ -57,7 +57,7 @@ class _MapScreenState extends State<MapScreen>
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme.apply(bodyColor: Colors.black);
 
     return BlocListener<MapBloc, MapState>(
       listener: (context, state) {
@@ -66,7 +66,10 @@ class _MapScreenState extends State<MapScreen>
               LatLng(state.position.latitude, state.position.longitude);
           _animatedMapMove(
               LatLng(state.position.latitude, state.position.longitude),
-              cameraZoom);
+              //cameraZoom
+              _mapCtrl.zoom
+              
+              );
         }
         if (state.isShareMyPosition != isShareMyPosition) {
           setState(() {
@@ -93,7 +96,7 @@ class _MapScreenState extends State<MapScreen>
             mapController: _mapCtrl,
             options: MapOptions(
                 center: LatLng(55.7522, 37.6156),
-                zoom: 9.2,
+                //zoom: 9.2,
                 maxZoom: 18,
                 interactiveFlags:
                     InteractiveFlag.all & ~InteractiveFlag.rotate),
@@ -183,6 +186,7 @@ class _MapScreenState extends State<MapScreen>
           ),
           Positioned(
               right: 0,
+              
               top: MediaQuery.of(context).size.height * 0.32,
 
               child: GestureDetector(
@@ -196,14 +200,18 @@ class _MapScreenState extends State<MapScreen>
     );
   }
 
-  void _animatedMapMove(LatLng destLocation, double destZoom) async {
+  void _animatedMapMove(LatLng destLocation,
+   double destZoom
+   ) async {
     // Create some tweens. These serve to split up the transition from one location to another.
     // In our case, we want to split the transition be<tween> our current map center and the destination.
     final latTween = Tween<double>(
         begin: _mapCtrl.center.latitude, end: destLocation.latitude);
     final lngTween = Tween<double>(
         begin: _mapCtrl.center.longitude, end: destLocation.longitude);
-    final zoomTween = Tween<double>(begin: _mapCtrl.zoom, end: destZoom);
+    final zoomTween = Tween<double>(begin: _mapCtrl.zoom,
+     end: destZoom
+     );
 
     // Create a animation controller that has a duration and a TickerProvider.
 

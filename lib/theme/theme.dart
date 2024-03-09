@@ -6,6 +6,7 @@ import 'burger_text.dart';
 
 abstract class MyThemes {
   static const _accent = const Color(0xFFF64B4B);
+  static const _accentDark = Color.fromARGB(255, 238, 235, 235);
   static final Iterable<ThemeExtension<dynamic>>? _extension = [
     const ColorsForGradient(
       btnColor1: Color(0xFFFFA0B7),
@@ -58,18 +59,34 @@ abstract class MyThemes {
   );
 
   static ThemeData get lightTheme {
+    //const backgroundColor = const Color(0xFFFFFFFF);
     return ThemeData(
       splashColor: Colors.transparent,
       extensions: _extension,
-      brightness: Brightness.light,
-      colorSchemeSeed: _accent,
+      //brightness: Brightness.light,
+      //colorSchemeSeed: _accent,
       appBarTheme: _appBarTheme,
-      backgroundColor: const Color(0xFFF2F2F7),
       fontFamily: 'Muller',
       scaffoldBackgroundColor: const Color(0xFFFFFFFF),
-      listTileTheme: _listTileThemeData,
+      listTileTheme: _listTileThemeData.copyWith(
+          tileColor: const Color.fromRGBO(255, 255, 255, 1),
+          textColor: Colors.black
+        ),
       textTheme: _textTheme,
       iconTheme: const IconThemeData(color: _accent),
+      
+      colorScheme: const ColorScheme(
+          background: Color.fromRGBO(236, 235, 235, 1),
+          brightness: Brightness.light,
+          primary: _accent,
+          onPrimary: _accent,
+          secondary: _accent,
+          onSecondary: _accent,
+          error: _accent,
+          onError: _accent,
+          onBackground: Color.fromRGBO(236, 235, 235, 1),
+          surface: _accent,
+          onSurface: _accent),
     );
   }
 
@@ -103,7 +120,7 @@ abstract class MyThemes {
             onError: _accent,
             onBackground: backgroundColor,
             surface: _accent,
-            onSurface: _accent));
+            onSurface: _accentDark));
   }
 
   static const _regular = FontWeight.w400;
@@ -115,16 +132,15 @@ abstract class MyThemes {
         fontWeight: _extraBold,
         color: _accent,
       ),
-      bodySmall:const TextStyle(
-      fontSize: 24,
-      fontWeight: _extraBold,
-      letterSpacing: -0.005,
-      color: const Color(0xFFFFFFFF),
-    ),
+      bodySmall: const TextStyle(
+        fontSize: 24,
+        fontWeight: _extraBold,
+        letterSpacing: -0.005,
+        color: const Color(0xFFFFFFFF),
+      ),
       titleMedium: const TextStyle(
           fontSize: 15, letterSpacing: 1, fontWeight: _extraBold),
       bodyLarge: const TextStyle(
           fontSize: 18, letterSpacing: 3.24, fontWeight: _extraBold),
-      bodyMedium: const TextStyle(
-          fontSize: 19, color: Colors.black));
+      bodyMedium: const TextStyle(fontSize: 19, color: Colors.black));
 }

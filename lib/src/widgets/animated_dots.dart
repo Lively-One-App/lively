@@ -50,7 +50,7 @@ class _AnimatedDotsState extends State<AnimatedDots>
             width: 5,
             height: 5,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: Color.fromRGBO(252, 31, 2, opacity+0.66)
               
             ),
@@ -60,7 +60,7 @@ class _AnimatedDotsState extends State<AnimatedDots>
             width: 5,
             height: 5,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius:const  BorderRadius.all(Radius.circular(10)),
               color: Color.fromRGBO(252, 31, 2, opacity+0.33)
               
             ),
@@ -70,7 +70,7 @@ class _AnimatedDotsState extends State<AnimatedDots>
             width: 5,
             height: 5,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius:const BorderRadius.all(Radius.circular(10)),
               color: Color.fromRGBO(252, 31, 2, opacity+0)
               
             ),

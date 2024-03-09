@@ -85,7 +85,7 @@ class _MarqueeWidgetState extends State<MarqueeWidget> {
   }
 
   void scroll(_) async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
     while (scrollController.hasClients) {
       await scrollController.animateTo(scrollController.offset + 100,
           duration: widget.animationDuration, curve: Curves.linear);
