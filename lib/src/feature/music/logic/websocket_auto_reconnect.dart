@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:connectivity_plus/connectivity_plus.dart';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:lively/src/feature/music/model/azura_model/azura_model.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
@@ -53,20 +53,23 @@ class WebSocketAutoReconnect {
       await Future.delayed(Duration(seconds: delay));
       _connect();
     }, cancelOnError: true);
+
+    
   }
 
   void _listenToConnectivity() {
-    _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+    _connectivitySubscription = _connectivity.onConnectivityChanged
+        .skip(1)
+        .distinct()
+        .listen((ConnectivityResult result) async {
       if (result == ConnectivityResult.none) {
-        _myWebSocketController.addError(TimeoutException(
-            'time is up'));
+        _myWebSocketController.addError(TimeoutException('time is up'));
       }
     });
   }
 
   void dispose() {
-    _webSocketChannel.sink.close();
+    _webSocketChannel?.sink.close();
     _myWebSocketController.close();
     _connectivitySubscription?.cancel();
   }
