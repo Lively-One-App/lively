@@ -24,20 +24,22 @@ class RadioCubit extends Cubit<RadioState> {
   late final StreamSubscription<AzuraApiModel> _azuraApiNowPlaying;
   late final Stream<AzuraApiModel> _handleErrorAzuracast;
   StreamSubscription<PlaybackState>? _playbackState;
+  final WebSocketAutoReconnect webSocket;
   RadioCubit({
     required AzuraApiNowPlayingCubit azuraApiNowPlayingCubit,
     required MyAudioPlayerHandler myAudioHandler,
-    required WebSocketAutoReconnect webSocket,
+    required this.webSocket,
   })  : _myAudioHandler = myAudioHandler,
         _azuraApiNowPlayingCubit = azuraApiNowPlayingCubit,
         super(const RadioState.initial()) {
-    _handleErrorAzuracast = webSocket.stream.distinct().handleError((error) {
+    _handleErrorAzuracast = webSocket.stream.handleError((error) async {
       l.e(error);
+      await _stop();
       emit(const RadioState.error());
+      webSocket.isConnected = false;
     });
 
-    _azuraApiNowPlaying =
-        _handleErrorAzuracast.listen((azuraApiNowPlaying) {
+    _azuraApiNowPlaying = _handleErrorAzuracast.listen((azuraApiNowPlaying) {
       state.whenOrNull(
         error: (_) async {
           emit(const RadioState.initial());
@@ -58,9 +60,9 @@ class RadioCubit extends Cubit<RadioState> {
           listenUrl: Uri.parse(azuraApiNowPlaying.station.listenUrl),
         );
       } on PlayerException catch (e) {
-
         if (e.code == -1009 || e.code == -1003) {
           emit(const RadioState.error());
+          webSocket.isConnected = false;
         } else {
           l.e(e);
           emit(const RadioState.initial());
@@ -99,7 +101,6 @@ class RadioCubit extends Cubit<RadioState> {
     // }
 
     _playbackState = stream.listen((event) async {
-      
       if (event.playing &&
           event.processingState == AudioProcessingState.ready &&
           !_myAudioHandler.isFirstPlay) {
@@ -117,13 +118,11 @@ class RadioCubit extends Cubit<RadioState> {
           } else {
             playAndStop();
           }
-        }
-        else if (state == const RadioState.loaded()) {
+        } else if (state == const RadioState.loaded()) {
           if (event.processingState == AudioProcessingState.ready) {
-            stop();
+            await _stop();
           }
-        }
-        else {
+        } else {
           emit(const RadioState.initial());
         }
         await _myAudioHandler.setFirstPlay(false);
@@ -169,6 +168,7 @@ class RadioCubit extends Cubit<RadioState> {
     } on PlayerException catch (e) {
       if (e.code == -1009 || e.code == -1003) {
         emit(const RadioState.error());
+        webSocket.isConnected = false;
       } else {
         l.e(e);
         emit(const RadioState.initial());
@@ -180,14 +180,15 @@ class RadioCubit extends Cubit<RadioState> {
     }
   }
 
-  void stop() async {
+  Future<void> _stop() async {
     try {
       emit(const RadioState.beforeStopping());
-        await Future.delayed(const Duration(milliseconds: 1000));
-        await _myAudioHandler.stop();
+      await Future.delayed(const Duration(milliseconds: 1000));
+      await _myAudioHandler.stop();
     } on PlayerException catch (e) {
       if (e.code == -1009 || e.code == -1003) {
         emit(const RadioState.error());
+        webSocket.isConnected = false;
       } else {
         l.e(e);
         emit(const RadioState.initial());
