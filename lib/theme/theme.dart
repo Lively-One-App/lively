@@ -70,11 +70,21 @@ abstract class MyThemes {
       scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       listTileTheme: _listTileThemeData.copyWith(
           tileColor: const Color.fromRGBO(255, 255, 255, 1),
-          textColor: Colors.black
-        ),
-      textTheme: _textTheme,
+          textColor: Colors.black),
+      textTheme: _textTheme.copyWith(
+          bodyLarge: const TextStyle(
+              fontSize: 18,
+              letterSpacing: 3.24,
+              fontWeight: _extraBold,
+              color: Colors.black),
+          titleMedium: const TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+              letterSpacing: 1,
+              fontWeight: _extraBold)),
+
       iconTheme: const IconThemeData(color: _accent),
-      
+
       colorScheme: const ColorScheme(
           background: Color.fromRGBO(236, 235, 235, 1),
           brightness: Brightness.light,
@@ -138,8 +148,8 @@ abstract class MyThemes {
         letterSpacing: -0.005,
         color: const Color(0xFFFFFFFF),
       ),
-      titleMedium: const TextStyle(
-          fontSize: 15, letterSpacing: 1, fontWeight: _extraBold),
+      titleMedium:
+          TextStyle(fontSize: 15, letterSpacing: 1, fontWeight: _extraBold),
       bodyLarge: const TextStyle(
           fontSize: 18, letterSpacing: 3.24, fontWeight: _extraBold),
       bodyMedium: const TextStyle(fontSize: 19, color: Colors.black));
