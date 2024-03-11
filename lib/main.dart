@@ -5,17 +5,12 @@ import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:l/l.dart';
-
 import 'package:lively/src/feature/music/bloc/azura_api_now_paying/azura_api_now_playing_cubit.dart';
-
 import 'package:lively/src/feature/music/bloc/map/map_bloc.dart';
-import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
-import 'package:lively/src/feature/music/logic/notification_service.dart';
+import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -40,10 +35,10 @@ class MyHttpOverrides extends HttpOverrides {
 
 String stateApp = '';
 
-const notificationChannelId = 'my_foreground';
+// const notificationChannelId = 'my_foreground';
 
 // this will be used for notification id, So you can update your custom notification with this id.
-const notificationId = 888;
+// const notificationId = 888;
 
 AppMetricaConfig get _config =>
     const AppMetricaConfig('3b254864-c192-486a-8393-c4e233b75edd', logs: true);
@@ -56,7 +51,7 @@ void main() => runZonedGuarded<void>(
 
         await AppMetrica.activate(_config);
 
-        await NotificationService.initialize();
+        // await NotificationService.initialize();
 
         await Supabase.initialize(
           url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',

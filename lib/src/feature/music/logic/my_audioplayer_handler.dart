@@ -85,20 +85,19 @@ class MyAudioPlayerHandler extends BaseAudioHandler {
 
   PlaybackState _transformEvent(PlaybackEvent event) {
     final mediaControls = [
-      if (Platform.isAndroid)
-        const MediaControl(
-          androidIcon: 'drawable/empty',
-          label: 'Rewind',
-          action: MediaAction.rewind,
-        ),
+      // if (Platform.isAndroid)
+      //   const MediaControl(
+      //     androidIcon: 'drawable/empty',
+      //     label: 'Rewind',
+      //     action: MediaAction.rewind,
+      //   ),
       if (_player.playing) MediaControl.pause else MediaControl.play,
-      MediaControl.stop,
-      if (Platform.isAndroid)
-        const MediaControl(
-          androidIcon: 'drawable/empty',
-          label: 'Fast Forward',
-          action: MediaAction.fastForward,
-        ),
+      // if (Platform.isAndroid)
+      //   const MediaControl(
+      //     androidIcon: 'drawable/empty',
+      //     label: 'Fast Forward',
+      //     action: MediaAction.fastForward,
+      //   ),
     ];
 
     return PlaybackState(

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:lively/src/feature/music/logic/notification_service.dart';
 import 'package:meta/meta.dart';
 import 'package:lively/src/feature/music/logic/online_store_impl.dart';
 import 'package:lively/main.dart';
@@ -28,9 +27,9 @@ class RunStringBloc extends Bloc<RunStringEvent, RunStringState> {
       var tttp = this.state is RunStringInitial;
       if (runString != '' && firstValueReceived.isCompleted) {
         //"AppLifecycleState.paused"
-        if (stateApp == "AppLifecycleState.paused") {
-          NotificationService.display(runString);
-        }
+        // if (stateApp == "AppLifecycleState.paused") {
+        //   NotificationService.display(runString);
+        // }
         emit(RunStringUpdateState(runString: runString));
         if (timeView != 0) {
           Timer(Duration(seconds: timeView), () {
