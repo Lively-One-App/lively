@@ -10,6 +10,9 @@ import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 import 'package:lively/src/widgets/listeners_amount.dart';
 import 'package:lively/src/widgets/marquee.dart';
 
+
+import 'package:lively/src/widgets/marquee.dart';
+
 import '../../../../theme/colors_for_gradient.dart';
 import '../../../widgets/animated_background.dart';
 import '../../../widgets/circle_icon_button.dart';
@@ -300,6 +303,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 )),
             Positioned(
+
                 right: 0,
                 top: MediaQuery.of(context).size.height * 0.32,
                 child: GestureDetector(

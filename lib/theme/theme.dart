@@ -6,6 +6,7 @@ import 'burger_text.dart';
 
 abstract class MyThemes {
   static const _accent = const Color(0xFFF64B4B);
+  static const _accentDark = Color.fromARGB(255, 238, 235, 235);
   static final Iterable<ThemeExtension<dynamic>>? _extension = [
     const ColorsForGradient(
       btnColor1: Color(0xFFFFA0B7),
@@ -58,18 +59,44 @@ abstract class MyThemes {
   );
 
   static ThemeData get lightTheme {
+    //const backgroundColor = const Color(0xFFFFFFFF);
     return ThemeData(
       splashColor: Colors.transparent,
       extensions: _extension,
-      brightness: Brightness.light,
-      colorSchemeSeed: _accent,
+      //brightness: Brightness.light,
+      //colorSchemeSeed: _accent,
       appBarTheme: _appBarTheme,
-      backgroundColor: const Color(0xFFF2F2F7),
       fontFamily: 'Muller',
       scaffoldBackgroundColor: const Color(0xFFFFFFFF),
-      listTileTheme: _listTileThemeData,
-      textTheme: _textTheme,
+      listTileTheme: _listTileThemeData.copyWith(
+          tileColor: const Color.fromRGBO(255, 255, 255, 1),
+          textColor: Colors.black),
+      textTheme: _textTheme.copyWith(
+          bodyLarge: const TextStyle(
+              fontSize: 18,
+              letterSpacing: 3.24,
+              fontWeight: _extraBold,
+              color: Colors.black),
+          titleMedium: const TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+              letterSpacing: 1,
+              fontWeight: _extraBold)),
+
       iconTheme: const IconThemeData(color: _accent),
+
+      colorScheme: const ColorScheme(
+          background: Color.fromRGBO(236, 235, 235, 1),
+          brightness: Brightness.light,
+          primary: _accent,
+          onPrimary: _accent,
+          secondary: _accent,
+          onSecondary: _accent,
+          error: _accent,
+          onError: _accent,
+          onBackground: Color.fromRGBO(236, 235, 235, 1),
+          surface: _accent,
+          onSurface: _accent),
     );
   }
 
@@ -81,6 +108,7 @@ abstract class MyThemes {
         fontFamily: 'Muller',
         extensions: _extension,
         brightness: Brightness.dark,
+        //colorSchemeSeed: _accent,
         //colorSchemeSeed: _accent,
         scaffoldBackgroundColor: backgroundColor,
         textTheme: _textTheme.apply(bodyColor: const Color(0xFFC6C6C6)),
