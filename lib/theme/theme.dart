@@ -109,6 +109,7 @@ abstract class MyThemes {
         extensions: _extension,
         brightness: Brightness.dark,
         //colorSchemeSeed: _accent,
+        //colorSchemeSeed: _accent,
         scaffoldBackgroundColor: backgroundColor,
         textTheme: _textTheme.apply(bodyColor: const Color(0xFFC6C6C6)),
         iconTheme: const IconThemeData(color: _accent),
@@ -130,7 +131,7 @@ abstract class MyThemes {
             onError: _accent,
             onBackground: backgroundColor,
             surface: _accent,
-            onSurface: _accentDark));
+            onSurface: _accent));
   }
 
   static const _regular = FontWeight.w400;
@@ -142,15 +143,16 @@ abstract class MyThemes {
         fontWeight: _extraBold,
         color: _accent,
       ),
-      bodySmall: const TextStyle(
-        fontSize: 24,
-        fontWeight: _extraBold,
-        letterSpacing: -0.005,
-        color: const Color(0xFFFFFFFF),
-      ),
-      titleMedium:
-          TextStyle(fontSize: 15, letterSpacing: 1, fontWeight: _extraBold),
+      titleMedium: const TextStyle(
+          fontSize: 15, letterSpacing: 1, fontWeight: _extraBold),
       bodyLarge: const TextStyle(
           fontSize: 18, letterSpacing: 3.24, fontWeight: _extraBold),
-      bodyMedium: const TextStyle(fontSize: 19, color: Colors.black));
+          bodySmall: const TextStyle(
+      fontSize: 24,
+      fontWeight: _extraBold,
+      letterSpacing: -0.005,
+      color: const Color(0xFFFFFFFF),
+    ),
+      bodyMedium: const TextStyle(
+          fontSize: 19, fontWeight: _extraBold, color: Colors.black));
 }

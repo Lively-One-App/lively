@@ -10,9 +10,9 @@ import '../../logic/online_store_impl.dart';
 import '../../model/firestore/city_data.dart';
 import '../radio/radio_cubit.dart';
 
-part 'likes_state.dart';
-part 'likes_event.dart';
 part 'likes_bloc.freezed.dart';
+part 'likes_event.dart';
+part 'likes_state.dart';
 
 class LikesBloc extends Bloc<LikesEvent, LikesState> {
   final OnlineStoreImpl _store;
@@ -20,7 +20,7 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   final SyncServerCubit _syncServerCubit;
   StreamSubscription? _listenerCityData;
   late final StreamSubscription<RadioState> _musicCubitStream;
-
+  Timer? _likeTimerSub;
   LikesBloc({
     required final RadioCubit radioCubit,
     required final OnlineStoreImpl store,
@@ -39,6 +39,7 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
       }, initial: () async {
         await _syncServerCubit.closeTimer();
         await _listenerCityData?.cancel();
+        _likeTimerSub?.cancel();
         add(const LikesEvent.disable());
       });
     });
@@ -57,8 +58,9 @@ class LikesBloc extends Bloc<LikesEvent, LikesState> {
   Future<void> _writeLike(_WriteLikes event, Emitter<LikesState> emit) async {
     try {
       _syncServerCubit.resetTimer();
-      await Future.delayed(const Duration(milliseconds: 7000));
-      await _store.setData('2e683111-964b-40da-b1bd-b232de6004af');
+      _likeTimerSub = Timer(const Duration(milliseconds: 7000), () async {
+        await _store.setData('2e683111-964b-40da-b1bd-b232de6004af');
+      });
     } catch (e) {
       if (kDebugMode) {
         debugPrint(e.toString());

@@ -54,9 +54,9 @@ void main() => runZonedGuarded<void>(
 
         WidgetsFlutterBinding.ensureInitialized();
 
-        AppMetrica.activate(_config);
+        await AppMetrica.activate(_config);
 
-        NotificationService.initialize();
+        await NotificationService.initialize();
 
         await Supabase.initialize(
           url: 'https://nkbxxphgbtkznybnrrmw.supabase.co',

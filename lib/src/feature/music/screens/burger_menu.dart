@@ -4,7 +4,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme/burger_text.dart';
 import '../../../widgets/circle_icon_button.dart';
-
 import '/lively_icons.dart';
 import 'onboarding/onboarding.dart';
 
@@ -34,15 +33,37 @@ class BurgerMenu extends StatelessWidget {
                   AppBar(
                     leadingWidth: 30,
                     leading: CircleIconButton(
-                      child: const Icon(
-                        LivelyIcons.menu,
-                        size: 40,
+                      child: TweenAnimationBuilder(
+                        duration: const Duration(milliseconds: 300),
+                        tween: Tween<double>(begin: 0, end: 12),
+                        builder: (context, double value, child) {
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              child!,
+                              SizedBox(
+                                height: value,
+                              ),
+                              child,
+                            ],
+                          );
+                        },
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.height / 27,
+                          height: 2,
+                          child: const DecoratedBox(
+                            decoration: BoxDecoration(color: Color(0xff696969)),
+                          ),
+                        ),
                       ),
                       onTap: () => Navigator.of(context).pop(),
                     ),
                     actions: [
                       CircleIconButton(
-                          child: const Icon(LivelyIcons.question),
+                          child: Icon(
+                            LivelyIcons.question,
+                            size: MediaQuery.of(context).size.height / 27,
+                          ),
                           onTap: () => showDialog(
                               useSafeArea: false,
                               context: context,

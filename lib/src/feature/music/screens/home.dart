@@ -3,11 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lively/generated/l10n.dart';
 import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
-
 import 'package:lively/src/widgets/listeners_amount.dart';
+import 'package:lively/src/widgets/marquee.dart';
 
 
 import 'package:lively/src/widgets/marquee.dart';
@@ -23,7 +24,6 @@ import '../bloc/radio/radio_cubit.dart';
 import '/lively_icons.dart';
 import 'no_internet.dart';
 import 'onboarding/onboarding.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   late final AnimationController controllerTextHeart = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 400));
   late final AnimationController controllerHeart = AnimationController(
-      vsync: this, duration: const Duration(milliseconds: 100));
+      vsync: this, duration: const Duration(milliseconds: 375));
   late final AnimationController controllerResetIcon = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 800));
   late final gradientColors = Theme.of(context).extension<ColorsForGradient>()!;
@@ -164,14 +164,39 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             leading: CircleIconButton(
                               onTap: () => Navigator.of(context)
                                   .pushNamed('/burgerMenu'),
-                              child: const Icon(
-                                LivelyIcons.menu,
-                                size: 40,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.height / 27,
+                                    height: 2,
+                                    child: const DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: Color(0xff696969)),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 7,
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.height / 27,
+                                    height: 2,
+                                    child: const DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: Color(0xff696969)),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             actions: [
                               CircleIconButton(
-                                child: const Icon(LivelyIcons.question),
+                                child: Icon(
+                                  LivelyIcons.question,
+                                  size: MediaQuery.of(context).size.height / 27,
+                                ),
                                 onTap: () => myShowDialog(
                                   context,
                                   const OnBoarding(),
@@ -226,7 +251,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 height: 30,
                                 width: MediaQuery.of(context).size.width,
                                 child: Center(
-
                                     child: Padding(
                                         padding: EdgeInsets.symmetric(
                                                 horizontal:
@@ -239,7 +263,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                           direction: Axis.horizontal,
                                           style: textTheme.bodyLarge!,
                                         ))),
-
                               )
                             : Text(
                                 !value
@@ -283,15 +306,12 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
                 right: 0,
                 top: MediaQuery.of(context).size.height * 0.32,
-
                 child: GestureDetector(
                   child: SvgPicture.asset(
                     'assets/map_icon.svg',
                     alignment: Alignment.centerRight,
                   ),
                   onTap: () {
-
-
                     Navigator.of(context).pushNamed('/map');
                   },
                 )),

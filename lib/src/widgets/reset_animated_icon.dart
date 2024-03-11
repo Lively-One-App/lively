@@ -5,7 +5,7 @@ import 'package:lively/src/feature/music/bloc/sync_server/sync_server_cubit.dart
 import '../../generated/l10n.dart';
 import '../../lively_icons.dart';
 
-class ResetAnimatedIcon extends StatelessWidget {
+class ResetAnimatedIcon extends StatefulWidget {
   const ResetAnimatedIcon(
       {Key? key,
       required this.resetAnimation,
@@ -17,6 +17,18 @@ class ResetAnimatedIcon extends StatelessWidget {
   final AnimationController controller;
   final void Function() resetAnimation;
   final int countLikes;
+
+  @override
+  State<ResetAnimatedIcon> createState() => _ResetAnimatedIconState();
+}
+
+class _ResetAnimatedIconState extends State<ResetAnimatedIcon> {
+  @override
+  void dispose() {
+    widget.controller.reverse();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final aspectRatio = MediaQuery.of(context).size.aspectRatio;
@@ -25,14 +37,14 @@ class ResetAnimatedIcon extends StatelessWidget {
         selector: (state) => state,
         builder: (context, state) {
           final timerValue = state == 9 ? 0 : state;
-          if (timerValue == 8) controller.reverse();
-          if (timerValue == 0) controller.forward();
-          
+          if (timerValue == 8) widget.controller.reverse();
+          if (timerValue == 0) widget.controller.forward();
+
           return AnimatedBuilder(
-              animation: controller,
+              animation: widget.controller,
               builder: (context, child) {
                 return Transform.translate(
-                    offset: Offset(0, animation.value),
+                    offset: Offset(0, widget.animation.value),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

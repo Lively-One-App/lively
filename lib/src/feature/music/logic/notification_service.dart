@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
 final FlutterLocalNotificationsPlugin _notificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
+// Define a top-level function to handle background notifications
+Future<void> backgroundNotificationHandler(NotificationResponse response) async {
+  print (response);
+}
+
 class NotificationService {
-  static void initialize() {
-    // Initialization  setting for android
+  static Future<void> initialize() async {
+    // Initialize the plugin for Android settings
     const InitializationSettings initializationSettingsAndroid =
         InitializationSettings(
             iOS: DarwinInitializationSettings(),
             android: AndroidInitializationSettings("@drawable/ic_launcher"));
 
-    _notificationsPlugin.initialize(
+    // Provide the top-level function to the plugin
+    await _notificationsPlugin.initialize(
       initializationSettingsAndroid,
-      // to handle event when we receive notification
-      onDidReceiveNotificationResponse: (details) {
-        if (details.input != null) {}
+      onDidReceiveNotificationResponse: (NotificationResponse details) {
+        // Handle foreground notification responses here
       },
-      onDidReceiveBackgroundNotificationResponse: (details) {
-        print(details);
-      },
+      onDidReceiveBackgroundNotificationResponse: backgroundNotificationHandler, // Correctly provided top-level function
     );
   }
-  
-static Future<void> display(String message) async {
+
+  static Future<void> display(String message) async {
     // To display the notification in device
     try {
       //print(message.notification!.android!.sound);
@@ -54,4 +56,5 @@ static Future<void> display(String message) async {
     }
 
 }
+
 }
