@@ -23,6 +23,29 @@ class OnBoarding extends StatelessWidget {
     ];
 
     return IntroductionScreen(
+      globalHeader: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton.filled(
+            color: Colors.black,
+            onPressed: () {
+              Navigator.of(context).pop(context);
+            },
+            style: IconButton.styleFrom(
+              iconSize: 25,
+              fixedSize: const Size(28, 28),
+              backgroundColor: Colors.white,
+              shape: const OvalBorder(
+                side: BorderSide(
+                  color: Color(0xFF696969),
+                  width: 2,
+                ),
+              ),
+            ),
+            icon: const Icon(Icons.close),
+          )
+        ],
+      ),
       globalBackgroundColor: theme.scaffoldBackgroundColor,
       rawPages: [
         TextScreen(
