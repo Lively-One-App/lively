@@ -32,7 +32,8 @@ class OnBoarding extends StatelessWidget {
               Navigator.of(context).pop(context);
             },
             style: IconButton.styleFrom(
-              iconSize: 25,
+              padding: EdgeInsetsDirectional.zero,
+              iconSize: 30,
               fixedSize: const Size(28, 28),
               backgroundColor: Colors.white,
               shape: const OvalBorder(
