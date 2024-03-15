@@ -9,7 +9,6 @@ import 'package:lively/src/feature/music/bloc/run_string/run_string_bloc.dart';
 
 import 'package:lively/src/widgets/listeners_amount.dart';
 
-
 import 'package:lively/src/widgets/marquee.dart';
 
 import '../../../../theme/colors_for_gradient.dart';
@@ -148,7 +147,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   height: height * 0.54,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
+                      horizontal: 20.0,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -226,7 +225,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 height: 30,
                                 width: MediaQuery.of(context).size.width,
                                 child: Center(
-
                                     child: Padding(
                                         padding: EdgeInsets.symmetric(
                                                 horizontal:
@@ -239,7 +237,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                           direction: Axis.horizontal,
                                           style: textTheme.bodyLarge!,
                                         ))),
-
                               )
                             : Text(
                                 !value
@@ -280,18 +277,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 )),
             Positioned(
-
                 right: 0,
                 top: MediaQuery.of(context).size.height * 0.32,
-
                 child: GestureDetector(
                   child: SvgPicture.asset(
                     'assets/map_icon.svg',
                     alignment: Alignment.centerRight,
                   ),
                   onTap: () {
-
-
                     Navigator.of(context).pushNamed('/map');
                   },
                 )),

@@ -286,7 +286,7 @@ class S {
   /// `START`
   String get start {
     return Intl.message(
-      'START',
+      'BECOME LIVELY',
       name: 'start',
       desc: '',
       args: [],

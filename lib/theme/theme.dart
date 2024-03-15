@@ -23,7 +23,7 @@ abstract class MyThemes {
         letterSpacing: 1.2,
         fontSize: 30,
         fontWeight: _extraBold,
-        color: _accent,
+        color: Colors.black,
       ),
       titleMedium: const TextStyle(
         height: 1.3,
@@ -36,8 +36,11 @@ abstract class MyThemes {
           fontWeight: _regular,
           letterSpacing: 0.36,
           color: Color(0xFF646464)),
-      bodyLarge:
-          const TextStyle(fontSize: 19, fontWeight: _regular, letterSpacing: 0),
+      bodyLarge: const TextStyle(
+        fontSize: 19,
+        fontWeight: _regular,
+        letterSpacing: 0,
+      ),
     )),
   ];
   static const _appBarTheme = const AppBarTheme(
@@ -70,11 +73,10 @@ abstract class MyThemes {
       scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       listTileTheme: _listTileThemeData.copyWith(
           tileColor: const Color.fromRGBO(255, 255, 255, 1),
-          textColor: Colors.black
-        ),
+          textColor: Colors.black),
       textTheme: _textTheme,
       iconTheme: const IconThemeData(color: _accent),
-      
+
       colorScheme: const ColorScheme(
           background: Color.fromRGBO(236, 235, 235, 1),
           brightness: Brightness.light,
@@ -100,11 +102,11 @@ abstract class MyThemes {
         brightness: Brightness.dark,
         //colorSchemeSeed: _accent,
         scaffoldBackgroundColor: backgroundColor,
-        textTheme: _textTheme.apply(bodyColor: const Color(0xFFC6C6C6)),
+        textTheme: _textTheme.apply(bodyColor: Colors.white),
         iconTheme: const IconThemeData(color: _accent),
         appBarTheme: _appBarTheme.copyWith(
           systemOverlayStyle: SystemUiOverlayStyle.light,
-          iconTheme: _iconTheme.copyWith(color: const Color(0xFFA9A9A9)),
+          iconTheme: _iconTheme.copyWith(color: Colors.white),
         ),
         listTileTheme: _listTileThemeData.copyWith(
           tileColor: const Color(0xFF414141),

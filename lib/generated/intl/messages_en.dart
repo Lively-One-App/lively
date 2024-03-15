@@ -62,7 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetTime": MessageLookupByLibrary.simpleMessage("SEC"),
         "searchTalent": MessageLookupByLibrary.simpleMessage(
             "We are looking for talent and are open to any cooperation, please contact us!"),
-        "start": MessageLookupByLibrary.simpleMessage("START"),
+        "start": MessageLookupByLibrary.simpleMessage("BECOME LIVELY"),
         "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(
             "Please write how we can become better, right on Instagram!"),
         "telegram": MessageLookupByLibrary.simpleMessage("Telegram")

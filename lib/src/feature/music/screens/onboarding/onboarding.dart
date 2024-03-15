@@ -26,24 +26,33 @@ class OnBoarding extends StatelessWidget {
       globalHeader: AppBar(
         automaticallyImplyLeading: false,
         actions: [
-          IconButton.filled(
-            color: Colors.black,
-            onPressed: () {
-              Navigator.of(context).pop(context);
-            },
-            style: IconButton.styleFrom(
-              padding: EdgeInsetsDirectional.zero,
-              iconSize: 30,
-              fixedSize: const Size(28, 28),
-              backgroundColor: Colors.white,
-              shape: const OvalBorder(
-                side: BorderSide(
-                  color: Color(0xFF696969),
-                  width: 2,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(999),
+            ),
+            width: 28,
+            height: 28,
+            margin: const EdgeInsets.only(
+              right: 24,
+            ),
+            child: IconButton.filled(
+              color: Colors.black,
+              onPressed: () {
+                Navigator.of(context).pop(context);
+              },
+              style: IconButton.styleFrom(
+                padding: EdgeInsetsDirectional.zero,
+                iconSize: 20,
+                backgroundColor: Colors.white,
+                shape: const OvalBorder(
+                  side: BorderSide(
+                    color: Color(0xFF696969),
+                    width: 2,
+                  ),
                 ),
               ),
+              icon: const Icon(Icons.close),
             ),
-            icon: const Icon(Icons.close),
           )
         ],
       ),
