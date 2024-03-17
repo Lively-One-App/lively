@@ -173,7 +173,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     height: 2,
                                     child: const DecoratedBox(
                                       decoration: BoxDecoration(
-                                          color: Color(0xff696969)),
+                                          color: Color.fromARGB(255, 143, 139, 139)
+                                           //Color(0xff696969)
+                                           ),
                                     ),
                                   ),
                                   const SizedBox(
@@ -185,7 +187,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     height: 2,
                                     child: const DecoratedBox(
                                       decoration: BoxDecoration(
-                                          color: Color(0xff696969)),
+                                          color: Color.fromARGB(255, 143, 139, 139)
+                                          //0xff696969
+                                           //Color(0xff696969)
+                                          
+                                          ),
                                     ),
                                   ),
                                 ],

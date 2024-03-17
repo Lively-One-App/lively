@@ -52,7 +52,7 @@ class BurgerMenu extends StatelessWidget {
                           width: MediaQuery.of(context).size.height / 27,
                           height: 2,
                           child: const DecoratedBox(
-                            decoration: BoxDecoration(color: Color(0xff696969)),
+                            decoration: BoxDecoration(color: Color.fromARGB(255, 143, 139, 139)),
                           ),
                         ),
                       ),
