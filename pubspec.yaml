@@ -103,6 +103,8 @@ flutter:
       fonts:
         - asset: assets/fonts/MullerExtraBold.ttf
         - asset: assets/fonts/MullerRegular.ttf
-
+    - family: MullerMedium
+      fonts:
+        - asset: assets/fonts/MullerMedium.ttf
 flutter_intl:
   enabled: true

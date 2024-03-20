@@ -43,18 +43,17 @@ class TextScreen extends StatelessWidget {
               TextSpan(children: [
                 TextSpan(
                     text: firstPart,
-                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, height: 1.18)),
                 TextSpan(
                   text: secondPart,
                   style: const TextStyle(
-                    fontFamily: 'MullerRegular',
+                    fontFamily: 'MullerMedium',
                   ),
                 )
               ]),
               style: const TextStyle(
-                color: Colors.white,
-                fontSize: 39,
-              ),
+                  color: Colors.white, fontSize: 39, height: 1.18),
             ),
           )
         ],
