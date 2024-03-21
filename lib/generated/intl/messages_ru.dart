@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "start": MessageLookupByLibrary.simpleMessage("ОЖИВИТЬСЯ"),
         "subtitleBurgerMenu": MessageLookupByLibrary.simpleMessage(
             "Умоляем, пишите, как нам стать лучше, прямо в Instagram!"),
-        "telegram": MessageLookupByLibrary.simpleMessage("Telegram")
+        "telegramChannel":
+            MessageLookupByLibrary.simpleMessage("Telegram канал"),
+        "telegram": MessageLookupByLibrary.simpleMessage("Telegram написать"),
       };
 }

@@ -123,6 +123,16 @@ class S {
     );
   }
 
+  /// `Telegram Channel`
+  String get telegramChannel {
+    return Intl.message(
+      'Telegram Channel',
+      name: 'telegramChannel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Telegram`
   String get telegram {
     return Intl.message(

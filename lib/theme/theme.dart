@@ -23,7 +23,6 @@ abstract class MyThemes {
         letterSpacing: 1.2,
         fontSize: 30,
         fontWeight: _extraBold,
-        color: Colors.black,
       ),
       titleMedium: const TextStyle(
         height: 1.3,
@@ -72,23 +71,25 @@ abstract class MyThemes {
       fontFamily: 'Muller',
       scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       listTileTheme: _listTileThemeData.copyWith(
-          tileColor: const Color.fromRGBO(255, 255, 255, 1),
-          textColor: Colors.black),
+        tileColor: const Color.fromRGBO(255, 255, 255, 1),
+        textColor: Colors.black,
+      ),
       textTheme: _textTheme,
       iconTheme: const IconThemeData(color: _accent),
 
       colorScheme: const ColorScheme(
-          background: Color.fromRGBO(236, 235, 235, 1),
-          brightness: Brightness.light,
-          primary: _accent,
-          onPrimary: _accent,
-          secondary: _accent,
-          onSecondary: _accent,
-          error: _accent,
-          onError: _accent,
-          onBackground: Color.fromRGBO(236, 235, 235, 1),
-          surface: _accent,
-          onSurface: _accent),
+        background: Color.fromRGBO(236, 235, 235, 1),
+        brightness: Brightness.light,
+        primary: _accent,
+        onPrimary: _accent,
+        secondary: _accent,
+        onSecondary: _accent,
+        error: _accent,
+        onError: _accent,
+        onBackground: Color.fromRGBO(236, 235, 235, 1),
+        surface: _accent,
+        onSurface: _accent,
+      ),
     );
   }
 
@@ -109,7 +110,9 @@ abstract class MyThemes {
           iconTheme: _iconTheme.copyWith(color: Colors.white),
         ),
         listTileTheme: _listTileThemeData.copyWith(
-          tileColor: const Color(0xFF414141),
+          tileColor: Colors.white,
+          textColor: const Color(0xFFD5D5D5),
+          iconColor: const Color(0xFFD5D5D5),
         ),
         colorScheme: const ColorScheme(
             background: backgroundColor,
